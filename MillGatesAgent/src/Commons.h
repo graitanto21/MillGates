@@ -8,7 +8,9 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-#define CUBE_SIZE 3
+#define CUBE_SIZE_X 3
+#define CUBE_SIZE_Y 3
+#define CUBE_SIZE_Z 3
 
 #define PAWN_BLACK 	0
 #define PAWN_WHITE 	1
