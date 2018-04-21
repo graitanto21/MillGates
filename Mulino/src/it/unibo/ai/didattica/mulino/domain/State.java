@@ -205,6 +205,10 @@ public class State implements Serializable {
 	public static void main(String[] args) {
 		State aState = new State();
 		System.out.println(aState.toString());
+		
+		for(String s : aState.positions) {
+			System.out.print(aState.getBoard().get(s));
+		}
 	}
 
 }

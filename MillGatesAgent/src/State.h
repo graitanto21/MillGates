@@ -25,6 +25,7 @@ public:
 	int8 getPhase();
 
 	void setPawnAt(int8 x, int8 y, int8 z, pawn value);
+	//bool setPawnAt(int8 x, int8y, pawn value);
 	void setPhase(int8 value);
 
 	char * toString();
