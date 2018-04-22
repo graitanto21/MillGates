@@ -7,13 +7,10 @@
 
 #include <stdio.h>
 #include "State.h"
-<<<<<<< HEAD
 #include "connection.h"
-=======
 #include <iostream>
 
 using namespace std;
->>>>>>> origin/state_work_in_progress
 
 int main(void) {
 
@@ -33,16 +30,12 @@ int main(void) {
 
 	delete s2;
 
-<<<<<<< HEAD
-	printf("%s\n",s->toString());
-
-	start_connection();
-
-	send_data(s->toString(), 7);
-
-=======
 	printf("%s\n",s.toString());
->>>>>>> origin/state_work_in_progress
+
+	//start_connection();
+
+	//send_data(s.toString(), 7);
+
 }
 
 
