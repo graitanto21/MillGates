@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include "State.h"
+#include "connection.h"
 
 int main(void) {
 
@@ -26,6 +27,10 @@ int main(void) {
 	delete s2;
 
 	printf("%s\n",s->toString());
+
+	start_connection();
+
+	send_data(s->toString(), 7);
 
 }
 

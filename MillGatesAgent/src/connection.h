@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "control.h"
 #include "os.h"
 
 #if defined(LINUX) || defined(MAC)
@@ -17,7 +16,7 @@
 #include <netdb.h>
 #include <errno.h>
 
-#define BOARD_PORT 2101
+#define HOST_PORT 2101
 
 #endif //LINUX / MAC
 
@@ -29,11 +28,11 @@
 #include <windows.h>
 #include <ws2tcpip.h>
 
-#define BOARD_PORT "2101"
+#define HOST_PORT "2101"
 
 #endif //WINDOWS
 
-#define BOARD_INET_ADDR "192.168.1.50"
+#define HOST_INET_ADDR "192.168.1.50"
 
 #define SUCCESS 0
 #define FAILURE -1
