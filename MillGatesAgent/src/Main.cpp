@@ -34,7 +34,13 @@ int main(void) {
 
 	start_connection();
 
-	//send_data(s.toString(), 7);
+	send_data("a1", 3);
+
+	while(1) {
+
+		// Active wait
+
+	}
 
 }
 
