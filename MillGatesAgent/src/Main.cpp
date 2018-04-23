@@ -32,7 +32,7 @@ int main(void) {
 
 	printf("%s\n",s.toString());
 
-	//start_connection();
+	start_connection();
 
 	//send_data(s.toString(), 7);
 

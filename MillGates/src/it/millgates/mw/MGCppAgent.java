@@ -21,12 +21,12 @@ public class MGCppAgent extends MulinoClient {
 	public MGCppAgent(Checker player) throws UnknownHostException, IOException {
 		super(player);
 	}
-	
+
 	// TODO AGGIUNGERE PATH FILE CPP 
-	private final static String CPP_PATH = "";
+	private final static String CPP_PATH = "../MillGatesAgent/Release/MillGatesAgent.exe";
 	// TODO MODIFICARE PORTA TCP
-	private final static int PORT = 5850;
-	
+	private final static int PORT = 25568;
+
 	/**
 	 * Converte una stringa testuale in un oggetto azione
 	 * 
@@ -68,9 +68,9 @@ public class MGCppAgent extends MulinoClient {
 			return action;
 		}
 	}
-	
+
 	private static String currentStateString(State currentState) {
-		
+
 		StringBuilder sb = new StringBuilder();
 		for(String position : currentState.positions) {
 			Checker c = currentState.getBoard().get(position); 
@@ -84,77 +84,123 @@ public class MGCppAgent extends MulinoClient {
 		sb.append(" ");
 		sb.append(currentState.getBlackCheckers());
 		sb.append(" ");
-		
+
 		Phase p = currentState.getCurrentPhase();
 		switch(p) {
 		case FIRST: sb.append(0); break;
 		case SECOND: sb.append(1); break;
 		case FINAL: sb.append(2); break;
 		}
-		
+
 		return sb.toString();
 	} 
-	
-	public static void main(String[] args) throws UnknownHostException, IOException, ClassNotFoundException {
-		
-		// Start cpp agent
-		Process process = new ProcessBuilder(CPP_PATH).start();
-		ServerSocket serverSocket = new ServerSocket(PORT);
-		Socket socket = serverSocket.accept();
-		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-		
-		
-		State.Checker player;
-		if ("White".equals(args[0]))
-			player = State.Checker.WHITE;
-		else
-			player = State.Checker.BLACK;
-		
-		MulinoClient client = new MGCppAgent(player);
-		String actionString = "";
-		Action action;
-		State currentState = null;
 
-		if (player == State.Checker.WHITE) {
-			System.out.println("You are player " + client.getPlayer().toString() + "!");
-			System.out.println("Current state:");
-			currentState = client.read();
-			System.out.println(currentState.toString());
+	public static void main(String[] args) {
+
+		// Start C++ Agent
+
+		Runtime rt = null;
+		Process pr = null;
+		
+		try {
+			rt = Runtime.getRuntime();
+			pr = rt.exec(CPP_PATH);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		// Connect to C++ Agent
+
+		ServerSocket serverSocket = null;
+		Socket socket = null;
+		BufferedReader agentOutput = null;
+		DataOutputStream agentInput = null;
+
+		try {
+			serverSocket = new ServerSocket(PORT);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Waiting for C++ Agent connection");
+
+		try {
+			socket = serverSocket.accept();
 			
-			while (true) {
-				// read move from cpp agent
-				actionString = br.readLine();
-				action = stringToAction(actionString, currentState.getCurrentPhase());
-				// write move to server
-				client.write(action);
-				// read result of our move from server
+			System.out.println("C++ Agent connected");
+			
+			agentOutput = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			agentInput = new DataOutputStream(socket.getOutputStream());
+
+			State.Checker player;
+			if ("White".equals(args[0]))
+				player = State.Checker.WHITE;
+			else
+				player = State.Checker.BLACK;
+
+			System.out.println("Connecting to server");
+			
+			MulinoClient client = new MGCppAgent(player);
+			
+			System.out.println("Connected to server");
+			String actionString = "";
+			Action action;
+			State currentState = null;
+
+			if (player == State.Checker.WHITE) {
+				
 				currentState = client.read();
-				// waiting for opponent move 
+			
+				while (true) {
+					// read move from cpp agent
+					actionString = agentOutput.readLine();
+					action = stringToAction(actionString, currentState.getCurrentPhase());
+					// write move to server
+					client.write(action);
+					// read result of our move from server
+					currentState = client.read();
+					// waiting for opponent move 
+					currentState = client.read();
+					// write current state string to cpp agent
+					agentInput.writeUTF(currentStateString(currentState));
+				}
+			} else {
+				
 				currentState = client.read();
-				// write current state string to cpp agent
-				dos.writeUTF(currentStateString(currentState));
+				
+				while (true) {
+					// waiting opponent move
+					currentState = client.read();
+					// write current state string to cpp agent
+					agentInput.writeUTF(currentStateString(currentState));
+					// read move from cpp agent
+					actionString = agentOutput.readLine();
+					action = stringToAction(actionString, currentState.getCurrentPhase());
+					// write move to server
+					client.write(action);
+					// read result of our move from server
+					currentState = client.read();
+				}
 			}
-		} else {
-			currentState = client.read();
-			while (true) {
-				// waiting opponent move
-				currentState = client.read();
-				// write current state string to cpp agent
-				dos.writeUTF(currentStateString(currentState));
-				// read move from cpp agent
-				actionString = br.readLine();
-				action = stringToAction(actionString, currentState.getCurrentPhase());
-				// write move to server
-				client.write(action);
-				// read result of our move from server
-				currentState = client.read();
+
+		}
+		catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				
+				System.out.println("Closing sockets");
+				
+				socket.close();
+				serverSocket.close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 
-		
-	
 	}
-	
+
 
 }

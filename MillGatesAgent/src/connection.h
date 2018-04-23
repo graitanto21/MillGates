@@ -16,7 +16,7 @@
 #include <netdb.h>
 #include <errno.h>
 
-#define HOST_PORT 2101
+#define HOST_PORT 25568
 
 #endif //LINUX / MAC
 
@@ -28,11 +28,11 @@
 #include <windows.h>
 #include <ws2tcpip.h>
 
-#define HOST_PORT "2101"
+#define HOST_PORT "25568"
 
 #endif //WINDOWS
 
-#define HOST_INET_ADDR "192.168.1.50"
+#define HOST_INET_ADDR "localhost"
 
 #define SUCCESS 0
 #define FAILURE -1
