@@ -1,2 +1,2 @@
 cd ..\MillGatesAgent\Release
-.\MillGatesAgent.exe
+.\MillGatesAgent.exe white

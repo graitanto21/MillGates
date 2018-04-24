@@ -1,15 +1,13 @@
 package it.millgates.mw;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 import it.unibo.ai.didattica.mulino.actions.Action;
-import it.unibo.ai.didattica.mulino.actions.Phase1Action; 
+import it.unibo.ai.didattica.mulino.actions.Phase1Action;
 import it.unibo.ai.didattica.mulino.actions.Phase2Action;
 import it.unibo.ai.didattica.mulino.actions.PhaseFinalAction;
 import it.unibo.ai.didattica.mulino.client.MulinoClient;
@@ -106,7 +104,7 @@ public class MGCppAgent extends MulinoClient {
 		if (args.length == 1 || !args[1].equals("--debug")) { 
 			try {
 				rt = Runtime.getRuntime();
-				pr = rt.exec(CPP_PATH);
+				pr = rt.exec(CPP_PATH +" "+ args[0]);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -137,7 +135,7 @@ public class MGCppAgent extends MulinoClient {
 			agentInput = new DataOutputStream(socket.getOutputStream());
 
 			State.Checker player;
-			if ("White".equals(args[0]))
+			if ("White".equalsIgnoreCase(args[0]))
 				player = State.Checker.WHITE;
 			else
 				player = State.Checker.BLACK;
@@ -148,6 +146,7 @@ public class MGCppAgent extends MulinoClient {
 
 			System.out.println("Connected to server");
 			String actionString = "";
+			String stateString = "";
 			Action action;
 			State currentState = null;
 
@@ -158,7 +157,7 @@ public class MGCppAgent extends MulinoClient {
 				while (true) {
 					
 					// read move from cpp agent
-					agentOutput.read(buffer, 0, 5);
+					agentOutput.read(buffer, 0, 7);
 					actionString = new String(buffer, "UTF-8");
 					
 					action = stringToAction(actionString, currentState.getCurrentPhase());
@@ -169,7 +168,8 @@ public class MGCppAgent extends MulinoClient {
 					// waiting for opponent move 
 					currentState = client.read();
 					// write current state string to cpp agent
-					agentInput.writeUTF(currentStateString(currentState));
+					stateString = currentStateString(currentState);
+					agentInput.write(stateString.getBytes("UTF-8"), 0, stateString.length());
 				}
 			} else {
 
@@ -179,9 +179,10 @@ public class MGCppAgent extends MulinoClient {
 					// waiting opponent move
 					currentState = client.read();
 					// write current state string to cpp agent
-					agentInput.writeUTF(currentStateString(currentState));
+					stateString = currentStateString(currentState);
+					agentInput.write(stateString.getBytes("UTF-8"), 0, stateString.length());
 					// read move from cpp agent
-					agentOutput.read(buffer, 0, 5);
+					agentOutput.read(buffer, 0, 7);
 					actionString = new String(buffer, "UTF-8");
 					
 					action = stringToAction(actionString, currentState.getCurrentPhase());
