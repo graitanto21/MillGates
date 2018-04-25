@@ -46,6 +46,19 @@ public:
 	virtual char* toString();
 	virtual ~State();
 
+	//For debug
+	void printLeftFace();
+	void printMiddleLine();
+	void printRightFace();
+
+	void toStringToSend();
+
+private:
+	//For the mapping
+	void putLeftFace(unsigned int count, char value);
+	void putMiddleLine(unsigned int count, char value);
+	void putRightFace(unsigned int count, char value);
+
 };
 
 std::ostream& operator<<(std::ostream &strm, const State &s);
