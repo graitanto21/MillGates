@@ -40,7 +40,7 @@ State::State(char *stringFromServer) : State() {
 		}
 		else if (9 <= count and count <= 14) //TODO migliorare per inserire cella al centro
 			putMiddleLine(count, stringFromServer[count]);
-		else //cosa
+		else //cosa  das
 			putRightFace(count, stringFromServer[count]);
 
 	}
