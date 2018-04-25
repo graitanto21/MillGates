@@ -46,7 +46,7 @@ public:
 	virtual char* toString();
 	virtual ~State();
 
-	//For debug
+	//For debugs
 	void printLeftFace();
 	void printMiddleLine();
 	void printRightFace();
