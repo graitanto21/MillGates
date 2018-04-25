@@ -9,18 +9,33 @@
 
 //Constructors
 State::State() {
-
 	for (int i = 0; i < CUBE_SIZE_X; i++)
 		for (int j = 0; j < CUBE_SIZE_Y; j++)
 			for (int k = 0; k < CUBE_SIZE_Z; k++)
-
 				pawns[i][j][k] = PAWN_NONE;
-
 	phase = PHASE_1;
-
 }
+
 State::State(char*stringFromServer) : State() {
-	//TODO Insert, for a string representation, the pawn in the board
+	/* Here, state is created (I call the void constructor)
+	 * with all position void. Now, I only need to receive
+	 * the positions and the content of all the cells
+	 * in the format '<x><y><PAWN>'.
+	 * Last three char of the string indicates the number
+	 * of pawns of each kind present on the board and the
+	 * current phase.
+	*/
+	int _l = strlen(stringFromServer);
+	int i=0;
+	while(i<(_l-3)) {
+		setPawnAt(
+			/* x */			stringFromServer[i++],
+			/* y */ 		stringFromServer[i++],
+			/* CONTENT */ 	stringFromServer[i++]);
+	}
+	setWhiteCheckersOnBoard(stringFromServer[i++]);
+	setBlackCheckersOnBoard(stringFromServer[i++]);
+	setPhase(stringFromServer[i]);
 }
 
 //Getters and setters
@@ -47,18 +62,18 @@ int8 State::getPhase() {
 	return phase;
 }
 
-void setWhiteCheckersOnBoard(){
+void State::setWhiteCheckersOnBoard(int8 number){
 	//TODO: using the unused places of the cube!
 }
-int8 getWhiteCheckersOnBoard() {
+int8 State::getWhiteCheckersOnBoard() {
 	//TODO: using the unused places of the cube!
 	return 0;
 }
 
-void setBlackCheckersOnBoard() {
+void State::setBlackCheckersOnBoard(int8 number) {
 	//TODO: using the unused places of the cube!
 }
-int8 getBlackCheckersOnBoard() {
+int8 State::getBlackCheckersOnBoard() {
 	//TODO: using the unused places of the cube!
 	return NULL;
 }
@@ -101,3 +116,8 @@ int State::hash() {
 
 State::~State() {}
 
+//
+// MAIN FOR TESTS
+//int main() {
+//
+//}

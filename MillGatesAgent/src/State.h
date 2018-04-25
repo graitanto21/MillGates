@@ -11,6 +11,7 @@
 #include "Commons.h"
 #include <iostream>
 #include <string>
+#include <string.h>
 
 class State {
 private:
@@ -34,10 +35,10 @@ public:
 	void setPhase(int8 value);
 	int8 getPhase();
 
-	void setWhiteCheckersOnBoard();
+	void setWhiteCheckersOnBoard(int8 number);
 	int8 getWhiteCheckersOnBoard();
 
-	void setBlackCheckersOnBoard();
+	void setBlackCheckersOnBoard(int8 number);
 	int8 getBlackCheckersOnBoard();
 
 	//Utiliy methods
@@ -47,8 +48,8 @@ public:
 	virtual ~State();
 
 };
-
-std::ostream& operator<<(std::ostream &strm, const State &s);
+//
+//std::ostream& operator<<(std::ostream &strm, const State &s);
 
 
 #endif /* STATE_H_ */
