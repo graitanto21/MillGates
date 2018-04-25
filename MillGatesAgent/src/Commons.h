@@ -16,6 +16,10 @@
 #define PAWN_WHITE 	1
 #define PAWN_NONE	2
 
+#define NONE  '0'
+#define WHITE 'W'
+#define BLACK 'B'
+
 #define PHASE_1 	0
 #define PHASE_2		1
 #define PHASE_3		2

@@ -11,7 +11,6 @@
 #include "Commons.h"
 #include <iostream>
 #include <string>
-#include <string.h>
 
 class State {
 private:
@@ -21,7 +20,7 @@ private:
 
 public:
 
-	//Constructors
+	//Constructor
 	State();
 	State(char*stringFromServer);
 
@@ -30,6 +29,8 @@ public:
 	void setPawnAt(int x, int y, int z, pawn value);
 
 	bool setPawnAt(int8 x, int8 y, pawn value);
+
+	// If coordinate is not valid, returns -1;
 	pawn getPawnAt(int8 x, int8 y);
 
 	void setPhase(int8 value);
@@ -47,9 +48,22 @@ public:
 	virtual char* toString();
 	virtual ~State();
 
-};
+//	//For debug
+//	void printLeftFace();
+//	void printMiddleLine();
+//	void printRightFace();
 //
-//std::ostream& operator<<(std::ostream &strm, const State &s);
+	void toStringToSend();
+
+//private:
+//	//For the mapping
+//	void putLeftFace(unsigned int count, char value);
+//	void putMiddleLine(unsigned int count, char value);
+//	void putRightFace(unsigned int count, char value);
+
+};
+
+std::ostream& operator<<(std::ostream &strm, const State &s);
 
 
 #endif /* STATE_H_ */

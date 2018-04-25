@@ -13,7 +13,7 @@ int start_connection()
 	int status;
 
 	#ifdef DEBUG
-	printf("Connecting with the board...\n");
+	printf("Connecting ...\n");
 	#endif
 
 	memset((char *)&servaddr, 0, sizeof(struct sockaddr_in));
@@ -23,10 +23,10 @@ int start_connection()
 	printf("sin_family initialized\n");
 	#endif
 
-	host = gethostbyname(BOARD_INET_ADDR);
+	host = gethostbyname(HOST_INET_ADDR);
 	if (host == NULL)
 	{
-        printf("No host %s found\n", BOARD_INET_ADDR);
+        printf("No host %s found\n", HOST_INET_ADDR);
         return FAILURE;
 	}
 
@@ -36,7 +36,7 @@ int start_connection()
 	#endif
 
 	servaddr.sin_addr.s_addr = ((struct in_addr *) (host->h_addr))->s_addr;
-	servaddr.sin_port = htons(BOARD_PORT);
+	servaddr.sin_port = htons(HOST_PORT);
 
 	#ifdef DEBUG
 	printf("struct sockaddr_in initialized\n");
@@ -54,7 +54,7 @@ int start_connection()
 
 	if ((status = connect(sd, (struct sockaddr *)&servaddr, sizeof(struct sockaddr))) < 0)
 	{
-		printf("Could not connect with the board %d\n", errno);
+		printf("Could not connect %d\n", errno);
 		close(sd);
 		return FAILURE;
 	}
@@ -70,7 +70,7 @@ int close_connection()
 	int retval;
 
 	#ifdef DEBUG
-	printf("Disconnecting from the board...\n");
+	printf("Disconnecting ...\n");
 	#endif
 
 	retval = close(sd);
@@ -143,7 +143,7 @@ int start_connection()
 	#endif
 
     // Resolve the server address and port
-    iResult = getaddrinfo(BOARD_INET_ADDR, BOARD_PORT, &hints, &result);
+    iResult = getaddrinfo(HOST_INET_ADDR, HOST_PORT, &hints, &result);
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACleanup();
@@ -182,7 +182,7 @@ int start_connection()
     freeaddrinfo(result);
 
     if (ConnectSocket == INVALID_SOCKET) {
-        printf("Unable to connect to server\n");
+        printf("Unable to connect \n");
         WSACleanup();
         return FAILURE;
     }
@@ -195,7 +195,7 @@ int close_connection()
 	int retval;
 
 	#ifdef DEBUG
-	printf("Disconnecting from the board...\n");
+	printf("Disconnecting ...\n");
 	#endif
 
     // shutdown the connection since no more data will be sent
