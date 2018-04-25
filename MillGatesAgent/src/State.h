@@ -20,7 +20,7 @@ private:
 
 public:
 
-	//Constructors
+	//Constructor
 	State();
 	State(char*stringFromServer);
 
