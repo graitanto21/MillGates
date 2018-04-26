@@ -30,112 +30,111 @@ State::State() {
   a  b  c  d  e  f  g
  */
 
-<<<<<<< HEAD
-State::State(char *stringFromServer) : State() {
-	for(unsigned int count = 0; count <= strlen(stringFromServer) - 1; count++){
-		if (count <= 8){
-			putLeftFace(count, stringFromServer[count]);
-		}
-		else if (9 <= count and count <= 14) //TODO migliorare per inserire cella al centro
-			putMiddleLine(count, stringFromServer[count]);
-		else //cosa  das
-			putRightFace(count, stringFromServer[count]);
+//State::State(char *stringFromServer) : State() {
+//	for(unsigned int count = 0; count <= strlen(stringFromServer) - 1; count++){
+//		if (count <= 8){
+//			putLeftFace(count, stringFromServer[count]);
+//		}
+//		else if (9 <= count and count <= 14) //TODO migliorare per inserire cella al centro
+//			putMiddleLine(count, stringFromServer[count]);
+//		else //cosa  das
+//			putRightFace(count, stringFromServer[count]);
+//
+//	}
+//}
+//
+//void State::putLeftFace(unsigned int count, char value){
+//	//printf("Creating LeftFace...\n");
+//	int i = 2 - count % 3;
+//	int j = 0;
+//	int k = 2 - count/3;
+//	printf("%d %d %d left\n", i,j,k);
+//	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
+//}
+//
+//void State::putMiddleLine(unsigned int count, char value){ //TODO migliorare per inserire casella al centro
+//	int i = count <= 11 ? 2 : 0;
+//	int j = 1;
+//	int k = count <= 11 ? 11 - count : count - 12;
+//	printf("%d %d %d center\n", i,j,k);
+//	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
+//}
+//
+//void State::putRightFace(unsigned int count, char value){
+//	int i = 2 - count % 3;
+//	int j = 2;
+//	int k = count/3 - 5;
+//	printf("%d %d %d right\n", i,j,k);
+//	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
+//}
+//
+//void State::printLeftFace(){
+//	int j = 0;
+//	for(int i=0; i<=2; i++){
+//		for(int k = 2; k >= 0; k--)
+//			printf("%d ", pawns[i][j][k]);
+//		printf("\n");
+//	}
+//}
+//
+//void State::printMiddleLine(){
+//	int j=1;
+//	int i=0;
+//	int k;
+//	for(k=2; k>=0; k--)
+//		printf("%d\n", pawns[i][j][k]);
+//	i = 2;
+//	for(k=0; k<=2; k++)
+//		printf("%d\n", pawns[i][j][k]);
+//}
+//
+//void State::printRightFace(){
+//	int j = 2;
+//	for(int i=0; i<=2; i++){
+//		for(int k = 0; k <=2; k++)
+//			printf("%d ", pawns[i][j][k]);
+//		printf("\n");
+//	}
+//}
 
-	}
-}
+//void State::toStringToSend(){
+//	char ret[25]; //TODO migliorare per inserire la casella al centro
+//				  //24 + \0
+//
+//	//Insert left face
+//	int count = 0;
+//	int i, j=0, k;
+//
+//	for(k=2; k>=0; k--)
+//		for(i=2; i>=0; i--){
+//			ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
+//			printf("%c", ret[count - 1]);
+//		}
+//
+//	//Insert middle line
+//	j=1;
+//	i=2;
+//	for(k=2; k>=0; k--){
+//		ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
+//		printf("%c", ret[count - 1]);
+//	}
+//	i=0;
+//	for(k=0; k<=2; k++){
+//		ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
+//		printf("%c", ret[count - 1]);
+//	}
+//
+//	//Insert right face
+//	j=2;
+//	for(k=0; k<=2; k++)
+//		for(i=2; i>=0; i--){
+//			ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
+//			printf("%c", ret[count - 1]);
+//		}
+//
+//
+//	ret[count] = '\0';
 
-void State::putLeftFace(unsigned int count, char value){
-	//printf("Creating LeftFace...\n");
-	int i = 2 - count % 3;
-	int j = 0;
-	int k = 2 - count/3;
-	printf("%d %d %d left\n", i,j,k);
-	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
-}
-
-void State::putMiddleLine(unsigned int count, char value){ //TODO migliorare per inserire casella al centro
-	int i = count <= 11 ? 2 : 0;
-	int j = 1;
-	int k = count <= 11 ? 11 - count : count - 12;
-	printf("%d %d %d center\n", i,j,k);
-	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
-}
-
-void State::putRightFace(unsigned int count, char value){
-	int i = 2 - count % 3;
-	int j = 2;
-	int k = count/3 - 5;
-	printf("%d %d %d right\n", i,j,k);
-	pawns[i][j][k] = value == NONE ? PAWN_NONE : (value == BLACK ? PAWN_BLACK : PAWN_WHITE);
-}
-
-void State::printLeftFace(){
-	int j = 0;
-	for(int i=0; i<=2; i++){
-		for(int k = 2; k >= 0; k--)
-			printf("%d ", pawns[i][j][k]);
-		printf("\n");
-	}
-}
-
-void State::printMiddleLine(){
-	int j=1;
-	int i=0;
-	int k;
-	for(k=2; k>=0; k--)
-		printf("%d\n", pawns[i][j][k]);
-	i = 2;
-	for(k=0; k<=2; k++)
-		printf("%d\n", pawns[i][j][k]);
-}
-
-void State::printRightFace(){
-	int j = 2;
-	for(int i=0; i<=2; i++){
-		for(int k = 0; k <=2; k++)
-			printf("%d ", pawns[i][j][k]);
-		printf("\n");
-	}
-}
-
-void State::toStringToSend(){
-	char ret[25]; //TODO migliorare per inserire la casella al centro
-				  //24 + \0
-
-	//Insert left face
-	int count = 0;
-	int i, j=0, k;
-
-	for(k=2; k>=0; k--)
-		for(i=2; i>=0; i--){
-			ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
-			printf("%c", ret[count - 1]);
-		}
-
-	//Insert middle line
-	j=1;
-	i=2;
-	for(k=2; k>=0; k--){
-		ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
-		printf("%c", ret[count - 1]);
-	}
-	i=0;
-	for(k=0; k<=2; k++){
-		ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
-		printf("%c", ret[count - 1]);
-	}
-
-	//Insert right face
-	j=2;
-	for(k=0; k<=2; k++)
-		for(i=2; i>=0; i--){
-			ret[count++] = pawns[i][j][k] == PAWN_WHITE ? 'W' : (pawns[i][j][k] == PAWN_NONE ? '0' : 'B');
-			printf("%c", ret[count - 1]);
-		}
-
-
-	ret[count] = '\0';
-=======
 State::State(std::string stringFromServer) : State() {
 	/* Here, state is created (I call the void constructor)
 	 * with all position void. Now, I only need to receive
@@ -160,7 +159,6 @@ State::State(std::string stringFromServer) : State() {
 	setWhiteCheckersOnBoard(stringFromServer[i++]);
 	setBlackCheckersOnBoard(stringFromServer[i++]);
 	setPhase(stringFromServer[i]);
->>>>>>> origin/state_work_in_progress
 }
 
 //Getters and setters
@@ -336,21 +334,20 @@ int State::hash() {
 
 State::~State() {}
 
-<<<<<<< HEAD
-int main(int argc, char **argv) {
-	printf("Program started...\n");
-	char * c = "WB0WB00WB0WW0B0WB0BW0WB0\0";
-	printf("State String created...\n");
-	State state = *(new State(c));
-	//printf("%s\n", state.toString());
-	printf("\n");
-	state.printLeftFace();
-	state.printMiddleLine();
-	state.printRightFace();
+//int main(int argc, char **argv) {
+//	printf("Program started...\n");
+//	char * c = "WB0WB00WB0WW0B0WB0BW0WB0\0";
+//	printf("State String created...\n");
+//	State state = *(new State(c));
+//	//printf("%s\n", state.toString());
+//	printf("\n");
+//	state.printLeftFace();
+//	state.printMiddleLine();
+//	state.printRightFace();
+//
+//	state.toStringToSend();
+//	printf("\n%s\n", c);
 
-	state.toStringToSend();
-	printf("\n%s\n", c);
-=======
 std::ostream& operator<<(std::ostream &strm, const State &s){
 	/* Here, I don't define the string representation directly,
 	 * but I call the virtual method "toString". In this way, I
@@ -402,32 +399,31 @@ void State::toStringToSend(){
 	ret[count] = '\0';
 }
 
-int main(int argc, char **argv) {
-	printf("Program started...\n");
-
-	//Create a state from string
-	std::string str("a1Oa4Oa7Wb2Bb4Wb6Bc3Wc4Bc5Wd1Wd2Od3Od5Od6Od7Oe3Oe4Oe5Of2Wf4Wf6Bg1Og4Wg7O991"); //created string
-	State s_from_string(str);
-	std::cout << "State  created from string (internal repr): " << s_from_string << "\n";
-	std::cout << "State  created from string (ordered repr): ";
-	s_from_string.toStringToSend();
-	std::cout << "\n";
-
-	//Create a void state
-	State s_void;
-	std::cout << "State created void: " << s_void << "\n";
-
-	//Here some tests
-	s_void.setPawnAt('a', 1, 'W');
-	s_void.setPawnAt('c', 5, 'B');
-	s_void.setPawnAt('d', 4, 'W');
-	s_void.setPhase(PHASE_3);
-
-	std::cout << "State modified from setters (internal repr): " << s_void << "\n";
-	std::cout << "State  created from string (ordered repr): ";
-	s_void.toStringToSend();
-	std::cout << "\n";
->>>>>>> origin/state_work_in_progress
-}
+//int main(int argc, char **argv) {
+//	printf("Program started...\n");
+//
+//	//Create a state from string
+//	std::string str("a1Oa4Oa7Wb2Bb4Wb6Bc3Wc4Bc5Wd1Wd2Od3Od5Od6Od7Oe3Oe4Oe5Of2Wf4Wf6Bg1Og4Wg7O991"); //created string
+//	State s_from_string(str);
+//	std::cout << "State  created from string (internal repr): " << s_from_string << "\n";
+//	std::cout << "State  created from string (ordered repr): ";
+//	s_from_string.toStringToSend();
+//	std::cout << "\n";
+//
+//	//Create a void state
+//	State s_void;
+//	std::cout << "State created void: " << s_void << "\n";
+//
+//	//Here some tests
+//	s_void.setPawnAt('a', 1, 'W');
+//	s_void.setPawnAt('c', 5, 'B');
+//	s_void.setPawnAt('d', 4, 'W');
+//	s_void.setPhase(PHASE_3);
+//
+//	std::cout << "State modified from setters (internal repr): " << s_void << "\n";
+//	std::cout << "State  created from string (ordered repr): ";
+//	s_void.toStringToSend();
+//	std::cout << "\n";
+//}
 
 

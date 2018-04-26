@@ -72,7 +72,7 @@ public class MGCppAgent extends MulinoClient {
 
 		StringBuilder sb = new StringBuilder();
 		for(String position : currentState.positions) {
-			Checker c = currentState.getBoard().get(position); 
+			Checker c = currentState.getBoard().get(position);
 			switch(c) {
 			case EMPTY: sb.append('O'); break;
 			case WHITE: sb.append('W'); break;
@@ -94,6 +94,35 @@ public class MGCppAgent extends MulinoClient {
 		return sb.toString();
 	} 
 
+	
+	private static String currentStateStringLong(State currentState) {
+
+		StringBuilder sb = new StringBuilder();
+		for(String position : currentState.positions) {
+			sb.append(position);
+			Checker c = currentState.getBoard().get(position);
+			switch(c) {
+			case EMPTY: sb.append('O'); break;
+			case WHITE: sb.append('W'); break;
+			case BLACK: sb.append('B'); break;
+			}
+		}
+		sb.append(currentState.getWhiteCheckers());
+		//sb.append(" ");
+		sb.append(currentState.getBlackCheckers());
+		//sb.append(" ");
+
+		Phase p = currentState.getCurrentPhase();
+		switch(p) {
+		case FIRST: sb.append(1); break;
+		case SECOND: sb.append(2); break;
+		case FINAL: sb.append(3); break;
+		}
+
+		return sb.toString();
+	} 
+
+	
 	public static void main(String[] args) {
 
 		// Start C++ Agent
@@ -168,7 +197,7 @@ public class MGCppAgent extends MulinoClient {
 					// waiting for opponent move 
 					currentState = client.read();
 					// write current state string to cpp agent
-					stateString = currentStateString(currentState);
+					stateString = currentStateStringLong(currentState);
 					agentInput.write(stateString.getBytes("UTF-8"), 0, stateString.length());
 				}
 			} else {
@@ -179,7 +208,7 @@ public class MGCppAgent extends MulinoClient {
 					// waiting opponent move
 					currentState = client.read();
 					// write current state string to cpp agent
-					stateString = currentStateString(currentState);
+					stateString = currentStateStringLong(currentState);
 					agentInput.write(stateString.getBytes("UTF-8"), 0, stateString.length());
 					// read move from cpp agent
 					agentOutput.read(buffer, 0, 7);

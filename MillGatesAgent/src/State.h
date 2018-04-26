@@ -47,24 +47,22 @@ public:
 	virtual std::string toString() const;
 	virtual ~State();
 
-<<<<<<< HEAD
-	//For debug
-	void printLeftFace();
-	void printMiddleLine();
-	void printRightFace();
-
 	void toStringToSend();
+//	//For debug
+//	void printLeftFace();
+//	void printMiddleLine();
+//	void printRightFace();
+//
+//	void toStringToSend();
 
-private:
-	//For the mapping
-	void putLeftFace(unsigned int count, char value);
-	void putMiddleLine(unsigned int count, char value);
-	void putRightFace(unsigned int count, char value);
-
-=======
-	//Testing
-	void toStringToSend();
->>>>>>> origin/state_work_in_progress
+//private:
+//	//For the mapping
+//	void putLeftFace(unsigned int count, char value);
+//	void putMiddleLine(unsigned int count, char value);
+//	void putRightFace(unsigned int count, char value);
+//
+//	//Testing
+//	void toStringToSend();
 };
 
 // For printing a state without explicitly calling every time the ToString().
