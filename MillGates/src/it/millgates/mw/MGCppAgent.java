@@ -189,7 +189,7 @@ public class MGCppAgent extends MulinoClient {
 					agentOutput.read(buffer, 0, 7);
 					actionString = new String(buffer, "UTF-8");
 					
-					action = stringToAction(actionString, currentState.getCurrentPhase());
+					action = stringToAction(actionString.trim(), currentState.getCurrentPhase());
 					// write move to server
 					client.write(action);
 					// read result of our move from server
@@ -214,7 +214,7 @@ public class MGCppAgent extends MulinoClient {
 					agentOutput.read(buffer, 0, 7);
 					actionString = new String(buffer, "UTF-8");
 					
-					action = stringToAction(actionString, currentState.getCurrentPhase());
+					action = stringToAction(actionString.trim(), currentState.getCurrentPhase());
 					// write move to server
 					client.write(action);
 					// read result of our move from server
