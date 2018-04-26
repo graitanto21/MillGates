@@ -113,7 +113,7 @@ bool State::setPawnAt(int8 x, int8 y, pawn value){
 	if (i<0 || j<0 || k<0)
 		return false;
 
-	pawns[i][j][k] = value;
+	setPawnAt(i,j,k, value);
 	return true;
 }
 
@@ -167,7 +167,7 @@ pawn State::getPawnAt(int8 x, int8 y){
 		if (i<0 || j<0 || k<0)
 			return -1;
 
-		return pawns[i][j][k];
+		return getPawnAt(i,j,k);
 }
 
 void State::setPhase(int8 currentPhase) {

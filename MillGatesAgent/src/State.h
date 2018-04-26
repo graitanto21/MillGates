@@ -29,7 +29,6 @@ public:
 	virtual void setPawnAt(int x, int y, int z, pawn value);
 
 	virtual bool setPawnAt(int8 x, int8 y, pawn value);
-
 	// If coordinate is not valid, returns -1;
 	virtual pawn getPawnAt(int8 x, int8 y);
 
