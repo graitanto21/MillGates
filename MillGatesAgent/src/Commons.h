@@ -12,17 +12,13 @@
 #define CUBE_SIZE_Y 3
 #define CUBE_SIZE_Z 3
 
-#define PAWN_BLACK 	0
-#define PAWN_WHITE 	1
-#define PAWN_NONE	2
-
-#define NONE  '0'
+#define NONE  'O'
 #define WHITE 'W'
 #define BLACK 'B'
 
-#define PHASE_1 	'1'
-#define PHASE_2		'2'
-#define PHASE_3		'3'
+#define PHASE_1 '1'
+#define PHASE_2	'2'
+#define PHASE_3	'3'
 
 typedef unsigned char pawn;
 typedef unsigned char int8;

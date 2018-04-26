@@ -13,60 +13,32 @@
 #include <string>
 
 class State {
-private:
-
-	pawn pawns[CUBE_SIZE_X][CUBE_SIZE_Y][CUBE_SIZE_Z];
-	int8 phase;
 
 public:
 
-	//Constructor
-	State();
-	State(std::string stringFromServer);
-
-	//Getters and setters
-	virtual pawn getPawnAt(int x, int y, int z);
-	virtual void setPawnAt(int x, int y, int z, pawn value);
-
-	virtual bool setPawnAt(int8 x, int8 y, pawn value);
+	virtual bool setPawnAt(int8 x, int8 y, pawn value) = 0;
 	// If coordinate is not valid, returns -1;
-	virtual pawn getPawnAt(int8 x, int8 y);
+	virtual pawn getPawnAt(int8 x, int8 y) = 0;
 
-	virtual void setPhase(int8 value);
-	virtual int8 getPhase() const;
+	virtual void setPhase(int8 value) = 0;
+	virtual int8 getPhase() const = 0;
 
-	virtual void setWhiteCheckersOnBoard(int8 number);
-	virtual int8 getWhiteCheckersOnBoard();
+	virtual void setWhiteCheckersOnBoard(int8 number) = 0;
+	virtual int8 getWhiteCheckersOnBoard() = 0;
 
-	virtual void setBlackCheckersOnBoard(int8 number);
-	virtual int8 getBlackCheckersOnBoard();
+	virtual void setBlackCheckersOnBoard(int8 number) = 0;
+	virtual int8 getBlackCheckersOnBoard() = 0;
 
 	//Utiliy methods
-	virtual State* clone();
-	virtual int hash();
-	virtual std::string toString() const;
+	virtual State* clone() = 0;
+	virtual int hash() = 0;
+	virtual std::string toString() const = 0;
+	virtual void toStringToSend() = 0;
+
 	virtual ~State();
-
-	void toStringToSend();
-//	//For debug
-//	void printLeftFace();
-//	void printMiddleLine();
-//	void printRightFace();
-//
-//	void toStringToSend();
-
-//private:
-//	//For the mapping
-//	void putLeftFace(unsigned int count, char value);
-//	void putMiddleLine(unsigned int count, char value);
-//	void putRightFace(unsigned int count, char value);
-//
-//	//Testing
-//	void toStringToSend();
 };
 
 // For printing a state without explicitly calling every time the ToString().
 std::ostream& operator<<(std::ostream &strm, const State &s);
-
 
 #endif /* STATE_H_ */

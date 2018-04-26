@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include "State.h"
+#include "CubeState.h"
 #include "connection.h"
 #include <iostream>
 
@@ -28,49 +29,29 @@ int main(int argc, char* argv[]) {
 
 	if (!strcmp(argv[1], "white")) {
 		while(1) {
-			printf("Insert your next move: ");
-			scanf("%s",action);
+			cout << "Insert your next move: ";
+			cin >> action;
 			send_data(action, ACTION_STRLEN);
+
 			recv_data(state, STATE_STRLEN);
 			state[STATE_STRLEN - 1] = '\0';
-			State s(state);
-			std::cout << "State (internal repr): " << s << "\n";
-			std::cout << "State (ordered repr): ";
-			s.toStringToSend();
-			std::cout << "\n";
+			State *s = new CubeState(state); //Ereditarietà: funziona?
+			cout << "State (internal repr): " << (*s) << "\n";
+			cout << "State (ordered repr): ";
+			s->toStringToSend();
+			cout << "\n";
+			delete s; //Ho usato un puntatore, dealloco l'area
 		}
 	}
 	else if (!strcmp(argv[1], "black")) {
 		while(1) {
 			recv_data(state, STATE_STRLEN);
 			state[STATE_STRLEN - 1] = '\0';
-			printf("%s\n",state);
-			printf("Insert your next move: /n");
-			scanf("%s",action);
+			cout << state << "\n";
+			cout << "Insert your next move: ";
+			cin >> action;
 			send_data(action, ACTION_STRLEN);
 		}
 	}
-
-}
-
-void debug_1 (void) {
-
-	printf("MillGatesAgent \n");
-
-	State s; //In C++, not necessary to use "new". Here, a new State object is created.
-
-	s.setPawnAt(1, 2, 0, PAWN_BLACK);
-	s.setPawnAt(1, 2, 2, PAWN_WHITE);
-
-	//	printf("%s\n",s->toString());
-	printf("%s\n",s.toString());
-
-	State* s2 = s.clone();
-
-	printf("%s\n",s2->toString());
-
-	delete s2;
-
-	printf("%s\n",s.toString());
 
 }
