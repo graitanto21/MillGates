@@ -22,30 +22,32 @@ public:
 
 	//Constructor
 	State();
-	State(char*stringFromServer);
+	State(std::string stringFromServer);
 
 	//Getters and setters
-	pawn getPawnAt(int x, int y, int z);
-	void setPawnAt(int x, int y, int z, pawn value);
+	virtual pawn getPawnAt(int x, int y, int z);
+	virtual void setPawnAt(int x, int y, int z, pawn value);
 
-	bool setPawnAt(int8 x, int8 y, pawn value);
-	pawn getPawnAt(int8 x, int8 y);
+	virtual bool setPawnAt(int8 x, int8 y, pawn value);
+	// If coordinate is not valid, returns -1;
+	virtual pawn getPawnAt(int8 x, int8 y);
 
-	void setPhase(int8 value);
-	int8 getPhase();
+	virtual void setPhase(int8 value);
+	virtual int8 getPhase() const;
 
-	void setWhiteCheckersOnBoard();
-	int8 getWhiteCheckersOnBoard();
+	virtual void setWhiteCheckersOnBoard(int8 number);
+	virtual int8 getWhiteCheckersOnBoard();
 
-	void setBlackCheckersOnBoard();
-	int8 getBlackCheckersOnBoard();
+	virtual void setBlackCheckersOnBoard(int8 number);
+	virtual int8 getBlackCheckersOnBoard();
 
 	//Utiliy methods
-	State* clone();
-	int hash();
-	virtual char* toString();
+	virtual State* clone();
+	virtual int hash();
+	virtual std::string toString() const;
 	virtual ~State();
 
+<<<<<<< HEAD
 	//For debug
 	void printLeftFace();
 	void printMiddleLine();
@@ -59,8 +61,13 @@ private:
 	void putMiddleLine(unsigned int count, char value);
 	void putRightFace(unsigned int count, char value);
 
+=======
+	//Testing
+	void toStringToSend();
+>>>>>>> origin/state_work_in_progress
 };
 
+// For printing a state without explicitly calling every time the ToString().
 std::ostream& operator<<(std::ostream &strm, const State &s);
 
 

@@ -20,9 +20,15 @@
 #define WHITE 'W'
 #define BLACK 'B'
 
+<<<<<<< HEAD
 #define PHASE_1 	0
 #define PHASE_2		1
 #define PHASE_3		2
+=======
+#define PHASE_1 	'1'
+#define PHASE_2		'2'
+#define PHASE_3		'3'
+>>>>>>> origin/state_work_in_progress
 
 typedef unsigned char pawn;
 typedef unsigned char int8;
