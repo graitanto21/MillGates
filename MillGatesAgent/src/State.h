@@ -27,7 +27,7 @@ public:
 	virtual int8 getWhiteCheckersOnBoard() = 0;
 
 	virtual void setBlackCheckersOnBoard(std::string number) = 0;
-	virtual int8 getBlackCheckersOnBoard() = 0;
+	virtual int8 getBlackCheckersOnBoard() = 0;//
 
 	//Utiliy methods
 	virtual State* clone() = 0;

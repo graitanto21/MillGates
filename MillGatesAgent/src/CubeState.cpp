@@ -19,7 +19,7 @@ CubeState::CubeState() {
 
 	phase = PHASE_1;
 }
-
+//
 /*
 7 O--------O--------O
 6 |--O-----O-----O--|

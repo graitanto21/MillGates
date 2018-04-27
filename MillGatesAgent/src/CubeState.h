@@ -20,7 +20,7 @@ private:
 	//Getters and setters
 	virtual pawn getPawnAt(int x, int y, int z);
 	virtual void setPawnAt(int x, int y, int z, pawn value);
-
+//
 
 public:
 

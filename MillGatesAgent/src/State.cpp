@@ -21,3 +21,4 @@ std::ostream& operator<<(std::ostream &strm, const State &s){
 	 */
 	return strm << s.toString();
 }
+
