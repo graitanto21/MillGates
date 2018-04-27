@@ -12,7 +12,7 @@
 #include <iostream>
 
 #define ACTION_STRLEN 7
-#define STATE_STRLEN 76
+#define STATE_STRLEN 78
 
 using namespace std;
 

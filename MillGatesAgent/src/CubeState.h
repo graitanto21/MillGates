@@ -35,10 +35,10 @@ public:
 	virtual void setPhase(int8 value);
 	virtual int8 getPhase() const;
 
-	virtual void setWhiteCheckersOnBoard(int8 number);
+	virtual void setWhiteCheckersOnBoard(std::string number);
 	virtual int8 getWhiteCheckersOnBoard();
 
-	virtual void setBlackCheckersOnBoard(int8 number);
+	virtual void setBlackCheckersOnBoard(std::string number);
 	virtual int8 getBlackCheckersOnBoard();
 
 	//Utiliy methods

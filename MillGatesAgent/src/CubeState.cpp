@@ -7,6 +7,7 @@
 
 #include "CubeState.h"
 #include <string>
+#include <cstdlib>
 #include "stdio.h"
 
 //Constructors
@@ -145,20 +146,17 @@ CubeState::CubeState(std::string stringFromServer) : CubeState() {
 	 * current phase.
 	*/
 	unsigned int i=0;
-
 	//Pawns
-	while(i<(stringFromServer.length()-3)) {
+	while(i<(stringFromServer.length()-5)) {
 		setPawnAt(
 			/* x */			stringFromServer[i],
 			/* y */ 		stringFromServer[i+1],
 			/* CONTENT */ 	stringFromServer[i+2]);
 		i+=3;
 	}
-
-	// Three last chars
-	setWhiteCheckersOnBoard(stringFromServer[i++]);
-	setBlackCheckersOnBoard(stringFromServer[i++]);
-	setPhase(stringFromServer[i]);
+	setWhiteCheckersOnBoard(stringFromServer.substr(i, 2));
+	setBlackCheckersOnBoard(stringFromServer.substr(i+2, 2));
+	setPhase(stringFromServer[i+4]);
 }
 
 //Getters and setters
@@ -186,7 +184,7 @@ bool CubeState::setPawnAt(int8 x, int8 y, pawn value){
 		}
 		else if ( y == 4) {
 			i = 1;
-			k = 1;
+			k = 0;
 		}
 		else if (y > 4 && y < 8) {
 			i = 0;
@@ -282,18 +280,18 @@ int8 CubeState::getPhase() const {
 	return phase;
 }
 
-void CubeState::setWhiteCheckersOnBoard(int8 number){
-	setPawnAt(1,1,2,number);
+void CubeState::setWhiteCheckersOnBoard(std::string number){
+	setPawnAt(1,1,2,atoi(number.c_str()));
 }
 int8 CubeState::getWhiteCheckersOnBoard() {
-	return getPawnAt(1,1,2) - '1' + 1;
+	return getPawnAt(1,1,2) + '1' - 1;
 }
 
-void CubeState::setBlackCheckersOnBoard(int8 number) {
-	setPawnAt(1,1,1,number);
+void CubeState::setBlackCheckersOnBoard(std::string  number) {
+	setPawnAt(1,1,1,atoi(number.c_str()));
 }
 int8 CubeState::getBlackCheckersOnBoard() {
-	return getPawnAt(1,1,1) - '1' + 1;
+	return getPawnAt(1,1,1) + '1' - 1;
 }
 
 //Utiliy methods
@@ -322,7 +320,11 @@ std::string CubeState::toString() const {
 	for (int i = 0; i < CUBE_SIZE_X; i++)
 		for (int j = 0; j < CUBE_SIZE_Y; j++)
 			for (int k = 0; k < CUBE_SIZE_Z; k++){
-				res[l] = pawns[i][j][k];
+				if (i==1 && j==1 && k==1 && pawns[i][j][k] != NONE)
+					res[l] = pawns[i][j][k] < 10 ? (pawns[1][1][1] + '0') : 'A' + (pawns[i][j][k]%10);
+				else if (i==1 && j==1 && k==2 && pawns[i][j][k] != NONE)
+					res[l] = pawns[i][j][k] < 10 ? (pawns[1][1][2] + '0') : 'A' + (pawns[i][j][k]%10);
+				else res[l] = pawns[i][j][k];
 				l++;
 			}
 	res[l] = '\0';
@@ -380,7 +382,7 @@ void CubeState::toStringToSend(){
 //	printf("Program started...\n");
 //
 //	//Create a state from string
-//	std::string str("a1Oa4Oa7Wb2Bb4Wb6Bc3Wc4Bc5Wd1Wd2Od3Od5Od6Od7Oe3Oe4Oe5Of2Wf4Wf6Bg1Og4Wg7O991"); //created string
+//	std::string str("a1Oa4Oa7Wb2Bb4Wb6Bc3Wc4Bc5Wd1Wd2Od3Od5Od6Od7Oe3Oe4Oe5Of2Wf4Wf6Bg1Og4Wg7O10101"); //created string
 //	CubeState s_from_string(str);
 //	std::cout << "State  created from string (internal repr): " << s_from_string << "\n";
 //	std::cout << "State  created from string (ordered repr): ";
@@ -397,9 +399,12 @@ void CubeState::toStringToSend(){
 //	s_void.setPawnAt('d', '4', 'W'); //This is the center: the ordered view does not see it!
 //	s_void.setPhase(PHASE_3);
 //
+//	s_void.setBlackCheckersOnBoard("10");
+//	s_void.setWhiteCheckersOnBoard("11");
+//
 //	std::cout << "State modified from setters (internal repr): " << s_void << "\n";
 //	std::cout << "State  created from string (ordered repr): ";
 //	s_void.toStringToSend();
 //	std::cout << "\n";
 //}
-
+//
