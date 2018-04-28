@@ -13,7 +13,7 @@ CubeStateImpl::CubeStateImpl() {
 	for (int i = 0; i < CUBE_SIZE_X; i++)
 		for (int j = 0; j < CUBE_SIZE_Y; j++)
 			for (int k = 0; k < CUBE_SIZE_Z; k++)
-				pawns[i][j][k] = NONE;
+				pawns[i][j][k] = PAWN_NONE;
 
 	phase = PHASE_1;
 }

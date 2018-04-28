@@ -9,9 +9,9 @@
 #define CUBESTATEIMPL_H_
 
 #include "Commons.h"
-#include "CubeState.h"
+#include "State.h"
 
-class CubeStateImpl : public CubeState {
+class CubeStateImpl : public State {
 
 private:
 	//Data structures

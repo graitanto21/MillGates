@@ -5,14 +5,15 @@
  *      Author: Lorenzo Rosa
  */
 
-#ifndef CUBESTATE_H_
-#define CUBESTATE_H_
+#ifndef STATE_H_
+#define STATE_H_
 
 #include "Commons.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
-class CubeState {
+class State {
 
 public:
 
@@ -37,9 +38,14 @@ public:
 	virtual int8 getBlackCheckersOnBoard();
 
 	//Utiliy methods
-	virtual CubeState* clone();
+	virtual State* clone();
 	virtual int hash();
 	virtual std::string toString() const;
+
+	virtual bool isInMorris(int8 pos) const;
+	virtual bool isInMorris(int8 pos, int8 axis) const;
+	virtual bool willBeInMorris(int8 pos, pawn pawn) const;
+	virtual std::vector<int8> getAllPositions(pawn pawn) const;
 
 	//For debug
 	void toStringToSend();
@@ -59,11 +65,11 @@ public:
 	//	//Testing
 	//	void toStringToSend();
 
-	virtual ~CubeState();
+	virtual ~State();
 };
 
-// For printing a state without explicitly calling every time the ToString().
-std::ostream& operator<<(std::ostream &strm, const CubeState &s);
+// To print a state without explicitly calling every time the ToString().
+std::ostream& operator<<(std::ostream &strm, const State &s);
 
 
-#endif /* CUBESTATE_H_ */
+#endif /* STATE_H_ */
