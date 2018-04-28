@@ -10,16 +10,8 @@
 #include <cstdlib>
 #include "stdio.h"
 
-//Constructors
-CubeState::CubeState() {
-	for (int i = 0; i < CUBE_SIZE_X; i++)
-		for (int j = 0; j < CUBE_SIZE_Y; j++)
-			for (int k = 0; k < CUBE_SIZE_Z; k++)
-				pawns[i][j][k] = NONE;
 
-	phase = PHASE_1;
-}
-//
+
 /*
 7 O--------O--------O
 6 |--O-----O-----O--|
@@ -136,38 +128,7 @@ CubeState::CubeState() {
 //
 //	ret[count] = '\0';
 
-CubeState::CubeState(std::string stringFromServer) : CubeState() {
-	/* Here, state is created (I call the void constructor)
-	 * with all position void. Now, I only need to receive
-	 * the positions and the content of all the cells
-	 * in the format '<x><y><PAWN>'.
-	 * Last three chars of the string indicates the number
-	 * of pawns of each kind present on the board and the
-	 * current phase.
-	*/
-	unsigned int i=0;
-	//Pawns
-	while(i<(stringFromServer.length()-5)) {
-		setPawnAt(
-			/* x */			stringFromServer[i],
-			/* y */ 		stringFromServer[i+1],
-			/* CONTENT */ 	stringFromServer[i+2]);
-		i+=3;
-	}
-	setWhiteCheckersOnBoard(stringFromServer.substr(i, 2));
-	setBlackCheckersOnBoard(stringFromServer.substr(i+2, 2));
-	setPhase(stringFromServer[i+4]);
-}
-
-//Getters and setters
-void CubeState::setPawnAt(int x, int y, int z, pawn value) {
-	pawns[x][y][z] = value;
-}
-pawn CubeState::getPawnAt(int x, int y, int z) {
-	return pawns[x][y][z];
-}
-
-bool CubeState::setPawnAt(int8 x, int8 y, pawn value){
+bool CubeState::setPawnAt2D(int8 x, int8 y, pawn value){
 	int i, j, k;
 	i = j = k = -1;
 
@@ -221,7 +182,7 @@ bool CubeState::setPawnAt(int8 x, int8 y, pawn value){
 }
 
 // If coordinate is not valid, returns -1;
-pawn CubeState::getPawnAt(int8 x, int8 y){
+pawn CubeState::getPawnAt2D(int8 x, int8 y) const{
 	int i, j, k;
 		i = j = k = -1;
 
@@ -273,12 +234,6 @@ pawn CubeState::getPawnAt(int8 x, int8 y){
 		return getPawnAt(i,j,k);
 }
 
-void CubeState::setPhase(int8 currentPhase) {
-	phase = currentPhase;
-}
-int8 CubeState::getPhase() const {
-	return phase;
-}
 
 void CubeState::setWhiteCheckersOnBoard(std::string number){
 	setPawnAt(1,1,2,atoi(number.c_str()));
@@ -295,7 +250,7 @@ int8 CubeState::getBlackCheckersOnBoard() {
 }
 
 //Utiliy methods
-State* CubeState::clone() {
+CubeState* CubeState::clone() {
 	//TODO
 //
 //	CubeState * res = new CubeState();
@@ -317,18 +272,18 @@ std::string CubeState::toString() const {
 	char res[CUBE_SIZE_X*CUBE_SIZE_Y*CUBE_SIZE_Z + 1];
 
 	int l = 0;
-	for (int i = 0; i < CUBE_SIZE_X; i++)
-		for (int j = 0; j < CUBE_SIZE_Y; j++)
-			for (int k = 0; k < CUBE_SIZE_Z; k++){
-				if (i==1 && j==1 && k==1 && pawns[i][j][k] != NONE)
-					res[l] = pawns[i][j][k] < 10 ? (pawns[1][1][1] + '0') : 'A' + (pawns[i][j][k]%10);
-				else if (i==1 && j==1 && k==2 && pawns[i][j][k] != NONE)
-					res[l] = pawns[i][j][k] < 10 ? (pawns[1][1][2] + '0') : 'A' + (pawns[i][j][k]%10);
-				else res[l] = pawns[i][j][k];
+	for (int8 i = 0; i < CUBE_SIZE_X; i++)
+		for (int8 j = 0; j < CUBE_SIZE_Y; j++)
+			for (int8 k = 0; k < CUBE_SIZE_Z; k++){
+				if (i==1 && j==1 && k==1 && getPawnAt(i,j,k) != NONE)
+					res[l] = getPawnAt(i,j,k) < 10 ? (getPawnAt(1,1,1) + '0') : 'A' + (getPawnAt(i,j,k)%10);
+				else if (i==1 && j==1 && k==2 && getPawnAt(i,j,k) != NONE)
+					res[l] = getPawnAt(i,j,k) < 10 ? (getPawnAt(1,1,2) + '0') : 'A' + (getPawnAt(i,j,k)%10);
+				else res[l] = getPawnAt(i,j,k);
 				l++;
 			}
 	res[l] = '\0';
-	return std::string(res) + '('+ (char)phase+')';
+	return std::string(res) + '('+ (char)getPhase()+')';
 
 }
 
@@ -338,6 +293,17 @@ int CubeState::hash() {
 }
 
 CubeState::~CubeState() {}
+
+std::ostream& operator<<(std::ostream &strm, const CubeState &s){
+	/* Here, I don't define the string representation directly,
+	 * but I call the virtual method "toString". In this way, I
+	 * emulate the Java behaviour of calling the "most specific"
+	 * version of "toString" when printing an object (i.e., if the
+	 * current instance is an instance of a subclass of State,
+	 * I'll call the toString of that subclass).
+	 */
+	return strm << s.toString();
+}
 
 void CubeState::toStringToSend(){
 	char ret[25]; //TODO migliorare per inserire la casella al centro
@@ -349,7 +315,7 @@ void CubeState::toStringToSend(){
 
 	for(k=2; k>=0; k--)
 		for(i=2; i>=0; i--){
-			ret[count++] = pawns[i][j][k];
+			ret[count++] = getPawnAt(i,j,k);
 			printf("%c", ret[count - 1]);
 		}
 
@@ -357,12 +323,12 @@ void CubeState::toStringToSend(){
 	j=1;
 	i=2;
 	for(k=2; k>=0; k--){
-		ret[count++] = pawns[i][j][k];
+		ret[count++] = getPawnAt(i,j,k);
 		printf("%c", ret[count - 1]);
 	}
 	i=0;
 	for(k=0; k<=2; k++){
-		ret[count++] = pawns[i][j][k];
+		ret[count++] = getPawnAt(i,j,k);
 		printf("%c", ret[count - 1]);
 	}
 
@@ -370,41 +336,10 @@ void CubeState::toStringToSend(){
 	j=2;
 	for(k=0; k<=2; k++)
 		for(i=2; i>=0; i--){
-			ret[count++] = pawns[i][j][k];
+			ret[count++] = getPawnAt(i,j,k);
 			printf("%c", ret[count - 1]);
 		}
 
 
 	ret[count] = '\0';
 }
-
-//int main(int argc, char **argv) {
-//	printf("Program started...\n");
-//
-//	//Create a state from string
-//	std::string str("a1Oa4Oa7Wb2Bb4Wb6Bc3Wc4Bc5Wd1Wd2Od3Od5Od6Od7Oe3Oe4Oe5Of2Wf4Wf6Bg1Og4Wg7O10101"); //created string
-//	CubeState s_from_string(str);
-//	std::cout << "State  created from string (internal repr): " << s_from_string << "\n";
-//	std::cout << "State  created from string (ordered repr): ";
-//	s_from_string.toStringToSend();
-//	std::cout << "\n";
-//
-//	//Create a void state
-//	CubeState s_void;
-//	std::cout << "State created void: " << s_void << "\n";
-//
-//	//Here some tests
-//	s_void.setPawnAt('a', '1', 'W');
-//	s_void.setPawnAt('c', '5', 'B');
-//	s_void.setPawnAt('d', '4', 'W'); //This is the center: the ordered view does not see it!
-//	s_void.setPhase(PHASE_3);
-//
-//	s_void.setBlackCheckersOnBoard("10");
-//	s_void.setWhiteCheckersOnBoard("11");
-//
-//	std::cout << "State modified from setters (internal repr): " << s_void << "\n";
-//	std::cout << "State  created from string (ordered repr): ";
-//	s_void.toStringToSend();
-//	std::cout << "\n";
-//}
-//

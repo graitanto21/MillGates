@@ -8,32 +8,27 @@
 #ifndef CUBESTATE_H_
 #define CUBESTATE_H_
 
-#include "State.h"
 #include "Commons.h"
+#include <iostream>
+#include <string>
 
-class CubeState: public State {
-private:
-	//Data structures
-	pawn pawns[CUBE_SIZE_X][CUBE_SIZE_Y][CUBE_SIZE_Z];
-	int8 phase;
-
-	//Getters and setters
-	virtual pawn getPawnAt(int x, int y, int z);
-	virtual void setPawnAt(int x, int y, int z, pawn value);
-//
+class CubeState {
 
 public:
 
-	//Constructors
-	CubeState();
-	CubeState(std::string stringFromServer);
+	//Getters and setters
 
-	virtual bool setPawnAt(int8 x, int8 y, pawn value);
+	//2D (concrete mapping calling abstract 3D getters/setters).
+	virtual bool setPawnAt2D(int8 x, int8 y, pawn value);
 	// If coordinate is not valid, returns -1;
-	virtual pawn getPawnAt(int8 x, int8 y);
+	virtual pawn getPawnAt2D(int8 x, int8 y) const;
 
-	virtual void setPhase(int8 value);
-	virtual int8 getPhase() const;
+	//3D (abstract)
+	virtual pawn getPawnAt(int8 x, int8 y, int8 z) const = 0;
+	virtual void setPawnAt(int8 x, int8 y, int8 z, pawn value) = 0;
+
+	virtual void setPhase(int8 value) = 0;
+	virtual int8 getPhase() const = 0;
 
 	virtual void setWhiteCheckersOnBoard(std::string number);
 	virtual int8 getWhiteCheckersOnBoard();
@@ -42,7 +37,7 @@ public:
 	virtual int8 getBlackCheckersOnBoard();
 
 	//Utiliy methods
-	virtual State* clone();
+	virtual CubeState* clone();
 	virtual int hash();
 	virtual std::string toString() const;
 
@@ -64,7 +59,11 @@ public:
 	//	//Testing
 	//	void toStringToSend();
 
-	~CubeState();
+	virtual ~CubeState();
 };
+
+// For printing a state without explicitly calling every time the ToString().
+std::ostream& operator<<(std::ostream &strm, const CubeState &s);
+
 
 #endif /* CUBESTATE_H_ */
