@@ -301,9 +301,39 @@ bool State::isInMorris(int8 pos, int8 axis) const {
 }
 
 bool State::willBeInMorris(int8 pos, pawn pawn) const {
-	//TODO: implement me!
 
-	return false;
+	bool morrisX = true;
+	bool morrisY = true;
+	bool morrisZ = true;
+
+	if (pawn == PAWN_NONE)
+		return false;
+
+	if (getPawnAt(GETX(pos), GETY(pos), GETZ(pos)) != PAWN_NONE)
+		return false;
+
+	for (int x = 0; x < CUBE_SIZE_X; x++) {
+		if (x != GETX(pos)) {
+			if (getPawnAt(x, GETY(pos), GETZ(pos)) != pawn)
+				morrisX = false;
+		}
+	}
+
+	for (int y = 0; y < CUBE_SIZE_Y; y++) {
+		if (y != GETY(pos)) {
+			if (getPawnAt(GETX(pos), y, GETZ(pos)) != pawn)
+				morrisY = false;
+		}
+	}
+
+	for (int z = 0; z < CUBE_SIZE_Z; z++) {
+		if (z != GETZ(pos)) {
+			if (getPawnAt(GETX(pos), GETY(pos), z) != pawn)
+				morrisZ = false;
+		}
+	}
+
+	return morrisX || morrisY || morrisZ;
 }
 
 std::vector<int8> State::getAllPositions(pawn pawn) const {
