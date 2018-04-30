@@ -5,6 +5,8 @@
 #include <string>
 #include "stdio.h"
 
+
+//CONSTRUCTORS AND DESTRRUCTORS
 template <class T>
 ExpVector<T>::ExpVector(){
 	logicSize = 0;
@@ -19,7 +21,10 @@ ExpVector<T>::ExpVector(int realSize){
 	wrapped.resize(realSize);
 }
 
+template <class T>
+ExpVector<T>::~ExpVector(){}
 
+//WORK WITH THE VECTOR
 template <class T>
 void ExpVector<T>::resize(){
 	realSize *= 2;
@@ -35,13 +40,9 @@ void ExpVector<T>::add(T toAdd){
 }
 
 template <class T>
-void ExpVector<T>::print(){
-	for (int i=0; i<logicSize; i++){
-		std::cout << wrapped[i] << " ";
-	}
-	std::cout << "\nLOGIC: " << logicSize << "\n";
-	std::cout << "REAL: "<< wrapped.size() << "\n\n";
-
+void ExpVector<T>::erase(int index){
+	//TODO inefficient implementation
+	wrapped.erase(index);
 }
 
 template <class T>
@@ -54,8 +55,29 @@ void ExpVector<T>::set(int index, T value){
 	wrapped[index] = value;
 }
 
+//OUTPUT
 template <class T>
-ExpVector<T>::~ExpVector(){}
+void ExpVector<T>::print(){
+	for (int i=0; i<logicSize; i++){
+		std::cout << wrapped[i] << " ";
+	}
+	std::cout << "\nLOGIC: " << logicSize << "\n";
+	std::cout << "REAL: "<< wrapped.size() << "\n\n";
+
+}
+
+//GETTERS
+template <class T>
+int ExpVector<T>::getLogicSize(){
+	return logicSize;
+}
+
+template <class T>
+int ExpVector<T>::getRealSize(){
+	return realSize;
+}
+
+
 
 /*int main(int argc, char **argv) {
 	ExpVector<int> v(3);

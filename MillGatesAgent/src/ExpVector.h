@@ -13,17 +13,24 @@ private:
 	int logicSize, realSize;
 
 	void resize();
+	std::vector<T> wrapped;
 
 public:
 
-	std::vector<T> wrapped;
+
 
 	ExpVector();
 	ExpVector(int realSize);
-	void add(T toAdd);
 	~ExpVector();
+
+	void add(T toAdd);
+	void erase(int index);
+
 	T get(int index);
 	void set(int index, T value);
+
+	int getLogicSize();
+	int getRealSize();
 
 	void print();
 
