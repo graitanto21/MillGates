@@ -137,6 +137,34 @@ int main(void) {
 
 	State * state = new CubeStateImpl();
 
+	state->setPhase(PHASE_2);
+	state->setBlackCheckersOnBoard("9");
+	state->setWhiteCheckersOnBoard("8");
+
+	state->setPawnAt2D('a', '1', PAWN_WHITE);
+	state->setPawnAt2D('a', '4', PAWN_WHITE);
+	state->setPawnAt2D('a', '7', PAWN_BLACK);
+
+	state->setPawnAt2D('b', '2', PAWN_BLACK);
+	state->setPawnAt2D('b', '4', PAWN_BLACK);
+	state->setPawnAt2D('b', '6', PAWN_BLACK);
+
+	state->setPawnAt2D('c', '3', PAWN_BLACK);
+	state->setPawnAt2D('c', '4', PAWN_WHITE);
+	state->setPawnAt2D('c', '5', PAWN_BLACK);
+
+	state->setPawnAt2D('d', '1', PAWN_BLACK);
+	state->setPawnAt2D('d', '3', PAWN_WHITE);
+	state->setPawnAt2D('d', '5', PAWN_BLACK);
+	state->setPawnAt2D('d', '7', PAWN_BLACK);
+
+	state->setPawnAt2D('e', '4', PAWN_WHITE);
+	state->setPawnAt2D('e', '5', PAWN_WHITE);
+
+	state->setPawnAt2D('f', '4', PAWN_WHITE);
+
+	state->setPawnAt2D('g', '7', PAWN_WHITE);
+
 	Node node(state, PAWN_WHITE);
 
 	NodeExpander expander;

@@ -26,7 +26,7 @@
 
 #define ACTION_VECTOR_DEFAULT_SIZE 0
 #define AVERAGE_PAWNS_ON_BOARD 0
-#define MAX_MOVES_PHASE_2 4
+#define MAX_MOVES_PHASE_2 0
 
 typedef unsigned char pawn;
 typedef unsigned char int8;
