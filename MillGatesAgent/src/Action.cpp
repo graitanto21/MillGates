@@ -37,7 +37,7 @@ int8 Action::getRemovedPawn() const {
 
 std::string Action::toString() const {
 
-	return ;
+	return "";
 }
 
 Action::~Action() {

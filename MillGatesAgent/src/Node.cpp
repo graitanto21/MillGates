@@ -7,22 +7,22 @@
 
 #include "Node.h"
 
-Node::Node(State * state, unsigned char pawn) {
+Node::Node(State * state, pawn pawn) {
 
-	this->state = state;
-	this->pawn = pawn;
+	this->_state = state;
+	this->_pawn = pawn;
 
 }
 
 State * Node::getState() const {
 
-	return state;
+	return _state;
 
 }
 
-unsigned char Node::getPawn() {
+pawn Node::getPawn() {
 
-	return this->pawn;
+	return this->_pawn;
 
 }
 
