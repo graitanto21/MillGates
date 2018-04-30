@@ -1,4 +1,4 @@
-//By GiacomoNasi
+//By  GiacomoNasi
 
 #include "ExpVector.h"
 #include <iostream>
