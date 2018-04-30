@@ -26,15 +26,24 @@ ExpVector<T>::~ExpVector(){}
 
 //WORK WITH THE VECTOR
 template <class T>
-void ExpVector<T>::resize(){
+void ExpVector<T>::goDouble(){
 	realSize *= 2;
 	wrapped.resize(realSize);
 }
 
 template <class T>
+bool ExpVector<T>::goHalf(){
+	if (realSize%2 != 0)
+		return false;
+	realSize /= 2;
+	wrapped.resize(realSize);
+	return true;
+}
+
+template <class T>
 void ExpVector<T>::add(T toAdd){
 	if(logicSize == realSize)
-		resize();
+		goDouble();
 	wrapped[logicSize] = toAdd;
 	logicSize ++;
 }
@@ -42,7 +51,10 @@ void ExpVector<T>::add(T toAdd){
 template <class T>
 void ExpVector<T>::erase(int index){
 	//TODO inefficient implementation
-	wrapped.erase(index);
+	wrapped.erase(wrapped.begin() + index);
+	logicSize --;
+	if(logicSize == realSize/2)
+		goHalf();
 }
 
 template <class T>
@@ -62,6 +74,7 @@ void ExpVector<T>::print(){
 		std::cout << wrapped[i] << " ";
 	}
 	std::cout << "\nLOGIC: " << logicSize << "\n";
+	std::cout << "REAL: "<< realSize << "\n";
 	std::cout << "REAL: "<< wrapped.size() << "\n\n";
 
 }
@@ -83,6 +96,11 @@ int ExpVector<T>::getRealSize(){
 	ExpVector<int> v(3);
 	for(int i=0; i<20; i++){
 		v.add(i+1);
+		v.print();
+	}
+
+	for(int i=0; i<20; i++){
+		v.erase(0);
 		v.print();
 	}
 

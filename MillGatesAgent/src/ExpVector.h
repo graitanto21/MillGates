@@ -10,10 +10,12 @@
 template <class T> class ExpVector{
 
 private:
-	int logicSize, realSize;
 
-	void resize();
+	int logicSize, realSize;
 	std::vector<T> wrapped;
+
+	void goDouble();
+	bool goHalf();
 
 public:
 
