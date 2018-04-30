@@ -15,16 +15,16 @@
 class Node {
 private:
 
-	State * state;
-	pawn pawn;
+	State * _state;
+	pawn _pawn;
 
 public:
 
-	Node(State * state, unsigned char pawn);
+	Node(State * _state, pawn pawn);
 
 	virtual State * getState() const;
 
-	virtual unsigned char getPawn();
+	virtual pawn getPawn();
 
 	virtual ~Node();
 
