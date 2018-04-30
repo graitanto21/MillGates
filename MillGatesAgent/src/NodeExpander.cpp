@@ -46,7 +46,7 @@ Node NodeExpander::performAction(Node node, Action action) {
 			state->setPawnAt(GETX(removedPawn), GETY(removedPawn), GETZ(removedPawn), PAWN_NONE);
 	}
 
-	return node(state);
+	return Node(state, 2); //TODO: CAMBIAMI!!
 
 }
 
@@ -55,34 +55,73 @@ std::vector<Action> NodeExpander::expand(Node node) {
 	State * state = node.getState();
 	std::vector<Action> result(ACTION_VECTOR_DEFAULT_SIZE);
 
-	switch (state->getPhase()) {
+	if (state->getPhase() == PHASE_1) {
 
-	case (PHASE_1) :
+		std::vector<int8> available = state->getAllPositions(PAWN_NONE);
+		for (int8 i = 0; i < available.size(); i++) {
+			if (state->willBeInMorris(available[i], node.getPawn())) {
+				std::vector<int8> pos = state->getAllPositions(OPP(node.getPawn()));
+				bool added = false;
+				for (int8 j = 0; j < pos.size(); j++)
+					if (!state->isInMorris(pos[j])) {
+						added = true;
+						result.push_back(Action(POS_NULL, available[i], pos[j]));
+					}
+				if (!added)
+					for (int8 j = 0; j < pos.size(); j++)
+						result.push_back(Action(POS_NULL, available[i], pos[j]));
+			}
+			else
+				result.push_back(Action(POS_NULL, available[i], POS_NULL));
+		}
+	}
+	else if (state->getPhase() == PHASE_2) {
 
-				for (int8 x = 0; x < CUBE_SIZE_X; x++)
-					for (int8 y = 0; y < CUBE_SIZE_Y; y++)
-						for (int8 z = 0; z < CUBE_SIZE_Z; z++)
-							if (state->getPawnAt(x, y, z) == PAWN_NONE) {
+		std::vector<int8> myPawns = state->getAllPositions(node.getPawn());
+		for (int8 k = 0; k < myPawns.size(); k++) {
+			std::vector<int8> available = state->getAvailablePositions(myPawns[k]);
+			for (int8 i = 0; i < available.size(); i++) {
+				if (state->willBeInMorris(available[i], node.getPawn())) {
+					std::vector<int8> pos = state->getAllPositions(OPP(node.getPawn()));
+					bool added = false;
+					for (int8 j = 0; j < pos.size(); j++)
+						if (!state->isInMorris(pos[j])) {
+							added = true;
+							result.push_back(Action(myPawns[k], available[i], pos[j]));
+						}
+					if (!added)
+						for (int8 j = 0; j < pos.size(); j++)
+							result.push_back(Action(myPawns[k], available[i], pos[j]));
+				}
+				else
+					result.push_back(Action(myPawns[k], available[i], POS_NULL));
+			}
+		}
 
-								if (state->willBeInMorris(NEW_POS(x,y,z), pawn)) {
-									// Add all possibilities
-								}
-								else
-									result.push_back(Action(POS_NULL, NEW_POS(x,y,z), POS_NULL));
+	}
 
-							}
+	else if (state->getPhase() == PHASE_3) {
 
-
-	break;
-
-	case (PHASE_2) :
-
-			break;
-
-	case (PHASE_3) :
-
-			break;
-
+		std::vector<int8> myPawns = state->getAllPositions(node.getPawn());
+		for (int8 k = 0; k < myPawns.size(); k++) {
+			std::vector<int8> available = state->getAllPositions(PAWN_NONE);
+			for (int8 i = 0; i < available.size(); i++) {
+				if (state->willBeInMorris(available[i], node.getPawn())) {
+					std::vector<int8> pos = state->getAllPositions(OPP(node.getPawn()));
+					bool added = false;
+					for (int8 j = 0; j < pos.size(); j++)
+						if (!state->isInMorris(pos[j])) {
+							added = true;
+							result.push_back(Action(myPawns[k], available[i], pos[j]));
+						}
+					if (!added)
+						for (int8 j = 0; j < pos.size(); j++)
+							result.push_back(Action(myPawns[k], available[i], pos[j]));
+				}
+				else
+					result.push_back(Action(myPawns[k], available[i], POS_NULL));
+			}
+		}
 	}
 
 	return result;
@@ -90,6 +129,29 @@ std::vector<Action> NodeExpander::expand(Node node) {
 }
 
 NodeExpander::~NodeExpander() {
-	// TODO Auto-generated destructor stub
+}
+
+#include "CubeStateImpl.h"
+
+int main(void) {
+
+	State * state = new CubeStateImpl();
+
+	Node node(state, PAWN_WHITE);
+
+	NodeExpander expander;
+
+//	std::vector<int8> res = state->getAllPositions(PAWN_NONE);
+//	std::cout << "Azioni possibili: " << res.size() << "\n";
+//	for (int8 i = 0; i < res.size(); i++)
+//		std::cout << (int)i << "  " << (int)GETX(res[i]) << " " << (int)GETY(res[i]) << " "<< (int)GETZ(res[i]) << "\n";
+
+	std::vector<Action> res = expander.expand(node);
+
+	std::cout << "Azioni possibili: " << res.size() << "\n";
+
+	for (int8 i = 0; i < res.size(); i++)
+		std::cout << (int)i << " " << res[i].toString() << "\n";
+
 }
 

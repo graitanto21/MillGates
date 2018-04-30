@@ -15,6 +15,14 @@ Action::Action(int8 src, int8 dest, int8 removedPawn) {
 
 }
 
+Action::Action() {
+
+	this->src = POS_NULL;
+	this->dest = POS_NULL;
+	this->removedPawn = POS_NULL;
+
+}
+
 int8 Action::getSrc() const {
 	return src;
 }
@@ -28,8 +36,8 @@ int8 Action::getRemovedPawn() const {
 }
 
 std::string Action::toString() const {
-	// TODO: implement me!
-	return "";
+
+	return ;
 }
 
 Action::~Action() {

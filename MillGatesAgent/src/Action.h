@@ -20,6 +20,7 @@ private:
 
 public:
 	Action(int8 src, int8 dest, int8 removedPawn);
+	Action();
 
 	virtual int8 getSrc() const;
 	virtual int8 getDest() const;

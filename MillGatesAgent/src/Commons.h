@@ -24,8 +24,9 @@
 #define Y_AXIS 1
 #define Z_AXIS 2
 
-#define ACTION_VECTOR_DEFAULT_SIZE 4
-#define AVERAGE_PAWNS_ON_BOARD 4
+#define ACTION_VECTOR_DEFAULT_SIZE 0
+#define AVERAGE_PAWNS_ON_BOARD 0
+#define MAX_MOVES_PHASE_2 4
 
 typedef unsigned char pawn;
 typedef unsigned char int8;
@@ -50,5 +51,9 @@ typedef unsigned char int8;
 #define BWX(pos) (GETX(pos) == 0 ? NEW_POS(2, GETY(pos), GETZ(pos)) : NEW_POS(GETX(pos)-1, GETY(pos), GETZ(pos)))
 #define BWY(pos) (GETY(pos) == 0 ? NEW_POS(GETX(pos), 2, GETZ(pos)) : NEW_POS(GETX(pos), GETY(pos)-1, GETZ(pos)))
 #define BWZ(pos) (GETZ(pos) == 0 ? NEW_POS(GETX(pos), GETY(pos), 2) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)-1))
+
+#define POS_ENABLED(pos) (GETX(pos) != 1 || GETY(pos) != 1)
+
+#define OPP(pawn) ((pawn == PAWN_NONE) ? PAWN_NONE : ((pawn == PAWN_WHITE) ? PAWN_BLACK : PAWN_WHITE))
 
 #endif /* COMMONS_H_ */

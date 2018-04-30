@@ -46,24 +46,10 @@ public:
 	virtual bool isInMorris(int8 pos, int8 axis) const;
 	virtual bool willBeInMorris(int8 pos, pawn pawn) const;
 	virtual std::vector<int8> getAllPositions(pawn pawn) const;
+	virtual std::vector<int8> getAvailablePositions(int8 pos) const;
 
 	//For debug
 	void toStringToSend();
-
-	//	//For debug
-	//	void printLeftFace();
-	//	void printMiddleLine();
-	//	void printRightFace();
-	//
-	//	void toStringToSend();
-		//private:
-	//	//For the mapping
-	//	void putLeftFace(unsigned int count, char value);
-	//	void putMiddleLine(unsigned int count, char value);
-	//	void putRightFace(unsigned int count, char value);
-	//
-	//	//Testing
-	//	void toStringToSend();
 
 	virtual ~State();
 };

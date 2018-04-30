@@ -343,8 +343,42 @@ std::vector<int8> State::getAllPositions(pawn pawn) const {
 	for (int8 x = 0; x < CUBE_SIZE_X; x++)
 		for (int8 y = 0; y < CUBE_SIZE_Y; y++)
 			for (int8 z = 0; z < CUBE_SIZE_Z; z++)
-				if (getPawnAt(x, y, z) == pawn)
+				if (getPawnAt(x, y, z) == pawn && POS_ENABLED(NEW_POS(x,y,z))) {
 					result.push_back(NEW_POS(x,y,z));
+				}
+
+	return result;
+
+}
+
+std::vector<int8> State::getAvailablePositions(int8 pos) const {
+
+	std::vector<int8> result(MAX_MOVES_PHASE_2);
+	int8 p;
+
+	p = FWX(pos);
+	if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
+
+	p = BWX(pos);
+	if (GETX(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
+
+	p = FWY(pos);
+	if (GETY(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
+
+	p = BWY(pos);
+	if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
+
+	p = FWZ(pos);
+	if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
+
+	p = BWZ(pos);
+	if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		result.push_back(p);
 
 	return result;
 
