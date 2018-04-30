@@ -35,9 +35,57 @@ int8 Action::getRemovedPawn() const {
 	return removedPawn;
 }
 
-std::string Action::toString() const {
+std::string Action::get2Dcoordinates(int8 pos) const {
+	if(!IS_VALID(pos))
+		return "";
+	std::string res("");
+	int8 i = GETX(pos);
+	int8 j = GETY(pos);
+	int8 k = GETZ(pos);
 
-	return "";
+	if(j==0) { //a,b,c
+			if (k==2) {
+				res.append("a");
+				res.append(std::string(1, '0' + 7-(3*i)));
+			}
+			else if (k==1) {
+				res.append("b");
+				res.append(std::string(1, '0' + 6-(2*i) ));
+			}
+			else if (k==0) {
+				res.append("c");
+				res.append(std::string(1, '0' + 5-i ));
+			}
+	}
+	else if (j==1) { //d
+			res.append("d");
+			if (i==2) //1,2,3
+				res.append(std::string(1, '0' + 3-k ));
+			else if (i==0)
+				res.append(std::string(1, '0' + 5+k ));
+			else
+				res.append("4"); //d4, central pos
+	}
+	else if (j==2){  //e,f,g
+			if (k==2) {
+				res.append("g");
+				res.append(std::string(1, '0' + 7-(3*i) ));
+			}
+			else if (k==1) {
+				res.append("f");
+				res.append(std::string(1, '0' + 6-(2*i) ));
+			}
+			else if (k==0) {
+				res.append("e");
+				res.append(std::string(1, '0' + 5-i ));
+			}
+	}
+
+	return res;
+}
+
+std::string Action::toString() const {
+	return get2Dcoordinates(src).append(get2Dcoordinates(dest).append(get2Dcoordinates(removedPawn)));
 }
 
 Action::~Action() {

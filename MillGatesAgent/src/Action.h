@@ -17,6 +17,7 @@ private:
 	int8 src;
 	int8 dest;
 	int8 removedPawn;
+	std::string get2Dcoordinates(int8 pos) const;
 
 public:
 	Action(int8 src, int8 dest, int8 removedPawn);

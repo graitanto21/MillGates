@@ -149,9 +149,12 @@ int main(void) {
 	std::vector<Action> res = expander.expand(node);
 
 	std::cout << "Azioni possibili: " << res.size() << "\n";
-
-	for (int8 i = 0; i < res.size(); i++)
-		std::cout << (int)i << " " << res[i].toString() << "\n";
-
+	int x, y, z;
+	for (int8 i = 0; i < res.size(); i++) {
+		x = GETX(res[i].getDest());
+		y = GETY(res[i].getDest());
+		z = GETZ(res[i].getDest());
+		std::cout << (int)i << " " << res[i] << " => " << x << " " << y << " "<< z << "\n";
+	}
 }
 
