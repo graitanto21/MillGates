@@ -15,16 +15,18 @@ NodeExpander::NodeExpander() {
 Node NodeExpander::performAction(Node node, Action action) {
 
 	State * state = node.getState();
+
 	int8 src = action.getSrc();
 	int8 dest = action.getDest();
-	int8 removedPawn = action.getRemovedPawn();
+	int8 toRemove = action.getRemovedPawn();
+
+	pawn ourPawn = node.getPawn();
+	pawn opponentPawn = (ourPawn == PAWN_WHITE) ? PAWN_BLACK : PAWN_WHITE;
 
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
-		/* TODO bisogna tenere traccia del nostro colore: dove?
-		 * if(state->getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) == PAWN_NONE) // controllo necessario?
-		 * 	   state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), PAWN_); // TODO inserire pedina del nostro colore
-		 */
+		if(state->getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) == PAWN_NONE) // controllo necessario?
+			state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), ourPawn);
 	}
 
 	// fasi 2 e 3 (pedina da src a dest)
@@ -32,21 +34,20 @@ Node NodeExpander::performAction(Node node, Action action) {
 		// se conosciamo il nostro colore è necessario ottenere srcPawn?
 		pawn srcPawn = state->getPawnAt(GETX(src), GETY(src), GETZ(src));
 		pawn destPawn = state->getPawnAt(GETX(dest), GETY(dest), GETZ(dest));
-		if(srcPawn != PAWN_NONE && destPawn == PAWN_NONE) { // controlli necessari? controllare che srcPawn sia del nostro colore?
-			// volendo si può creare un metodo che dato uno stato, src e dest, sposti la pedina da src a dest
+		if(srcPawn == ourPawn && destPawn == PAWN_NONE) { // controlli necessari?
 			state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
 			state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), srcPawn);
 		}
 	}
 
 	// rimozione pedina avversaria
-	if(IS_VALID(removedPawn)) {
-		pawn removedPawn = state->getPawnAt(GETX(removedPawn), GETY(removedPawn), GETZ(removedPawn));
-		if (removedPawn != PAWN_NONE) // controllo necessario? controllare che removedPawn sia del colore avversario?
-			state->setPawnAt(GETX(removedPawn), GETY(removedPawn), GETZ(removedPawn), PAWN_NONE);
+	if(IS_VALID(toRemove)) {
+		pawn pawnToRemove = state->getPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove));
+		if (pawnToRemove == opponentPawn) // controllo necessario?
+			state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
 	}
 
-	return Node(state, 2); //TODO: CAMBIAMI!!
+	return Node(state, ourPawn);
 
 }
 
