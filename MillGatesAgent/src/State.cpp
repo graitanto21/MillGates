@@ -353,6 +353,9 @@ std::vector<int8> State::getAllPositions(pawn pawn) const {
 
 std::vector<int8> State::getAvailablePositions(int8 pos) const {
 
+	if (getPhase() == PHASE_1 || getPhase() == PHASE_3)
+		return getAllPositions(PAWN_NONE);
+
 	std::vector<int8> result(MAX_MOVES_PHASE_2);
 	int8 p;
 

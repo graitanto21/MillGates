@@ -15,6 +15,11 @@
 #include <vector>
 
 class NodeExpander {
+
+private:
+
+	virtual std::vector<Action> addActionsForPawn(Node node, int8 src, std::vector<Action> actionBuffer);
+
 public:
 
 	NodeExpander();
