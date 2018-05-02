@@ -63,14 +63,14 @@ std::vector<Action> NodeExpander::addActionsForPawn(Node node, int8 src, std::ve
 			for (int8 j = 0; j < pos.size(); j++)
 				if (!state->isInMorris(pos[j])) {
 					added = true;
-					actionBuffer.push_back(Action(POS_NULL, available[i], pos[j]));
+					actionBuffer.push_back(Action(src, available[i], pos[j]));
 				}
 			if (!added)
 				for (int8 j = 0; j < pos.size(); j++)
-					actionBuffer.push_back(Action(POS_NULL, available[i], pos[j]));
+					actionBuffer.push_back(Action(src, available[i], pos[j]));
 		}
 		else
-			actionBuffer.push_back(Action(POS_NULL, available[i], POS_NULL));
+			actionBuffer.push_back(Action(src, available[i], POS_NULL));
 	}
 
 	return actionBuffer;
@@ -99,61 +99,6 @@ std::vector<Action> NodeExpander::expand(Node node) {
 
 }
 
+
 NodeExpander::~NodeExpander() {
 }
-
-#include "CubeStateImpl.h"
-
-int main(void) {
-
-	State * state = new CubeStateImpl();
-
-	state->setPhase(PHASE_2);
-	state->setBlackCheckersOnBoard("9");
-	state->setWhiteCheckersOnBoard("8");
-
-	state->setPawnAt2D('a', '1', PAWN_WHITE);
-	state->setPawnAt2D('a', '4', PAWN_WHITE);
-	state->setPawnAt2D('a', '7', PAWN_BLACK);
-
-	state->setPawnAt2D('b', '2', PAWN_BLACK);
-	state->setPawnAt2D('b', '4', PAWN_BLACK);
-	state->setPawnAt2D('b', '6', PAWN_BLACK);
-
-	state->setPawnAt2D('c', '3', PAWN_BLACK);
-	state->setPawnAt2D('c', '4', PAWN_WHITE);
-	state->setPawnAt2D('c', '5', PAWN_BLACK);
-
-	state->setPawnAt2D('d', '1', PAWN_BLACK);
-	state->setPawnAt2D('d', '3', PAWN_WHITE);
-	state->setPawnAt2D('d', '5', PAWN_BLACK);
-	state->setPawnAt2D('d', '7', PAWN_BLACK);
-
-	state->setPawnAt2D('e', '4', PAWN_WHITE);
-	state->setPawnAt2D('e', '5', PAWN_WHITE);
-
-	state->setPawnAt2D('f', '4', PAWN_WHITE);
-
-	state->setPawnAt2D('g', '7', PAWN_WHITE);
-
-	Node node(state, PAWN_WHITE);
-
-	NodeExpander expander;
-
-	//	std::vector<int8> res = state->getAllPositions(PAWN_NONE);
-	//	std::cout << "Azioni possibili: " << res.size() << "\n";
-	//	for (int8 i = 0; i < res.size(); i++)
-	//		std::cout << (int)i << "  " << (int)GETX(res[i]) << " " << (int)GETY(res[i]) << " "<< (int)GETZ(res[i]) << "\n";
-
-	std::vector<Action> res = expander.expand(node);
-
-	std::cout << "Azioni possibili: " << res.size() << "\n";
-	int x, y, z;
-	for (int8 i = 0; i < res.size(); i++) {
-		x = GETX(res[i].getDest());
-		y = GETY(res[i].getDest());
-		z = GETZ(res[i].getDest());
-		std::cout << (int)i << " " << res[i] << " => " << x << " " << y << " "<< z << "\n";
-	}
-}
-

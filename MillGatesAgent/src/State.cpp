@@ -199,7 +199,7 @@ std::ostream& operator<<(std::ostream &strm, const State &s){
 	return strm << s.toString();
 }
 
-void State::toStringToSend(){
+void State::toStringToSend() const{
 	char ret[25]; //TODO migliorare per inserire la casella al centro
 	//24 + \0
 
@@ -300,6 +300,7 @@ bool State::isInMorris(int8 pos, int8 axis) const {
 
 }
 
+//Pls specify in a comment what do parameters mean!
 bool State::willBeInMorris(int8 pos, pawn pawn) const {
 
 	bool morrisX = true;
