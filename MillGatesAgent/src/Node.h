@@ -17,12 +17,15 @@ private:
 
 	State * _state;
 	pawn _pawn;
+	unsigned int _level;
 
 public:
 
-	Node(State * _state, pawn pawn);
+	Node(State * _state, pawn pawn, unsigned int level);
 
 	virtual State * getState() const;
+
+	virtual unsigned int getLevel() const;
 
 	virtual pawn getPawn();
 

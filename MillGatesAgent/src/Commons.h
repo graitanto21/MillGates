@@ -28,6 +28,11 @@
 #define AVERAGE_PAWNS_ON_BOARD 0
 #define MAX_MOVES_PHASE_2 0
 
+#define WHITE_PAWNS_COUNT 9
+#define BLACK_PAWNS_COUNT 9
+
+#define PAWNS_TO_ENTER_3RD_PHASE 3
+
 typedef unsigned char pawn;
 typedef unsigned char int8;
 

@@ -324,7 +324,7 @@ int main(void) {
 	//FASE 2 (state: see the pic I sent on Telegram)
 	state = new CubeStateImpl();
 
-	state->setPhase(PHASE_2);
+	state->setPhase(PHASE_3);
 
 	state->setBlackCheckersOnBoard("9");
 	state->setWhiteCheckersOnBoard("8");

@@ -14,40 +14,32 @@ NodeExpander::NodeExpander() {
 
 Node NodeExpander::performAction(Node node, Action action) {
 
-	State * state = node.getState();
+	State * state = node.getState()->clone();
 
 	int8 src = action.getSrc();
 	int8 dest = action.getDest();
 	int8 toRemove = action.getRemovedPawn();
 
-	pawn ourPawn = node.getPawn();
-	pawn opponentPawn = (ourPawn == PAWN_WHITE) ? PAWN_BLACK : PAWN_WHITE;
-
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
-		if(state->getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) == PAWN_NONE) // controllo necessario?
-			state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), ourPawn);
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node.getPawn());
+		if (node.getLevel() >= BLACK_PAWNS_COUNT)
+			state->setPhase(PHASE_2);
 	}
-
 	// fasi 2 e 3 (pedina da src a dest)
 	if(IS_VALID(src) && IS_VALID(dest)) {
-		// se conosciamo il nostro colore è necessario ottenere srcPawn?
-		pawn srcPawn = state->getPawnAt(GETX(src), GETY(src), GETZ(src));
-		pawn destPawn = state->getPawnAt(GETX(dest), GETY(dest), GETZ(dest));
-		if(srcPawn == ourPawn && destPawn == PAWN_NONE) { // controlli necessari?
-			state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
-			state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), srcPawn);
-		}
+		state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node.getPawn());
 	}
 
 	// rimozione pedina avversaria
 	if(IS_VALID(toRemove)) {
-		pawn pawnToRemove = state->getPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove));
-		if (pawnToRemove == opponentPawn) // controllo necessario?
-			state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
+		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
+		if (state->getWhiteCheckersOnBoard() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackCheckersOnBoard() == PAWNS_TO_ENTER_3RD_PHASE)
+			state->setPhase(PHASE_3);
 	}
 
-	return Node(state, ourPawn);
+	return Node(state, node.getPawn());
 
 }
 
