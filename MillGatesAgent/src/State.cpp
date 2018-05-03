@@ -256,9 +256,25 @@ bool State::isInMorris(int8 pos) const {
 		if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected)
 			morrisY = false;
 
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
 	for (int z = 0; z < CUBE_SIZE_Z; z++)
 		if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
 			morrisZ = false;
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+	if (ON_PERPENDICULAR(pos))
+		for (int z = 0; z < CUBE_SIZE_Z; z++)
+			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+				morrisZ = false;
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+	if (ON_DIAGONAL(pos))
+		for (int z = 0; z < CUBE_SIZE_Z; z++)
+			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+				morrisZ = false;
+#endif
 
 	return morrisX || morrisY || morrisZ;
 
@@ -301,7 +317,7 @@ bool State::isInMorris(int8 pos, int8 axis) const {
 }
 
 //Pls specify in a comment what do parameters mean!
-bool State::willBeInMorris(int8 pos, pawn pawn) const {
+bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
 
 	bool morrisX = true;
 	bool morrisY = true;
@@ -310,29 +326,61 @@ bool State::willBeInMorris(int8 pos, pawn pawn) const {
 	if (pawn == PAWN_NONE)
 		return false;
 
-	if (getPawnAt(GETX(pos), GETY(pos), GETZ(pos)) != PAWN_NONE)
+	if (getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) != PAWN_NONE)
 		return false;
 
 	for (int x = 0; x < CUBE_SIZE_X; x++) {
-		if (x != GETX(pos)) {
-			if (getPawnAt(x, GETY(pos), GETZ(pos)) != pawn)
+		if (src == NEW_POS(x,GETY(dest), GETZ(dest)))
+			morrisX = false;
+		if (x != GETX(dest)) {
+			if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn)
 				morrisX = false;
 		}
 	}
 
 	for (int y = 0; y < CUBE_SIZE_Y; y++) {
-		if (y != GETY(pos)) {
-			if (getPawnAt(GETX(pos), y, GETZ(pos)) != pawn)
+		if (src == NEW_POS(GETX(dest), y, GETZ(dest)))
+			morrisY = false;
+		if (y != GETY(dest)) {
+			if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn)
 				morrisY = false;
 		}
 	}
 
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
 	for (int z = 0; z < CUBE_SIZE_Z; z++) {
-		if (z != GETZ(pos)) {
-			if (getPawnAt(GETX(pos), GETY(pos), z) != pawn)
+		if (src == NEW_POS(GETX(dest), GETY(dest), z))
+			morrisZ = false;
+		if (z != GETZ(dest)) {
+			if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
 				morrisZ = false;
 		}
 	}
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+	if (ON_PERPENDICULAR(dest))
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+				morrisZ = false;
+			if (z != GETZ(dest)) {
+				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+					morrisZ = false;
+			}
+		}
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+	if (ON_DIAGONAL(dest))
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+				morrisZ = false;
+			if (z != GETZ(dest)) {
+				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+					morrisZ = false;
+			}
+		}
+#endif
 
 	return morrisX || morrisY || morrisZ;
 }
@@ -376,6 +424,7 @@ std::vector<int8> State::getAvailablePositions(int8 pos) const {
 	if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
 		result.push_back(p);
 
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
 	p = FWZ(pos);
 	if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
 		result.push_back(p);
@@ -383,6 +432,31 @@ std::vector<int8> State::getAvailablePositions(int8 pos) const {
 	p = BWZ(pos);
 	if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
 		result.push_back(p);
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+	p = FWZ(pos);
+	if (ON_PERPENDICULAR(p)) {
+		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			result.push_back(p);
+
+		p = BWZ(pos);
+		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			result.push_back(p);
+	}
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+	p = FWZ(pos);
+	if (ON_DIAGONAL(p)) {
+		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			result.push_back(p);
+
+		p = BWZ(pos);
+		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			result.push_back(p);
+	}
+#endif
 
 	return result;
 

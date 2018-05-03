@@ -197,7 +197,7 @@ void testWillBeInMorris(State*state) {
 	state->setPawnAt2D('e', '4', PAWN_WHITE);
 	state->setPawnAt2D('f', '4', PAWN_WHITE);
 
-	if(state->willBeInMorris(get3Dcoordinates('g','4'), PAWN_WHITE))
+	if(state->willBeInMorris(get3Dcoordinates('a', '1'), get3Dcoordinates('g','4'), PAWN_WHITE))
 		std::cout << "SI\n";
 	else
 		std::cout << "NO\n"; //Expected

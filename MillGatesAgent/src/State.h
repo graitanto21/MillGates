@@ -44,7 +44,7 @@ public:
 
 	virtual bool isInMorris(int8 pos) const;
 	virtual bool isInMorris(int8 pos, int8 axis) const;
-	virtual bool willBeInMorris(int8 pos, pawn pawn) const;
+	virtual bool willBeInMorris(int8 src, int8 dest, pawn pawn) const;
 	virtual std::vector<int8> getAllPositions(pawn pawn) const;
 	virtual std::vector<int8> getAvailablePositions(int8 pos) const;
 

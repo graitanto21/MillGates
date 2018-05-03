@@ -57,7 +57,7 @@ std::vector<Action> NodeExpander::addActionsForPawn(Node node, int8 src, std::ve
 
 	std::vector<int8> available = state->getAvailablePositions(src);
 	for (int8 i = 0; i < available.size(); i++) {
-		if (state->willBeInMorris(available[i], node.getPawn())) {
+		if (state->willBeInMorris(src, available[i], node.getPawn())) {
 			std::vector<int8> pos = state->getAllPositions(OPP(node.getPawn()));
 			bool added = false;
 			for (int8 j = 0; j < pos.size(); j++)
@@ -98,7 +98,6 @@ std::vector<Action> NodeExpander::expand(Node node) {
 	return result;
 
 }
-
 
 NodeExpander::~NodeExpander() {
 }
