@@ -298,10 +298,10 @@ int main(void) {
 
 	/* TESTING THE EXPANDER */
 
-	state = new CubeStateImpl();
+	//state = new CubeStateImpl();
 
-	Node node(state, PAWN_WHITE);
-	NodeExpander expander;
+	//Node node(state, PAWN_WHITE);
+	//NodeExpander expander;
 
 	// FASE 1a
 
@@ -351,6 +351,9 @@ int main(void) {
 
 	state->setPawnAt2D('f', '4', PAWN_WHITE);
 	state->setPawnAt2D('g', '7', PAWN_WHITE);
+
+	Node node(state, PAWN_WHITE);
+	NodeExpander expander;
 
 	std::vector<Action> res = expander.expand(node);
 	std::cout << "Azioni disponibili: "<< res.size() << "\n";
