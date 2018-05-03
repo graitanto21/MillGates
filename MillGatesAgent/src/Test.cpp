@@ -157,7 +157,7 @@ void testMapping(State*state) {
 }
 
 void testIsInMorris(State*state) {
-	//Diagonals ==> TODO: please avoid that
+
 	state->setPawnAt2D('a', '7', PAWN_WHITE);
 	state->setPawnAt2D('b', '6', PAWN_WHITE);
 	state->setPawnAt2D('c', '5', PAWN_WHITE);
@@ -165,14 +165,14 @@ void testIsInMorris(State*state) {
 	if(state->isInMorris(get3Dcoordinates('a', '7')))
 		std::cout << "a7 forms a morris!\n";
 	else
-		std::cout << "a7 doesn't form a morris\n"; //EXPECTED ==> WRONG! TODO
+		std::cout << "a7 doesn't form a morris\n";
 
 	//Following are correct; but they should be invoked properly
 	bool x = state->isInMorris(get3Dcoordinates('a', '7'), X_AXIS); //False => ok
 	bool y = state->isInMorris(get3Dcoordinates('a', '7'), Y_AXIS); //False => ok
-	bool z = state->isInMorris(get3Dcoordinates('a', '7'), Z_AXIS); //True => ok, but we should not consider it now
+	bool z = state->isInMorris(get3Dcoordinates('a', '7'), Z_AXIS); //True => ok
 
-	std::cout << "a7" << " is in morris: x =" << x << " y = " << y << " z = " << z << "\n";
+	std::cout << "a7" << " is in morris: x =" << x << " y = " << y << " z = " << z << "\n"; //OK
 
 	delete state;
 
@@ -188,19 +188,19 @@ void testIsInMorris(State*state) {
 		std::cout << "d5 doesn't form a morris\n";
 
 	if(state->isInMorris(get3Dcoordinates('a', '1')))
-		std::cout << "d5 forms a morris!\n";
+		std::cout << "a1 forms a morris!\n";
 	else
-		std::cout << "d5 doesn't form a morris\n"; //Expected => OK
+		std::cout << "a1 doesn't form a morris\n"; //Expected => OK
 }
 
 void testWillBeInMorris(State*state) {
-	state->setPawnAt2D('d', '1', PAWN_WHITE);
-	state->setPawnAt2D('d', '2', PAWN_WHITE);
+	state->setPawnAt2D('g', '7', PAWN_WHITE);
+	state->setPawnAt2D('g', '4', PAWN_WHITE);
 
-	if(state->willBeInMorris(get3Dcoordinates('d', '2'), get3Dcoordinates('d','3'), PAWN_WHITE))
+	if(state->willBeInMorris(get3Dcoordinates('g', '4'), get3Dcoordinates('g','1'), PAWN_WHITE))
 		std::cout << "SI\n";
 	else
-		std::cout << "NO\n"; //Expected
+		std::cout << "NO\n";
 
 }
 
@@ -210,8 +210,8 @@ void testGetAllPositions(State*state) {
 	 * WHITE ok
 	 * BLACK ok
 	 */
-	std::vector<int8> res = state->getAllPositions(PAWN_BLACK);
-	std::cout << "Posizioni nere: " << res.size() << "\n";
+	std::vector<int8> res = state->getAllPositions(PAWN_NONE);
+	std::cout << "Posizioni vuote: " << res.size() << "\n";
 
 	for (int8 i = 0; i < res.size(); i++) {
 		std::cout <<  get2Dcoordinates(res[i]) <<"\n";
@@ -267,6 +267,115 @@ void testGetAvailablePositions(State*state, char x, char y){
 	}
 }
 
+void testExpand(State * state) {
+	Node node(state, PAWN_WHITE, 0);
+	NodeExpander expander;
+
+	// FASE 1a
+
+	//Caso 1: prima espansione ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
+//	std::vector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
+//	for(int8 j=0; j<res.size(); j++)
+//		std::cout << res[j] << "\n";
+
+	// FASE 1b
+	//Caso 2: presenti due pedine nere
+//	node.getState()->setPawnAt2D('a', '1', PAWN_BLACK);
+//	node.getState()->setPawnAt2D('g', '7', PAWN_BLACK);
+//	std::vector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
+//	for(int8 j=0; j<res.size(); j++)
+//	std::cout << res[j] << "\n";
+//	delete state;
+
+	//FASE 2 (state: see the pic I sent on Telegram)
+//	state->setPhase(PHASE_2);
+//
+//	state->setBlackCheckersOnBoard("9");
+//	state->setWhiteCheckersOnBoard("8");
+//
+//	state->setPawnAt2D('a', '1', PAWN_WHITE);
+//	state->setPawnAt2D('a', '4', PAWN_WHITE);
+//	state->setPawnAt2D('a', '7', PAWN_BLACK);
+//
+//	state->setPawnAt2D('b', '2', PAWN_BLACK);
+//	state->setPawnAt2D('b', '4', PAWN_BLACK);
+//	state->setPawnAt2D('b', '6', PAWN_BLACK);
+//
+//	state->setPawnAt2D('c', '3', PAWN_BLACK);
+//	state->setPawnAt2D('c', '4', PAWN_WHITE);
+//	state->setPawnAt2D('c', '5', PAWN_BLACK);
+//
+//	state->setPawnAt2D('d', '1', PAWN_BLACK);
+//	state->setPawnAt2D('d', '3', PAWN_WHITE);
+//	state->setPawnAt2D('d', '5', PAWN_BLACK);
+//	state->setPawnAt2D('d', '7', PAWN_BLACK);
+//
+//	state->setPawnAt2D('e', '4', PAWN_WHITE);
+//	state->setPawnAt2D('e', '5', PAWN_WHITE);
+//
+//	state->setPawnAt2D('f', '4', PAWN_WHITE);
+//	state->setPawnAt2D('g', '7', PAWN_WHITE);
+//
+//	std::vector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
+//	for(int8 j=0; j<res.size(); j++)
+//		std::cout << res[j] << "\n";
+//  delete state;
+
+	//FASE 3
+	state->setPhase(PHASE_3);
+
+	state->setBlackCheckersOnBoard("8");
+	state->setWhiteCheckersOnBoard("3");
+
+	state->setPawnAt2D('b', '6', PAWN_BLACK);
+
+	state->setPawnAt2D('c', '3', PAWN_BLACK);
+	state->setPawnAt2D('c', '5', PAWN_BLACK);
+
+	state->setPawnAt2D('d', '1', PAWN_BLACK);
+	state->setPawnAt2D('d', '5', PAWN_WHITE);
+	state->setPawnAt2D('d', '6', PAWN_BLACK);
+
+	state->setPawnAt2D('e', '4', PAWN_BLACK);
+
+	state->setPawnAt2D('f', '2', PAWN_BLACK);
+	state->setPawnAt2D('f', '4', PAWN_WHITE);
+	state->setPawnAt2D('f', '6', PAWN_BLACK);
+
+	state->setPawnAt2D('g', '4', PAWN_WHITE);
+
+	std::vector<Action> res = expander.expand(node);
+	std::cout << "Azioni disponibili: "<< res.size() << "\n";
+	for(int8 j=0; j<res.size(); j++)
+			std::cout << res[j] << "\n";
+}
+
+void testPerformAction(State * state) {
+
+	Node n(state, PAWN_WHITE, 0);
+	NodeExpander e;
+
+	//Aggiunta di una pedina
+	Action a1(POS_NULL, get3Dcoordinates('a','1'), POS_NULL);
+	Node res1 = e.performAction(n, a1);
+	res1.getState()->toStringToSend(); //Expected W in first pos
+
+	//Spostamento di una pedina
+	state->setPawnAt2D('a', '1', PAWN_WHITE);
+	Action a2(get3Dcoordinates('a','1'), get3Dcoordinates('a','4'), POS_NULL);
+	Node res2 = e.performAction(n, a2);
+	res2.getState()->toStringToSend(); //Expected W in second pos
+
+	//Spostamento di una pedina + eliminazione
+	state->setPawnAt2D('c', '5', PAWN_BLACK);
+	Action a3(get3Dcoordinates('a','1'), get3Dcoordinates('a','4'), get3Dcoordinates('c','5'));
+	Node res3 = e.performAction(n, a3);
+	res3.getState()->toStringToSend(); //Expected W in second pos and no black pawns.
+}
+
 int main(void) {
 
 	State *state;
@@ -276,15 +385,15 @@ int main(void) {
 //	testMapping(state);
 //	delete state;
 //
-//	//Test isInMorris
+	//Test isInMorris
 //	state = new CubeStateImpl();
 //	testIsInMorris(state);
 //	delete state;
-//
+
 	//Test willBeInMorris
-	state = new CubeStateImpl();
-	testWillBeInMorris(state);
-	delete state;
+//	state = new CubeStateImpl();
+//	testWillBeInMorris(state);
+//	delete state;
 
 	//Test getAllPositions
 //	state = new CubeStateImpl();
@@ -298,67 +407,14 @@ int main(void) {
 
 	/* TESTING THE EXPANDER */
 
-	//state = new CubeStateImpl();
-
-	//Node node(state, PAWN_WHITE);
-	//NodeExpander expander;
-
-	// FASE 1a
-
-	//Caso 1: prima espansione ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
-//	std::vector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-//	for(int8 j=0; j<res.size(); j++)
-//		std::cout << res[j] << "\n";
-
-	// FASE 1b
-	//Caso 2: presenti due pedine nere ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
-//	node.getState()->setPawnAt2D('a', '1', PAWN_BLACK);
-//	node.getState()->setPawnAt2D('g', '7', PAWN_BLACK);
-//	std::vector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-//	for(int8 j=0; j<res.size(); j++)
-//	std::cout << res[j] << "\n";
+	//expand
+//	state = new CubeStateImpl();
+//	testExpand(state);
 //	delete state;
 
-	//FASE 2 (state: see the pic I sent on Telegram)
+	//PerformAction
 	state = new CubeStateImpl();
-
-	state->setPhase(PHASE_3);
-
-	state->setBlackCheckersOnBoard("9");
-	state->setWhiteCheckersOnBoard("8");
-
-	state->setPawnAt2D('a', '1', PAWN_WHITE);
-	state->setPawnAt2D('a', '4', PAWN_WHITE);
-	state->setPawnAt2D('a', '7', PAWN_BLACK);
-
-	state->setPawnAt2D('b', '2', PAWN_BLACK);
-	state->setPawnAt2D('b', '4', PAWN_BLACK);
-	state->setPawnAt2D('b', '6', PAWN_BLACK);
-
-	state->setPawnAt2D('c', '3', PAWN_BLACK);
-	state->setPawnAt2D('c', '4', PAWN_WHITE);
-	state->setPawnAt2D('c', '5', PAWN_BLACK);
-
-	state->setPawnAt2D('d', '1', PAWN_BLACK);
-	state->setPawnAt2D('d', '3', PAWN_WHITE);
-	state->setPawnAt2D('d', '5', PAWN_BLACK);
-	state->setPawnAt2D('d', '7', PAWN_BLACK);
-
-	state->setPawnAt2D('e', '4', PAWN_WHITE);
-	state->setPawnAt2D('e', '5', PAWN_WHITE);
-
-	state->setPawnAt2D('f', '4', PAWN_WHITE);
-	state->setPawnAt2D('g', '7', PAWN_WHITE);
-
-	Node node(state, PAWN_WHITE);
-	NodeExpander expander;
-
-	std::vector<Action> res = expander.expand(node);
-	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-	for(int8 j=0; j<res.size(); j++)
-		std::cout << res[j] << "\n";
-
+	testPerformAction(state);
+	delete state;
 }
 
