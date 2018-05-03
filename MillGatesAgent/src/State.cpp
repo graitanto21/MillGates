@@ -402,8 +402,15 @@ std::vector<int8> State::getAllPositions(pawn pawn) const {
 
 std::vector<int8> State::getAvailablePositions(int8 pos) const {
 
-	if (getPhase() == PHASE_1 || getPhase() == PHASE_3)
-		return getAllPositions(PAWN_NONE);
+	if (getPhase() == PHASE_1 || getPhase() == PHASE_3) {
+		std::vector<int8> result(MAX_MOVES_PHASE_2);
+		std::vector<int8> all = getAllPositions(PAWN_NONE);
+		for(int8 z=0; z<all.size(); z++) {
+			if(all[z] != pos)
+				result.push_back(all[z]);
+		}
+		return result;
+	}
 
 	std::vector<int8> result(MAX_MOVES_PHASE_2);
 	int8 p;
