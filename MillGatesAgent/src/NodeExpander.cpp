@@ -39,7 +39,7 @@ Node NodeExpander::performAction(Node node, Action action) {
 			state->setPhase(PHASE_3);
 	}
 
-	return Node(state, node.getPawn());
+	return Node(state, node.getPawn(), node.getLevel() + 1);
 
 }
 

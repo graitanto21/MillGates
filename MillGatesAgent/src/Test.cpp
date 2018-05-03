@@ -362,12 +362,14 @@ void testPerformAction(State * state) {
 	Action a1(POS_NULL, get3Dcoordinates('a','1'), POS_NULL);
 	Node res1 = e.performAction(n, a1);
 	res1.getState()->toStringToSend(); //Expected W in first pos
+	printf("\n");
 
 	//Spostamento di una pedina
 	state->setPawnAt2D('a', '1', PAWN_WHITE);
 	Action a2(get3Dcoordinates('a','1'), get3Dcoordinates('a','4'), POS_NULL);
 	Node res2 = e.performAction(n, a2);
 	res2.getState()->toStringToSend(); //Expected W in second pos
+	printf("\n");
 
 	//Spostamento di una pedina + eliminazione
 	state->setPawnAt2D('c', '5', PAWN_BLACK);

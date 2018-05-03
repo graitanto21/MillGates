@@ -37,8 +37,8 @@ public:
 	virtual void setBlackCheckersOnBoard(std::string number);
 	virtual int8 getBlackCheckersOnBoard();
 
-	//Utiliy methods
-	virtual State* clone();
+	//Utility methods
+	virtual State* clone() = 0;
 	virtual int hash();
 	virtual std::string toString() const;
 

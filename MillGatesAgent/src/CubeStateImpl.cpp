@@ -20,25 +20,25 @@ CubeStateImpl::CubeStateImpl() {
 
 CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 	/* Here, state is created (I call the void constructor)
-		 * with all position void. Now, I only need to receive
-		 * the positions and the content of all the cells
-		 * in the format '<x><y><PAWN>'.
-		 * Last three chars of the string indicates the number
-		 * of pawns of each kind present on the board and the
-		 * current phase.
-		*/
-		unsigned int i=0;
-		//Pawns
-		while(i<(stringFromServer.length()-5)) {
-			setPawnAt2D(
+	 * with all position void. Now, I only need to receive
+	 * the positions and the content of all the cells
+	 * in the format '<x><y><PAWN>'.
+	 * Last three chars of the string indicates the number
+	 * of pawns of each kind present on the board and the
+	 * current phase.
+	 */
+	unsigned int i=0;
+	//Pawns
+	while(i<(stringFromServer.length()-5)) {
+		setPawnAt2D(
 				/* x */			(int8)stringFromServer[i],
 				/* y */ 		(int8)stringFromServer[i+1],
 				/* CONTENT */ 	(int8)stringFromServer[i+2]);
-			i+=3;
-		}
-		setWhiteCheckersOnBoard(stringFromServer.substr(i, 2));
-		setBlackCheckersOnBoard(stringFromServer.substr(i+2, 2));
-		setPhase(stringFromServer[i+4]);
+		i+=3;
+	}
+	setWhiteCheckersOnBoard(stringFromServer.substr(i, 2));
+	setBlackCheckersOnBoard(stringFromServer.substr(i+2, 2));
+	setPhase(stringFromServer[i+4]);
 }
 
 /*
@@ -65,6 +65,22 @@ void CubeStateImpl::setPhase(int8 currentPhase) {
 }
 int8 CubeStateImpl::getPhase() const {
 	return phase;
+}
+
+State * CubeStateImpl::clone() {
+
+	State * clone = new CubeStateImpl();
+
+	for (int i = 0; i < CUBE_SIZE_X; i++)
+		for (int j = 0; j < CUBE_SIZE_Y; j++)
+			for (int k = 0; k < CUBE_SIZE_Z; k++)
+				clone->setPawnAt(i, j, k, getPawnAt(i, j, k));
+
+	clone->setPhase(getPhase());
+	clone->setWhiteCheckersOnBoard(getWhiteCheckersOnBoard() + "");
+	clone->setBlackCheckersOnBoard(getBlackCheckersOnBoard() + "");
+
+	return clone;
 }
 
 CubeStateImpl::~CubeStateImpl() {}

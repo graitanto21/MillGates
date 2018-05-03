@@ -143,23 +143,24 @@ int8 State::getBlackCheckersOnBoard() {
 	return getPawnAt(1,1,1) + '1' - 1;
 }
 
-//Utiliy methods
-State* State::clone() {
-	//TODO
-	//
-	//	State * res = new State();
-	//
-	//	for (int i = 0; i < CUBE_SIZE_X; i++)
-	//		for (int j = 0; j < CUBE_SIZE_Y; j++)
-	//			for (int k = 0; k < CUBE_SIZE_Z; k++)
-	//
-	//				res->setPawnAt(i, j, k, getPawnAt(i, j, k));
-	//
-	//	res->setPhase(getPhase());
-	//
-	//	return res;
-	return NULL;
-}
+
+//State* State::clone() {
+//	TODO
+//
+//		State * res = new State();
+//
+//		for (int i = 0; i < CUBE_SIZE_X; i++)
+//			for (int j = 0; j < CUBE_SIZE_Y; j++)
+//				for (int k = 0; k < CUBE_SIZE_Z; k++)
+//
+//					res->setPawnAt(i, j, k, getPawnAt(i, j, k));
+//
+//		res->setPhase(getPhase());
+//
+//		return res;
+//	return NULL;
+//}
+
 
 std::string State::toString() const {
 
