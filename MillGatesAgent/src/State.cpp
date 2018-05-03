@@ -263,17 +263,24 @@ bool State::isInMorris(int8 pos) const {
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-	if (ON_PERPENDICULAR(pos))
+	if (ON_PERPENDICULAR(pos)) {
 		for (int z = 0; z < CUBE_SIZE_Z; z++)
 			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
 				morrisZ = false;
+	}
+	else
+		morrisZ = false;
+
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-	if (ON_DIAGONAL(pos))
+	if (ON_DIAGONAL(pos)) {
 		for (int z = 0; z < CUBE_SIZE_Z; z++)
 			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
 				morrisZ = false;
+	}
+	else
+		morrisZ = false;
 #endif
 
 	return morrisX || morrisY || morrisZ;
@@ -368,6 +375,8 @@ bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
 					morrisZ = false;
 			}
 		}
+	else
+		morrisZ = false;
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
@@ -380,6 +389,8 @@ bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
 					morrisZ = false;
 			}
 		}
+	else
+		morrisZ = false;
 #endif
 
 	return morrisX || morrisY || morrisZ;
