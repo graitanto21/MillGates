@@ -12,81 +12,82 @@ template <class T> class ExpVector{
 
 private:
 
-	int logicSize, realSize;
-	std::vector<T> wrapped;
+	int _logicSize, _realSize;
+	std::vector<T> _wrapped;
 
 	void goDouble(){
-		realSize *= 2;
-		wrapped.resize(realSize);
+		_realSize *= 2;
+		_wrapped.resize(_realSize);
 	}
 
 	bool goHalf(){
-		if (realSize%2 != 0)
+		if (_realSize%2 != 0)
 			return false;
-		realSize /= 2;
-		wrapped.resize(realSize);
+		_realSize /= 2;
+		_wrapped.resize(_realSize);
 		return true;
 	}
 
 public:
 
 	ExpVector(){
-		logicSize = 0;
-		realSize = INIT_SIZE;
-		wrapped.resize(realSize);
+		_logicSize = 0;
+		_realSize = INIT_SIZE;
+		_wrapped.resize(_realSize);
 	}
 
 	ExpVector(int realSize){
-		logicSize = 0;
-		this -> realSize = realSize;
-		wrapped.resize(realSize);
+		_logicSize = 0;
+		this -> _realSize = realSize;
+		_wrapped.resize(realSize);
 	}
 
-	~ExpVector(){}
+	~ExpVector(){
+	}
 
 	//WORK WITH THE VECTOR
 
 	void add(T toAdd){
-		if(logicSize == realSize)
+		if(_logicSize == _realSize)
 			goDouble();
-		wrapped[logicSize] = toAdd;
-		logicSize ++;
+		_wrapped[_logicSize] = toAdd;
+		_logicSize ++;
 	}
 
 	void erase(int index){
 		//TODO inefficient implementation
-		wrapped.erase(wrapped.begin() + index);
-		logicSize --;
-		if(logicSize == realSize/2)
+		_wrapped.erase(_wrapped.begin() + index);
+		_logicSize --;
+		if(_logicSize == _realSize/2)
 			goHalf();
 	}
 
 	T get(int index){
-		return wrapped[index];
+		return _wrapped[index];
 	}
 
 	void set(int index, T value){
-		wrapped[index] = value;
+		_wrapped[index] = value;
 	}
 
 	//OUTPUT
 	void print(){
-		for (int i=0; i<logicSize; i++){
-			std::cout << wrapped[i] << " ";
+		for (int i=0; i<_logicSize; i++){
+			std::cout << _wrapped[i] << " ";
 		}
-		std::cout << "\nLOGIC: " << logicSize << "\n";
-		std::cout << "REAL: "<< realSize << "\n";
-		std::cout << "REAL: "<< wrapped.size() << "\n\n";
+		std::cout << "\nLOGIC: " << _logicSize << "\n";
+		std::cout << "REAL: "<< _realSize << "\n";
+		std::cout << "REAL: "<< _wrapped.size() << "\n\n";
 
 	}
 
 	//GETTERS
 	int getLogicSize(){
-		return logicSize;
+		return _logicSize;
 	}
 
 	int getRealSize(){
-		return realSize;
+		return _realSize;
 	}
 };
 

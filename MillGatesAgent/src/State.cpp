@@ -129,18 +129,32 @@ pawn State::getPawnAt2D(int8 x, int8 y) const{
 }
 
 
-void State::setWhiteCheckersOnBoard(std::string number){
+void State::setWhitePawnsOnBoardStr(std::string number){
 	setPawnAt(1,1,2,atoi(number.c_str()));
 }
-int8 State::getWhiteCheckersOnBoard() const {
+int8 State::getWhitePawnsOnBoardStr() const {
 	return getPawnAt(1,1,2) + '1' - 1;
 }
 
-void State::setBlackCheckersOnBoard(std::string  number) {
+void State::setBlackPawnsOnBoardStr(std::string  number) {
 	setPawnAt(1,1,1,atoi(number.c_str()));
 }
-int8 State::getBlackCheckersOnBoard() const {
+int8 State::getBlackPawnsOnBoardStr() const {
 	return getPawnAt(1,1,1) + '1' - 1;
+}
+
+void State::setPawnsOnBoard(pawn pawn, int8 count) {
+	if (pawn == PAWN_WHITE)
+		setPawnAt(1,1,2,count);
+	else if (pawn == PAWN_BLACK)
+		setPawnAt(1,1,1, count);
+}
+int8 State::getPawnsOnBoard(pawn pawn) const {
+	if (pawn == PAWN_WHITE)
+		return getPawnAt(1,1,2);
+	else if (pawn == PAWN_BLACK)
+		return getPawnAt(1,1,1);
+	return 0;
 }
 
 std::string State::toString() const {
@@ -390,7 +404,7 @@ ExpVector<int8> State::getAvailablePositions(int8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
-	if (getPhase() == PHASE_1 || (getPhase() == PHASE_3 && (myPawn == PAWN_BLACK ? getBlackCheckersOnBoard() : getWhiteCheckersOnBoard()) == '3'))
+	if (getPhase() == PHASE_1 || getPawnsOnBoard(myPawn) == 3)
 		return getAllPositions(PAWN_NONE);
 
 	ExpVector<int8> result(MAX_MOVES_PHASE_2);

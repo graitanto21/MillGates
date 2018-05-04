@@ -90,7 +90,9 @@ public class MGCppAgent extends MulinoClient {
 					// read move from cpp agent
 					agentOutput.read(inputBuffer, 0, actionFactory.maxStringLength());
 					actionString = new String(inputBuffer, "UTF-8");
-
+					
+					System.out.println(actionString);
+					
 					action = actionFactory.stringToAction(actionString.trim(), currentState.getCurrentPhase());
 					// write move to server
 					client.write(action);

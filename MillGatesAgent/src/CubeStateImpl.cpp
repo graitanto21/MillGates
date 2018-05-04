@@ -16,6 +16,8 @@ CubeStateImpl::CubeStateImpl() {
 				pawns[i][j][k] = PAWN_NONE;
 
 	phase = PHASE_1;
+	setPawnsOnBoard(PAWN_WHITE, 0);
+	setPawnsOnBoard(PAWN_BLACK, 0);
 }
 
 CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
@@ -36,8 +38,8 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 				/* CONTENT */ 	(int8)stringFromServer[i+2]);
 		i+=3;
 	}
-	setWhiteCheckersOnBoard(stringFromServer.substr(i, 2));
-	setBlackCheckersOnBoard(stringFromServer.substr(i+2, 2));
+	setWhitePawnsOnBoardStr(stringFromServer.substr(i, 2));
+	setBlackPawnsOnBoardStr(stringFromServer.substr(i+2, 2));
 	setPhase(stringFromServer[i+4]);
 }
 
@@ -77,8 +79,8 @@ State * CubeStateImpl::clone() {
 				clone->setPawnAt(i, j, k, getPawnAt(i, j, k));
 
 	clone->setPhase(getPhase());
-	clone->setWhiteCheckersOnBoard(getWhiteCheckersOnBoard() + "");
-	clone->setBlackCheckersOnBoard(getBlackCheckersOnBoard() + "");
+	clone->setWhitePawnsOnBoardStr(getWhitePawnsOnBoardStr() + "");
+	clone->setBlackPawnsOnBoardStr(getBlackPawnsOnBoardStr() + "");
 
 	return clone;
 }

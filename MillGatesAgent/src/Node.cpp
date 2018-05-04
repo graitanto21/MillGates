@@ -27,6 +27,18 @@ unsigned int Node::getLevel() const {
 
 }
 
+void Node::addChild(Node * node) {
+
+	this->_children.add(node);
+
+}
+
+ExpVector<Node*> Node::getChildren() {
+
+	return _children;
+
+}
+
 pawn Node::getPawn() {
 
 	return this->_pawn;

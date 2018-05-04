@@ -31,11 +31,14 @@ public:
 	virtual void setPhase(int8 value) = 0;
 	virtual int8 getPhase() const = 0;
 
-	virtual void setWhiteCheckersOnBoard(std::string number);
-	virtual int8 getWhiteCheckersOnBoard() const;
+	virtual void setWhitePawnsOnBoardStr(std::string number);
+	virtual int8 getWhitePawnsOnBoardStr() const;
 
-	virtual void setBlackCheckersOnBoard(std::string number);
-	virtual int8 getBlackCheckersOnBoard() const;
+	virtual void setBlackPawnsOnBoardStr(std::string number);
+	virtual int8 getBlackPawnsOnBoardStr() const;
+
+	virtual void setPawnsOnBoard(pawn pawn, int8 count);
+	virtual int8 getPawnsOnBoard(pawn pawn) const;
 
 	//Utility methods
 	virtual State* clone() = 0;

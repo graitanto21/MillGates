@@ -23,7 +23,7 @@ public:
 
 	NodeExpander();
 
-	virtual Node performAction(Node node, Action action);
+	virtual void performAction(Node * node, Action action);
 	virtual ExpVector<Action> expand(Node node);
 
 	virtual ~NodeExpander();

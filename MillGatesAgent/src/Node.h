@@ -9,6 +9,7 @@
 #define NODE_H_
 
 #include "State.h"
+#include "ExpVector.h"
 
 //typedef unsigned char sasso;
 
@@ -18,6 +19,7 @@ private:
 	State * _state;
 	pawn _pawn;
 	unsigned int _level;
+	ExpVector<Node*> _children;
 
 public:
 
@@ -26,6 +28,9 @@ public:
 	virtual State * getState() const;
 
 	virtual unsigned int getLevel() const;
+
+	virtual void addChild(Node * node);
+	virtual ExpVector<Node*> getChildren();
 
 	virtual pawn getPawn();
 

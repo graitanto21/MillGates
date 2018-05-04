@@ -12,9 +12,9 @@ NodeExpander::NodeExpander() {
 
 }
 
-Node NodeExpander::performAction(Node node, Action action) {
+void NodeExpander::performAction(Node * node, Action action) {
 
-	State * state = node.getState()->clone();
+	State * state = node->getState()->clone();
 
 	int8 src = action.getSrc();
 	int8 dest = action.getDest();
@@ -22,24 +22,26 @@ Node NodeExpander::performAction(Node node, Action action) {
 
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node.getPawn());
-		if (node.getLevel() >= BLACK_PAWNS_COUNT)
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node->getPawn());
+		state->setPawnsOnBoard(node->getPawn(), state->getPawnsOnBoard(node->getPawn()) + 1);
+		if (node->getLevel() >= BLACK_PAWNS_COUNT + WHITE_PAWNS_COUNT)
 			state->setPhase(PHASE_2);
 	}
 	// fasi 2 e 3 (pedina da src a dest)
 	if(IS_VALID(src) && IS_VALID(dest)) {
 		state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node.getPawn());
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node->getPawn());
 	}
 
 	// rimozione pedina avversaria
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
-		if (state->getWhiteCheckersOnBoard() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackCheckersOnBoard() == PAWNS_TO_ENTER_3RD_PHASE)
+		state->setPawnsOnBoard(OPP(node->getPawn()), state->getPawnsOnBoard(OPP(node->getPawn())) - 1);
+		if (state->getWhitePawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackPawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE)
 			state->setPhase(PHASE_3);
 	}
 
-	return Node(state, node.getPawn(), node.getLevel() + 1);
+	node->addChild(new Node(state,OPP(node->getPawn()), node->getLevel() + 1));
 
 }
 
