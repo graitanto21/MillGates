@@ -390,7 +390,7 @@ ExpVector<int8> State::getAvailablePositions(int8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
-	if (getPhase() == PHASE_1 || (getPhase() == PHASE_3 && (myPawn == PAWN_BLACK ? getBlackCheckersOnBoard() : getWhiteCheckersOnBoard()) == 3))
+	if (getPhase() == PHASE_1 || (getPhase() == PHASE_3 && (myPawn == PAWN_BLACK ? getBlackCheckersOnBoard() : getWhiteCheckersOnBoard()) == '3'))
 		return getAllPositions(PAWN_NONE);
 
 	ExpVector<int8> result(MAX_MOVES_PHASE_2);
