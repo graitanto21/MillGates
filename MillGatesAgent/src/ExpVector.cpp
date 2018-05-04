@@ -90,19 +90,17 @@ int ExpVector<T>::getRealSize(){
 	return realSize;
 }
 
-
-
-/*int main(int argc, char **argv) {
-	ExpVector<int> v(3);
-	for(int i=0; i<20; i++){
-		v.add(i+1);
-		v.print();
-	}
-
-	for(int i=0; i<20; i++){
-		v.erase(0);
-		v.print();
-	}
-
-}*/
+//int main(int argc, char **argv) {
+//	ExpVector<Action> v(3);
+//	for(int i=0; i<20; i++){
+//		v.add(Action(0,0,0));
+//		v.print();
+//	}
+//
+//	for(int i=0; i<20; i++){
+//		v.erase(0);
+//		v.print();
+//	}
+//
+//}
 

@@ -21,19 +21,19 @@ public:
 
 	ExpVector();
 	ExpVector(int realSize);
-	~ExpVector();
 
-	void add(T toAdd);
-	void erase(int index);
+	virtual void add(T toAdd);
+	virtual void erase(int index);
 
-	T get(int index);
-	void set(int index, T value);
+	virtual T get(int index);
+	virtual void set(int index, T value);
 
-	int getLogicSize();
-	int getRealSize();
+	virtual int getLogicSize();
+	virtual int getRealSize();
 
-	void print();
+	virtual void print();
 
+	virtual ~ExpVector();
 };
 
 #endif
