@@ -18,9 +18,9 @@ public class OWBStateEncoder implements StateEncoder{
 			case BLACK: sb.append('B'); break;
 			}
 		}
-		sb.append(state.getWhiteCheckers());
+		sb.append(state.getWhiteCheckersOnBoard());
 		sb.append(" ");
-		sb.append(state.getBlackCheckers());
+		sb.append(state.getBlackCheckersOnBoard());
 		sb.append(" ");
 
 		Phase p = state.getCurrentPhase();

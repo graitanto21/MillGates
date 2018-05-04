@@ -131,6 +131,7 @@ pawn State::getPawnAt2D(int8 x, int8 y) const{
 
 void State::setWhitePawnsOnBoardStr(std::string number){
 	setPawnAt(1,1,2,atoi(number.c_str()));
+	//setPawnAt(1,1,2,number.at(0));
 }
 int8 State::getWhitePawnsOnBoardStr() const {
 	return getPawnAt(1,1,2) + '1' - 1;
@@ -138,12 +139,13 @@ int8 State::getWhitePawnsOnBoardStr() const {
 
 void State::setBlackPawnsOnBoardStr(std::string  number) {
 	setPawnAt(1,1,1,atoi(number.c_str()));
+	//setPawnAt(1,1,1,number.at(0));
 }
 int8 State::getBlackPawnsOnBoardStr() const {
 	return getPawnAt(1,1,1) + '1' - 1;
 }
 
-void State::setPawnsOnBoard(pawn pawn, int8 count) {
+void State::setPawnsOnBoard(pawn pawn, int count) {
 	if (pawn == PAWN_WHITE)
 		setPawnAt(1,1,2,count);
 	else if (pawn == PAWN_BLACK)
@@ -151,9 +153,9 @@ void State::setPawnsOnBoard(pawn pawn, int8 count) {
 }
 int8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
-		return getPawnAt(1,1,2);
+		return getPawnAt(1,1,2) + '1' - 1;
 	else if (pawn == PAWN_BLACK)
-		return getPawnAt(1,1,1);
+		return getPawnAt(1,1,1) + '1' - 1;
 	return 0;
 }
 

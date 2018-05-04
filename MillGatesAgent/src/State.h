@@ -37,7 +37,7 @@ public:
 	virtual void setBlackPawnsOnBoardStr(std::string number);
 	virtual int8 getBlackPawnsOnBoardStr() const;
 
-	virtual void setPawnsOnBoard(pawn pawn, int8 count);
+	virtual void setPawnsOnBoard(pawn pawn, int count);
 	virtual int8 getPawnsOnBoard(pawn pawn) const;
 
 	//Utility methods

@@ -19,10 +19,10 @@ public class Pos2DPawnStateEncoder implements StateEncoder{
 			case BLACK: sb.append('B'); break;
 			}
 		}
-		if(state.getWhiteCheckers() < 10 ) sb.append(" ");
-		sb.append(state.getWhiteCheckers());
-		if(state.getBlackCheckers() < 10 ) sb.append(" ");
-		sb.append(state.getBlackCheckers());
+		if(state.getWhiteCheckersOnBoard() < 10 ) sb.append(" ");
+		sb.append(state.getWhiteCheckersOnBoard());
+		if(state.getBlackCheckersOnBoard() < 10 ) sb.append(" ");
+		sb.append(state.getBlackCheckersOnBoard());
 
 		Phase p = state.getCurrentPhase();
 		switch(p) {
