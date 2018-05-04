@@ -32,10 +32,10 @@ public:
 	virtual int8 getPhase() const = 0;
 
 	virtual void setWhiteCheckersOnBoard(std::string number);
-	virtual int8 getWhiteCheckersOnBoard();
+	virtual int8 getWhiteCheckersOnBoard() const;
 
 	virtual void setBlackCheckersOnBoard(std::string number);
-	virtual int8 getBlackCheckersOnBoard();
+	virtual int8 getBlackCheckersOnBoard() const;
 
 	//Utility methods
 	virtual State* clone() = 0;

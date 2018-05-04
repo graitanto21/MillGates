@@ -19,8 +19,6 @@ private:
 
 public:
 
-
-
 	ExpVector();
 	ExpVector(int realSize);
 	~ExpVector();

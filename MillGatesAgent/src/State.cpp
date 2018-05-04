@@ -132,35 +132,16 @@ pawn State::getPawnAt2D(int8 x, int8 y) const{
 void State::setWhiteCheckersOnBoard(std::string number){
 	setPawnAt(1,1,2,atoi(number.c_str()));
 }
-int8 State::getWhiteCheckersOnBoard() {
+int8 State::getWhiteCheckersOnBoard() const {
 	return getPawnAt(1,1,2) + '1' - 1;
 }
 
 void State::setBlackCheckersOnBoard(std::string  number) {
 	setPawnAt(1,1,1,atoi(number.c_str()));
 }
-int8 State::getBlackCheckersOnBoard() {
+int8 State::getBlackCheckersOnBoard() const {
 	return getPawnAt(1,1,1) + '1' - 1;
 }
-
-
-//State* State::clone() {
-//	TODO
-//
-//		State * res = new State();
-//
-//		for (int i = 0; i < CUBE_SIZE_X; i++)
-//			for (int j = 0; j < CUBE_SIZE_Y; j++)
-//				for (int k = 0; k < CUBE_SIZE_Z; k++)
-//
-//					res->setPawnAt(i, j, k, getPawnAt(i, j, k));
-//
-//		res->setPhase(getPhase());
-//
-//		return res;
-//	return NULL;
-//}
-
 
 std::string State::toString() const {
 
@@ -190,13 +171,6 @@ int State::hash() {
 State::~State() {}
 
 std::ostream& operator<<(std::ostream &strm, const State &s){
-	/* Here, I don't define the string representation directly,
-	 * but I call the virtual method "toString". In this way, I
-	 * emulate the Java behaviour of calling the "most specific"
-	 * version of "toString" when printing an object (i.e., if the
-	 * current instance is an instance of a subclass of State,
-	 * I'll call the toString of that subclass).
-	 */
 	return strm << s.toString();
 }
 
@@ -414,7 +388,9 @@ std::vector<int8> State::getAllPositions(pawn pawn) const {
 
 std::vector<int8> State::getAvailablePositions(int8 pos) const {
 
-	if (getPhase() == PHASE_1 || getPhase() == PHASE_3)
+	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
+
+	if (getPhase() == PHASE_1 || (getPhase() == PHASE_3 && (myPawn == PAWN_BLACK ? getBlackCheckersOnBoard() : getWhiteCheckersOnBoard()) == 3))
 		return getAllPositions(PAWN_NONE);
 
 	std::vector<int8> result(MAX_MOVES_PHASE_2);
