@@ -16,8 +16,8 @@ CubeStateImpl::CubeStateImpl() {
 				pawns[i][j][k] = PAWN_NONE;
 
 	phase = PHASE_1;
-	setPawnsOnBoard(PAWN_WHITE, 0);
-	setPawnsOnBoard(PAWN_BLACK, 0);
+	setPawnsOnBoard(PAWN_WHITE, '0');
+	setPawnsOnBoard(PAWN_BLACK, '0');
 }
 
 CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {

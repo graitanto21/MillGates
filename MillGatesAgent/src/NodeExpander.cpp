@@ -77,16 +77,12 @@ ExpVector<Action> NodeExpander::expand(Node node) {
 	ExpVector<Action> result(ACTION_VECTOR_DEFAULT_SIZE);
 
 	if (state->getPhase() == PHASE_1) {
-
 		result = addActionsForPawn(node, POS_NULL, result);
-
 	}
 	else {
-
 		ExpVector<int8> myPawns = state->getAllPositions(node.getPawn());
 		for (int8 k = 0; k < myPawns.getLogicSize(); k++)
 			result = addActionsForPawn(node, myPawns.get(k), result);
-
 	}
 
 	return result;
