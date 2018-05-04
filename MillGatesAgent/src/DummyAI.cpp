@@ -15,7 +15,6 @@ DummyAI::DummyAI() {}
 
 Action DummyAI::choose(Node node) {
 	NodeExpander expander;
-	srand(time(NULL));
 	ExpVector<Action> actions = expander.expand(node);
 	return actions.get(rand() % actions.getLogicSize());
 }
