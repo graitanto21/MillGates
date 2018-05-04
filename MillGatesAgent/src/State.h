@@ -9,9 +9,9 @@
 #define STATE_H_
 
 #include "Commons.h"
+#include "ExpVector.h"
 #include <iostream>
 #include <string>
-#include <vector>
 
 class State {
 
@@ -45,8 +45,8 @@ public:
 	virtual bool isInMorris(int8 pos) const;
 	virtual bool isInMorris(int8 pos, int8 axis) const;
 	virtual bool willBeInMorris(int8 src, int8 dest, pawn pawn) const;
-	virtual std::vector<int8> getAllPositions(pawn pawn) const;
-	virtual std::vector<int8> getAvailablePositions(int8 pos) const;
+	virtual ExpVector<int8> getAllPositions(pawn pawn) const;
+	virtual ExpVector<int8> getAvailablePositions(int8 pos) const;
 
 	//For debug
 	void toStringToSend() const;

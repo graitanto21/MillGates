@@ -371,66 +371,66 @@ bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
 	return morrisX || morrisY || morrisZ;
 }
 
-std::vector<int8> State::getAllPositions(pawn pawn) const {
+ExpVector<int8> State::getAllPositions(pawn pawn) const {
 
-	std::vector<int8> result(AVERAGE_PAWNS_ON_BOARD);
+	ExpVector<int8> result(AVERAGE_PAWNS_ON_BOARD);
 
 	for (int8 x = 0; x < CUBE_SIZE_X; x++)
 		for (int8 y = 0; y < CUBE_SIZE_Y; y++)
 			for (int8 z = 0; z < CUBE_SIZE_Z; z++)
 				if (getPawnAt(x, y, z) == pawn && POS_ENABLED(NEW_POS(x,y,z))) {
-					result.push_back(NEW_POS(x,y,z));
+					result.add(NEW_POS(x,y,z));
 				}
 
 	return result;
 
 }
 
-std::vector<int8> State::getAvailablePositions(int8 pos) const {
+ExpVector<int8> State::getAvailablePositions(int8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
 	if (getPhase() == PHASE_1 || (getPhase() == PHASE_3 && (myPawn == PAWN_BLACK ? getBlackCheckersOnBoard() : getWhiteCheckersOnBoard()) == 3))
 		return getAllPositions(PAWN_NONE);
 
-	std::vector<int8> result(MAX_MOVES_PHASE_2);
+	ExpVector<int8> result(MAX_MOVES_PHASE_2);
 	int8 p;
 
 	p = FWX(pos);
 	if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 
 	p = BWX(pos);
 	if (GETX(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 
 	p = FWY(pos);
 	if (GETY(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 
 	p = BWY(pos);
 	if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
 	p = FWZ(pos);
 	if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 
 	p = BWZ(pos);
 	if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-		result.push_back(p);
+		result.add(p);
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
 	p = FWZ(pos);
 	if (ON_PERPENDICULAR(p)) {
 		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-			result.push_back(p);
+			result.add(p);
 
 		p = BWZ(pos);
 		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-			result.push_back(p);
+			result.add(p);
 	}
 #endif
 
@@ -438,11 +438,11 @@ std::vector<int8> State::getAvailablePositions(int8 pos) const {
 	p = FWZ(pos);
 	if (ON_DIAGONAL(p)) {
 		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-			result.push_back(p);
+			result.add(p);
 
 		p = BWZ(pos);
 		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
-			result.push_back(p);
+			result.add(p);
 	}
 #endif
 

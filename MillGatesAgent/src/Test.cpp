@@ -210,22 +210,22 @@ void testGetAllPositions(State*state) {
 	 * WHITE ok
 	 * BLACK ok
 	 */
-	std::vector<int8> res = state->getAllPositions(PAWN_NONE);
-	std::cout << "Posizioni vuote: " << res.size() << "\n";
+	ExpVector<int8> res = state->getAllPositions(PAWN_NONE);
+	std::cout << "Posizioni vuote: " << res.getLogicSize() << "\n";
 
-	for (int8 i = 0; i < res.size(); i++) {
-		std::cout <<  get2Dcoordinates(res[i]) <<"\n";
+	for (int8 i = 0; i < res.getLogicSize(); i++) {
+		std::cout <<  get2Dcoordinates(res.get(i)) <<"\n";
 	}
 }
 
 void testGetAvailablePositions(State*state, char x, char y){
 	//Phase 1 and Phase 3 calls getAllPositions(PAWN_NONE)
 	//TODO: INCLUDE SE STESSO!
-	std::vector<int8> res = state->getAvailablePositions(get3Dcoordinates('g','7'));
+	ExpVector<int8> res = state->getAvailablePositions(get3Dcoordinates('g','7'));
 
-	std::cout << "Posizioni disponibili da g7: " << res.size() << "\n";
-	for (int8 i = 0; i < res.size(); i++)
-		std::cout <<  get2Dcoordinates(res[i]) <<"\n";
+	std::cout << "Posizioni disponibili da g7: " << res.getLogicSize() << "\n";
+	for (int8 i = 0; i < res.getLogicSize(); i++)
+		std::cout <<  get2Dcoordinates(res.get(i)) <<"\n";
 
 
 	//Phase 2 ==> see the pic I sent on Telegram
@@ -260,10 +260,10 @@ void testGetAvailablePositions(State*state, char x, char y){
 	state->setPawnAt2D('g', '7', PAWN_WHITE);
 
 	res = state->getAvailablePositions(get3Dcoordinates(x,y));
-	std::cout << "Posizioni disponibili da "<< x << y << ": " << res.size() << "\n";
+	std::cout << "Posizioni disponibili da "<< x << y << ": " << res.getLogicSize() << "\n";
 
-	for (int8 i = 0; i < res.size(); i++) {
-		std::cout <<  get2Dcoordinates(res[i]) <<"\n";
+	for (int8 i = 0; i < res.getLogicSize(); i++) {
+		std::cout <<  get2Dcoordinates(res.get(i)) <<"\n";
 	}
 }
 
@@ -274,18 +274,18 @@ void testExpand(State * state) {
 	// FASE 1a
 
 	//Caso 1: prima espansione ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
-//	std::vector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-//	for(int8 j=0; j<res.size(); j++)
+//	ExpVector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//	for(int8 j=0; j<res.getLogicSize(); j++)
 //		std::cout << res[j] << "\n";
 
 	// FASE 1b
 	//Caso 2: presenti due pedine nere
 //	node.getState()->setPawnAt2D('a', '1', PAWN_BLACK);
 //	node.getState()->setPawnAt2D('g', '7', PAWN_BLACK);
-//	std::vector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-//	for(int8 j=0; j<res.size(); j++)
+//	ExpVector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//	for(int8 j=0; j<res.getLogicSize(); j++)
 //	std::cout << res[j] << "\n";
 //	delete state;
 
@@ -318,9 +318,9 @@ void testExpand(State * state) {
 //	state->setPawnAt2D('f', '4', PAWN_WHITE);
 //	state->setPawnAt2D('g', '7', PAWN_WHITE);
 //
-//	std::vector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-//	for(int8 j=0; j<res.size(); j++)
+//	ExpVector<Action> res = expander.expand(node);
+//	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//	for(int8 j=0; j<res.getLogicSize(); j++)
 //		std::cout << res[j] << "\n";
 //  delete state;
 
@@ -347,10 +347,10 @@ void testExpand(State * state) {
 
 	state->setPawnAt2D('g', '4', PAWN_WHITE);
 
-	std::vector<Action> res = expander.expand(node);
-	std::cout << "Azioni disponibili: "<< res.size() << "\n";
-	for(int8 j=0; j<res.size(); j++)
-			std::cout << res[j] << "\n";
+	ExpVector<Action> res = expander.expand(node);
+	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+	for(int8 j=0; j<res.getLogicSize(); j++)
+			std::cout << res.get(j) << "\n";
 }
 
 void testPerformAction(State * state) {

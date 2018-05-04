@@ -11,21 +11,21 @@
 #include "Node.h"
 #include "Action.h"
 #include "Commons.h"
+#include "ExpVector.h"
 #include <iostream>
-#include <vector>
 
 class NodeExpander {
 
 private:
 
-	virtual std::vector<Action> addActionsForPawn(Node node, int8 src, std::vector<Action> actionBuffer);
+	virtual ExpVector<Action> addActionsForPawn(Node node, int8 src, ExpVector<Action> actionBuffer);
 
 public:
 
 	NodeExpander();
 
 	virtual Node performAction(Node node, Action action);
-	virtual std::vector<Action> expand(Node node);
+	virtual ExpVector<Action> expand(Node node);
 
 	virtual ~NodeExpander();
 
