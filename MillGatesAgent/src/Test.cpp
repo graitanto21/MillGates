@@ -219,8 +219,7 @@ void testGetAllPositions(State*state) {
 }
 
 void testGetAvailablePositions(State*state, char x, char y){
-	//Phase 1 and Phase 3 calls getAllPositions(PAWN_NONE)
-	//TODO: INCLUDE SE STESSO!
+	state->setPawnAt2D('g','7',PAWN_WHITE);
 	ExpVector<int8> res = state->getAvailablePositions(get3Dcoordinates('g','7'));
 
 	std::cout << "Posizioni disponibili da g7: " << res.getLogicSize() << "\n";
@@ -277,7 +276,7 @@ void testExpand(State * state) {
 //	ExpVector<Action> res = expander.expand(node);
 //	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
 //	for(int8 j=0; j<res.getLogicSize(); j++)
-//		std::cout << res[j] << "\n";
+//		std::cout << res.get(j) << "\n";
 
 	// FASE 1b
 	//Caso 2: presenti due pedine nere
@@ -286,7 +285,7 @@ void testExpand(State * state) {
 //	ExpVector<Action> res = expander.expand(node);
 //	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
 //	for(int8 j=0; j<res.getLogicSize(); j++)
-//	std::cout << res[j] << "\n";
+//	std::cout << res.get(j) << "\n";
 //	delete state;
 
 	//FASE 2 (state: see the pic I sent on Telegram)
@@ -321,7 +320,7 @@ void testExpand(State * state) {
 //	ExpVector<Action> res = expander.expand(node);
 //	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
 //	for(int8 j=0; j<res.getLogicSize(); j++)
-//		std::cout << res[j] << "\n";
+//		std::cout << res.get(j) << "\n";
 //  delete state;
 
 	//FASE 3
