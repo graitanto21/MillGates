@@ -79,8 +79,8 @@ State * CubeStateImpl::clone() {
 				clone->setPawnAt(i, j, k, getPawnAt(i, j, k));
 
 	clone->setPhase(getPhase());
-	clone->setWhitePawnsOnBoardStr(getWhitePawnsOnBoardStr() + "");
-	clone->setBlackPawnsOnBoardStr(getBlackPawnsOnBoardStr() + "");
+	clone->setPawnsOnBoard(PAWN_WHITE, getPawnsOnBoard(PAWN_WHITE));
+	clone->setPawnsOnBoard(PAWN_BLACK, getPawnsOnBoard(PAWN_BLACK));
 
 	return clone;
 }

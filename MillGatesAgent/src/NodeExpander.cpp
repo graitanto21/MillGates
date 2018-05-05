@@ -23,7 +23,7 @@ void NodeExpander::performAction(Node * node, Action action) {
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
 		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), node->getPawn());
-		state->setPawnsOnBoard(node->getPawn(), state->getPawnsOnBoard(node->getPawn()) + 1 - '0');
+		state->setPawnsOnBoard(node->getPawn(), state->getPawnsOnBoard(node->getPawn()) + 1);
 		if (node->getLevel() >= BLACK_PAWNS_COUNT + WHITE_PAWNS_COUNT)
 			state->setPhase(PHASE_2);
 	}
@@ -36,7 +36,7 @@ void NodeExpander::performAction(Node * node, Action action) {
 	// rimozione pedina avversaria
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
-		state->setPawnsOnBoard(OPP(node->getPawn()), state->getPawnsOnBoard(OPP(node->getPawn())) - 1 - '0');
+		state->setPawnsOnBoard(OPP(node->getPawn()), state->getPawnsOnBoard(OPP(node->getPawn())) - 1);
 		if (state->getWhitePawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackPawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE)
 			state->setPhase(PHASE_3);
 	}

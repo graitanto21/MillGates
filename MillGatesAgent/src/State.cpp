@@ -145,17 +145,17 @@ int8 State::getBlackPawnsOnBoardStr() const {
 	return getPawnAt(1,1,1) + '1' - 1;
 }
 
-void State::setPawnsOnBoard(pawn pawn, int count) {
+void State::setPawnsOnBoard(pawn pawn, int8 count) {
 	if (pawn == PAWN_WHITE)
-		setPawnAt(1,1,2,count);
+		setPawnAt(1,1,2, pawn);
 	else if (pawn == PAWN_BLACK)
-		setPawnAt(1,1,1, count);
+		setPawnAt(1,1,1, pawn);
 }
 int8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
-		return getPawnAt(1,1,2) + '1' - 1;
+		return getPawnAt(1,1,2);
 	else if (pawn == PAWN_BLACK)
-		return getPawnAt(1,1,1) + '1' - 1;
+		return getPawnAt(1,1,1);
 	return 0;
 }
 
@@ -406,7 +406,7 @@ ExpVector<int8> State::getAvailablePositions(int8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
-	if (getPhase() == PHASE_1 || getPawnsOnBoard(myPawn) == '3')
+	if (getPhase() == PHASE_1 || getPawnsOnBoard(myPawn) == 3)
 		return getAllPositions(PAWN_NONE);
 
 	ExpVector<int8> result(MAX_MOVES_PHASE_2);
