@@ -147,9 +147,9 @@ int8 State::getBlackPawnsOnBoardStr() const {
 
 void State::setPawnsOnBoard(pawn pawn, int8 count) {
 	if (pawn == PAWN_WHITE)
-		setPawnAt(1,1,2, pawn);
+		setPawnAt(1,1,2, count);
 	else if (pawn == PAWN_BLACK)
-		setPawnAt(1,1,1, pawn);
+		setPawnAt(1,1,1, count);
 }
 int8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
