@@ -326,8 +326,8 @@
 //	//FASE 3
 //	state->setPhase(PHASE_3);
 //
-//	state->setPawnsOnBoard(PAWN_BLACK, '8');
-//	state->setPawnsOnBoard(PAWN_WHITE, '3');
+//	state->setPawnsOnBoard(PAWN_BLACK, 8);
+//	state->setPawnsOnBoard(PAWN_WHITE, 3);
 //
 //	state->setPawnAt2D('b', '6', PAWN_BLACK);
 //
