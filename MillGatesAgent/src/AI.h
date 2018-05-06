@@ -9,13 +9,13 @@
 #define AI_H_
 
 #include "Action.h"
-#include "Node.h"
+#include "State.h"
 
 class AI {
 public:
 
 	virtual ~AI();
-	virtual Action choose(Node node) = 0;
+	virtual Action choose(State * state, pawn player) = 0;
 
 };
 

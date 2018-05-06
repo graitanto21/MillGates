@@ -30,7 +30,7 @@ public:
 	void setPhase(int8 currentPhase);
 	int8 getPhase() const;
 
-	virtual State * clone();
+	virtual State * clone() const;
 
 	virtual ~CubeStateImpl();
 };

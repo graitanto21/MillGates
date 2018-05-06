@@ -130,33 +130,61 @@ pawn State::getPawnAt2D(int8 x, int8 y) const{
 
 
 void State::setWhitePawnsOnBoardStr(std::string number){
-	setPawnAt(1,1,2,atoi(number.c_str()));
-	//setPawnAt(1,1,2,number.at(0));
+	setPawnsOnBoard(PAWN_WHITE, atoi(number.c_str()));
 }
 int8 State::getWhitePawnsOnBoardStr() const {
-	return getPawnAt(1,1,2) + '1' - 1;
+	return getPawnsOnBoard(PAWN_WHITE) + '1' - 1;
 }
 
 void State::setBlackPawnsOnBoardStr(std::string  number) {
-	setPawnAt(1,1,1,atoi(number.c_str()));
-	//setPawnAt(1,1,1,number.at(0));
+	setPawnsOnBoard(PAWN_BLACK, atoi(number.c_str()));
 }
 int8 State::getBlackPawnsOnBoardStr() const {
-	return getPawnAt(1,1,1) + '1' - 1;
+	return getPawnsOnBoard(PAWN_BLACK) + '1' - 1;
 }
 
 void State::setPawnsOnBoard(pawn pawn, int8 count) {
 	if (pawn == PAWN_WHITE)
-		setPawnAt(1,1,2, count);
+		setPawnAt(1,1,1, (getPawnAt(1,1,1) & 15) | (count << 4));
 	else if (pawn == PAWN_BLACK)
-		setPawnAt(1,1,1, count);
+		setPawnAt(1,1,1, (getPawnAt(1,1,1) & 240) | count);
 }
+
 int8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
-		return getPawnAt(1,1,2);
+		return getPawnAt(1,1,1) & 15;
 	else if (pawn == PAWN_BLACK)
-		return getPawnAt(1,1,1);
+		return (getPawnAt(1,1,1) & 240) >> 4;
 	return 0;
+}
+
+void State::setWhitePawnsToPlayStr(std::string number) {
+	setPawnsToPlay(PAWN_WHITE, atoi(number.c_str()));
+}
+int8 State::getWhitePawnsToPlayStr() const {
+	return getPawnsToPlay(PAWN_WHITE) + '1' - 1;
+}
+
+void State::setBlackPawnsToPlayStr(std::string number) {
+	setPawnsToPlay(PAWN_BLACK, atoi(number.c_str()));
+}
+int8 State::getBlackPawnsToPlayStr() const {
+	return getPawnsToPlay(PAWN_BLACK) + '1' - 1;
+}
+
+pawn State::getPawnsToPlay(pawn player) const {
+	if (player == PAWN_WHITE)
+		return getPawnAt(1,1,2) & 15;
+	else if (player == PAWN_BLACK)
+		return (getPawnAt(1,1,2) & 240) >> 4;
+	return 0;
+}
+
+void State::setPawnsToPlay(pawn player, int8 count) {
+	if (player == PAWN_WHITE)
+		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 15) | (count << 4));
+	else if (player == PAWN_BLACK)
+		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 240) | count);
 }
 
 std::string State::toString() const {
@@ -463,5 +491,79 @@ ExpVector<int8> State::getAvailablePositions(int8 pos) const {
 #endif
 
 	return result;
+
+}
+
+ExpVector<Action> State::getActions(pawn player) const {
+
+	ExpVector<Action> result(ACTION_VECTOR_DEFAULT_SIZE);
+
+	if (getPhase() == PHASE_1) {
+		result = addActionsForPawn(POS_NULL, result, player);
+	}
+	else {
+		ExpVector<int8> myPawns = getAllPositions(player);
+		for (int8 k = 0; k < myPawns.getLogicSize(); k++)
+			result = addActionsForPawn(myPawns.get(k), result, player);
+	}
+
+	return result;
+
+}
+
+State * State::result(Action action, pawn player) const {
+
+	State * state = clone();
+
+	int8 src = action.getSrc();
+	int8 dest = action.getDest();
+	int8 toRemove = action.getRemovedPawn();
+
+	// fase 1 (pedina in dest)
+	if(!IS_VALID(src) && IS_VALID(dest)) {
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), player);
+		state->setPawnsOnBoard(player, state->getPawnsOnBoard(player) + 1);
+		if (getPawnsToPlay(PAWN_BLACK) == 0 && getPawnsToPlay(PAWN_WHITE) == 0)
+			state->setPhase(PHASE_2);
+	}
+	// fasi 2 e 3 (pedina da src a dest)
+	if(IS_VALID(src) && IS_VALID(dest)) {
+		state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), player);
+	}
+
+	// rimozione pedina avversaria
+	if(IS_VALID(toRemove)) {
+		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
+		state->setPawnsOnBoard(OPP(player), state->getPawnsOnBoard(OPP(player)) - 1);
+		if (state->getWhitePawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackPawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE)
+			state->setPhase(PHASE_3);
+	}
+
+	return state;
+
+}
+
+ExpVector<Action> State::addActionsForPawn(int8 src, ExpVector<Action> actionBuffer, pawn player) const {
+
+	ExpVector<int8> available = getAvailablePositions(src);
+	for (int8 i = 0; i < available.getLogicSize(); i++) {
+		if (willBeInMorris(src, available.get(i), player)) {
+			ExpVector<int8> pos = getAllPositions(OPP(player));
+			bool added = false;
+			for (int8 j = 0; j < pos.getLogicSize(); j++)
+				if (!isInMorris(pos.get(j))) {
+					added = true;
+					actionBuffer.add(Action(src, available.get(i), pos.get(j)));
+				}
+			if (!added)
+				for (int8 j = 0; j < pos.getLogicSize(); j++)
+					actionBuffer.add(Action(src, available.get(i), pos.get(j)));
+		}
+		else
+			actionBuffer.add(Action(src, available.get(i), POS_NULL));
+	}
+
+	return actionBuffer;
 
 }

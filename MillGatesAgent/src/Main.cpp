@@ -10,12 +10,11 @@
 #include "CubeStateImpl.h"
 #include "DummyAI.h"
 #include "connection.h"
-#include "NodeExpander.h"
 #include <iostream>
 #include <time.h>
 
 #define ACTION_STRLEN 7
-#define STATE_STRLEN 78
+#define STATE_STRLEN 82
 
 using namespace std;
 //
@@ -33,13 +32,12 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));
 
 	DummyAI ai;
-	NodeExpander expander;
 
 	if (!strcmp(argv[1], "white")) {
-		Node * node = new Node(new CubeStateImpl(), PAWN_WHITE, 0);
+		State * state = new CubeStateImpl();
 		Action action;
 		while(1) {
-			action = ai.choose(*node);
+			action = ai.choose(state, PAWN_WHITE);
 
 			actionStr[0] = '\0';
 			actionStr[1] = '\0';
@@ -55,13 +53,11 @@ int main(int argc, char* argv[]) {
 			recv_data(stateStr, STATE_STRLEN);
 			stateStr[STATE_STRLEN - 1] = '\0';
 
-			int level = node->getLevel();
-			pawn pawn = node->getPawn();
-			delete node;
-			node = new Node(new CubeStateImpl(stateStr), pawn, level+2);
-			cout << "State (internal repr): " << (node->getState()->toString()) << "\n";
+			delete state;
+			state = new CubeStateImpl(stateStr);
+			cout << "State (internal repr): " << (state->toString()) << "\n";
 			cout << "State (ordered repr): ";
-			node->getState()->toStringToSend();
+			state->toStringToSend();
 			cout << "\n";
 		}
 	}

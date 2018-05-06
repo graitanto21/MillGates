@@ -18,6 +18,8 @@ CubeStateImpl::CubeStateImpl() {
 	phase = PHASE_1;
 	setPawnsOnBoard(PAWN_WHITE, 0);
 	setPawnsOnBoard(PAWN_BLACK, 0);
+	setPawnsToPlay(PAWN_WHITE, WHITE_PAWNS_COUNT);
+	setPawnsToPlay(PAWN_BLACK, BLACK_PAWNS_COUNT);
 }
 
 CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
@@ -31,7 +33,7 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 	 */
 	unsigned int i=0;
 	//Pawns
-	while(i<(stringFromServer.length()-5)) {
+	while(i<(stringFromServer.length()-9)) {
 		setPawnAt2D(
 				/* x */			(int8)stringFromServer[i],
 				/* y */ 		(int8)stringFromServer[i+1],
@@ -40,7 +42,9 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 	}
 	setWhitePawnsOnBoardStr(stringFromServer.substr(i, 2));
 	setBlackPawnsOnBoardStr(stringFromServer.substr(i+2, 2));
-	setPhase(stringFromServer[i+4]);
+	setWhitePawnsToPlayStr(stringFromServer.substr(i+4, 2));
+	setBlackPawnsToPlayStr(stringFromServer.substr(i+6, 2));
+	setPhase(stringFromServer[i+8]);
 }
 
 /*
@@ -69,7 +73,7 @@ int8 CubeStateImpl::getPhase() const {
 	return phase;
 }
 
-State * CubeStateImpl::clone() {
+State * CubeStateImpl::clone() const {
 
 	State * clone = new CubeStateImpl();
 
