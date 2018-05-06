@@ -152,9 +152,9 @@ void State::setPawnsOnBoard(pawn pawn, int8 count) {
 
 int8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
-		return getPawnAt(1,1,1) & 15;
-	else if (pawn == PAWN_BLACK)
 		return (getPawnAt(1,1,1) & 240) >> 4;
+	else if (pawn == PAWN_BLACK)
+		return getPawnAt(1,1,1) & 15;
 	return 0;
 }
 
@@ -174,9 +174,9 @@ int8 State::getBlackPawnsToPlayStr() const {
 
 pawn State::getPawnsToPlay(pawn player) const {
 	if (player == PAWN_WHITE)
-		return getPawnAt(1,1,2) & 15;
-	else if (player == PAWN_BLACK)
 		return (getPawnAt(1,1,2) & 240) >> 4;
+	else if (player == PAWN_BLACK)
+		return getPawnAt(1,1,2) & 15;
 	return 0;
 }
 
@@ -523,6 +523,7 @@ State * State::result(Action action, pawn player) const {
 	if(!IS_VALID(src) && IS_VALID(dest)) {
 		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), player);
 		state->setPawnsOnBoard(player, state->getPawnsOnBoard(player) + 1);
+		state->setPawnsToPlay(player, state->getPawnsToPlay(player) - 1);
 		if (getPawnsToPlay(PAWN_BLACK) == 0 && getPawnsToPlay(PAWN_WHITE) == 0)
 			state->setPhase(PHASE_2);
 	}
@@ -536,7 +537,7 @@ State * State::result(Action action, pawn player) const {
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
 		state->setPawnsOnBoard(OPP(player), state->getPawnsOnBoard(OPP(player)) - 1);
-		if (state->getWhitePawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE || state->getBlackPawnsOnBoardStr() == PAWNS_TO_ENTER_3RD_PHASE)
+		if (state->getPawnsOnBoard(player) == PAWNS_TO_ENTER_3RD_PHASE)
 			state->setPhase(PHASE_3);
 	}
 

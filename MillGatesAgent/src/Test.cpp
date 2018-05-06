@@ -7,8 +7,8 @@
 //
 //
 //#include "CubeStateImpl.h"
+//#include "State.h"
 //#include <iostream>
-//#include "NodeExpander.h"
 ////
 ////
 //////Given a pos, returns a string (e.g. "a1").
@@ -266,91 +266,91 @@
 ////	}
 ////}
 //
-//void testExpand(State * state) {
-//	Node node(state, PAWN_WHITE, 0);
-//	NodeExpander expander;
-//
-//	// FASE 1a
-//
-//	//Caso 1: prima espansione ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
-////	ExpVector<Action> res = expander.expand(node);
-////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
-////	for(int8 j=0; j<res.getLogicSize(); j++)
-////		std::cout << res.get(j) << "\n";
-//
-//	// FASE 1b
-//	//Caso 2: presenti due pedine nere
-////	node.getState()->setPawnAt2D('a', '1', PAWN_BLACK);
-////	node.getState()->setPawnAt2D('g', '7', PAWN_BLACK);
-////	ExpVector<Action> res = expander.expand(node);
-////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
-////	for(int8 j=0; j<res.getLogicSize(); j++)
-////	std::cout << res.get(j) << "\n";
-////	delete state;
-//
-//	//FASE 2 (state: see the pic I sent on Telegram)
-////	state->setPhase(PHASE_2);
+////void testExpand(State * state) {
+////	Node node(state, PAWN_WHITE, 0);
+////	NodeExpander expander;
 ////
-////	state->setBlackCheckersOnBoard("9");
-////	state->setWhiteCheckersOnBoard("8");
+////	// FASE 1a
 ////
-////	state->setPawnAt2D('a', '1', PAWN_WHITE);
-////	state->setPawnAt2D('a', '4', PAWN_WHITE);
-////	state->setPawnAt2D('a', '7', PAWN_BLACK);
+////	//Caso 1: prima espansione ==> ok, rimane il problema della getAvailable: una delle azioni possibili è stare fermo
+//////	ExpVector<Action> res = expander.expand(node);
+//////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//////	for(int8 j=0; j<res.getLogicSize(); j++)
+//////		std::cout << res.get(j) << "\n";
 ////
-////	state->setPawnAt2D('b', '2', PAWN_BLACK);
-////	state->setPawnAt2D('b', '4', PAWN_BLACK);
+////	// FASE 1b
+////	//Caso 2: presenti due pedine nere
+//////	node.getState()->setPawnAt2D('a', '1', PAWN_BLACK);
+//////	node.getState()->setPawnAt2D('g', '7', PAWN_BLACK);
+//////	ExpVector<Action> res = expander.expand(node);
+//////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//////	for(int8 j=0; j<res.getLogicSize(); j++)
+//////	std::cout << res.get(j) << "\n";
+//////	delete state;
+////
+////	//FASE 2 (state: see the pic I sent on Telegram)
+//////	state->setPhase(PHASE_2);
+//////
+//////	state->setBlackCheckersOnBoard("9");
+//////	state->setWhiteCheckersOnBoard("8");
+//////
+//////	state->setPawnAt2D('a', '1', PAWN_WHITE);
+//////	state->setPawnAt2D('a', '4', PAWN_WHITE);
+//////	state->setPawnAt2D('a', '7', PAWN_BLACK);
+//////
+//////	state->setPawnAt2D('b', '2', PAWN_BLACK);
+//////	state->setPawnAt2D('b', '4', PAWN_BLACK);
+//////	state->setPawnAt2D('b', '6', PAWN_BLACK);
+//////
+//////	state->setPawnAt2D('c', '3', PAWN_BLACK);
+//////	state->setPawnAt2D('c', '4', PAWN_WHITE);
+//////	state->setPawnAt2D('c', '5', PAWN_BLACK);
+//////
+//////	state->setPawnAt2D('d', '1', PAWN_BLACK);
+//////	state->setPawnAt2D('d', '3', PAWN_WHITE);
+//////	state->setPawnAt2D('d', '5', PAWN_BLACK);
+//////	state->setPawnAt2D('d', '7', PAWN_BLACK);
+//////
+//////	state->setPawnAt2D('e', '4', PAWN_WHITE);
+//////	state->setPawnAt2D('e', '5', PAWN_WHITE);
+//////
+//////	state->setPawnAt2D('f', '4', PAWN_WHITE);
+//////	state->setPawnAt2D('g', '7', PAWN_WHITE);
+//////
+//////	ExpVector<Action> res = expander.expand(node);
+//////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
+//////	for(int8 j=0; j<res.getLogicSize(); j++)
+//////		std::cout << res.get(j) << "\n";
+//////  delete state;
+////
+////	//FASE 3
+////	state->setPhase(PHASE_3);
+////
+////	state->setPawnsOnBoard(PAWN_BLACK, 8);
+////	state->setPawnsOnBoard(PAWN_WHITE, 3);
+////
 ////	state->setPawnAt2D('b', '6', PAWN_BLACK);
 ////
 ////	state->setPawnAt2D('c', '3', PAWN_BLACK);
-////	state->setPawnAt2D('c', '4', PAWN_WHITE);
 ////	state->setPawnAt2D('c', '5', PAWN_BLACK);
 ////
 ////	state->setPawnAt2D('d', '1', PAWN_BLACK);
-////	state->setPawnAt2D('d', '3', PAWN_WHITE);
-////	state->setPawnAt2D('d', '5', PAWN_BLACK);
-////	state->setPawnAt2D('d', '7', PAWN_BLACK);
+////	state->setPawnAt2D('d', '5', PAWN_WHITE);
+////	state->setPawnAt2D('d', '6', PAWN_BLACK);
 ////
-////	state->setPawnAt2D('e', '4', PAWN_WHITE);
-////	state->setPawnAt2D('e', '5', PAWN_WHITE);
+////	state->setPawnAt2D('e', '4', PAWN_BLACK);
 ////
+////	state->setPawnAt2D('f', '2', PAWN_BLACK);
 ////	state->setPawnAt2D('f', '4', PAWN_WHITE);
-////	state->setPawnAt2D('g', '7', PAWN_WHITE);
+////	state->setPawnAt2D('f', '6', PAWN_BLACK);
+////
+////	state->setPawnAt2D('g', '4', PAWN_WHITE);
 ////
 ////	ExpVector<Action> res = expander.expand(node);
 ////	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
 ////	for(int8 j=0; j<res.getLogicSize(); j++)
-////		std::cout << res.get(j) << "\n";
-////  delete state;
-//
-//	//FASE 3
-//	state->setPhase(PHASE_3);
-//
-//	state->setPawnsOnBoard(PAWN_BLACK, 8);
-//	state->setPawnsOnBoard(PAWN_WHITE, 3);
-//
-//	state->setPawnAt2D('b', '6', PAWN_BLACK);
-//
-//	state->setPawnAt2D('c', '3', PAWN_BLACK);
-//	state->setPawnAt2D('c', '5', PAWN_BLACK);
-//
-//	state->setPawnAt2D('d', '1', PAWN_BLACK);
-//	state->setPawnAt2D('d', '5', PAWN_WHITE);
-//	state->setPawnAt2D('d', '6', PAWN_BLACK);
-//
-//	state->setPawnAt2D('e', '4', PAWN_BLACK);
-//
-//	state->setPawnAt2D('f', '2', PAWN_BLACK);
-//	state->setPawnAt2D('f', '4', PAWN_WHITE);
-//	state->setPawnAt2D('f', '6', PAWN_BLACK);
-//
-//	state->setPawnAt2D('g', '4', PAWN_WHITE);
-//
-//	ExpVector<Action> res = expander.expand(node);
-//	std::cout << "Azioni disponibili: "<< res.getLogicSize() << "\n";
-//	for(int8 j=0; j<res.getLogicSize(); j++)
-//			std::cout << res.get(j) << "\n";
-//}
+////			std::cout << res.get(j) << "\n";
+////}
 ////
 ////void testPerformAction(State * state) {
 ////
@@ -379,7 +379,7 @@
 ////
 //int main(void) {
 //
-//	State *state;
+//	State * state;
 //
 //	/* TESTING THE STATE */
 ////	state = new CubeStateImpl(); //Creates a void state
@@ -409,13 +409,19 @@
 //	/* TESTING THE EXPANDER */
 //
 //	//expand
-//	state = new CubeStateImpl();
-//	testExpand(state);
-//	delete state;
+////	state = new CubeStateImpl();
+////	testExpand(state);
+////	delete state;
 //
 //	//PerformAction
 ////	state = new CubeStateImpl();
 ////	testPerformAction(state);
 ////	delete state;
+//
+//	state = new CubeStateImpl();
+//	state->setPawnsOnBoard(PAWN_WHITE, 3);
+//	state->setPawnsOnBoard(PAWN_BLACK, 12);
+//	std::cout << (int)state->getPawnsOnBoard(PAWN_WHITE) << "\n";
+//	std::cout << (int)state->getPawnsOnBoard(PAWN_BLACK) << "\n";
 //}
 //
