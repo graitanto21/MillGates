@@ -16,7 +16,7 @@ class CubeStateImpl : public State {
 private:
 	//Data structures
 	pawn pawns[CUBE_SIZE_X][CUBE_SIZE_Y][CUBE_SIZE_Z];
-	int8 phase;
+	uint8 phase;
 
 public:
 	//Constructors
@@ -24,11 +24,11 @@ public:
 	CubeStateImpl(std::string stringFromServer);
 
 	//Getters and setters
-	virtual pawn getPawnAt(int8 x, int8 y, int8 z) const;
-	virtual void setPawnAt(int8 x, int8 y, int8 z, pawn value);
+	virtual pawn getPawnAt(uint8 x, uint8 y, uint8 z) const;
+	virtual void setPawnAt(uint8 x, uint8 y, uint8 z, pawn value);
 
-	void setPhase(int8 currentPhase);
-	int8 getPhase() const;
+	void setPhase(uint8 currentPhase);
+	uint8 getPhase() const;
 
 	virtual State * clone() const;
 

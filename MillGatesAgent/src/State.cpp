@@ -22,7 +22,7 @@
   a  b  c  d  e  f  g
  */
 
-bool State::setPawnAt2D(int8 x, int8 y, pawn value){
+bool State::setPawnAt2D(uint8 x, uint8 y, pawn value){
 	int i, j, k;
 	i = j = k = -1;
 
@@ -76,7 +76,7 @@ bool State::setPawnAt2D(int8 x, int8 y, pawn value){
 }
 
 // If coordinate is not valid, returns -1;
-pawn State::getPawnAt2D(int8 x, int8 y) const{
+pawn State::getPawnAt2D(uint8 x, uint8 y) const{
 	int i, j, k;
 	i = j = k = -1;
 
@@ -132,25 +132,25 @@ pawn State::getPawnAt2D(int8 x, int8 y) const{
 void State::setWhitePawnsOnBoardStr(std::string number){
 	setPawnsOnBoard(PAWN_WHITE, atoi(number.c_str()));
 }
-int8 State::getWhitePawnsOnBoardStr() const {
+uint8 State::getWhitePawnsOnBoardStr() const {
 	return getPawnsOnBoard(PAWN_WHITE) + '1' - 1;
 }
 
 void State::setBlackPawnsOnBoardStr(std::string  number) {
 	setPawnsOnBoard(PAWN_BLACK, atoi(number.c_str()));
 }
-int8 State::getBlackPawnsOnBoardStr() const {
+uint8 State::getBlackPawnsOnBoardStr() const {
 	return getPawnsOnBoard(PAWN_BLACK) + '1' - 1;
 }
 
-void State::setPawnsOnBoard(pawn pawn, int8 count) {
+void State::setPawnsOnBoard(pawn pawn, uint8 count) {
 	if (pawn == PAWN_WHITE)
 		setPawnAt(1,1,1, (getPawnAt(1,1,1) & 15) | (count << 4));
 	else if (pawn == PAWN_BLACK)
 		setPawnAt(1,1,1, (getPawnAt(1,1,1) & 240) | count);
 }
 
-int8 State::getPawnsOnBoard(pawn pawn) const {
+uint8 State::getPawnsOnBoard(pawn pawn) const {
 	if (pawn == PAWN_WHITE)
 		return (getPawnAt(1,1,1) & 240) >> 4;
 	else if (pawn == PAWN_BLACK)
@@ -161,14 +161,14 @@ int8 State::getPawnsOnBoard(pawn pawn) const {
 void State::setWhitePawnsToPlayStr(std::string number) {
 	setPawnsToPlay(PAWN_WHITE, atoi(number.c_str()));
 }
-int8 State::getWhitePawnsToPlayStr() const {
+uint8 State::getWhitePawnsToPlayStr() const {
 	return getPawnsToPlay(PAWN_WHITE) + '1' - 1;
 }
 
 void State::setBlackPawnsToPlayStr(std::string number) {
 	setPawnsToPlay(PAWN_BLACK, atoi(number.c_str()));
 }
-int8 State::getBlackPawnsToPlayStr() const {
+uint8 State::getBlackPawnsToPlayStr() const {
 	return getPawnsToPlay(PAWN_BLACK) + '1' - 1;
 }
 
@@ -180,7 +180,7 @@ pawn State::getPawnsToPlay(pawn player) const {
 	return 0;
 }
 
-void State::setPawnsToPlay(pawn player, int8 count) {
+void State::setPawnsToPlay(pawn player, uint8 count) {
 	if (player == PAWN_WHITE)
 		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 15) | (count << 4));
 	else if (player == PAWN_BLACK)
@@ -192,9 +192,9 @@ std::string State::toString() const {
 	char res[CUBE_SIZE_X*CUBE_SIZE_Y*CUBE_SIZE_Z + 1];
 
 	int l = 0;
-	for (int8 i = 0; i < CUBE_SIZE_X; i++)
-		for (int8 j = 0; j < CUBE_SIZE_Y; j++)
-			for (int8 k = 0; k < CUBE_SIZE_Z; k++){
+	for (uint8 i = 0; i < CUBE_SIZE_X; i++)
+		for (uint8 j = 0; j < CUBE_SIZE_Y; j++)
+			for (uint8 k = 0; k < CUBE_SIZE_Z; k++){
 				if (i==1 && j==1 && k==1 && getPawnAt(i,j,k) != PAWN_NONE)
 					res[l] = getPawnAt(i,j,k) < 10 ? (getPawnAt(1,1,1) + '0') : 'A' + (getPawnAt(i,j,k)%10);
 				else if (i==1 && j==1 && k==2 && getPawnAt(i,j,k) != PAWN_NONE)
@@ -257,7 +257,7 @@ void State::toStringToSend() const{
 	ret[count] = '\0';
 }
 
-bool State::isInMorris(int8 pos) const {
+bool State::isInMorris(uint8 pos) const {
 
 	bool morrisX = true;
 	bool morrisY = true;
@@ -306,7 +306,7 @@ bool State::isInMorris(int8 pos) const {
 
 }
 
-bool State::isInMorris(int8 pos, int8 axis) const {
+bool State::isInMorris(uint8 pos, uint8 axis) const {
 
 	pawn selected = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
@@ -343,7 +343,7 @@ bool State::isInMorris(int8 pos, int8 axis) const {
 }
 
 //Pls specify in a comment what do parameters mean!
-bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
+bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 
 	bool morrisX = true;
 	bool morrisY = true;
@@ -415,13 +415,13 @@ bool State::willBeInMorris(int8 src, int8 dest, pawn pawn) const {
 	return morrisX || morrisY || morrisZ;
 }
 
-ExpVector<int8> State::getAllPositions(pawn pawn) const {
+ExpVector<uint8> State::getAllPositions(pawn pawn) const {
 
-	ExpVector<int8> result(AVERAGE_PAWNS_ON_BOARD);
+	ExpVector<uint8> result(AVERAGE_PAWNS_ON_BOARD);
 
-	for (int8 x = 0; x < CUBE_SIZE_X; x++)
-		for (int8 y = 0; y < CUBE_SIZE_Y; y++)
-			for (int8 z = 0; z < CUBE_SIZE_Z; z++)
+	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+			for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
 				if (getPawnAt(x, y, z) == pawn && POS_ENABLED(NEW_POS(x,y,z))) {
 					result.add(NEW_POS(x,y,z));
 				}
@@ -430,15 +430,15 @@ ExpVector<int8> State::getAllPositions(pawn pawn) const {
 
 }
 
-ExpVector<int8> State::getAvailablePositions(int8 pos) const {
+ExpVector<uint8> State::getAvailablePositions(uint8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
 	if (getPhase() == PHASE_1 || getPawnsOnBoard(myPawn) == 3)
 		return getAllPositions(PAWN_NONE);
 
-	ExpVector<int8> result(MAX_MOVES_PHASE_2);
-	int8 p;
+	ExpVector<uint8> result(MAX_MOVES_PHASE_2);
+	uint8 p;
 
 	p = FWX(pos);
 	if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
@@ -502,8 +502,8 @@ ExpVector<Action> State::getActions(pawn player) const {
 		result = addActionsForPawn(POS_NULL, result, player);
 	}
 	else {
-		ExpVector<int8> myPawns = getAllPositions(player);
-		for (int8 k = 0; k < myPawns.getLogicSize(); k++)
+		ExpVector<uint8> myPawns = getAllPositions(player);
+		for (uint8 k = 0; k < myPawns.getLogicSize(); k++)
 			result = addActionsForPawn(myPawns.get(k), result, player);
 	}
 
@@ -515,9 +515,9 @@ State * State::result(Action action, pawn player) const {
 
 	State * state = clone();
 
-	int8 src = action.getSrc();
-	int8 dest = action.getDest();
-	int8 toRemove = action.getRemovedPawn();
+	uint8 src = action.getSrc();
+	uint8 dest = action.getDest();
+	uint8 toRemove = action.getRemovedPawn();
 
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
@@ -545,20 +545,20 @@ State * State::result(Action action, pawn player) const {
 
 }
 
-ExpVector<Action> State::addActionsForPawn(int8 src, ExpVector<Action> actionBuffer, pawn player) const {
+ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer, pawn player) const {
 
-	ExpVector<int8> available = getAvailablePositions(src);
-	for (int8 i = 0; i < available.getLogicSize(); i++) {
+	ExpVector<uint8> available = getAvailablePositions(src);
+	for (uint8 i = 0; i < available.getLogicSize(); i++) {
 		if (willBeInMorris(src, available.get(i), player)) {
-			ExpVector<int8> pos = getAllPositions(OPP(player));
+			ExpVector<uint8> pos = getAllPositions(OPP(player));
 			bool added = false;
-			for (int8 j = 0; j < pos.getLogicSize(); j++)
+			for (uint8 j = 0; j < pos.getLogicSize(); j++)
 				if (!isInMorris(pos.get(j))) {
 					added = true;
 					actionBuffer.add(Action(src, available.get(i), pos.get(j)));
 				}
 			if (!added)
-				for (int8 j = 0; j < pos.getLogicSize(); j++)
+				for (uint8 j = 0; j < pos.getLogicSize(); j++)
 					actionBuffer.add(Action(src, available.get(i), pos.get(j)));
 		}
 		else
@@ -566,5 +566,20 @@ ExpVector<Action> State::addActionsForPawn(int8 src, ExpVector<Action> actionBuf
 	}
 
 	return actionBuffer;
+
+}
+
+bool State::isTerminal(pawn player) const {
+
+	return getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions(player).getLogicSize() == 0;
+
+}
+
+sint8 State::utility(pawn player) const {
+
+	if (isTerminal(player))
+		return player == PAWN_WHITE ? PLAYER_WHITE_UTILITY : PLAYER_BLACK_ULITITY;
+
+	return SPARE_UTILITY;
 
 }

@@ -35,9 +35,9 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 	//Pawns
 	while(i<(stringFromServer.length()-9)) {
 		setPawnAt2D(
-				/* x */			(int8)stringFromServer[i],
-				/* y */ 		(int8)stringFromServer[i+1],
-				/* CONTENT */ 	(int8)stringFromServer[i+2]);
+				/* x */			(uint8)stringFromServer[i],
+				/* y */ 		(uint8)stringFromServer[i+1],
+				/* CONTENT */ 	(uint8)stringFromServer[i+2]);
 		i+=3;
 	}
 	setWhitePawnsOnBoardStr(stringFromServer.substr(i, 2));
@@ -59,17 +59,17 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
  */
 
 //Getters and setters
-void CubeStateImpl::setPawnAt(int8 x, int8 y, int8 z, pawn value) {
+void CubeStateImpl::setPawnAt(uint8 x, uint8 y, uint8 z, pawn value) {
 	pawns[x][y][z] = value;
 }
-pawn CubeStateImpl::getPawnAt(int8 x, int8 y, int8 z) const {
+pawn CubeStateImpl::getPawnAt(uint8 x, uint8 y, uint8 z) const {
 	return pawns[x][y][z];
 }
 
-void CubeStateImpl::setPhase(int8 currentPhase) {
+void CubeStateImpl::setPhase(uint8 currentPhase) {
 	phase = currentPhase;
 }
-int8 CubeStateImpl::getPhase() const {
+uint8 CubeStateImpl::getPhase() const {
 	return phase;
 }
 
