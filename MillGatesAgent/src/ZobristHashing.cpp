@@ -6,7 +6,16 @@
  */
 
 #include "ZobristHashing.h"
+
 #include <stdlib.h>
+
+ZobristHashing* ZobristHashing::instance = NULL;
+
+ZobristHashing* ZobristHashing::getInstance() {
+	if(instance == NULL)
+		instance = new ZobristHashing;
+	return instance;
+}
 
 ZobristHashing::ZobristHashing() {
 

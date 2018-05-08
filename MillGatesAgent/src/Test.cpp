@@ -8,8 +8,9 @@
 
 #include "CubeStateImpl.h"
 #include "State.h"
-#include "ZobristHashing.h"
 #include <iostream>
+
+#include "ZobristHashing.h"
 //
 //
 ////Given a pos, returns a string (e.g. "a1").
@@ -383,7 +384,7 @@ void testZobristHashing(State * state) {
 
 	srand(300);
 
-	ZobristHashing * hasher = new ZobristHashing();
+	ZobristHashing * hasher = ZobristHashing::getInstance();
 
 	std::cout << "Hash iniziale " << hasher->hash(state) << "\n";
 	state->setPawnAt(0,0,1, PAWN_WHITE);

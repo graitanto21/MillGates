@@ -13,13 +13,14 @@
 #include <stdlib.h>
 
 class ZobristHashing {
-
+private:
 	int _table[HASH_TABLE_WIDTH][HASH_TABLE_HEIGHT];
+	static ZobristHashing * instance;
+	ZobristHashing();
 
 public:
 
-	ZobristHashing();
-
+	static ZobristHashing * getInstance();
 	int hash(State * state) const;
 
 	int quickHash(State * state, Action action, int previousHash, pawn player) const;
