@@ -6,16 +6,14 @@
  */
 
 #include "DummyAI.h"
-#include "NodeExpander.h"
 #include "ExpVector.h"
 #include <time.h>
 #include <stdlib.h>
 
 DummyAI::DummyAI() {}
 
-Action DummyAI::choose(Node node) {
-	NodeExpander expander;
-	ExpVector<Action> actions = expander.expand(node);
+Action DummyAI::choose(State * state, pawn player) {
+	ExpVector<Action> actions = state->getActions(player);
 	return actions.get(rand() % actions.getLogicSize());
 }
 

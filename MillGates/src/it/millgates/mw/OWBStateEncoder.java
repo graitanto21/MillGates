@@ -23,6 +23,11 @@ public class OWBStateEncoder implements StateEncoder{
 		sb.append(state.getBlackCheckersOnBoard());
 		sb.append(" ");
 
+		sb.append(state.getWhiteCheckers());
+		sb.append(" ");
+		sb.append(state.getBlackCheckers());
+		sb.append(" ");
+		
 		Phase p = state.getCurrentPhase();
 		switch(p) {
 		case FIRST: sb.append(0); break;

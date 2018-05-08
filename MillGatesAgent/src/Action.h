@@ -14,18 +14,18 @@
 class Action {
 private:
 
-	int8 src;
-	int8 dest;
-	int8 removedPawn;
-	std::string get2Dcoordinates(int8 pos) const;
+	uint8 src;
+	uint8 dest;
+	uint8 removedPawn;
+	std::string get2Dcoordinates(uint8 pos) const;
 
 public:
-	Action(int8 src, int8 dest, int8 removedPawn);
+	Action(uint8 src, uint8 dest, uint8 removedPawn);
 	Action();
 
-	virtual int8 getSrc() const;
-	virtual int8 getDest() const;
-	virtual int8 getRemovedPawn() const;
+	virtual uint8 getSrc() const;
+	virtual uint8 getDest() const;
+	virtual uint8 getRemovedPawn() const;
 
 	virtual std::string toString() const;
 

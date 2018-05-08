@@ -31,10 +31,20 @@
 #define WHITE_PAWNS_COUNT 9
 #define BLACK_PAWNS_COUNT 9
 
-#define PAWNS_TO_ENTER_3RD_PHASE '3'
+#define PAWNS_TO_ENTER_3RD_PHASE 3
+
+#define PLAYER_WHITE_UTILITY 1
+#define PLAYER_BLACK_ULITITY -1
+#define SPARE_UTILITY 0
+
+#define HASH_TABLE_WIDTH 24
+#define HASH_TABLE_HEIGHT 2
+#define HASH_PAWN_WHITE 0
+#define HASH_PAWN_BLACK 1
 
 typedef unsigned char pawn;
-typedef unsigned char int8;
+typedef unsigned char uint8;
+typedef signed char sint8;
 
 /*
  * XXYYZZVV

@@ -7,7 +7,7 @@
 
 #include "Action.h"
 
-Action::Action(int8 src, int8 dest, int8 removedPawn) {
+Action::Action(uint8 src, uint8 dest, uint8 removedPawn) {
 
 	this->src = src;
 	this->dest = dest;
@@ -23,25 +23,25 @@ Action::Action() {
 
 }
 
-int8 Action::getSrc() const {
+uint8 Action::getSrc() const {
 	return src;
 }
 
-int8 Action::getDest() const {
+uint8 Action::getDest() const {
 	return dest;
 }
 
-int8 Action::getRemovedPawn() const {
+uint8 Action::getRemovedPawn() const {
 	return removedPawn;
 }
 
-std::string Action::get2Dcoordinates(int8 pos) const {
+std::string Action::get2Dcoordinates(uint8 pos) const {
 	if(!IS_VALID(pos))
 		return "";
 	std::string res("");
-	int8 i = GETX(pos);
-	int8 j = GETY(pos);
-	int8 k = GETZ(pos);
+	uint8 i = GETX(pos);
+	uint8 j = GETY(pos);
+	uint8 k = GETZ(pos);
 
 	if(j==0) { //a,b,c
 			if (k==2) {

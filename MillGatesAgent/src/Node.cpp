@@ -10,7 +10,7 @@
 Node::Node(State * state, pawn pawn, unsigned int level) {
 
 	this->_state = state;
-	this->_pawn = pawn;
+	this->_player = pawn;
 	this->_level = level;
 
 }
@@ -33,15 +33,27 @@ void Node::addChild(Node * node) {
 
 }
 
+void Node::performAction(Action action) {
+
+	addChild(new Node(getState()->result(action, getPlayer()),OPP(getPlayer()), getLevel() + 1));
+
+}
+
+ExpVector<Action> Node::expand() {
+
+	return getState()->getActions(getPlayer());
+
+}
+
 ExpVector<Node*> Node::getChildren() {
 
 	return _children;
 
 }
 
-pawn Node::getPawn() {
+pawn Node::getPlayer() {
 
-	return this->_pawn;
+	return this->_player;
 
 }
 
