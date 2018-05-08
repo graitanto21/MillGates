@@ -56,7 +56,6 @@ public:
 
 	//Utility methods
 	virtual State* clone() const = 0;
-	virtual int hash();
 	virtual std::string toString() const;
 
 	virtual bool isInMorris(uint8 pos) const;

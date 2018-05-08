@@ -207,11 +207,6 @@ std::string State::toString() const {
 
 }
 
-int State::hash() {
-	//TODO
-	return 0;
-}
-
 State::~State() {}
 
 std::ostream& operator<<(std::ostream &strm, const State &s){
