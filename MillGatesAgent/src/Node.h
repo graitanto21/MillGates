@@ -28,7 +28,7 @@ public:
 
 	virtual unsigned int getLevel() const;
 	virtual void performAction(Action action);
-	virtual ExpVector<Action> expand();
+	virtual ExpVector<Action> * expand();
 
 	virtual void addChild(Node * node);
 	virtual ExpVector<Node*> getChildren();

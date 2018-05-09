@@ -25,10 +25,10 @@ ZobristHashing::ZobristHashing() {
 
 }
 
-int ZobristHashing::hash(State * state) const {
+hashcode ZobristHashing::hash(State * state) const {
 
-	int hash = 0;
-	int j = 0;
+	hashcode hash = 0;
+	uint8 j = 0;
 
 	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
 		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
@@ -40,12 +40,12 @@ int ZobristHashing::hash(State * state) const {
 	return hash;
 }
 
-int ZobristHashing::quickHash(State * state, Action action, int previousHash) const {
+hashcode ZobristHashing::quickHash(State * state, Action action, hashcode previousHash) const {
 
 	uint8 pos;
 	uint8 j;
 	uint8 i;
-	int h = previousHash;
+	hashcode h = previousHash;
 	pos = action.getSrc();
 	if (IS_VALID(pos)) {
 		i = GETX(pos) * CUBE_SIZE_Y * CUBE_SIZE_Z + GETY(pos) * CUBE_SIZE_Z + GETZ(pos);

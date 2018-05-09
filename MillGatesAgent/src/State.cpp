@@ -489,17 +489,17 @@ ExpVector<uint8> State::getAvailablePositions(uint8 pos) const {
 
 }
 
-ExpVector<Action> State::getActions() const {
+ExpVector<Action> * State::getActions() const {
 
-	ExpVector<Action> result(ACTION_VECTOR_DEFAULT_SIZE);
+	ExpVector<Action> * result = new ExpVector<Action>(ACTION_VECTOR_DEFAULT_SIZE);
 
 	if (getPhase() == PHASE_1) {
-		result = addActionsForPawn(POS_NULL, result);
+		*result = addActionsForPawn(POS_NULL, *result);
 	}
 	else {
 		ExpVector<uint8> myPawns = getAllPositions(getPlayer());
 		for (uint8 k = 0; k < myPawns.getLogicSize(); k++)
-			result = addActionsForPawn(myPawns.get(k), result);
+			*result = addActionsForPawn(myPawns.get(k), *result);
 	}
 
 	return result;
@@ -568,7 +568,9 @@ ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBu
 
 bool State::isTerminal() const {
 
-	return (getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions().getLogicSize() == 0);
+	if (getPhase() == PHASE_1)
+		return false;
+	return (getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions()->getLogicSize() == 0);
 
 }
 

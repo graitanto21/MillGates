@@ -67,7 +67,7 @@ public:
 	virtual ExpVector<uint8> getAllPositions(pawn pawn) const;
 	virtual ExpVector<uint8> getAvailablePositions(uint8 pos) const;
 
-	virtual ExpVector<Action> getActions() const;
+	virtual ExpVector<Action> * getActions() const;
 	virtual State * result(Action action) const;
 
 	virtual bool isTerminal() const;

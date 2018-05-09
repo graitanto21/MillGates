@@ -8,7 +8,7 @@
 //#include <stdio.h>
 //#include "State.h"
 //#include "CubeStateImpl.h"
-//#include "DummyAI.h"
+//#include "MinMaxAI.h"
 //#include "connection.h"
 //#include <iostream>
 //#include <time.h>
@@ -31,7 +31,7 @@
 //
 //	srand(time(NULL));
 //
-//	DummyAI ai;
+//	MinMaxAI ai;
 //
 //	if (!strcmp(argv[1], "white")) {
 //		State * state = new CubeStateImpl();

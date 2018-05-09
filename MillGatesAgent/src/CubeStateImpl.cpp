@@ -98,7 +98,7 @@ void CubeStateImpl::setPlayer(pawn player) {
 	_player = player;
 }
 
-CubeStateImpl::~CubeStateImpl() {}
+CubeStateImpl::~CubeStateImpl() { }
 
 //int main(int argc, char **argv) {
 //	printf("Program started...\n");

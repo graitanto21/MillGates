@@ -45,6 +45,7 @@
 typedef unsigned char pawn;
 typedef unsigned char uint8;
 typedef signed char sint8;
+typedef unsigned short hashcode;
 
 /*
  * XXYYZZVV

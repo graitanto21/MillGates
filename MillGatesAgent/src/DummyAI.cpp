@@ -13,8 +13,10 @@
 DummyAI::DummyAI() {}
 
 Action DummyAI::choose(State * state) {
-	ExpVector<Action> actions = state->getActions();
-	return actions.get(rand() % actions.getLogicSize());
+	ExpVector<Action> * actions = state->getActions();
+	Action result = actions->get(rand() % actions->getLogicSize());
+	delete actions;
+	return result;
 }
 
 DummyAI::~DummyAI() {}

@@ -14,16 +14,16 @@
 
 class ZobristHashing {
 private:
-	int _table[HASH_TABLE_WIDTH][HASH_TABLE_HEIGHT];
+	hashcode _table[HASH_TABLE_WIDTH][HASH_TABLE_HEIGHT];
 	static ZobristHashing * instance;
 	ZobristHashing();
 
 public:
 
 	static ZobristHashing * getInstance();
-	int hash(State * state) const;
+	hashcode hash(State * state) const;
 
-	int quickHash(State * state, Action action, int previousHash) const;
+	hashcode quickHash(State * state, Action action, hashcode previousHash) const;
 
 	virtual ~ZobristHashing();
 };

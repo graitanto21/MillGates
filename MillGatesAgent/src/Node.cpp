@@ -38,7 +38,7 @@ void Node::performAction(Action action) {
 
 }
 
-ExpVector<Action> Node::expand() {
+ExpVector<Action> * Node::expand() {
 
 	return getState()->getActions();
 

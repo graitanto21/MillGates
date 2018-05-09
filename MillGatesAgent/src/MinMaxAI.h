@@ -15,8 +15,9 @@
 class MinMaxAI: public AI {
 private:
 
-	ExpVector<int> * _hashes;
+	std::vector<bool> * _hashes;
 	ZobristHashing * _hasher;
+	int _count;
 
 	int min(State * state);
 	int max(State * state);

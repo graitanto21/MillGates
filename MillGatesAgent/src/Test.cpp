@@ -412,7 +412,17 @@ void testZobristHashing(State * state) {
 void testMinMaxAI(State * state) {
 
 	MinMaxAI ai;
-	std::cout << ai.choose(state);
+	srand(400);
+	//std::cout << ai.choose(state);
+
+	// Active wait
+	ExpVector<CubeStateImpl> * vector = new ExpVector<CubeStateImpl>(10);
+	//State * test = new CubeStateImpl();
+	for(;;) {
+		//delete vector;
+		vector = new ExpVector<CubeStateImpl>(10);
+		std::cout << "yolo \n";
+	}
 
 }
 
