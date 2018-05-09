@@ -40,6 +40,10 @@ int MinMaxAI::min(State * state) {
 
 	delete actions;
 
+	_count--;
+	if (_count % 100 == 0)
+		std::cout << _count << "\n";
+
 	return min_value;
 }
 
@@ -69,6 +73,10 @@ int MinMaxAI::max(State * state) {
 	}
 
 	delete actions;
+
+	_count--;
+	if (_count % 100 == 0)
+		std::cout << _count << "\n";
 
 	return max_value;
 }

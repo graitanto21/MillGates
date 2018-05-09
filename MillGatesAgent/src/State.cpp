@@ -570,8 +570,14 @@ bool State::isTerminal() const {
 
 	if (getPhase() == PHASE_1)
 		return false;
-	return (getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions()->getLogicSize() == 0);
 
+	ExpVector<Action> * actions = getActions();
+	bool result;
+
+	result = getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || actions->getLogicSize() == 0;
+	delete actions;
+
+	return result;
 }
 
 sint8 State::utility() const {
