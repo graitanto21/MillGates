@@ -12,8 +12,8 @@
 
 DummyAI::DummyAI() {}
 
-Action DummyAI::choose(State * state, pawn player) {
-	ExpVector<Action> actions = state->getActions(player);
+Action DummyAI::choose(State * state) {
+	ExpVector<Action> actions = state->getActions();
 	return actions.get(rand() % actions.getLogicSize());
 }
 

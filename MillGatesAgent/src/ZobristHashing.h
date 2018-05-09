@@ -23,7 +23,7 @@ public:
 	static ZobristHashing * getInstance();
 	int hash(State * state) const;
 
-	int quickHash(State * state, Action action, int previousHash, pawn player) const;
+	int quickHash(State * state, Action action, int previousHash) const;
 
 	virtual ~ZobristHashing();
 };

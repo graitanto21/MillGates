@@ -16,6 +16,8 @@ Action MinMaxAI::choose(State * state, pawn player) {
 
 }
 
+
+
 MinMaxAI::~MinMaxAI() {
 
 }

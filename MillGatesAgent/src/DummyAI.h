@@ -15,7 +15,7 @@ public:
 	DummyAI();
 	virtual ~DummyAI();
 
-	virtual Action choose(State * state, pawn player);
+	virtual Action choose(State * state);
 };
 
 #endif /* DUMMYAI_H_ */

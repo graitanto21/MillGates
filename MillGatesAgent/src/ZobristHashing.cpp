@@ -40,7 +40,7 @@ int ZobristHashing::hash(State * state) const {
 	return hash;
 }
 
-int ZobristHashing::quickHash(State * state, Action action, int previousHash, pawn player) const {
+int ZobristHashing::quickHash(State * state, Action action, int previousHash) const {
 
 	uint8 pos;
 	uint8 j;
@@ -49,19 +49,19 @@ int ZobristHashing::quickHash(State * state, Action action, int previousHash, pa
 	pos = action.getSrc();
 	if (IS_VALID(pos)) {
 		i = GETX(pos) * CUBE_SIZE_Y * CUBE_SIZE_Z + GETY(pos) * CUBE_SIZE_Z + GETZ(pos);
-		j = (player == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
+		j = (state->getPlayer() == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
 		h ^= _table[i][j];
 	}
 	pos = action.getDest();
 	if (IS_VALID(pos)) {
 		i = GETX(pos) * CUBE_SIZE_Y * CUBE_SIZE_Z + GETY(pos) * CUBE_SIZE_Z + GETZ(pos);
-		j = (player == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
+		j = (state->getPlayer() == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
 		h ^= _table[i][j];
 	}
 	pos = action.getRemovedPawn();
 	if (IS_VALID(pos)) {
 		i = GETX(pos) * CUBE_SIZE_Y * CUBE_SIZE_Z + GETY(pos) * CUBE_SIZE_Z + GETZ(pos);
-		j = (OPP(player) == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
+		j = (OPP(state->getPlayer()) == PAWN_WHITE ? HASH_PAWN_WHITE : HASH_PAWN_BLACK);
 		h ^= _table[i][j];
 	}
 

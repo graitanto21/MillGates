@@ -17,13 +17,12 @@ class Node {
 private:
 
 	State * _state;
-	pawn _player;
 	unsigned int _level;
 	ExpVector<Node*> _children;
 
 public:
 
-	Node(State * _state, pawn pawn, unsigned int level);
+	Node(State * _state, unsigned int level);
 
 	virtual State * getState() const;
 
@@ -33,8 +32,6 @@ public:
 
 	virtual void addChild(Node * node);
 	virtual ExpVector<Node*> getChildren();
-
-	virtual pawn getPlayer();
 
 	virtual ~Node();
 

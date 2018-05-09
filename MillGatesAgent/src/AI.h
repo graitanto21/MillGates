@@ -15,7 +15,7 @@ class AI {
 public:
 
 	virtual ~AI();
-	virtual Action choose(State * state, pawn player) = 0;
+	virtual Action choose(State * state) = 0;
 
 };
 

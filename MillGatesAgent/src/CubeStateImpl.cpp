@@ -13,13 +13,14 @@ CubeStateImpl::CubeStateImpl() {
 	for (int i = 0; i < CUBE_SIZE_X; i++)
 		for (int j = 0; j < CUBE_SIZE_Y; j++)
 			for (int k = 0; k < CUBE_SIZE_Z; k++)
-				pawns[i][j][k] = PAWN_NONE;
+				_pawns[i][j][k] = PAWN_NONE;
 
-	phase = PHASE_1;
+	_phase = PHASE_1;
 	setPawnsOnBoard(PAWN_WHITE, 0);
 	setPawnsOnBoard(PAWN_BLACK, 0);
 	setPawnsToPlay(PAWN_WHITE, WHITE_PAWNS_COUNT);
 	setPawnsToPlay(PAWN_BLACK, BLACK_PAWNS_COUNT);
+	setPlayer(PAWN_WHITE);
 }
 
 CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
@@ -60,17 +61,17 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
 
 //Getters and setters
 void CubeStateImpl::setPawnAt(uint8 x, uint8 y, uint8 z, pawn value) {
-	pawns[x][y][z] = value;
+	_pawns[x][y][z] = value;
 }
 pawn CubeStateImpl::getPawnAt(uint8 x, uint8 y, uint8 z) const {
-	return pawns[x][y][z];
+	return _pawns[x][y][z];
 }
 
 void CubeStateImpl::setPhase(uint8 currentPhase) {
-	phase = currentPhase;
+	_phase = currentPhase;
 }
 uint8 CubeStateImpl::getPhase() const {
-	return phase;
+	return _phase;
 }
 
 State * CubeStateImpl::clone() const {
@@ -87,6 +88,14 @@ State * CubeStateImpl::clone() const {
 	clone->setPawnsOnBoard(PAWN_BLACK, getPawnsOnBoard(PAWN_BLACK));
 
 	return clone;
+}
+
+pawn CubeStateImpl::getPlayer() const {
+	return _player;
+}
+
+void CubeStateImpl::setPlayer(pawn player) {
+	_player = player;
 }
 
 CubeStateImpl::~CubeStateImpl() {}

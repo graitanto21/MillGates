@@ -489,24 +489,24 @@ ExpVector<uint8> State::getAvailablePositions(uint8 pos) const {
 
 }
 
-ExpVector<Action> State::getActions(pawn player) const {
+ExpVector<Action> State::getActions() const {
 
 	ExpVector<Action> result(ACTION_VECTOR_DEFAULT_SIZE);
 
 	if (getPhase() == PHASE_1) {
-		result = addActionsForPawn(POS_NULL, result, player);
+		result = addActionsForPawn(POS_NULL, result);
 	}
 	else {
-		ExpVector<uint8> myPawns = getAllPositions(player);
+		ExpVector<uint8> myPawns = getAllPositions(getPlayer());
 		for (uint8 k = 0; k < myPawns.getLogicSize(); k++)
-			result = addActionsForPawn(myPawns.get(k), result, player);
+			result = addActionsForPawn(myPawns.get(k), result);
 	}
 
 	return result;
 
 }
 
-State * State::result(Action action, pawn player) const {
+State * State::result(Action action) const {
 
 	State * state = clone();
 
@@ -516,36 +516,38 @@ State * State::result(Action action, pawn player) const {
 
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), player);
-		state->setPawnsOnBoard(player, state->getPawnsOnBoard(player) + 1);
-		state->setPawnsToPlay(player, state->getPawnsToPlay(player) - 1);
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), getPlayer());
+		state->setPawnsOnBoard(getPlayer(), state->getPawnsOnBoard(getPlayer()) + 1);
+		state->setPawnsToPlay(getPlayer(), state->getPawnsToPlay(getPlayer()) - 1);
 		if (getPawnsToPlay(PAWN_BLACK) == 0 && getPawnsToPlay(PAWN_WHITE) == 0)
 			state->setPhase(PHASE_2);
 	}
 	// fasi 2 e 3 (pedina da src a dest)
 	if(IS_VALID(src) && IS_VALID(dest)) {
 		state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), player);
+		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), getPlayer());
 	}
 
 	// rimozione pedina avversaria
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
-		state->setPawnsOnBoard(OPP(player), state->getPawnsOnBoard(OPP(player)) - 1);
-		if (state->getPawnsOnBoard(player) == PAWNS_TO_ENTER_3RD_PHASE)
+		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
+		if (state->getPawnsOnBoard(getPlayer()) == PAWNS_TO_ENTER_3RD_PHASE)
 			state->setPhase(PHASE_3);
 	}
+
+	state->setPlayer(OPP(getPlayer()));
 
 	return state;
 
 }
 
-ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer, pawn player) const {
+ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer) const {
 
 	ExpVector<uint8> available = getAvailablePositions(src);
 	for (uint8 i = 0; i < available.getLogicSize(); i++) {
-		if (willBeInMorris(src, available.get(i), player)) {
-			ExpVector<uint8> pos = getAllPositions(OPP(player));
+		if (willBeInMorris(src, available.get(i), getPlayer())) {
+			ExpVector<uint8> pos = getAllPositions(OPP(getPlayer()));
 			bool added = false;
 			for (uint8 j = 0; j < pos.getLogicSize(); j++)
 				if (!isInMorris(pos.get(j))) {
@@ -564,16 +566,16 @@ ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBu
 
 }
 
-bool State::isTerminal(pawn player) const {
+bool State::isTerminal() const {
 
-	return getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions(player).getLogicSize() == 0;
+	return getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions().getLogicSize() == 0;
 
 }
 
-sint8 State::utility(pawn player) const {
+sint8 State::utility() const {
 
-	if (isTerminal(player))
-		return player == PAWN_WHITE ? PLAYER_WHITE_UTILITY : PLAYER_BLACK_ULITITY;
+	if (isTerminal())
+		return getPlayer() == PAWN_WHITE ? PLAYER_WHITE_UTILITY : PLAYER_BLACK_ULITITY;
 
 	return SPARE_UTILITY;
 

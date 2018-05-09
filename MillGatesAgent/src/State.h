@@ -18,7 +18,7 @@ class State {
 
 private:
 
-	virtual ExpVector<Action> addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer, pawn player) const;
+	virtual ExpVector<Action> addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer) const;
 
 public:
 
@@ -54,6 +54,9 @@ public:
 	virtual pawn getPawnsToPlay(pawn player) const;
 	virtual void setPawnsToPlay(pawn player, uint8 count);
 
+	virtual pawn getPlayer() const = 0;
+	virtual void setPlayer(pawn player) = 0;
+
 	//Utility methods
 	virtual State* clone() const = 0;
 	virtual std::string toString() const;
@@ -64,11 +67,11 @@ public:
 	virtual ExpVector<uint8> getAllPositions(pawn pawn) const;
 	virtual ExpVector<uint8> getAvailablePositions(uint8 pos) const;
 
-	virtual ExpVector<Action> getActions(pawn player) const;
-	virtual State * result(Action action, pawn player) const;
+	virtual ExpVector<Action> getActions() const;
+	virtual State * result(Action action) const;
 
-	virtual bool isTerminal(pawn player) const;
-	virtual sint8 utility(pawn player) const;
+	virtual bool isTerminal() const;
+	virtual sint8 utility() const;
 
 
 	//For debug

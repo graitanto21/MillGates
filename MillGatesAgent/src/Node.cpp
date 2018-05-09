@@ -7,10 +7,9 @@
 
 #include "Node.h"
 
-Node::Node(State * state, pawn pawn, unsigned int level) {
+Node::Node(State * state, unsigned int level) {
 
 	this->_state = state;
-	this->_player = pawn;
 	this->_level = level;
 
 }
@@ -35,25 +34,19 @@ void Node::addChild(Node * node) {
 
 void Node::performAction(Action action) {
 
-	addChild(new Node(getState()->result(action, getPlayer()),OPP(getPlayer()), getLevel() + 1));
+	addChild(new Node(getState()->result(action), getLevel() + 1));
 
 }
 
 ExpVector<Action> Node::expand() {
 
-	return getState()->getActions(getPlayer());
+	return getState()->getActions();
 
 }
 
 ExpVector<Node*> Node::getChildren() {
 
 	return _children;
-
-}
-
-pawn Node::getPlayer() {
-
-	return this->_player;
 
 }
 
