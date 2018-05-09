@@ -8,75 +8,69 @@
 #include "MinMaxAI.h"
 
 MinMaxAI::MinMaxAI() {
-	_hashes = new std::vector<bool>(3000000);
+	_hashes = new std::vector<bool>(16777216);
 	_hasher = ZobristHashing::getInstance();
 	_count = 0;
 }
 
-int MinMaxAI::min(State * state) {
+int MinMaxAI::min(State * state, hashcode hashcode) {
 
 	if (state->isTerminal())
 		return state->utility();
-	if ((*_hashes)[_hasher->hash(state)] == true)
-		return 0;
 
-	(*_hashes)[_hasher->hash(state)] = true;
+	(*_hashes)[hashcode] = true;
 	_count++;
 	if (_count % 100 == 0)
 		std::cout << _count << "\n";
 
 	int min_value = 0;
+	int quickhash = 0;
 	int utility;
 	ExpVector<Action> * actions = state->getActions();
 
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-		State * res = state->result(actions->get(i));
-		utility = max(res);
-		if (i == 0 || utility < min_value)
-			min_value = utility;
+		quickhash = _hasher->quickHash(state, actions->get(i), hashcode) & 16777215;
+		if ((*_hashes)[quickhash] == false) {
+			State * res = state->result(actions->get(i));
+			utility = max(res, quickhash);
+			if (i == 0 || utility < min_value)
+				min_value = utility;
 
-		delete res;
+			delete res;
+		}
 	}
-
 	delete actions;
-
-	_count--;
-	if (_count % 100 == 0)
-		std::cout << _count << "\n";
 
 	return min_value;
 }
 
-int MinMaxAI::max(State * state) {
+int MinMaxAI::max(State * state, hashcode hashcode) {
 
 	if (state->isTerminal())
 		return state->utility();
-	if ((*_hashes)[_hasher->hash(state)] == true)
-		return 0;
 
-	(*_hashes)[_hasher->hash(state)] = true;
+	(*_hashes)[hashcode] = true;
 	_count++;
 	if (_count % 100 == 0)
 		std::cout << _count << "\n";
 
 	int max_value = 0;
+	int quickhash = 0;
 	int utility;
 	ExpVector<Action> * actions = state->getActions();
 
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-		State * res = state->result(actions->get(i));
-		utility = min(res);
-		if (i == 0 || utility > max_value)
-			max_value = utility;
-
-		delete res;
+		quickhash = _hasher->quickHash(state, actions->get(i), hashcode) & 16777215;
+		if ((*_hashes)[quickhash] == false) {
+			State * res = state->result(actions->get(i));
+			utility = min(res, quickhash);
+			if (i == 0 || utility > max_value)
+				max_value = utility;
+			delete res;
+		}
 	}
 
 	delete actions;
-
-	_count--;
-	if (_count % 100 == 0)
-		std::cout << _count << "\n";
 
 	return max_value;
 }
@@ -84,9 +78,9 @@ int MinMaxAI::max(State * state) {
 Action MinMaxAI::choose(State * state) {
 
 	delete _hashes;
-	_hashes = new std::vector<bool>(3000000);
+	_hashes = new std::vector<bool>(16777216);
 	_count = 0;
-	for (int i = 0; i < 3000000; i++)
+	for (int i = 0; i < 16777216; i++)
 		(*_hashes)[i] = false;
 
 	ExpVector<Action> * actions = state->getActions();
@@ -100,7 +94,7 @@ Action MinMaxAI::choose(State * state) {
 	if (state->getPlayer() == PAWN_WHITE) {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
-			minMax->add(min(state_result));
+			minMax->add(min(state_result, _hasher->hash(state_result) & 16777215));
 			delete state_result;
 		}
 
@@ -116,7 +110,7 @@ Action MinMaxAI::choose(State * state) {
 	else {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
-			minMax->add(max(state_result));
+			minMax->add(max(state_result, _hasher->hash(state_result) & 16777215));
 			delete state_result;
 		}
 

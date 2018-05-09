@@ -19,8 +19,8 @@ private:
 	ZobristHashing * _hasher;
 	int _count;
 
-	int min(State * state);
-	int max(State * state);
+	int min(State * state, hashcode hashcode);
+	int max(State * state, hashcode hashcode);
 
 public:
 	MinMaxAI();
