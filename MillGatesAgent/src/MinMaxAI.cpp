@@ -13,6 +13,11 @@ MinMaxAI::MinMaxAI() {
 }
 
 int MinMaxAI::min(State * state) {
+
+	_hashes->add(_hasher->hash(state));
+	if (_hashes->getLogicSize() % 1000 == 0)
+		std::cout << _hashes->getLogicSize();
+
 	if (state->isTerminal())
 		return state->utility();
 	for (int i = 0; i < _hashes->getLogicSize(); i++)
@@ -33,6 +38,11 @@ int MinMaxAI::min(State * state) {
 }
 
 int MinMaxAI::max(State * state) {
+
+	_hashes->add(_hasher->hash(state));
+	if (_hashes->getLogicSize() % 1000 == 0)
+		std::cout << _hashes->getLogicSize();
+
 	if (state->isTerminal())
 		return state->utility();
 	for (int i = 0; i < _hashes->getLogicSize(); i++)
@@ -65,7 +75,7 @@ Action MinMaxAI::choose(State * state) {
 
 	if (state->getPlayer() == PAWN_WHITE) {
 		for (uint8 i = 0; i < actions.getLogicSize(); i++)
-			minMax.set(i, min(state->result(actions.get(i))));
+			minMax.add(min(state->result(actions.get(i))));
 
 		minMax_value = minMax.get(0);
 
@@ -78,7 +88,7 @@ Action MinMaxAI::choose(State * state) {
 	}
 	else {
 		for (uint8 i = 0; i < actions.getLogicSize(); i++)
-			minMax.set(i, max(state->result(actions.get(i))));
+			minMax.add(max(state->result(actions.get(i))));
 
 		minMax_value = minMax.get(0);
 

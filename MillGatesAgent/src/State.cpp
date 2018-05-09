@@ -568,7 +568,7 @@ ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBu
 
 bool State::isTerminal() const {
 
-	return getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions().getLogicSize() == 0;
+	return (getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || getActions().getLogicSize() == 0);
 
 }
 
