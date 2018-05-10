@@ -51,5 +51,10 @@ ExpVector<Node*> Node::getChildren() {
 }
 
 Node::~Node() {
+
+	delete _state;
+	for (int i = 0; i < _children.getLogicSize(); i++)
+		delete _children.get(i);
+
 }
 

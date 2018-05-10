@@ -26,7 +26,6 @@ ZobristHashing::ZobristHashing() {
 			h = rand();
 			h = (h << 32) | rand();
 			_table[i][j] = (hashcode) h;
-			std::cout << h << "\n";
 		}
 
 }
@@ -35,13 +34,17 @@ hashcode ZobristHashing::hash(State * state) const {
 
 	hashcode hash = 0;
 	uint8 j = 0;
+	uint8 i = 0;
 
 	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
 		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
 			for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-				if ((j = state->getPawnAt(x, y, z)) != PAWN_NONE) {
-					j = (j == PAWN_WHITE) ? HASH_PAWN_WHITE : HASH_PAWN_BLACK;
-					hash ^= _table[x * CUBE_SIZE_Y * CUBE_SIZE_Z + y * CUBE_SIZE_Z + z][j];
+				if (POS_ENABLED(NEW_POS(x,y,z))) {
+					if ((j = state->getPawnAt(x, y, z)) != PAWN_NONE) {
+						j = (j == PAWN_WHITE) ? HASH_PAWN_WHITE : HASH_PAWN_BLACK;
+						hash ^= _table[i][j];
+					}
+					i++;
 				}
 	return hash;
 }

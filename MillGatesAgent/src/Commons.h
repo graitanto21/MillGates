@@ -41,6 +41,8 @@
 #define HASH_TABLE_HEIGHT 2
 #define HASH_PAWN_WHITE 0
 #define HASH_PAWN_BLACK 1
+#define HASH_MASK ((1 << HASH_SET_BITS) - 1)
+#define HASH_SET_BITS 24
 
 typedef unsigned char pawn;
 typedef unsigned char uint8;
