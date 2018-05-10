@@ -414,29 +414,60 @@
 //	MinMaxAI ai;
 //	srand(400);
 //
-//	//testZobristHashing(state);
+//	state->setPawnAt2D('a', '1', PAWN_WHITE);
+//	state->setPawnAt2D('b', '5', PAWN_BLACK);
+//	state->setPlayer(PAWN_WHITE);
+//	state->setPhase(PHASE_1);
+//	state->setPawnsToPlay(PAWN_BLACK, 8);
+//	state->setPawnsToPlay(PAWN_WHITE, 8);
+//	state->setPawnsOnBoard(PAWN_WHITE, 1);
+//	state->setPawnsOnBoard(PAWN_BLACK, 1);
 //
-//	std::cout << ai.choose(state);
-////
-////	state->setPawnAt2D('a', '1', PAWN_WHITE);
-////	state->setPawnAt2D('a', '4', PAWN_WHITE);
-////	state->setPawnAt2D('a', '7', PAWN_WHITE);
-////	state->setPawnAt2D('d', '1', PAWN_WHITE);
-////	state->setPawnAt2D('d', '2', PAWN_BLACK);
-////	state->setPawnAt2D('g', '1', PAWN_BLACK);
-////	state->setPawnAt2D('b', '4', PAWN_BLACK);
-////	state->setPawnAt2D('d', '7', PAWN_BLACK);
-////	state->setPlayer(PAWN_BLACK);
-////	state->setPhase(PHASE_2);
-////	state->setPawnsToPlay(PAWN_BLACK, 0);
-////	state->setPawnsToPlay(PAWN_WHITE, 0);
-////	state->setPawnsOnBoard(PAWN_WHITE, 4);
-////	state->setPawnsOnBoard(PAWN_BLACK, 4);
-////
-////	std::cout << state->getActions()->getLogicSize() << "\n";
-////	std::cout << state->isTerminal();
+//	std::cout << state->toString() << "\n";
 //
-//	//for(;;);
+//	ExpVector<Action> * actions = state->getActions();
+//	Action toPerform;
+//	for (int i = 0; i < actions->getLogicSize(); i++)
+//		std::cout << actions->get(i) << "\n";
+//	delete actions;
+//
+////	std::cout << "\n";
+////	toPerform = Action(POS_NULL, NEW_POS(0,0,0), POS_NULL); //c5 white
+////	state = state->result(toPerform);
+////	std::cout << "performed " << toPerform << "\n";
+////	std::cout << state->toString() << "\n";
+////
+////	actions = state->getActions();
+////	for (int i = 0; i < actions->getLogicSize(); i++)
+////		std::cout << actions->get(i) << "\n";
+////	delete actions;
+////
+////	std::cout << "\n";
+////	toPerform = Action(POS_NULL, NEW_POS(0,0,1), POS_NULL); //b6 black
+////	state = state->result(toPerform);
+////	std::cout << "performed " << toPerform << "\n";
+////	std::cout << state->toString() << "\n";
+////
+////	actions = state->getActions();
+////	for (int i = 0; i < actions->getLogicSize(); i++)
+////		std::cout << actions->get(i) << "\n";
+////	delete actions;
+////
+////	std::cout << "\n";
+////	toPerform = Action(POS_NULL, NEW_POS(0,0,2), NEW_POS(0,0,1)); //a7b6 white
+////	state = state->result(toPerform);
+////	std::cout << "performed " << toPerform << "\n";
+////	std::cout << state->toString() << "\n";
+////
+////	actions = state->getActions();
+////	for (int i = 0; i < actions->getLogicSize(); i++)
+////		std::cout << actions->get(i) << "\n";
+////	delete actions;
+//
+////	std::cout << "\n" << Action(POS_NULL, NEW_POS(1,2,1), POS_NULL) << "\n";
+////	std::cout << state->willBeInMorris(POS_NULL, NEW_POS(1,2,1), PAWN_BLACK) << "\n";
+//
+//	//std::cout << ai.choose(state);
 //
 //}
 //

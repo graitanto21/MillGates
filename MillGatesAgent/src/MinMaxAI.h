@@ -19,6 +19,7 @@ private:
 	ZobristHashing * _hasher;
 	int _count;
 
+	int evaluate(State * state);
 	int min(State * state, hashcode hashcode, int level);
 	int max(State * state, hashcode hashcode, int level);
 	bool visited(hashcode hashcode);

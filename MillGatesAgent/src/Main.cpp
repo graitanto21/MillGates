@@ -17,7 +17,7 @@
 #define STATE_STRLEN 82
 
 using namespace std;
-//
+
 int main(int argc, char* argv[]) {
 
 	char actionStr[ACTION_STRLEN];

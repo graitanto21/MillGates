@@ -353,6 +353,8 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	for (int x = 0; x < CUBE_SIZE_X; x++) {
 		if (src == NEW_POS(x,GETY(dest), GETZ(dest)))
 			morrisX = false;
+		if (x == 1 && GETY(dest) == 1)
+			morrisX = false;
 		if (x != GETX(dest)) {
 			if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn)
 				morrisX = false;
@@ -361,6 +363,8 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 
 	for (int y = 0; y < CUBE_SIZE_Y; y++) {
 		if (src == NEW_POS(GETX(dest), y, GETZ(dest)))
+			morrisY = false;
+		if (y == 1 && GETX(dest) == 1)
 			morrisY = false;
 		if (y != GETY(dest)) {
 			if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn)
@@ -371,6 +375,8 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
 	for (int z = 0; z < CUBE_SIZE_Z; z++) {
 		if (src == NEW_POS(GETX(dest), GETY(dest), z))
+			morrisZ = false;
+		if (GETX(dest) == 1 && GETY(dest) == 1)
 			morrisZ = false;
 		if (z != GETZ(dest)) {
 			if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
@@ -383,6 +389,8 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	if (ON_PERPENDICULAR(dest))
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
 			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+				morrisZ = false;
+			if (GETX(dest) == 1 && GETY(dest) == 1)
 				morrisZ = false;
 			if (z != GETZ(dest)) {
 				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
@@ -397,6 +405,8 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	if (ON_DIAGONAL(dest))
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
 			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+				morrisZ = false;
+			if (GETX(dest) == 1 && GETY(dest) == 1)
 				morrisZ = false;
 			if (z != GETZ(dest)) {
 				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
@@ -582,9 +592,6 @@ bool State::isTerminal() const {
 
 sint8 State::utility() const {
 
-	if (isTerminal())
-		return getPlayer() == PAWN_WHITE ? PLAYER_BLACK_UTILITY: PLAYER_WHITE_UTILITY;
-
-	return SPARE_UTILITY;
+	return getPlayer() == PAWN_WHITE ? PLAYER_BLACK_UTILITY: PLAYER_WHITE_UTILITY;
 
 }

@@ -26,23 +26,32 @@ void MinMaxAI::add(hashcode hash) {
 	if (vec == NULL)
 		vec = new ExpVector<hashcode>();
 	vec->add(hash);
+
 	_count++;
-	if (_count % 100 == 0)
-		std::cout << _count << "\n";
+	//	if (_count % 100 == 0)
+	//		std::cout << _count << "\n";
+}
+
+int MinMaxAI::evaluate(State * state) {
+	int white = state->getPawnsOnBoard(PAWN_WHITE) + state->getPawnsToPlay(PAWN_WHITE);
+	int black = state->getPawnsOnBoard(PAWN_BLACK) + state->getPawnsToPlay(PAWN_BLACK);
+	if (white == black)
+		return 0;
+	if (white > black)
+		return 1;
+	else
+		return -1;
 }
 
 int MinMaxAI::min(State * state, hashcode hash, int level) {
 
 	add(hash);
 
-	if (state->isTerminal()) {
-		std::cout << " " << state->toString() << "\n";
+	if (state->isTerminal())
 		return state->utility();
-	}
 
-	if (level > 3) {
-		return state->getPawnsOnBoard(PAWN_WHITE) > state->getPawnsOnBoard(PAWN_BLACK) ? 1 : -1;
-	}
+	if (level >= 2)
+		evaluate(state);
 
 	int min_value = 0;
 	hashcode quickhash = 0;
@@ -51,12 +60,19 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
+		State * res = state->result(actions->get(i));
 		utility = 0;
-		if (!visited(quickhash)) {
-			State * res = state->result(actions->get(i));
+		for (int i = 0; i <= level; i++)
+			std::cout << "  ";
+		std::cout << actions->get(i) << "{\n";
+		if (!visited(quickhash))
 			utility = max(res, quickhash, level + 1);
-			delete res;
-		}
+		else
+			utility = evaluate(res);
+		delete res;
+		for (int i = 0; i <= level; i++)
+			std::cout << "  ";
+		std::cout << "} = " << utility << "\n";
 		if (i == 0 || utility < min_value)
 			min_value = utility;
 	}
@@ -69,21 +85,11 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 
 	add(hash);
 
-	if (state->isTerminal()) {
+	if (state->isTerminal())
 		return state->utility();
-		std::cout << " " << state->toString() << "\n";
-	}
 
-	if (level > 3) {
-		int white = state->getPawnsOnBoard(PAWN_WHITE) + state->getPawnsToPlay(PAWN_WHITE);
-		int black = state->getPawnsOnBoard(PAWN_BLACK) + state->getPawnsToPlay(PAWN_BLACK);
-		if (white == black)
-			return 0;
-		if (white > black)
-			return 1;
-		else
-			return -1;
-	}
+	if (level >= 2)
+		return evaluate(state);
 
 	int max_value = 0;
 	hashcode quickhash = 0;
@@ -92,12 +98,19 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
+		State * res = state->result(actions->get(i));
 		utility = 0;
-		if (!visited(quickhash)) {
-			State * res = state->result(actions->get(i));
+		for (int i = 0; i <= level; i++)
+			std::cout << "  ";
+		std::cout << actions->get(i) << "{\n";
+		if (!visited(quickhash))
 			utility = min(res, quickhash, level + 1);
-			delete res;
-		}
+		else
+			utility = evaluate(res);
+		delete res;
+		for (int i = 0; i <= level; i++)
+			std::cout << "  ";
+		std::cout << "} = " << utility << "\n";
 		if (i == 0 || utility > max_value)
 			max_value = utility;
 
@@ -112,7 +125,8 @@ Action MinMaxAI::choose(State * state) {
 
 	_hashes = new std::vector<ExpVector<hashcode>*>(HASH_MASK + 1);
 	_count = 0;
-	for (int i = 0; i < 16777216; i++)
+
+	for (int i = 0; i < HASH_MASK + 1; i++)
 		(*_hashes)[i] = new ExpVector<hashcode>();
 
 	ExpVector<Action> * actions = state->getActions();
@@ -121,12 +135,16 @@ Action MinMaxAI::choose(State * state) {
 	Action action_result;
 
 	int minMax_value;
+	int utility;
 	uint8 minMax_index = 0;
 
 	if (state->getPlayer() == PAWN_WHITE) {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
-			minMax->add(min(state_result, _hasher->hash(state_result), 0));
+			std::cout << actions->get(i) << "{\n";
+			utility = min(state_result, _hasher->hash(state_result), 0);
+			minMax->add(utility);
+			std::cout << "} = " << utility << "\n";
 			delete state_result;
 		}
 
@@ -142,7 +160,10 @@ Action MinMaxAI::choose(State * state) {
 	else {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
-			minMax->add(max(state_result, _hasher->hash(state_result), 0));
+			std::cout << actions->get(i) << "{\n";
+			utility = max(state_result, _hasher->hash(state_result), 0);
+			minMax->add(utility);
+			std::cout << "} = " << utility << "\n";
 			delete state_result;
 		}
 
