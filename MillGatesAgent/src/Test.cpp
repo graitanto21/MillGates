@@ -395,7 +395,7 @@ void testZobristHashing(State * state) {
 
 	Action action = Action(NEW_POS(0,0,1), NEW_POS(1,0,1), POS_NULL);
 	State * newState = state->result(action);
-	int hash = hasher->quickHash(state, action, hasher->hash(state));
+	hashcode hash = hasher->quickHash(state, action, hasher->hash(state));
 	std::cout << "pedina bianca in 1 0 1 QUICK HASH " << hash << "\n";
 	std::cout << "pedina bianca in 1 0 1 HASH " << hasher->hash(newState) << "\n";
 
@@ -413,11 +413,28 @@ void testMinMaxAI(State * state) {
 
 	MinMaxAI ai;
 	srand(400);
-	std::cout << ai.choose(state);
 
-	// Active wait
-	//ExpVector<CubeStateImpl> * vector = new ExpVector<CubeStateImpl>(10);
-	//State * test = new CubeStateImpl();
+	std::cout << ai.choose(state);
+//
+//	state->setPawnAt2D('a', '1', PAWN_WHITE);
+//	state->setPawnAt2D('a', '4', PAWN_WHITE);
+//	state->setPawnAt2D('a', '7', PAWN_WHITE);
+//	state->setPawnAt2D('d', '1', PAWN_WHITE);
+//	state->setPawnAt2D('d', '2', PAWN_BLACK);
+//	state->setPawnAt2D('g', '1', PAWN_BLACK);
+//	state->setPawnAt2D('b', '4', PAWN_BLACK);
+//	state->setPawnAt2D('d', '7', PAWN_BLACK);
+//	state->setPlayer(PAWN_BLACK);
+//	state->setPhase(PHASE_2);
+//	state->setPawnsToPlay(PAWN_BLACK, 0);
+//	state->setPawnsToPlay(PAWN_WHITE, 0);
+//	state->setPawnsOnBoard(PAWN_WHITE, 4);
+//	state->setPawnsOnBoard(PAWN_BLACK, 4);
+//
+//	std::cout << state->getActions()->getLogicSize() << "\n";
+//	std::cout << state->isTerminal();
+
+	//for(;;);
 
 }
 

@@ -532,7 +532,7 @@ State * State::result(Action action) const {
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
 		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
-		if (state->getPawnsOnBoard(getPlayer()) == PAWNS_TO_ENTER_3RD_PHASE)
+		if (state->getPawnsOnBoard(OPP(getPlayer())) == PAWNS_TO_ENTER_3RD_PHASE)
 			state->setPhase(PHASE_3);
 	}
 
@@ -574,7 +574,7 @@ bool State::isTerminal() const {
 	ExpVector<Action> * actions = getActions();
 	bool result;
 
-	result = getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || actions->getLogicSize() == 0;
+	result = (getPawnsOnBoard(PAWN_WHITE) < 3 || getPawnsOnBoard(PAWN_BLACK) < 3 || actions->getLogicSize() == 0);
 	delete actions;
 
 	return result;
@@ -583,7 +583,7 @@ bool State::isTerminal() const {
 sint8 State::utility() const {
 
 	if (isTerminal())
-		return getPlayer() == PAWN_WHITE ? PLAYER_WHITE_UTILITY : PLAYER_BLACK_ULITITY;
+		return getPlayer() == PAWN_WHITE ? PLAYER_BLACK_UTILITY: PLAYER_WHITE_UTILITY;
 
 	return SPARE_UTILITY;
 

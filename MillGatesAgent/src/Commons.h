@@ -34,7 +34,7 @@
 #define PAWNS_TO_ENTER_3RD_PHASE 3
 
 #define PLAYER_WHITE_UTILITY 1
-#define PLAYER_BLACK_ULITITY -1
+#define PLAYER_BLACK_UTILITY -1
 #define SPARE_UTILITY 0
 
 #define HASH_TABLE_WIDTH 24
@@ -45,7 +45,7 @@
 typedef unsigned char pawn;
 typedef unsigned char uint8;
 typedef signed char sint8;
-typedef unsigned int hashcode;
+typedef unsigned long long hashcode;
 
 /*
  * XXYYZZVV

@@ -19,9 +19,15 @@ ZobristHashing* ZobristHashing::getInstance() {
 
 ZobristHashing::ZobristHashing() {
 
+	unsigned long long h = 0;
+
 	for (uint8 i = 0; i < HASH_TABLE_WIDTH; i++)
-		for (uint8 j = 0; j < HASH_TABLE_HEIGHT; j++)
-			_table[i][j] = rand();
+		for (uint8 j = 0; j < HASH_TABLE_HEIGHT; j++) {
+			h = rand();
+			h = (h << 32) | rand();
+			_table[i][j] = (hashcode) h;
+			std::cout << h << "\n";
+		}
 
 }
 

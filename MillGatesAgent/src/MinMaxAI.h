@@ -15,12 +15,14 @@
 class MinMaxAI: public AI {
 private:
 
-	std::vector<bool> * _hashes;
+	std::vector<ExpVector<hashcode>*> * _hashes;
 	ZobristHashing * _hasher;
 	int _count;
 
 	int min(State * state, hashcode hashcode);
 	int max(State * state, hashcode hashcode);
+	bool visited(hashcode hashcode);
+	void add(hashcode hashcode);
 
 public:
 	MinMaxAI();
