@@ -35,12 +35,13 @@ void MinMaxAI::add(hashcode hash) {
 int MinMaxAI::evaluate(State * state) {
 	int white = state->getPawnsOnBoard(PAWN_WHITE) + state->getPawnsToPlay(PAWN_WHITE);
 	int black = state->getPawnsOnBoard(PAWN_BLACK) + state->getPawnsToPlay(PAWN_BLACK);
-	if (white == black)
-		return 0;
-	if (white > black)
-		return 1;
-	else
-		return -1;
+//	if (white == black)
+//		return 0;
+//	if (white > black)
+//		return 1;
+//	else
+//		return -1;
+	return white - black;
 }
 
 int MinMaxAI::min(State * state, hashcode hash, int level) {
@@ -49,9 +50,10 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 
 	if (state->isTerminal())
 		return state->utility();
+		//return evaluate(state);
 
 	if (level >= 2)
-		evaluate(state);
+		return evaluate(state);
 
 	int min_value = 0;
 	hashcode quickhash = 0;
@@ -87,6 +89,7 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 
 	if (state->isTerminal())
 		return state->utility();
+		//return evaluate(state);
 
 	if (level >= 2)
 		return evaluate(state);
