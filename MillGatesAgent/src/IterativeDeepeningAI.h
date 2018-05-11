@@ -8,9 +8,19 @@
 #ifndef ITERATIVEDEEPENINGAI_H_
 #define ITERATIVEDEEPENINGAI_H_
 
+#include "NegaScoutAI.h"
+
 class IterativeDeepeningAI {
+private:
+	AI * _ai;
 public:
 	IterativeDeepeningAI();
+
+	virtual void setAI(AI * ai);
+	virtual void setDepth(uint8 depth);
+
+	virtual Action choose(State * state);
+
 	virtual ~IterativeDeepeningAI();
 };
 

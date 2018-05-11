@@ -18,6 +18,7 @@ private:
 	std::vector<ExpVector<hashcode>*> * _hashes;
 	ZobristHashing * _hasher;
 	int _count;
+	uint8 _depth;
 
 	int evaluate(State * state);
 	int min(State * state, hashcode hashcode, int level);
@@ -28,6 +29,7 @@ private:
 public:
 	MinMaxAI();
 	virtual ~MinMaxAI();
+	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
 };
 

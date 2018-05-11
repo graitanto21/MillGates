@@ -14,8 +14,9 @@
 class AI {
 public:
 
-	virtual ~AI();
 	virtual Action choose(State * state) = 0;
+	virtual void setDepth(uint8 depth) = 0;
+	virtual ~AI();
 
 };
 

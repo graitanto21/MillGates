@@ -15,6 +15,11 @@ MinMaxAI::MinMaxAI() {
 	_hashes = NULL;
 	_hasher = ZobristHashing::getInstance();
 	_count = 0;
+	_depth = LEVEL;
+}
+
+void MinMaxAI::setDepth(uint8 depth) {
+	_depth = depth;
 }
 
 bool MinMaxAI::visited(hashcode hash) {
@@ -52,7 +57,7 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 	if (state->isTerminal())
 		return state->utility();
 
-	if (level >= LEVEL)
+	if (level >= _depth)
 		return evaluate(state);
 
 	int min_value = 0;
@@ -94,7 +99,7 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 	if (state->isTerminal())
 		return state->utility();
 
-	if (level >= LEVEL)
+	if (level >= _depth)
 		return evaluate(state);
 
 	int max_value = 0;

@@ -15,6 +15,7 @@ public:
 	DummyAI();
 	virtual ~DummyAI();
 
+	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
 };
 

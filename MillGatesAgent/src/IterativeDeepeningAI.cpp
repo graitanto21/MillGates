@@ -9,7 +9,26 @@
 
 IterativeDeepeningAI::IterativeDeepeningAI() {
 	// TODO Auto-generated constructor stub
+	_ai = NULL;
+}
 
+void IterativeDeepeningAI::setAI(AI * ai) {
+	// TODO Auto-generated constructor stub
+	_ai = ai;
+}
+
+Action IterativeDeepeningAI::choose(State * state) {
+	Action result;
+
+	for(int i = 5; i <= MAX_SEARCH_DEPTH; i++) {
+		_ai->setDepth(i);
+		std::cout << "Negascout profondo " << i << "\n";
+		result = _ai->choose(state);
+		std::cout << result << "\n";
+		// if time_out() break;
+	}
+
+	return result;
 }
 
 IterativeDeepeningAI::~IterativeDeepeningAI() {

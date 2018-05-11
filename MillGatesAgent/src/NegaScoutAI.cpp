@@ -7,7 +7,7 @@
 
 #include "NegaScoutAI.h"
 
-#define DEPTH 8
+#define DEPTH 7
 #define PRINT_COUNT
 #define PRINT_GRANULARITY 10000
 
@@ -53,7 +53,7 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 		quickReturn = true;
 	}
 	if (state->isTerminal()) {
-		score = color * state->isTerminal();
+		score = color * state->utility();
 		quickReturn = true;
 	}
 
@@ -66,8 +66,8 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 			add(e);
 		}
 		else {
-//			e->eval = score;
-//			e->depth = depth;
+			e->eval = score;
+			e->depth = depth;
 		}
 		return e->eval;
 	}
@@ -103,8 +103,8 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 		add(e);
 	}
 	else {
-//		e->eval = score;
-//		e->depth = depth;
+		e->eval = score;
+		e->depth = depth;
 	}
 	return e->eval;
 
@@ -119,10 +119,18 @@ NegaScoutAI::NegaScoutAI() {
 	_depth = DEPTH;
 }
 
+uint8 NegaScoutAI::getDepth() {
+	return _depth;
+}
+
+void NegaScoutAI::setDepth(uint8 depth) {
+	_depth = depth;
+}
+
 Action NegaScoutAI::choose(State * state) {
 
-	if (state->getPawnsToPlay(state->getPlayer()) == 9)
-		return Action(POS_NULL, NEW_POS(0,0,1), POS_NULL);
+/*	if (state->getPawnsToPlay(state->getPlayer()) == 9)
+		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL); */
 
 	_hashes = new std::vector<ExpVector<entry*>*>(HASH_MASK + 1);
 	_count = 0;

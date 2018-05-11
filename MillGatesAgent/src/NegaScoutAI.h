@@ -13,7 +13,7 @@
 #include "ExpVector.h"
 
 typedef struct {
-	sint8 depth;
+	uint8 depth;
 	sint8 eval;
 	hashcode hash;
 } entry;
@@ -34,7 +34,9 @@ private:
 
 public:
 	NegaScoutAI();
-	Action choose(State * state);
+	virtual uint8 getDepth();
+	virtual void setDepth(uint8 depth);
+	virtual Action choose(State * state);
 	virtual ~NegaScoutAI();
 };
 

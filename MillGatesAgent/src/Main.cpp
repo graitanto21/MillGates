@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "State.h"
 #include "CubeStateImpl.h"
-#include "NegaScoutAI.h"
+#include "IterativeDeepeningAI.h"
 #include "connection.h"
 #include <iostream>
 #include <time.h>
@@ -31,7 +31,8 @@ int main(int argc, char* argv[]) {
 
 	srand(time(NULL));
 
-	NegaScoutAI ai;
+	IterativeDeepeningAI ai;
+	ai.setAI(new NegaScoutAI());
 
 	if (!strcmp(argv[1], "white")) {
 		State * state = new CubeStateImpl();

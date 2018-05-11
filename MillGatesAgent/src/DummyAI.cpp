@@ -19,5 +19,9 @@ Action DummyAI::choose(State * state) {
 	return result;
 }
 
+void DummyAI::setDepth(uint8 depth) {
+
+}
+
 DummyAI::~DummyAI() {}
 
