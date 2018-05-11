@@ -71,6 +71,7 @@ typedef unsigned long long hashcode;
 #define BWZ(pos) (GETZ(pos) == 0 ? NEW_POS(GETX(pos), GETY(pos), 2) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)-1))
 
 #define POS_ENABLED(pos) (GETX(pos) != 1 || GETY(pos) != 1)
+#define POS_ENABLED_FAST(x,y) (x != 1 || y != 1)
 #define ON_DIAGONAL(pos) (GETX(pos) != 1 && GETY(pos) != 1)
 #define ON_PERPENDICULAR(pos) (GETX(pos) == 1 || GETY(pos) == 1)
 //#define DIAGONALS

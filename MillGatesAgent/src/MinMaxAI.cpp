@@ -6,7 +6,10 @@
  */
 
 #include "MinMaxAI.h"
-#define PRINT_TREE
+//#define PRINT_TREE
+#define PRINT_COUNT
+#define LEVEL 5
+#define PRINT_GRANULARITY 10000
 
 MinMaxAI::MinMaxAI() {
 	_hashes = NULL;
@@ -29,8 +32,8 @@ void MinMaxAI::add(hashcode hash) {
 	vec->add(hash);
 
 	_count++;
-#if !defined(PRINT_TREE)
-	if (_count % 100 == 0)
+#if !defined(PRINT_TREE) && defined(PRINT_COUNT)
+	if (_count % PRINT_GRANULARITY == 0)
 		std::cout << _count << "\n";
 #endif
 }
@@ -49,7 +52,7 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 	if (state->isTerminal())
 		return state->utility();
 
-	if (level >= 4)
+	if (level >= LEVEL)
 		return evaluate(state);
 
 	int min_value = 0;
@@ -91,7 +94,7 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 	if (state->isTerminal())
 		return state->utility();
 
-	if (level >= 4)
+	if (level >= LEVEL)
 		return evaluate(state);
 
 	int max_value = 0;

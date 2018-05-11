@@ -262,25 +262,63 @@ bool State::isInMorris(uint8 pos) const {
 	if (selected == PAWN_NONE)
 		return false;
 
-	for (int x = 0; x < CUBE_SIZE_X; x++)
-		if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected)
+	for (int x = 0; x < CUBE_SIZE_X; x++) {
+		if (POS_ENABLED_FAST(x, GETY(pos))) {
+			if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected) {
+				morrisX = false;
+				break;
+			}
+		}
+		else {
 			morrisX = false;
+			break;
+		}
+	}
 
-	for (int y = 0; y < CUBE_SIZE_Y; y++)
-		if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected)
+
+	for (int y = 0; y < CUBE_SIZE_Y; y++) {
+		if (POS_ENABLED_FAST(GETX(pos), y)) {
+			if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected) {
+				morrisY = false;
+				break;
+			}
+		}
+		else {
 			morrisY = false;
+			break;
+		}
+
+	}
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
-	for (int z = 0; z < CUBE_SIZE_Z; z++)
-		if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+	for (int z = 0; z < CUBE_SIZE_Z; z++) {
+		if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+			if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+				morrisZ = false;
+				break;
+			}
+		}
+		else {
 			morrisZ = false;
+			break;
+		}
+	}
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
 	if (ON_PERPENDICULAR(pos)) {
-		for (int z = 0; z < CUBE_SIZE_Z; z++)
-			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+				if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+					morrisZ = false;
+					break;
+				}
+			}
+			else {
 				morrisZ = false;
+				break;
+			}
+		}
 	}
 	else
 		morrisZ = false;
@@ -289,9 +327,18 @@ bool State::isInMorris(uint8 pos) const {
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
 	if (ON_DIAGONAL(pos)) {
-		for (int z = 0; z < CUBE_SIZE_Z; z++)
-			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+				if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+					morrisZ = false;
+					break;
+				}
+			}
+			else {
 				morrisZ = false;
+				break;
+			}
+		}
 	}
 	else
 		morrisZ = false;
@@ -351,36 +398,54 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 		return false;
 
 	for (int x = 0; x < CUBE_SIZE_X; x++) {
-		if (src == NEW_POS(x,GETY(dest), GETZ(dest)))
+		if (src == NEW_POS(x,GETY(dest), GETZ(dest))) {
 			morrisX = false;
-		if (x == 1 && GETY(dest) == 1)
+			break;
+		}
+		if (!POS_ENABLED_FAST(x, GETY(dest))) {
 			morrisX = false;
+			break;
+		}
 		if (x != GETX(dest)) {
-			if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn)
+			if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn) {
 				morrisX = false;
+				break;
+			}
 		}
 	}
 
 	for (int y = 0; y < CUBE_SIZE_Y; y++) {
-		if (src == NEW_POS(GETX(dest), y, GETZ(dest)))
+		if (src == NEW_POS(GETX(dest), y, GETZ(dest))) {
 			morrisY = false;
-		if (y == 1 && GETX(dest) == 1)
+			break;
+		}
+		if (!POS_ENABLED_FAST(GETX(dest), y)) {
 			morrisY = false;
+			break;
+		}
 		if (y != GETY(dest)) {
-			if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn)
+			if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn) {
 				morrisY = false;
+				break;
+			}
 		}
 	}
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
 	for (int z = 0; z < CUBE_SIZE_Z; z++) {
-		if (src == NEW_POS(GETX(dest), GETY(dest), z))
+		if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
 			morrisZ = false;
-		if (GETX(dest) == 1 && GETY(dest) == 1)
+			break;
+		}
+		if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
 			morrisZ = false;
+			break;
+		}
 		if (z != GETZ(dest)) {
-			if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+			if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
 				morrisZ = false;
+				break;
+			}
 		}
 	}
 #endif
@@ -388,13 +453,19 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
 	if (ON_PERPENDICULAR(dest))
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+			if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
 				morrisZ = false;
-			if (GETX(dest) == 1 && GETY(dest) == 1)
+				break;
+			}
+			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
 				morrisZ = false;
+				break;
+			}
 			if (z != GETZ(dest)) {
-				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
 					morrisZ = false;
+					break;
+				}
 			}
 		}
 	else
@@ -404,13 +475,19 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
 	if (ON_DIAGONAL(dest))
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+			if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
 				morrisZ = false;
-			if (GETX(dest) == 1 && GETY(dest) == 1)
+				break;
+			}
+			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
 				morrisZ = false;
+				break;
+			}
 			if (z != GETZ(dest)) {
-				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
 					morrisZ = false;
+					break;
+				}
 			}
 		}
 	else
@@ -427,7 +504,7 @@ ExpVector<uint8> State::getAllPositions(pawn pawn) const {
 	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
 		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
 			for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-				if (getPawnAt(x, y, z) == pawn && POS_ENABLED(NEW_POS(x,y,z))) {
+				if (getPawnAt(x, y, z) == pawn && POS_ENABLED_FAST(x,y)) {
 					result.add(NEW_POS(x,y,z));
 				}
 
