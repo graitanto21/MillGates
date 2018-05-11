@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include "State.h"
 #include "CubeStateImpl.h"
-#include "MinMaxAI.h"
+#include "NegaScoutAI.h"
 #include "connection.h"
 #include <iostream>
 #include <time.h>
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
 
 	srand(time(NULL));
 
-	MinMaxAI ai;
+	NegaScoutAI ai;
 
 	if (!strcmp(argv[1], "white")) {
 		State * state = new CubeStateImpl();

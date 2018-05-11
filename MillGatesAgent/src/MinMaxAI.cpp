@@ -211,6 +211,6 @@ Action MinMaxAI::choose(State * state) {
 }
 
 MinMaxAI::~MinMaxAI() {
-
+	delete _hasher;
 }
 

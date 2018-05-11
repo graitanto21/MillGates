@@ -10,6 +10,7 @@
 //#include "State.h"
 //#include <iostream>
 //#include "MinMaxAI.h"
+//#include "NegaScoutAI.h"
 //
 //#include "ZobristHashing.h"
 ////
@@ -429,55 +430,73 @@
 //
 //}
 //
+//void testNegaScoutAI(State * state) {
+//	NegaScoutAI ai;
+//	srand(400);
+//
+////	state->setPawnAt2D('c', '5', PAWN_WHITE);
+////	state->setPawnAt2D('a', '1', PAWN_BLACK);
+////	state->setPawnAt2D('b', '6', PAWN_WHITE);
+////	state->setPawnAt2D('d', '2', PAWN_BLACK);
+////	state->setPlayer(PAWN_WHITE);
+////	state->setPhase(PHASE_1);
+////	state->setPawnsToPlay(PAWN_BLACK, 7);
+////	state->setPawnsToPlay(PAWN_WHITE, 7);
+////	state->setPawnsOnBoard(PAWN_WHITE, 2);
+////	state->setPawnsOnBoard(PAWN_BLACK, 2);
+//
+//	std::cout << ai.choose(state);
+//}
+//
 //int main(void) {
 //
 //	State * state;
 //
 //	/* TESTING THE STATE */
-////	state = new CubeStateImpl(); //Creates a void state
-////	testMapping(state);
-////	delete state;
-////
+//	//	state = new CubeStateImpl(); //Creates a void state
+//	//	testMapping(state);
+//	//	delete state;
+//	//
 //	//Test isInMorris
-////	state = new CubeStateImpl();
-////	testIsInMorris(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testIsInMorris(state);
+//	//	delete state;
 //
 //	//Test willBeInMorris
-////	state = new CubeStateImpl();
-////	testWillBeInMorris(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testWillBeInMorris(state);
+//	//	delete state;
 //
 //	//Test getAllPositions
-////	state = new CubeStateImpl();
-////	testGetAllPositions(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testGetAllPositions(state);
+//	//	delete state;
 //
-////	//Test getAvailablePositions
-////	state = new CubeStateImpl();
-////	testGetAvailablePositions(state, 'f', '4');
-////	delete state;
+//	//	//Test getAvailablePositions
+//	//	state = new CubeStateImpl();
+//	//	testGetAvailablePositions(state, 'f', '4');
+//	//	delete state;
 //
 //	/* TESTING THE EXPANDER */
 //
 //	//expand
-////	state = new CubeStateImpl();
-////	testExpand(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testExpand(state);
+//	//	delete state;
 //
 //	//PerformAction
-////	state = new CubeStateImpl();
-////	testPerformAction(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testPerformAction(state);
+//	//	delete state;
 //
 //	//ZobristHashing
-////	state = new CubeStateImpl();
-////	testZobristHashing(state);
-////	delete state;
+//	//	state = new CubeStateImpl();
+//	//	testZobristHashing(state);
+//	//	delete state;
 //
 //	//ZobristHashing
 //	state = new CubeStateImpl();
-//	testMinMaxAI(state);
+//	testNegaScoutAI(state);
 //	delete state;
 //
 //}
