@@ -6,6 +6,7 @@
  */
 
 #include "MinMaxAI.h"
+#define PRINT_TREE
 
 MinMaxAI::MinMaxAI() {
 	_hashes = NULL;
@@ -28,19 +29,16 @@ void MinMaxAI::add(hashcode hash) {
 	vec->add(hash);
 
 	_count++;
-	//	if (_count % 100 == 0)
-	//		std::cout << _count << "\n";
+#if !defined(PRINT_TREE)
+	if (_count % 100 == 0)
+		std::cout << _count << "\n";
+#endif
 }
 
 int MinMaxAI::evaluate(State * state) {
 	int white = state->getPawnsOnBoard(PAWN_WHITE) + state->getPawnsToPlay(PAWN_WHITE);
 	int black = state->getPawnsOnBoard(PAWN_BLACK) + state->getPawnsToPlay(PAWN_BLACK);
-//	if (white == black)
-//		return 0;
-//	if (white > black)
-//		return 1;
-//	else
-//		return -1;
+
 	return white - black;
 }
 
@@ -50,9 +48,8 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 
 	if (state->isTerminal())
 		return state->utility();
-		//return evaluate(state);
 
-	if (level >= 2)
+	if (level >= 4)
 		return evaluate(state);
 
 	int min_value = 0;
@@ -64,17 +61,21 @@ int MinMaxAI::min(State * state, hashcode hash, int level) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
 		State * res = state->result(actions->get(i));
 		utility = 0;
+#if defined(PRINT_TREE)
 		for (int i = 0; i <= level; i++)
 			std::cout << "  ";
 		std::cout << actions->get(i) << "{\n";
+#endif
 		if (!visited(quickhash))
 			utility = max(res, quickhash, level + 1);
 		else
 			utility = evaluate(res);
 		delete res;
+#if defined(PRINT_TREE)
 		for (int i = 0; i <= level; i++)
 			std::cout << "  ";
 		std::cout << "} = " << utility << "\n";
+#endif
 		if (i == 0 || utility < min_value)
 			min_value = utility;
 	}
@@ -89,9 +90,8 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 
 	if (state->isTerminal())
 		return state->utility();
-		//return evaluate(state);
 
-	if (level >= 2)
+	if (level >= 4)
 		return evaluate(state);
 
 	int max_value = 0;
@@ -103,17 +103,21 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
 		State * res = state->result(actions->get(i));
 		utility = 0;
+#if defined(PRINT_TREE)
 		for (int i = 0; i <= level; i++)
 			std::cout << "  ";
 		std::cout << actions->get(i) << "{\n";
+#endif
 		if (!visited(quickhash))
 			utility = min(res, quickhash, level + 1);
 		else
 			utility = evaluate(res);
 		delete res;
+#if defined(PRINT_TREE)
 		for (int i = 0; i <= level; i++)
 			std::cout << "  ";
 		std::cout << "} = " << utility << "\n";
+#endif
 		if (i == 0 || utility > max_value)
 			max_value = utility;
 
@@ -144,10 +148,14 @@ Action MinMaxAI::choose(State * state) {
 	if (state->getPlayer() == PAWN_WHITE) {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
+#if defined(PRINT_TREE)
 			std::cout << actions->get(i) << "{\n";
+#endif
 			utility = min(state_result, _hasher->hash(state_result), 0);
 			minMax->add(utility);
+#if defined(PRINT_TREE)
 			std::cout << "} = " << utility << "\n";
+#endif
 			delete state_result;
 		}
 
@@ -163,10 +171,14 @@ Action MinMaxAI::choose(State * state) {
 	else {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			state_result = state->result(actions->get(i));
+#if defined(PRINT_TREE)
 			std::cout << actions->get(i) << "{\n";
+#endif
 			utility = max(state_result, _hasher->hash(state_result), 0);
 			minMax->add(utility);
+#if defined(PRINT_TREE)
 			std::cout << "} = " << utility << "\n";
+#endif
 			delete state_result;
 		}
 
