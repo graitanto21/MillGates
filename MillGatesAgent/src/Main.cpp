@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) {
 
 	IterativeDeepeningAI ai;
 	ai.setAI(new NegaScoutAI());
+	//NegaScoutAI ai;
 
 	if (!strcmp(argv[1], "white")) {
 		State * state = new CubeStateImpl();

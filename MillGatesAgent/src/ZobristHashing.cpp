@@ -13,7 +13,7 @@ ZobristHashing* ZobristHashing::instance = NULL;
 
 ZobristHashing* ZobristHashing::getInstance() {
 	if(instance == NULL)
-		instance = new ZobristHashing;
+		instance = new ZobristHashing();
 	return instance;
 }
 
