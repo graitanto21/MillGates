@@ -60,6 +60,7 @@ public:
 	//Utility methods
 	virtual State* clone() const = 0;
 	virtual std::string toString() const;
+	virtual std::string toNiceString() const;
 
 	virtual bool isInMorris(uint8 pos) const;
 	virtual bool isInMorris(uint8 pos, uint8 axis) const;

@@ -59,8 +59,7 @@ int main(int argc, char* argv[]) {
 			delete state;
 			state = new CubeStateImpl(stateStr);
 			state->setPlayer(PAWN_WHITE);
-			cout << "State (internal repr): " << (state->toString()) << "\n";
-			cout << "State (ordered repr): ";
+			cout << state->toNiceString();
 			state->toStringToSend();
 			cout << "\n";
 		}

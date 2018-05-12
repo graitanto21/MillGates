@@ -8,7 +8,7 @@
 #include "State.h"
 
 #include <string>
-#include <cstdlib>
+#include <stdlib.h>
 #include "stdio.h"
 
 /*
@@ -205,6 +205,20 @@ std::string State::toString() const {
 	res[l] = '\0';
 	return std::string(res) + '('+ (char)getPhase()+')';
 
+}
+
+std::string State::toNiceString() const {
+	std::string result = std::string();
+	result = result + "7 " + (char)getPawnAt(0, 0, 2) + "--------" + (char)getPawnAt(0, 1, 2) + "--------" + (char)getPawnAt(0, 2, 2) + "\n" +
+			 "6 |--" + (char)getPawnAt(0, 0, 1) + "-----" + (char)getPawnAt(0, 1, 1) + "-----" + (char)getPawnAt(0, 2, 1) + "--|\n" +
+			 "5 |--|--" + (char)getPawnAt(0, 0, 0) + "--" + (char)getPawnAt(0, 1, 0) + "--" + (char)getPawnAt(0, 2, 0) + "--|--|\n" +
+			 "4 " + (char)getPawnAt(1, 0, 2) + "--" + (char)getPawnAt(1, 0, 1) + "--" + (char)getPawnAt(1, 0, 0) + "     "
+			+ (char)getPawnAt(1, 2, 0) + "--" + (char)getPawnAt(1, 2, 1) + "--" + (char)getPawnAt(1, 2, 2) + "\n" +
+			 "3 |--|--" + (char)getPawnAt(2, 0, 0) + "--" + (char)getPawnAt(2, 1, 0) + "--" + (char)getPawnAt(2, 2, 0) + "--|--|\n" +
+			 "2 |--" + (char)getPawnAt(2, 0, 1) + "-----" + (char)getPawnAt(2, 1, 1) + "-----" + (char)getPawnAt(2, 2, 1) + "--|\n" +
+			 "1 " + (char)getPawnAt(2, 0, 2) + "--------" + (char)getPawnAt(2, 1, 2) + "--------" + (char)getPawnAt(2, 2, 2) + "\n" +
+			 "  a  b  c  d  e  f  g\n" ;
+	return result;
 }
 
 State::~State() {}
