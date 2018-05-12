@@ -10,7 +10,9 @@
 //#include "State.h"
 //#include <iostream>
 //#include "MinMaxAI.h"
+//#include "DummyAI.h"
 //#include "NegaScoutAI.h"
+//#include <string.h>
 //
 //#include "ZobristHashing.h"
 ////
@@ -382,32 +384,71 @@
 ////}
 ////
 //
+//State * random_state() {
+//	State * result = new CubeStateImpl();
+//	uint8 x, y, z, pawn;
+//	uint8 n = rand() % 24;
+//	for(uint8 i = 0; i < n; i++) {
+//		x = rand() % 3;
+//		y = rand() % 3;
+//		z = rand() % 3;
+//		pawn = rand() % 3;
+//		if (pawn == 0)
+//			pawn = 'O';
+//		else if (pawn == 1)
+//			pawn = 'W';
+//		else
+//			pawn = 'B';
+//		result->setPawnAt(x, y, z, pawn);
+//	}
+//	return result;
+//}
+//
 //void testZobristHashing(State * state) {
 //
-//	srand(300);
-//
+////	srand(300);
+////
 //	ZobristHashing * hasher = ZobristHashing::getInstance();
+////
+////	state->setPlayer(PAWN_WHITE);
+////
+////	std::cout << "Hash iniziale " << hasher->hash(state) << "\n";
+////	state->setPawnAt(2,2,2, PAWN_WHITE);
+////	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
+////
+////	Action action = Action(NEW_POS(2,2,2), NEW_POS(2,2,1), POS_NULL);
+////	State * newState = state->result(action);
+////	hashcode hash = hasher->quickHash(state, action, hasher->hash(state));
+////	std::cout << "pedina bianca in 2 2 1 QUICK HASH " << hash << "\n";
+////	std::cout << "pedina bianca in 2 2 1 HASH " << hasher->hash(newState) << "\n";
+////
+////	newState->setPlayer(PAWN_WHITE);
+////
+////	Action action2 = Action(NEW_POS(2,2,1), NEW_POS(2,2,2), POS_NULL);
+////	state = newState->result(action2);
+////	std::cout << "pedina bianca in 2 2 2 QUICK HASH " << hasher->quickHash(newState, action2, hash) << "\n";
+////	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
+////
+////	state->setPlayer(PAWN_WHITE);
 //
-//	state->setPlayer(PAWN_WHITE);
+//	DummyAI ai;
+//	Action a;
+//	srand(7200);
 //
-//	std::cout << "Hash iniziale " << hasher->hash(state) << "\n";
-//	state->setPawnAt(2,2,2, PAWN_WHITE);
-//	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
+//	for(int i = 0; i < 20000000; i++) {
+//		State * father = random_state();
+//		a = ai.choose(father);
+//		State * child = father->result(a);
+//		if(hasher->hash(child) != hasher->quickHash(father, a, hasher->hash(father))) {
+//			std::cout << "Error" << i << "\n";
+//		}
+//		delete child;
+//		delete father;
+//		//std::cout << father->toString() << " " << child->toString() << "\n";
 //
-//	Action action = Action(NEW_POS(2,2,2), NEW_POS(2,2,1), POS_NULL);
-//	State * newState = state->result(action);
-//	hashcode hash = hasher->quickHash(state, action, hasher->hash(state));
-//	std::cout << "pedina bianca in 2 2 1 QUICK HASH " << hash << "\n";
-//	std::cout << "pedina bianca in 2 2 1 HASH " << hasher->hash(newState) << "\n";
+//	}
 //
-//	newState->setPlayer(PAWN_WHITE);
-//
-//	Action action2 = Action(NEW_POS(2,2,1), NEW_POS(2,2,2), POS_NULL);
-//	state = newState->result(action2);
-//	std::cout << "pedina bianca in 2 2 2 QUICK HASH " << hasher->quickHash(newState, action2, hash) << "\n";
-//	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
-//
-//	state->setPlayer(PAWN_WHITE);
+//	std::cout << "Fine";
 //}
 //
 //void testMinMaxAI(State * state) {

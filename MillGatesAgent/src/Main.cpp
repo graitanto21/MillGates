@@ -42,14 +42,7 @@ int main(int argc, char* argv[]) {
 		Action action;
 		while(1) {
 			action = ai.choose(state);
-
-			actionStr[0] = '\0';
-			actionStr[1] = '\0';
-			actionStr[2] = '\0';
-			actionStr[3] = '\0';
-			actionStr[4] = '\0';
-			actionStr[5] = '\0';
-			actionStr[6] = '\0';
+			memset(actionStr, 0, sizeof(actionStr));
 			strcpy(actionStr, action.toString().c_str());
 
 			send_data(actionStr, ACTION_STRLEN);
