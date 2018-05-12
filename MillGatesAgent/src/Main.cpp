@@ -29,7 +29,8 @@ int main(int argc, char* argv[]) {
 
 	start_connection();
 
-	srand(time(NULL));
+	//srand(time(NULL));
+	srand(8000);
 
 	IterativeDeepeningAI ai;
 	ai.setAI(new NegaScoutAI());

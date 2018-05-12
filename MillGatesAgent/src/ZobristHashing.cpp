@@ -38,14 +38,15 @@ hashcode ZobristHashing::hash(State * state) const {
 
 	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
 		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-			for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-				if (POS_ENABLED(NEW_POS(x,y,z))) {
+			for (uint8 z = 0; z < CUBE_SIZE_Z; z++) {
+				if (POS_ENABLED_FAST(x,y)) {
 					if ((j = state->getPawnAt(x, y, z)) != PAWN_NONE) {
 						j = (j == PAWN_WHITE) ? HASH_PAWN_WHITE : HASH_PAWN_BLACK;
 						hash ^= _table[i][j];
 					}
-					i++;
 				}
+				i++;
+			}
 	return hash;
 }
 

@@ -9,6 +9,7 @@
 
 #define DEPTH 7
 //#define PRINT_COUNT
+//#define PRINT_ADDED_HASHES
 #define PRINT_GRANULARITY 10000
 
 sint8 NegaScoutAI::evaluate(State * state) {
@@ -33,9 +34,15 @@ void NegaScoutAI::add(entry * val) {
 	vec->add(val);
 
 	_count++;
-#if !defined(PRINT_TREE) && defined(PRINT_COUNT)
+	if (val->hash == 116621246993562) {
+		std::cout << "116621246993562 added \n";
+	}
+#if defined(PRINT_COUNT)
 	if (_count % PRINT_GRANULARITY == 0)
 		std::cout << _count << "\n";
+#endif
+#if defined(PRINT_ADDED_HASHES)
+	std::cout << val->hash << "\n";
 #endif
 }
 
@@ -43,7 +50,7 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 
 	entry * e = get(quickhash);
 	if (e != NULL && e->depth >= depth)
-	//if (e != NULL)
+		//if (e != NULL)
 		return color * e->eval;
 
 	sint8 score = 0;
@@ -139,56 +146,52 @@ Action NegaScoutAI::choose(State * state) {
 		(*_hashes)[i] = new ExpVector<entry*>();
 
 	ExpVector<Action> * actions = state->getActions();
-	ExpVector<sint8> * scores = new ExpVector<sint8>();
-	State * child;
-	Action action_result;
 
-	int res;
-	int score;
-	uint8 negaScoutIndex = 0;
+	Action res;
+	sint8 score;
+	entry * tempscore;
+	hashcode quickhash, hash;
+
+	hash = _hasher->hash(state);
 
 	if (state->getPlayer() == PAWN_WHITE) {
+		negaScout(state, hash, _depth + 1, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), 1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			child = state->result(actions->get(i));
-			score = -negaScout(child, _hasher->hash(child), _depth, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), -1);
-			scores->add(score);
-			delete child;
-		}
-
-		res = scores->get(0);
-
-		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			std::cout << actions->get(i) << " = " << (int)scores->get(i) << "\n";
-			if (scores->get(i) > res) {
-				res = scores->get(i);
-				negaScoutIndex = i;
+			quickhash = _hasher->quickHash(state, actions->get(i), hash);
+			tempscore = get(quickhash);
+			if (tempscore != NULL) {
+				if (i == 0 || tempscore->eval > score) {
+					score = tempscore->eval;
+					res = actions->get(i);
+				}
+			}
+			else {
+				std::cout << "HASH " << quickhash << " not found\n";
+				res = actions->get(0);
 			}
 		}
 	}
 	else {
+		negaScout(state, hash, _depth + 1, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), -1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			child = state->result(actions->get(i));
-			score = -negaScout(child, _hasher->hash(child), _depth, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), 1);
-			scores->add(score);
-			delete child;
-		}
-
-		res = scores->get(0);
-
-		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			if (scores->get(i) < res) {
-				res = scores->get(i);
-				negaScoutIndex = i;
+			quickhash = _hasher->quickHash(state, actions->get(i), hash);
+			tempscore = get(quickhash);
+			if (tempscore != NULL) {
+				if (i == 0 || tempscore->eval < score) {
+					score = tempscore->eval;
+					res = actions->get(i);
+				}
+			}
+			else {
+				std::cout << "HASH " << quickhash << " not found\n";
+				res = actions->get(0);
 			}
 		}
 	}
 
-	action_result = actions->get(negaScoutIndex);
-
 	std::cout << _count << "\n";
 
 	delete actions;
-	delete scores;
 
 	for (int i = 0; i < HASH_MASK + 1; i++)
 		if ((*_hashes)[i] != NULL) {
@@ -198,7 +201,7 @@ Action NegaScoutAI::choose(State * state) {
 		}
 	delete _hashes;
 
-	return action_result;
+	return res;
 }
 
 NegaScoutAI::~NegaScoutAI() {

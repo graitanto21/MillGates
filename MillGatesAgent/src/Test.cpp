@@ -391,21 +391,21 @@
 //	state->setPlayer(PAWN_WHITE);
 //
 //	std::cout << "Hash iniziale " << hasher->hash(state) << "\n";
-//	state->setPawnAt(0,0,1, PAWN_WHITE);
-//	std::cout << "pedina bianca in 0 0 1 HASH " << hasher->hash(state) << "\n";
+//	state->setPawnAt(2,2,2, PAWN_WHITE);
+//	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
 //
-//	Action action = Action(NEW_POS(0,0,1), NEW_POS(1,0,1), POS_NULL);
+//	Action action = Action(NEW_POS(2,2,2), NEW_POS(2,2,1), POS_NULL);
 //	State * newState = state->result(action);
 //	hashcode hash = hasher->quickHash(state, action, hasher->hash(state));
-//	std::cout << "pedina bianca in 1 0 1 QUICK HASH " << hash << "\n";
-//	std::cout << "pedina bianca in 1 0 1 HASH " << hasher->hash(newState) << "\n";
+//	std::cout << "pedina bianca in 2 2 1 QUICK HASH " << hash << "\n";
+//	std::cout << "pedina bianca in 2 2 1 HASH " << hasher->hash(newState) << "\n";
 //
 //	newState->setPlayer(PAWN_WHITE);
 //
-//	Action action2 = Action(NEW_POS(1,0,1), NEW_POS(0,0,1), POS_NULL);
+//	Action action2 = Action(NEW_POS(2,2,1), NEW_POS(2,2,2), POS_NULL);
 //	state = newState->result(action2);
-//	std::cout << "pedina bianca in 0 0 1 QUICK HASH " << hasher->quickHash(newState, action2, hash) << "\n";
-//	std::cout << "pedina bianca in 0 0 1 HASH " << hasher->hash(state) << "\n";
+//	std::cout << "pedina bianca in 2 2 2 QUICK HASH " << hasher->quickHash(newState, action2, hash) << "\n";
+//	std::cout << "pedina bianca in 2 2 2 HASH " << hasher->hash(state) << "\n";
 //
 //	state->setPlayer(PAWN_WHITE);
 //}
@@ -490,14 +490,14 @@
 //	//	delete state;
 //
 //	//ZobristHashing
-//	//	state = new CubeStateImpl();
-//	//	testZobristHashing(state);
-//	//	delete state;
+//		state = new CubeStateImpl();
+//		testZobristHashing(state);
+//		delete state;
 //
-//	//ZobristHashing
-//	state = new CubeStateImpl();
-//	testNegaScoutAI(state);
-//	delete state;
+//	//AI
+////	state = new CubeStateImpl();
+////	testNegaScoutAI(state);
+////	delete state;
 //
 //}
 //
