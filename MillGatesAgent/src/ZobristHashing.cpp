@@ -76,6 +76,11 @@ hashcode ZobristHashing::quickHash(State * state, Action action, hashcode previo
 	}
 
 	return h;
+
+//	State * child = state->result(action);
+//	int res = hash(child);
+//	delete child;
+//	return res;
 }
 
 ZobristHashing::~ZobristHashing() {

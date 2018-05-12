@@ -23,7 +23,7 @@ void IterativeDeepeningAI::setDepth(uint8 depth) {
 Action IterativeDeepeningAI::choose(State * state) {
 	Action result;
 
-	for(int i = 0; i <= MAX_SEARCH_DEPTH - 5; i++) {
+	for(int i = MAX_SEARCH_DEPTH; i <= MAX_SEARCH_DEPTH; i++) {
 		setDepth(i);
 		std::cout << "Negascout profondo " << i << "\n";
 		result = _ai->choose(state);

@@ -21,12 +21,13 @@ sint8 NegaScoutAI::evaluate(State * state) {
 
 entry * NegaScoutAI::get(hashcode hashcode) {
 	ExpVector<entry*> * vec = (*_hashes)[hashcode & HASH_MASK];
-	for (int i = 0; i < vec->getLogicSize(); i++) {
-		if (vec->get(i)->hash == hashcode)
-			return vec->get(i);
+	if (vec != NULL) {
+		for (int i = 0; i < vec->getLogicSize(); i++) {
+			if (vec->get(i)->hash == hashcode)
+				return vec->get(i);
+		}
+		//std::cout << vec->getLogicSize() << " " << hashcode << "\n";
 	}
-
-	std::cout << vec->getLogicSize() << " " << hashcode << "\n";
 	return NULL;
 }
 
@@ -34,24 +35,11 @@ void NegaScoutAI::add(entry * val) {
 	ExpVector<entry*> * vec = (*_hashes)[val->hash & HASH_MASK];
 	if (vec == NULL) {
 		vec = new ExpVector<entry*>();
+		(*_hashes)[val->hash & HASH_MASK] = vec;
 	}
 	if(val->hash == 118588342026035)
 		std::cout << "Logic size: " << vec->getLogicSize() << "\n";
 	vec->add(val);
-	if(val->hash == 118588342026035)
-		std::cout << "Logic size: " << vec->getLogicSize() << "\n";
-
-	if(val->hash == 118588342026035) {
-		entry * e = get(118588342026035);
-		if(e != NULL) {
-			std::cout << "Val " << val->hash << " " << val->depth << "\n";
-			std::cout << "Added " << e->hash << " " << e->depth << "\n";
-			for(int i = 0; i < vec->getLogicSize(); i++) {
-				if(vec->get(i)->hash == val->hash)
-					std::cout << vec->get(i)->hash << " " << vec->get(i)->depth << "\n";
-			}
-		}
-	}
 
 	_count++;
 #if defined(PRINT_COUNT)
@@ -149,7 +137,7 @@ uint8 NegaScoutAI::getDepth() {
 
 void NegaScoutAI::setDepth(uint8 depth) {
 	_depth = depth;
-	std::cout << "depth " << _depth << "\n";
+	std::cout << "depth " << (int)_depth << "\n";
 }
 
 Action NegaScoutAI::choose(State * state) {
@@ -158,10 +146,9 @@ Action NegaScoutAI::choose(State * state) {
 		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL); */
 
 	_hashes = new std::vector<ExpVector<entry*>*>(HASH_MASK + 1);
-	_count = 0;
-
 	for (int i = 0; i < HASH_MASK + 1; i++)
-		(*_hashes)[i] = new ExpVector<entry*>();
+		(*_hashes)[i] = NULL;
+	_count = 0;
 
 	ExpVector<Action> * actions = state->getActions();
 
@@ -182,9 +169,10 @@ Action NegaScoutAI::choose(State * state) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
+				std::cout << "FOUND " << quickhash << " -> " << actions->get(i) << "\n";
 			}
 			else {
-				std::cout << "HASH " << quickhash << " not found\n";
+				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
 				res = actions->get(0);
 			}
 		}
@@ -199,9 +187,10 @@ Action NegaScoutAI::choose(State * state) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
+				std::cout << "FOUND " << quickhash << " -> " << actions->get(i) << "\n";
 			}
 			else {
-				std::cout << "HASH " << quickhash << " not found\n";
+				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
 				res = actions->get(0);
 			}
 		}
