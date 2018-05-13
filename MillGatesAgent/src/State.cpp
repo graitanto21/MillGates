@@ -530,7 +530,7 @@ ExpVector<uint8> State::getAvailablePositions(uint8 pos) const {
 
 	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
-	if (getPhase() == PHASE_1 || getPawnsOnBoard(myPawn) == 3)
+	if (getPawnsToPlay(getPlayer()) > 0 || getPawnsOnBoard(myPawn) == 3)
 		return getAllPositions(PAWN_NONE);
 
 	ExpVector<uint8> result(MAX_MOVES_PHASE_2);
