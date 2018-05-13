@@ -23,5 +23,9 @@ void DummyAI::setDepth(uint8 depth) {
 
 }
 
+void DummyAI::print(State * root, int depth) {}
+
+void DummyAI::clear() {}
+
 DummyAI::~DummyAI() {}
 

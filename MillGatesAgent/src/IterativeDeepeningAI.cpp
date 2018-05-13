@@ -20,16 +20,27 @@ void IterativeDeepeningAI::setDepth(uint8 depth) {
 	_ai->setDepth(depth);
 }
 
+void IterativeDeepeningAI::print(State * root, int depth) {
+	_ai->print(root, depth);
+}
+
+void IterativeDeepeningAI::clear() {
+	_ai->clear();
+}
+
 Action IterativeDeepeningAI::choose(State * state) {
 	Action result;
 
 	for(int i = MAX_SEARCH_DEPTH; i <= MAX_SEARCH_DEPTH; i++) {
 		setDepth(i);
-		std::cout << "Negascout profondo " << i << "\n";
 		result = _ai->choose(state);
-		std::cout << result << "\n";
+		std::cout << "Chosen action: " <<result << "\n";
 		// if time_out() break;
 	}
+
+	print(state, 1);
+
+	clear();
 
 	return result;
 }

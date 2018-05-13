@@ -11,32 +11,26 @@
 #include "AI.h"
 #include "ZobristHashing.h"
 #include "ExpVector.h"
-
-typedef struct {
-	uint8 depth;
-	sint8 eval;
-	hashcode hash;
-} entry;
+#include "TranspositionTable.h"
 
 class NegaScoutAI: public AI {
 private:
 
-	std::vector<ExpVector<entry*>*> * _hashes;
+	TranspositionTable * _table;
 	ZobristHashing * _hasher;
-	int _count;
 	uint8 _depth;
 
 	sint8 evaluate(State * state);
-	entry * get(hashcode hashcode);
-	void add(entry * entry);
-
 	sint8 negaScout(State * state, hashcode quickhash, uint8 depth, sint8 alpha, sint8 beta, sint8 color);
+	void recurprint(State * state, int depth, int curdepth);
 
 public:
 	NegaScoutAI();
 	virtual uint8 getDepth();
 	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
+	virtual void clear();
+	virtual void print(State * root, int depth);
 	virtual ~NegaScoutAI();
 };
 

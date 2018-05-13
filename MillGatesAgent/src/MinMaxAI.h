@@ -15,7 +15,7 @@
 class MinMaxAI: public AI {
 private:
 
-	std::vector<ExpVector<hashcode>*> * _hashes;
+	std::vector<ExpVector<hashcode>*> * _table;
 	ZobristHashing * _hasher;
 	int _count;
 	uint8 _depth;
@@ -31,6 +31,8 @@ public:
 	virtual ~MinMaxAI();
 	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
+	virtual void print(State * root, int depth);
+	virtual void clear();
 };
 
 #endif /* MINMAXAI_H_ */

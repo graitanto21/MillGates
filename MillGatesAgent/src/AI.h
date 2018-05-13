@@ -16,6 +16,8 @@ public:
 
 	virtual Action choose(State * state) = 0;
 	virtual void setDepth(uint8 depth) = 0;
+	virtual void clear() = 0;
+	virtual void print(State * root, int depth) = 0;
 	virtual ~AI();
 
 };

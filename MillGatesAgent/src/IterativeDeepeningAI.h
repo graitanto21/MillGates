@@ -18,9 +18,9 @@ public:
 
 	virtual void setAI(AI * ai);
 	virtual void setDepth(uint8 depth);
-
 	virtual Action choose(State * state);
-
+	virtual void clear();
+	virtual void print(State * root, int depth);
 	virtual ~IterativeDeepeningAI();
 };
 

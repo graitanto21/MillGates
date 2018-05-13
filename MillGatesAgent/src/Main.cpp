@@ -45,16 +45,18 @@ int main(int argc, char* argv[]) {
 			memset(actionStr, 0, sizeof(actionStr));
 			strcpy(actionStr, action.toString().c_str());
 
-			send_data(actionStr, ACTION_STRLEN);
+			if (send_data(actionStr, ACTION_STRLEN) == FAILURE)
+				exit(1);
 
-			recv_data(stateStr, STATE_STRLEN);
+			if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
+				exit(1);
+
 			stateStr[STATE_STRLEN - 1] = '\0';
 
 			delete state;
 			state = new CubeStateImpl(stateStr);
 			state->setPlayer(PAWN_WHITE);
 			cout << state->toNiceString();
-			state->toStringToSend();
 			cout << "\n";
 		}
 	}

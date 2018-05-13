@@ -12,7 +12,7 @@
 #define PRINT_GRANULARITY 10000
 
 MinMaxAI::MinMaxAI() {
-	_hashes = NULL;
+	_table = NULL;
 	_hasher = ZobristHashing::getInstance();
 	_count = 0;
 	_depth = LEVEL;
@@ -22,8 +22,12 @@ void MinMaxAI::setDepth(uint8 depth) {
 	_depth = depth;
 }
 
+void MinMaxAI::clear() {}
+
+void MinMaxAI::print(State * root, int depth) {}
+
 bool MinMaxAI::visited(hashcode hash) {
-	ExpVector<hashcode> * vec = (*_hashes)[hash & HASH_MASK];
+	ExpVector<hashcode> * vec = (*_table)[hash & HASH_MASK];
 	for (int i = 0; i < vec->getLogicSize(); i++)
 		if (vec->get(i) == hash)
 			return true;
@@ -31,7 +35,7 @@ bool MinMaxAI::visited(hashcode hash) {
 }
 
 void MinMaxAI::add(hashcode hash) {
-	ExpVector<hashcode> * vec = (*_hashes)[hash & HASH_MASK];
+	ExpVector<hashcode> * vec = (*_table)[hash & HASH_MASK];
 	if (vec == NULL)
 		vec = new ExpVector<hashcode>();
 	vec->add(hash);
@@ -138,11 +142,11 @@ int MinMaxAI::max(State * state, hashcode hash, int level) {
 
 Action MinMaxAI::choose(State * state) {
 
-	_hashes = new std::vector<ExpVector<hashcode>*>(HASH_MASK + 1);
+	_table = new std::vector<ExpVector<hashcode>*>(HASH_MASK + 1);
 	_count = 0;
 
 	for (int i = 0; i < HASH_MASK + 1; i++)
-		(*_hashes)[i] = new ExpVector<hashcode>();
+		(*_table)[i] = new ExpVector<hashcode>();
 
 	ExpVector<Action> * actions = state->getActions();
 	ExpVector<int> * minMax = new ExpVector<int>();
@@ -208,9 +212,9 @@ Action MinMaxAI::choose(State * state) {
 	delete minMax;
 
 	for (int i = 0; i < HASH_MASK + 1; i++)
-		if ((*_hashes)[i] != NULL)
-			delete (*_hashes)[i];
-	delete _hashes;
+		if ((*_table)[i] != NULL)
+			delete (*_table)[i];
+	delete _table;
 
 	return action_result;
 }
