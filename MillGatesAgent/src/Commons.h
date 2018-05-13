@@ -16,10 +16,6 @@
 #define PAWN_WHITE 'W'
 #define PAWN_BLACK 'B'
 
-#define PHASE_1 '1'
-#define PHASE_2	'2'
-#define PHASE_3	'3'
-
 #define X_AXIS 0
 #define Y_AXIS 1
 #define Z_AXIS 2
@@ -28,7 +24,7 @@
 #define AVERAGE_PAWNS_ON_BOARD 4
 #define MAX_MOVES_PHASE_2 4
 
-#define MAX_SEARCH_DEPTH 7
+#define MAX_SEARCH_DEPTH 8
 
 #define WHITE_PAWNS_COUNT 9
 #define BLACK_PAWNS_COUNT 9

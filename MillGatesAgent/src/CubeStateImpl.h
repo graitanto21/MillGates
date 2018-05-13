@@ -16,7 +16,6 @@ class CubeStateImpl : public State {
 private:
 	//Data structures
 	pawn _pawns[CUBE_SIZE_X][CUBE_SIZE_Y][CUBE_SIZE_Z];
-	uint8 _phase;
 	pawn _player;
 
 public:
@@ -30,9 +29,6 @@ public:
 
 	virtual pawn getPlayer() const;
 	virtual void setPlayer(pawn player);
-
-	void setPhase(uint8 currentPhase);
-	uint8 getPhase() const;
 
 	virtual State * clone() const;
 

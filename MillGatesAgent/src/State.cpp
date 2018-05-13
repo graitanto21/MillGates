@@ -203,7 +203,7 @@ std::string State::toString() const {
 				l++;
 			}
 	res[l] = '\0';
-	return std::string(res) + '('+ (char)getPhase()+')';
+	return std::string(res);
 
 }
 
@@ -594,7 +594,7 @@ ExpVector<Action> * State::getActions() const {
 
 	ExpVector<Action> * result = new ExpVector<Action>(ACTION_VECTOR_DEFAULT_SIZE);
 
-	if (getPhase() == PHASE_1) {
+	if (getPawnsToPlay(getPlayer()) > 0) {
 		*result = addActionsForPawn(POS_NULL, *result);
 	}
 	else {
@@ -620,8 +620,6 @@ State * State::result(Action action) const {
 		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), getPlayer());
 		state->setPawnsOnBoard(getPlayer(), state->getPawnsOnBoard(getPlayer()) + 1);
 		state->setPawnsToPlay(getPlayer(), state->getPawnsToPlay(getPlayer()) - 1);
-		if (getPawnsToPlay(PAWN_BLACK) == 0 && getPawnsToPlay(PAWN_WHITE) == 0)
-			state->setPhase(PHASE_2);
 	}
 	// fasi 2 e 3 (pedina da src a dest)
 	if(IS_VALID(src) && IS_VALID(dest)) {
@@ -633,8 +631,6 @@ State * State::result(Action action) const {
 	if(IS_VALID(toRemove)) {
 		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
 		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
-		if (state->getPawnsOnBoard(OPP(getPlayer())) == PAWNS_TO_ENTER_3RD_PHASE)
-			state->setPhase(PHASE_3);
 	}
 
 	state->setPlayer(OPP(getPlayer()));
@@ -669,7 +665,7 @@ ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBu
 
 bool State::isTerminal() const {
 
-	if (getPhase() == PHASE_1)
+	if (getPawnsToPlay(getPlayer()) > 0)
 		return false;
 
 	ExpVector<Action> * actions = getActions();

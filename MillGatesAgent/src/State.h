@@ -33,9 +33,6 @@ public:
 	virtual pawn getPawnAt(uint8 x, uint8 y, uint8 z) const = 0;
 	virtual void setPawnAt(uint8 x, uint8 y, uint8 z, pawn value) = 0;
 
-	virtual void setPhase(uint8 value) = 0;
-	virtual uint8 getPhase() const = 0;
-
 	virtual void setWhitePawnsOnBoardStr(std::string number);
 	virtual uint8 getWhitePawnsOnBoardStr() const;
 
