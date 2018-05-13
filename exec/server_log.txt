@@ -293,3 +293,36 @@ White Checkers On Board: 9;
 Black Checkers On Board: 7;
 
 Waiting for B move...
+Player B move n9: c3
+7 W--------B--------B
+6 |--W-----W-----W--|
+5 |--|--W--W--B--|--|
+4 O--O--W     O--O--W
+3 |--|--B--B--O--|--|
+2 |--B-----O-----O--|
+1 B--------W--------B
+  a  b  c  d  e  f  g
+Phase: Second;
+White Checkers: 0;
+Black Checkers: 0;
+White Checkers On Board: 9;
+Black Checkers On Board: 8;
+
+Waiting for W move...
+Player W move n10: b6b4
+7 W--------B--------B
+6 |--O-----W-----W--|
+5 |--|--W--W--B--|--|
+4 O--W--W     O--O--W
+3 |--|--B--B--O--|--|
+2 |--B-----O-----O--|
+1 B--------W--------B
+  a  b  c  d  e  f  g
+Phase: Second;
+White Checkers: 0;
+Black Checkers: 0;
+White Checkers On Board: 9;
+Black Checkers On Board: 8;
+
+Waiting for B move...
+Terminate batch job (Y/N)? 
