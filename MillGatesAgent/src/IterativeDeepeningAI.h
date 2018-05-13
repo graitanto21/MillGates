@@ -10,9 +10,13 @@
 
 #include "NegaScoutAI.h"
 
+void * timer(void * args);
+
 class IterativeDeepeningAI {
 private:
 	AI * _ai;
+	Action _tempAction;
+
 public:
 	IterativeDeepeningAI();
 
@@ -21,6 +25,7 @@ public:
 	virtual Action choose(State * state);
 	virtual void clear();
 	virtual void print(State * root, int depth);
+	void * refreshResult(State * state);
 	virtual ~IterativeDeepeningAI();
 };
 

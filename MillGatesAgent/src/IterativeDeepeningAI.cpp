@@ -6,6 +6,15 @@
  */
 
 #include "IterativeDeepeningAI.h"
+#include <pthread.h>
+#include <semaphore.h>
+#include "os.h"
+#if defined(WINDOWS)
+#endif
+#include "windows.h"
+#if defined(LINUX)
+#include "unistd.h"
+#endif
 
 IterativeDeepeningAI::IterativeDeepeningAI() {
 	// TODO Auto-generated constructor stub
@@ -28,21 +37,62 @@ void IterativeDeepeningAI::clear() {
 	_ai->clear();
 }
 
-Action IterativeDeepeningAI::choose(State * state) {
-	Action result;
+sem_t semaphore;
 
-	for(int i = MAX_SEARCH_DEPTH; i <= MAX_SEARCH_DEPTH; i++) {
-		setDepth(i);
-		result = _ai->choose(state);
-		std::cout << "Chosen action: " <<result << "\n";
-		// if time_out() break;
+void * IterativeDeepeningAI::refreshResult(State * state) {
+
+	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
+		setDepth(depth);
+		_tempAction = _ai->choose(state);
+		clear();
+		std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
 	}
 
+	sem_post(&semaphore);
+	return NULL;
+
+}
+
+void * timer(void * args) {
+
+	std::cout << "Timer start\n";
+#if defined(WINDOWS)
+	Sleep(50000);
+#endif
+#if defined(LINUX)
+	sleep(50);
+#endif
+	std::cout << "Timer end\n";
+	sem_post(&semaphore);
+	return NULL;
+
+}
+
+static void * refreshResult_helper(void * args) {
+	return (reinterpret_cast<IterativeDeepeningAI*>(((void**)args)[0]))->refreshResult(reinterpret_cast<State*>(((void**)args)[1]));
+}
+
+Action IterativeDeepeningAI::choose(State * state) {
+
+	pthread_t ai_thread;
+	pthread_t timer_thread;
+
+	sem_init(&semaphore, 0, 0);
+
+	void ** param = (void**)malloc(sizeof(void*) * 2);
+	param[0] = this;
+	param[1] = state;
+
+	pthread_create(&ai_thread, NULL, refreshResult_helper, param);
+	pthread_create(&timer_thread, NULL, timer, NULL);
+	sem_wait(&semaphore);
+	pthread_cancel(ai_thread);
+	pthread_cancel(timer_thread);
 	print(state, 1);
-
+	free(param);
+	sem_destroy(&semaphore);
 	clear();
-
-	return result;
+	return _tempAction;
 }
 
 IterativeDeepeningAI::~IterativeDeepeningAI() {

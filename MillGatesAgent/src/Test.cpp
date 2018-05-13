@@ -104,33 +104,34 @@
 //
 //	srand(8000);
 //
-////	state->setPawnAt2D('a', '1', PAWN_BLACK);
-////	state->setPawnAt2D('g', '1', PAWN_BLACK);
-////	state->setPawnAt2D('b', '2', PAWN_BLACK);
-////	state->setPawnAt2D('d', '3', PAWN_BLACK);
-////	state->setPawnAt2D('e', '5', PAWN_BLACK);
-////	state->setPawnAt2D('d', '7', PAWN_BLACK);
-////	state->setPawnAt2D('g', '7', PAWN_BLACK);
-////
-////	state->setPawnAt2D('d', '1', PAWN_WHITE);
-////	state->setPawnAt2D('g', '4', PAWN_WHITE);
-////	state->setPawnAt2D('d', '5', PAWN_WHITE);
-////	state->setPawnAt2D('c', '5', PAWN_WHITE);
-////	state->setPawnAt2D('b', '6', PAWN_WHITE);
-////	state->setPawnAt2D('d', '6', PAWN_WHITE);
-////	state->setPawnAt2D('f', '6', PAWN_WHITE);
-////	state->setPawnAt2D('a', '7', PAWN_WHITE);
+//	state->setPawnAt2D('a', '1', PAWN_BLACK);
+//	state->setPawnAt2D('g', '1', PAWN_BLACK);
+//	state->setPawnAt2D('b', '2', PAWN_BLACK);
+//	state->setPawnAt2D('d', '3', PAWN_BLACK);
+//	state->setPawnAt2D('e', '5', PAWN_BLACK);
+//	state->setPawnAt2D('d', '7', PAWN_BLACK);
+//	state->setPawnAt2D('g', '7', PAWN_BLACK);
 //
-////	state->setPawnsToPlay(PAWN_WHITE, 1);
-////	state->setPawnsToPlay(PAWN_BLACK, 1);
-////	state->setPawnsOnBoard(PAWN_WHITE, 8);
-////	state->setPawnsToPlay(PAWN_BLACK, 7);
+//	state->setPawnAt2D('d', '1', PAWN_WHITE);
+//	state->setPawnAt2D('g', '4', PAWN_WHITE);
+//	state->setPawnAt2D('d', '5', PAWN_WHITE);
+//	state->setPawnAt2D('c', '5', PAWN_WHITE);
+//	state->setPawnAt2D('b', '6', PAWN_WHITE);
+//	state->setPawnAt2D('d', '6', PAWN_WHITE);
+//	state->setPawnAt2D('f', '6', PAWN_WHITE);
+//	state->setPawnAt2D('a', '7', PAWN_WHITE);
+//
+//	state->setPawnsToPlay(PAWN_WHITE, 1);
+//	state->setPawnsToPlay(PAWN_BLACK, 1);
+//	state->setPawnsOnBoard(PAWN_WHITE, 8);
+//	state->setPawnsToPlay(PAWN_BLACK, 7);
 //
 //	state->setPlayer(PAWN_WHITE);
 //
 //	IterativeDeepeningAI * ai = new IterativeDeepeningAI();
 //	ai->setAI(new NegaScoutAI());
 //
+//	ai->choose(state);
 //	ai->choose(state);
 //
 //}
