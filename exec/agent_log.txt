@@ -3,14 +3,6 @@ C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
 Timer start
-Chosen action: c5 with depth 0
-Chosen action: c5 with depth 1
-Chosen action: c5 with depth 2
-Chosen action: c5 with depth 3
-Chosen action: c5 with depth 4
-Chosen action: c5 with depth 5
-Chosen action: c5 with depth 6
-Chosen action: c5 with depth 7
 Timer end
 c5 { 
  | b6 -> 1
@@ -309,5 +301,24 @@ a4 {
  | d2 -> CUT 
  | d1 -> CUT 
  | e3 -> CUT 
+ | f2 -> CUT 
+ | g1 -> CUT 
+} -> 0
+e4 { 
+ | c5 -> 0
+ | b6 -> CUT 
+ | a7 -> CUT 
+ | d5 -> CUT 
+ | d6 -> CUT 
+ | d7 -> CUT 
+ | e5 -> CUT 
+ | f6 -> CUT 
+ | g7 -> CUT 
+ | c4 -> CUT 
+ | b4 -> CUT 
+ | a4 -> CUT 
+ | f4 -> CUT 
+ | g4 -> CUT 
+ | c3 -> CUT 
  
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>

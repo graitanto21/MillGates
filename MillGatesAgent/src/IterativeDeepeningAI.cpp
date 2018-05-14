@@ -17,7 +17,7 @@
 #endif
 
 IterativeDeepeningAI::IterativeDeepeningAI() {
-	// TODO Auto-generated constructor stub
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	_ai = NULL;
 }
 
@@ -37,33 +37,49 @@ void IterativeDeepeningAI::clear() {
 	_ai->clear();
 }
 
-sem_t semaphore;
+bool timeUp = false;
+bool computationFinished = false;
 
 void * IterativeDeepeningAI::refreshResult(State * state) {
 
-	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
-		setDepth(depth);
-		_tempAction = _ai->choose(state);
-		clear();
-		std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
-	}
+	computationFinished = false;
+	std::cout << "Computation start\n";
 
-	sem_post(&semaphore);
+//	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
+//		setDepth(depth);
+//		_tempAction = _ai->choose(state);
+//		clear();
+//		if (timeUp) {
+//			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+//			break;
+//		}
+//	}
+
+	Sleep(60000);
+
+	computationFinished = true;
+	std::cout << "Computation end\n";
+	pthread_exit(NULL);
 	return NULL;
-
 }
 
 void * timer(void * args) {
 
 	std::cout << "Timer start\n";
+	timeUp = false;
+	for (int i = 0; i < COMPUTATION_TIME; i++) {
 #if defined(WINDOWS)
-	Sleep(50000);
+		Sleep(1000);
 #endif
 #if defined(LINUX)
-	sleep(50);
+		sleep(1);
 #endif
+		if (computationFinished)
+			break;
+	}
 	std::cout << "Timer end\n";
-	sem_post(&semaphore);
+	timeUp = true;
+	pthread_exit(NULL);
 	return NULL;
 
 }
@@ -77,20 +93,17 @@ Action IterativeDeepeningAI::choose(State * state) {
 	pthread_t ai_thread;
 	pthread_t timer_thread;
 
-	sem_init(&semaphore, 0, 0);
-
 	void ** param = (void**)malloc(sizeof(void*) * 2);
 	param[0] = this;
 	param[1] = state;
 
 	pthread_create(&ai_thread, NULL, refreshResult_helper, param);
 	pthread_create(&timer_thread, NULL, timer, NULL);
-	sem_wait(&semaphore);
-	pthread_cancel(ai_thread);
-	pthread_cancel(timer_thread);
-	print(state, 1);
+	pthread_join(timer_thread, NULL);
+	if (!computationFinished)
+		pthread_cancel(ai_thread);
+	print(state, 0);
 	free(param);
-	sem_destroy(&semaphore);
 	clear();
 	return _tempAction;
 }
