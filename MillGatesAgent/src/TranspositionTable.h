@@ -14,7 +14,7 @@
 
 typedef struct {
 	uint8 depth;
-	sint8 eval;
+	eval_t eval;
 	hashcode hash;
 } entry;
 

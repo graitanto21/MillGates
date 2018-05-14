@@ -7,45 +7,67 @@
 
 #include "NegaScoutAI.h"
 
-#define DEPTH 7
+#define FAST_HEURISTIC 0
+#define ROMANIAN_HEURISTIC 1
+#define DOLPHINS_CAN_FLY_HEURISTIC 2
+#define GIANT_SASSO_HEURISTIC 3
+#define HEURISTIC ROMANIAN_HEURISTIC
 
 NegaScoutAI::NegaScoutAI() {
 	_table = new TranspositionTable();
 	_hasher = ZobristHashing::getInstance();
-	_depth = DEPTH;
+	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 }
 
-sint8 NegaScoutAI::evaluate(State * state) {
+#if (HEURISTIC == FAST_HEURISTIC)
+sint8 NegaScoutAI::evaluate(State * state, bool terminal) {
+
+	if (terminal)
+		return state->utility();
+
 	sint8 white = state->getPawnsOnBoard(PAWN_WHITE) + state->getPawnsToPlay(PAWN_WHITE);
 	sint8 black = state->getPawnsOnBoard(PAWN_BLACK) + state->getPawnsToPlay(PAWN_BLACK);
 
-	if (white - black > 6 || white - black < -6)
-		std::cout << "A NON terminal state has evaluation " << white - black << "\n";
-
 	return white - black;
 }
+#endif
 
-sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sint8 alpha, sint8 beta, sint8 color) {
+#if (HEURISTIC == ROMANIAN_HEURISTIC)
+eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
+	uint8 whiteToPlay, blackToPlay, whiteOnBoard, blackOnBoard;
+	eval_t result = 0;
+	whiteToPlay = state->getPawnsToPlay(PAWN_WHITE);
+	blackToPlay = state->getPawnsToPlay(PAWN_BLACK);
+	whiteOnBoard = state->getPawnsOnBoard(PAWN_WHITE);
+	blackOnBoard = state->getPawnsOnBoard(PAWN_BLACK);
+
+	if (blackToPlay == 0) { //Phase 1
+
+	}
+	else if (whiteOnBoard > 3 || blackOnBoard > 3) { //Phase 2
+
+	}
+	else if (whiteOnBoard == 3 || blackOnBoard == 3) { //Phase 3
+
+	}
+
+	return result;
+}
+#endif
+
+eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
 	entry * e = _table->get(quickhash);
 	if (e != NULL && e->depth >= depth)
 	//if (e != NULL)
 		return color * e->eval;
 
-	sint8 score = 0;
-	bool quickReturn = false;
+	eval_t score = 0;
+	bool terminal = false;
 
-	if (state->isTerminal()) {
-		score = state->utility();
-		quickReturn = true;
-	}
-	else if (depth == 0 || _stopFlag) {
-		score = evaluate(state);
-		quickReturn = true;
-	}
-
-	if (quickReturn) {
+	if (depth == 0 || _stopFlag || (terminal = state->isTerminal())) {
+		score = evaluate(state, terminal);
 		if (e == NULL) {
 			e = new entry();
 			e->depth = depth;
@@ -117,13 +139,13 @@ void NegaScoutAI::stop() {
 Action NegaScoutAI::choose(State * state) {
 
 	_stopFlag = false;
-	/*	if (state->getPawnsToPlay(state->getPlayer()) == 9)
-		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL); */
+//	if (state->getPawnsToPlay(state->getPlayer()) == 9)
+//		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL);
 
 	ExpVector<Action> * actions = state->getActions();
 
 	Action res;
-	sint8 score;
+	eval_t score;
 	entry * tempscore;
 	hashcode quickhash, hash;
 

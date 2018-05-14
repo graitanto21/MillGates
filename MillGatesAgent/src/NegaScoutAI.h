@@ -21,8 +21,8 @@ private:
 	uint8 _depth;
 	bool _stopFlag;
 
-	sint8 evaluate(State * state);
-	sint8 negaScout(State * state, hashcode quickhash, uint8 depth, sint8 alpha, sint8 beta, sint8 color);
+	eval_t evaluate(State * state, bool terminal);
+	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
 	void recurprint(State * state, int depth, int curdepth);
 
 public:

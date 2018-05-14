@@ -46,17 +46,14 @@ bool aiComputing = false;
 
 void * IterativeDeepeningAI::refreshResult(State * state) {
 
-	aiComputing = true;
-	std::cout << "Computation start\n";
 	Action lastChosen;
 
 	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
-		std::cout << "Choosing an action with depth " << depth << "\n";
 		setDepth(depth);
 		lastChosen = _ai->choose(state);
-		clear();
+		//clear(); // ????
 		if (timeUp) {
-			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+			std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
 			break;
 		}
 		else
@@ -64,15 +61,12 @@ void * IterativeDeepeningAI::refreshResult(State * state) {
 	}
 
 	aiComputing = false;
-	std::cout << "Computation end\n";
 	pthread_exit(NULL);
 	return NULL;
 }
 
 void * IterativeDeepeningAI::timer() {
 
-	std::cout << "Timer start\n";
-	timeUp = false;
 	for (int i = 0; i < COMPUTATION_TIME; i++) {
 #if defined(WINDOWS)
 		Sleep(1000);
@@ -83,7 +77,6 @@ void * IterativeDeepeningAI::timer() {
 		if (!aiComputing)
 			break;
 	}
-	std::cout << "Timer end\n";
 	timeUp = true;
 	this->stop();
 	pthread_exit(NULL);
@@ -108,9 +101,11 @@ Action IterativeDeepeningAI::choose(State * state) {
 	param[0] = this;
 	param[1] = state;
 
+	timeUp = false;
+	aiComputing = true;
 	pthread_create(&ai_thread, NULL, refreshResult_helper, param);
 	pthread_create(&timer_thread, NULL, timer_helper, this);
-	//pthread_join(timer_thread, NULL);
+	pthread_join(timer_thread, NULL);
 	pthread_join(ai_thread, NULL);
 	print(state, 0);
 	free(param);

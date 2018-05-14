@@ -2,3908 +2,1045 @@
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
-Chosen action: c5
-c5 { 
- | b6 -> 0
- | a7 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | a1 -> 0
- | d3 -> 0
- | d2 -> 0
- | d1 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1 -> 0
-} -> 0
-b6 { 
- | c5 -> 0
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-a7 { 
- | c5 -> 0
- | b6 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d5 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d6 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d7 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e5 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f6 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-g7 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-c4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-b4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-a4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-g4 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-c3 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-b2 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-a1 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d3 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d2 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d1 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e3 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f2 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | g1 -> CUT 
-} -> 0
-g1 { 
- | c5 -> 0
- | b6 -> CUT 
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | a1 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> 0
+Computation start
+Timer start
+Choosing an action with depth 0
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Timer end
+NOT FOUND 12511239763555 -> d2
+NOT FOUND 94205812702833 -> d1
+NOT FOUND 114220360293531 -> e3
+NOT FOUND 68264210218471 -> f2
+NOT FOUND 15564961483532 -> g1
+Chosen action: c5 with depth 8
+Computation end
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
 7 O--------O--------O
 6 |--O-----O-----O--|
 5 |--|--W--O--O--|--|
 4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
+3 |--|--B--O--O--|--|
 2 |--O-----O-----O--|
-1 B--------O--------O
+1 O--------O--------O
   a  b  c  d  e  f  g
 
-Chosen action: a7
-b6 { 
- | a7 -> -1
- | d5 -> -1
- | d6 -> -1
- | d7 -> -1
- | e5 -> -1
- | f6 -> -1
- | g7 -> -1
- | c4 -> -1
- | b4 -> -1
- | a4 -> -1
- | e4 -> -1
- | f4 -> -1
- | g4 -> -1
- | c3 -> -1
- | b2 -> -1
- | d3 -> -1
- | d2 -> -1
- | d1 -> -1
- | e3 -> -1
- | f2 -> -1
- | g1 -> -1
-} -> -1
-a7 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> 0
- | d2 -> 0
- | d1 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1 -> 0
-} -> 0
-d5 { 
- | b6 -> 1
- | a7 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 0
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d6 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d7 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e5 { 
- | b6 -> 1
- | a7 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 1
- | b4 -> 1
- | a4 -> 0
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f6 { 
- | b6 -> 0
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-g7 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-c4 { 
- | b6 -> 1
- | a7 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | b4 -> 1
- | a4 -> 0
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-b4 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-a4 { 
- | b6 -> 1
- | a7 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 0
- | b4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e4 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f4 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-g4 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-c3 { 
- | b6 -> 1
- | a7 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 0
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-b2 { 
- | b6 -> 0
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d3 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d2 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-d1 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-e3 { 
- | b6 -> 1
- | a7 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | f2 -> CUT 
- | g1 -> CUT 
-} -> 0
-f2 { 
- | b6 -> 0
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | g1 -> CUT 
-} -> 0
-g1 { 
- | b6 -> 0
- | a7 -> CUT 
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | d1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> 0
-7 W--------O--------O
-6 |--O-----O-----O--|
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Timer end
+NOT FOUND 83322365548479 -> c4
+NOT FOUND 56371445776844 -> b4
+NOT FOUND 92530775434482 -> a4
+NOT FOUND 44422846758944 -> e4
+NOT FOUND 115156663146840 -> f4
+NOT FOUND 92539365376888 -> g4
+NOT FOUND 6713033908595 -> b2
+NOT FOUND 31430570697840 -> a1
+NOT FOUND 80676665697410 -> d3
+NOT FOUND 16441134818000 -> d2
+NOT FOUND 88214333303490 -> d1
+NOT FOUND 108263240632360 -> e3
+NOT FOUND 65433826781524 -> f2
+NOT FOUND 12906376748991 -> g1
+Chosen action: b6 with depth 9
+Computation end
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+7 O--------O--------O
+6 |--W-----O-----O--|
 5 |--|--W--O--O--|--|
 4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
+3 |--|--B--B--O--|--|
 2 |--O-----O-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Timer end
+NOT FOUND 121504624820058 -> d1
+NOT FOUND 102039833025968 -> e3
+NOT FOUND 5746666273996 -> f2
+NOT FOUND 58291296160295 -> g1
+Chosen action: e3 with depth 8
+Computation end
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+7 O--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--B--B--W--|--|
+2 |--B-----O-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Timer end
+NOT FOUND 98466420239766 -> d6
+NOT FOUND 97637491540127 -> d7
+NOT FOUND 96473555421039 -> e5
+NOT FOUND 130455336671260 -> f6
+NOT FOUND 31499290176997 -> g7
+NOT FOUND 77966541356145 -> c4
+NOT FOUND 68599217662466 -> b4
+NOT FOUND 97895189598012 -> a4
+NOT FOUND 40982577949678 -> e4
+NOT FOUND 111724984300182 -> f4
+NOT FOUND 97903779522742 -> g4
+NOT FOUND 19477676691390 -> a1
+NOT FOUND 4213362936094 -> d2
+NOT FOUND 102366250549516 -> d1
+NOT FOUND 60069412602522 -> f2
+NOT FOUND 7267084678257 -> g1
+Chosen action: d5 with depth 10
+Computation end
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+a1 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+7 O--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--W--O--|--|
+4 O--O--O     O--O--O
+3 |--|--B--B--W--|--|
+2 |--B-----B-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Timer end
+NOT FOUND 25245817790945 -> f2
+NOT FOUND 42640435336970 -> g1
+Chosen action: e5c3 with depth 9
+Computation end
+a7 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5c3 -> CUT 
+e5b2 -> CUT 
+e5d3 -> CUT 
+e5d2 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+a1 -> CUT 
+d1 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+7 O--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--W--W--|--|
+4 O--O--O     O--O--O
+3 |--|--O--B--O--|--|
+2 |--B-----B-----O--|
+1 O--------B--------O
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Timer end
+NOT FOUND 54855322311992 -> d7
+NOT FOUND 34699040802235 -> f6
+NOT FOUND 129257040801858 -> g7
+NOT FOUND 52501680251350 -> c4
+NOT FOUND 95988224112549 -> b4
+NOT FOUND 52913997107867 -> a4
+NOT FOUND 84039625094729 -> e4
+NOT FOUND 13967233675057 -> f4
+NOT FOUND 52922587034897 -> g4
+NOT FOUND 136970802041524 -> c3
+NOT FOUND 132620000170521 -> a1
+NOT FOUND 7142530645569 -> e3
+NOT FOUND 105050605100861 -> f2
+NOT FOUND 122823179774422 -> g1
+Chosen action: f2 with depth 10
+Computation end
+a7 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+a1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+7 O--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--W--W--|--|
+4 O--O--O     O--O--O
+3 |--|--O--B--O--|--|
+2 |--B-----B-----W--|
 1 B--------B--------O
   a  b  c  d  e  f  g
 
-Chosen action: g1
-b6 { 
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> -1
- | f6 -> -1
- | g7 -> -1
- | c4 -> -1
- | b4 -> -1
- | a4 -> -1
- | e4 -> -1
- | f4 -> -1
- | g4 -> -1
- | c3 -> -1
- | b2 -> -1
- | d3 -> -1
- | d2 -> -1
- | e3 -> -1
- | f2 -> -1
- | g1c5 -> -1
- | g1b6 -> -1
- | g1a7 -> -1
-} -> -1
-d5 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1d5 -> -1
-} -> -1
-d6 { 
- | b6 -> 0
- | d5 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1d6 -> -1
-} -> -1
-d7 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> 0
- | d2 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1c5 -> 0
- | g1a7 -> 0
- | g1d7 -> -1
-} -> -1
-e5 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1e5 -> -1
-} -> -1
-f6 { 
- | b6 -> -1
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1f6 -> -1
-} -> -1
-g7 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> 0
- | d2 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1c5 -> -1
- | g1a7 -> CUT 
- | g1g7 -> -1
-} -> -1
-c4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> -1
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1c4 -> -1
-} -> -1
-b4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> -1
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1b4 -> -1
-} -> -1
-a4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> -1
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1a4 -> -1
-} -> -1
-e4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1e4 -> -1
-} -> -1
-f4 { 
- | b6 -> -1
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1f4 -> -1
-} -> -1
-g4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1g4 -> -1
-} -> -1
-c3 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | b2 -> 0
- | d3 -> 0
- | d2 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1c5 -> -1
- | g1a7 -> CUT 
- | g1c3 -> -1
-} -> -1
-b2 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> -1
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1b2 -> -1
-} -> -1
-d3 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d2 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1c5 -> -1
- | g1a7 -> CUT 
- | g1d3 -> -1
-} -> -1
-d2 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> 0
- | e3 -> 0
- | f2 -> 0
- | g1c5 -> -1
- | g1a7 -> CUT 
- | g1d2 -> -1
-} -> -1
-e3 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> -1
- | d2 -> CUT 
- | f2 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1e3 -> -1
-} -> -1
-f2 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> -1
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3 -> CUT 
- | d2 -> CUT 
- | e3 -> CUT 
- | g1c5 -> CUT 
- | g1a7 -> CUT 
- | g1f2 -> -1
-} -> -1
-g1 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3 -> 0
- | d2 -> 0
- | e3 -> 0
- | f2 -> 0
-} -> 0
-7 W--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----O--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d3
-b6 { 
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> -1
- | c3 -> -1
- | b2 -> -1
- | d3c5 -> -1
- | d3b6 -> -1
- | d3a7 -> -1
- | d3g1 -> -1
- | e3 -> -1
- | f2 -> -1
-} -> -1
-d5 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3d5 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-d6 { 
- | b6 -> 0
- | d5 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> -1
- | c3 -> CUT 
- | b2 -> CUT 
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3d6 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-d7 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3d7 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-e5 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3e5 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-f6 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> -1
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3f6 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-g7 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3g7 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-c4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3c4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-b4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> -1
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3b4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-a4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> -1
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3a4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-e4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> -1
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3e4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-f4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> -1
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3f4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-g4 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | c3 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3g4 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-c3 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | b2 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3c3 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-b2 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | d3c5 -> 0
- | d3a7 -> 0
- | d3b2 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
- | f2 -> CUT 
-} -> -1
-d3 { 
- | b6 -> 0
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | b2 -> 0
- | e3 -> 0
- | f2 -> 0
-} -> 0
-e3 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 1
- | b4 -> 1
- | a4 -> 1
- | e4 -> 1
- | f4 -> 1
- | g4 -> 1
- | c3 -> 0
- | b2 -> CUT 
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3e3 -> -1
- | d3g1 -> CUT 
- | f2 -> CUT 
-} -> 0
-f2 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | b2 -> CUT 
- | d3c5 -> CUT 
- | d3a7 -> CUT 
- | d3f2 -> -1
- | d3g1 -> CUT 
- | e3 -> CUT 
-} -> 0
-7 W--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----O--|
-1 B--------B--------W
-b  b  c  d  e  f  g
-
-Chosen action: d5
-b6 { 
- | d5 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2b6 -> 0
- | f2a7 -> 0
- | f2d3 -> -1
- | f2g1 -> -1
-} -> -1
-d5 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | e5 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2d3 -> 0
- | f2g1 -> 0
-} -> 0
-d6 { 
- | b6 -> 0
- | d5 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d6 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-d7 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 0
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d7 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-e5 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2e5 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-f6 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2f6 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-g7 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | c4 -> 1
- | b4 -> 1
- | a4 -> 1
- | e4 -> 1
- | f4 -> 1
- | g4 -> 1
- | c3 -> 1
- | e3 -> 1
- | f2c5 -> 1
- | f2a7 -> 1
- | f2g7 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-c4 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | b4 -> 1
- | a4 -> 1
- | e4 -> 1
- | f4 -> 1
- | g4 -> 1
- | c3 -> 0
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2c4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-b4 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2b4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-a4 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2a4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-e4 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2e4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-f4 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2f4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-g4 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 0
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2g4 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-c3 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 0
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2c3 -> 0
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> 0
-e3 { 
- | b6 -> 1
- | d5 -> 1
- | d6 -> 1
- | d7 -> 1
- | e5 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 0
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d3 -> CUT 
- | f2e3 -> 0
- | f2g1 -> CUT 
-} -> 0
-f2 { 
- | b6 -> 0
- | d5 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | e5 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-7 W--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--W--B--|--|
-4 O--O--O     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----O--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: f2
-b6 { 
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> -1
- | f4 -> -1
- | g4 -> -1
- | c3 -> -1
- | e3 -> -1
- | f2c5 -> -1
- | f2b6 -> -1
- | f2a7 -> -1
- | f2d5 -> -1
- | f2d3 -> -1
- | f2g1 -> -1
-} -> -1
-d6 { 
- | b6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2d6 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-d7 { 
- | b6 -> 0
- | d6 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2d7 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-f6 { 
- | b6 -> -1
- | d6 -> CUT 
- | d7 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d5 -> CUT 
- | f2f6 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-g7 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2g7 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-c4 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2c4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-b4 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | a4 -> 0
- | e4 -> -1
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d5 -> CUT 
- | f2b4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-a4 { 
- | b6 -> -1
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d5 -> CUT 
- | f2a4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-e4 { 
- | b6 -> -1
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d5 -> CUT 
- | f2e4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-f4 { 
- | b6 -> -1
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | b4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
- | f2c5 -> CUT 
- | f2a7 -> CUT 
- | f2d5 -> CUT 
- | f2f4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-g4 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | c3 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2g4 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-c3 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | e3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2c3 -> -1
- | f2d3 -> CUT 
- | f2g1 -> CUT 
-} -> -1
-e3 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | f2c5 -> 0
- | f2a7 -> 0
- | f2d5 -> 0
- | f2d3 -> 0
- | f2e3 -> -1
- | f2g1 -> CUT 
-} -> -1
-f2 { 
- | b6 -> 0
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | c4 -> 0
- | b4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
-} -> 0
-7 W--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--W--B--|--|
-4 O--B--O     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: b6
-b6 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | c4 -> 0
- | a4 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
-} -> 0
-d6 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6d6 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-d7 { 
- | b6c5 -> 1
- | b6a7 -> 0
- | b6d5 -> CUT 
- | b6d7 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f6 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6f6 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g7 { 
- | b6c5 -> 1
- | b6a7 -> 0
- | b6d5 -> CUT 
- | b6g7 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-c4 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6c4 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-a4 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6a4 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-e4 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6e4 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f4 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6f4 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g4 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6g4 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-c3 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6c3 -> CUT 
- | b6d3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | e3 -> CUT 
-} -> 0
-e3 { 
- | b6c5 -> 0
- | b6a7 -> CUT 
- | b6d5 -> CUT 
- | b6d3 -> CUT 
- | b6e3 -> CUT 
- | b6f2 -> CUT 
- | b6g1 -> CUT 
- | d6 -> CUT 
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | c4 -> CUT 
- | a4 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
-} -> 0
-7 W--------O--------O
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Timer end
+Chosen action: g1 with depth 10
+Computation end
+a7 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+e3 -> CUT 
+g1 -> CUT 
+7 O--------O--------B
 6 |--W-----O-----O--|
-5 |--|--W--W--B--|--|
-4 O--B--B     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d6
-d6 { 
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> 0
- | a4d5 -> 0
- | a4d6 -> 0
- | a4d3 -> 0
- | a4f2 -> 0
- | a4g1 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
-} -> 0
-d7 { 
- | d6 -> 1
- | f6 -> 1
- | g7 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4d7 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f6 { 
- | d6 -> 1
- | d7 -> 1
- | g7 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4f6 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g7 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4g7 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-a4 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | e4 -> 0
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-e4 { 
- | d6 -> 0
- | d7 -> CUT 
- | f6 -> CUT 
- | g7 -> CUT 
- | a4c5 -> CUT 
- | a4b6 -> CUT 
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4e4 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f4 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 0
- | g7 -> CUT 
- | a4c5 -> CUT 
- | a4b6 -> CUT 
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4f4 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g4 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 0
- | a4c5 -> CUT 
- | a4b6 -> CUT 
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4g4 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-c3 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4c3 -> 0
- | a4d3 -> CUT 
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | e3 -> CUT 
-} -> 0
-e3 { 
- | d6 -> 1
- | d7 -> 1
- | f6 -> 1
- | g7 -> 1
- | a4c5 -> 1
- | a4b6 -> 0
- | a4a7 -> CUT 
- | a4d5 -> CUT 
- | a4d3 -> CUT 
- | a4e3 -> 0
- | a4f2 -> CUT 
- | a4g1 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
-} -> 0
-7 W--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--W--B--|--|
-4 B--B--B     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d6
-d6 { 
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | e4 -> 0
- | f4 -> 0
- | g4 -> 0
- | c3 -> 0
- | e3 -> 0
-} -> 0
-d7 { 
- | d6 -> 0
- | f6 -> 0
- | g7 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f6 { 
- | d6 -> 0
- | d7 -> 0
- | g7 -> 0
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g7 { 
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-e4 { 
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | f4 -> 0
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-f4 { 
- | d6 -> 0
- | d7 -> CUT 
- | f6 -> 0
- | g7 -> 0
- | e4 -> CUT 
- | g4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-g4 { 
- | d6 -> 0
- | d7 -> CUT 
- | f6 -> 0
- | g7 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | c3 -> CUT 
- | e3 -> CUT 
-} -> 0
-c3 { 
- | d6 -> 0
- | d7 -> CUT 
- | f6 -> 0
- | g7 -> CUT 
- | e4 -> CUT 
- | f4 -> CUT 
- | g4 -> CUT 
- | e3 -> CUT 
-} -> 0
-e3 { 
- | d6 -> 0
- | d7 -> 0
- | f6 -> 0
- | g7 -> 0
- | e4 -> CUT 
- | f4 -> -1
- | g4 -> CUT 
- | c3 -> CUT 
-} -> 0
-7 W--------B--------O
-6 |--W-----W-----O--|
-5 |--|--W--W--B--|--|
-4 B--B--B     O--O--O
-3 |--|--O--W--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d3e3
-d6f6 { 
- | d7g7 -> 0
- | d7d6 -> 0
- | e5e4 -> 0
- | c4c3 -> 0
-} -> -1
-d3e3 { 
- | d7g7 -> 0
- | e5e4 -> CUT 
- | c4c3 -> CUT 
- | d2d3 -> CUT 
-} -> 0
-d3c3 { 
- | d7g7 -> 0
- | e5e4 -> CUT 
- | d2d3 -> CUT 
-} -> 0
-f2f4 { 
- | d7g7 -> 1
- | e5e4 -> 1
- | c4c3 -> 0
- | d2f2 -> CUT 
-} -> 0
-g1g4 { 
- | d7g7 -> 0
- | e5e4 -> 0
- | c4c3 -> CUT 
- | d1g1 -> CUT 
-} -> 0
-7 W--------B--------O
-6 |--W-----W-----O--|
-5 |--|--W--W--B--|--|
-4 B--B--O     O--O--O
-3 |--|--B--O--W--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: c5c4
-c5c4 { 
- | d7g7 -> 0
- | e5e4 -> -1
- | c3d3b6 -> -2
- | c3d3a7 -> -3
- | c3d3d5 -> -3
- | c3d3d6 -> -2
- | c3d3c4 -> -3
- | c3d3e3 -> -3
- | c3d3f2 -> -3
- | c3d3g1 -> -3
- | d2d3 -> -3
-} -> -1
-d6f6 { 
- | d7g7 -> 0
- | d7d6 -> -1
- | e5e4 -> -1
- | b4c4 -> -2
- | c3c4c5 -> -2
- | c3c4b6 -> -2
- | c3c4a7 -> -2
- | c3c4d5 -> -2
- | c3c4f6 -> -2
- | c3c4e3 -> -2
- | c3c4f2 -> -2
- | c3c4g1 -> -2
- | c3d3c5 -> -2
- | c3d3b6 -> -2
- | c3d3a7 -> -2
- | c3d3d5 -> -2
- | c3d3f6 -> -2
- | c3d3e3 -> -2
- | c3d3f2 -> -2
- | c3d3g1 -> -2
- | d2d3 -> -2
-} -> -2
-e3e4 { 
- | d7g7 -> -1
- | b4c4 -> -1
- | c3c4c5 -> CUT 
- | c3c4b6 -> -2
- | c3c4a7 -> CUT 
- | c3c4d5 -> -2
- | c3c4d6 -> -3
- | c3c4e4 -> CUT 
- | c3c4f2 -> CUT 
- | c3c4g1 -> CUT 
- | c3d3c5 -> CUT 
- | c3d3b6 -> -2
- | c3d3a7 -> CUT 
- | c3d3d5 -> -2
- | c3d3d6 -> -2
- | c3d3e4 -> CUT 
- | c3d3f2 -> CUT 
- | c3d3g1 -> -2
- | d2d3 -> CUT 
-} -> -2
-e3d3 { 
- | d7g7 -> 0
- | e5e4 -> -1
- | b4c4 -> -1
- | c3c4c5 -> -2
- | c3c4b6 -> -2
- | c3c4a7 -> CUT 
- | c3c4d5 -> -2
- | c3c4d6 -> -2
- | c3c4d3 -> CUT 
- | c3c4f2 -> CUT 
- | c3c4g1 -> CUT 
-} -> -2
-f2f4 { 
- | d7g7 -> 0
- | e5e4 -> -1
- | b4c4 -> -1
- | c3c4c5 -> -1
- | c3c4b6 -> -2
- | c3c4a7 -> CUT 
- | c3c4d5 -> -1
- | c3c4d6 -> -2
- | c3c4f4 -> CUT 
- | c3c4e3 -> CUT 
- | c3c4g1 -> CUT 
- | c3d3c5 -> -2
- | c3d3b6 -> -2
- | c3d3a7 -> CUT 
- | c3d3d5 -> -2
- | c3d3d6 -> -2
- | c3d3f4 -> CUT 
- | c3d3e3 -> CUT 
- | c3d3g1 -> -2
- | d2f2 -> CUT 
- | d2d3 -> CUT 
-} -> -2
-g1g4 { 
- | d7g7 -> 0
- | e5e4 -> -1
- | b4c4 -> -2
- | c3c4c5 -> CUT 
- | c3c4b6 -> -2
- | c3c4a7 -> CUT 
- | c3c4d5 -> CUT 
- | c3c4d6 -> -2
- | c3c4g4 -> CUT 
- | c3c4e3 -> CUT 
- | c3c4f2 -> CUT 
- | c3d3c5 -> CUT 
- | c3d3b6 -> -2
- | c3d3a7 -> CUT 
- | c3d3d5 -> -2
- | c3d3d6 -> -2
- | c3d3g4 -> -3
- | c3d3e3 -> CUT 
- | c3d3f2 -> CUT 
- | d2d3 -> CUT 
- | d1g1 -> CUT 
-} -> -2
-7 W--------B--------O
-6 |--W-----W-----O--|
-5 |--|--O--W--B--|--|
-4 B--B--O     O--O--O
-3 |--|--O--B--W--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d5c5
-d5c5 { 
- | d7g7 -> -2
- | e5e4 -> -2
- | e5d5 -> -2
- | b4c4 -> -2
- | d3c3 -> -3
-} -> -2
-d6f6 { 
- | d7g7 -> -2
- | d7d6 -> -2
- | e5e4 -> -2
- | b4c4 -> -2
- | d3c3 -> -2
-} -> -2
-e3e4 { 
- | d7g7 -> -1
- | b4c4 -> -2
- | d3e3 -> CUT 
- | d3c3 -> -2
-} -> -2
-f2f4 { 
- | d7g7 -> -1
- | e5e4 -> -1
- | b4c4 -> -2
- | d3c3 -> -1
- | d2f2 -> -2
-} -> -2
-g1g4 { 
- | d7g7 -> -1
- | e5e4 -> -2
- | b4c4 -> -2
- | d3c3 -> -3
- | d1g1 -> CUT 
-} -> -2
-7 W--------B--------O
-6 |--W-----W-----O--|
-5 |--|--W--O--B--|--|
-4 B--B--O     O--O--O
-3 |--|--B--O--W--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: c5c4
-c5c4 { 
- | d7g7 -> -2
- | e5e4 -> -2
- | e5d5 -> -2
- | c3d3b6 -> -3
- | c3d3a7 -> -4
- | c3d3d6 -> -3
- | c3d3c4 -> -4
- | c3d3e3 -> -4
- | c3d3f2 -> -5
- | c3d3g1 -> -5
- | d2d3 -> -5
-} -> -3
-c5d5 { 
- | d7g7 -> -4
- | e5e4 -> -4
- | b4c4 -> -3
- | c3c4b6 -> -5
- | c3c4a7 -> -5
- | c3c4d5 -> -4
- | c3c4d6 -> -5
- | c3c4e3 -> CUT 
- | c3c4f2 -> CUT 
- | c3c4g1 -> -3
- | c3d3b6 -> -3
- | c3d3a7 -> CUT 
- | c3d3d5 -> -4
- | c3d3d6 -> -3
- | c3d3e3 -> CUT 
- | c3d3f2 -> -4
- | c3d3g1 -> -3
- | d2d3 -> -4
-} -> -5
-d6f6 { 
- | d7g7 -> -3
- | d7d6 -> -4
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -4
- | c3c4c5 -> -4
- | c3c4b6 -> -4
- | c3c4a7 -> -4
- | c3c4f6 -> -4
- | c3c4e3 -> -4
- | c3c4f2 -> -4
- | c3c4g1 -> -4
- | c3d3c5 -> -4
- | c3d3b6 -> -3
- | c3d3a7 -> -4
- | c3d3f6 -> -3
- | c3d3e3 -> -4
- | c3d3f2 -> -4
- | c3d3g1 -> -4
- | d2d3 -> -4
-} -> -4
-d6d5 { 
- | d7g7 -> -3
- | d7d6 -> -3
- | e5e4 -> -3
- | b4c4 -> -3
- | c3c4c5 -> -5
- | c3c4b6 -> -3
- | c3c4a7 -> -4
- | c3c4d5 -> -4
- | c3c4e3 -> CUT 
- | c3c4f2 -> CUT 
- | c3c4g1 -> CUT 
- | c3d3c5 -> -3
- | c3d3b6 -> -3
- | c3d3a7 -> CUT 
- | c3d3d5 -> -3
- | c3d3e3 -> -3
- | c3d3f2 -> CUT 
- | c3d3g1 -> -3
- | d2d3 -> CUT 
-} -> -4
-e3e4 { 
- | d7g7 -> -3
- | e5d5 -> -3
- | b4c4 -> -3
- | c3c4c5 -> -3
- | c3c4b6 -> -3
- | c3c4a7 -> -4
- | c3c4d6 -> -4
- | c3c4e4 -> CUT 
- | c3c4f2 -> -4
- | c3c4g1 -> CUT 
- | c3d3c5 -> CUT 
- | c3d3b6 -> -3
- | c3d3a7 -> -3
- | c3d3d6 -> -3
- | c3d3e4 -> -3
- | c3d3f2 -> -5
- | c3d3g1 -> -3
- | d2d3 -> CUT 
-} -> -4
-e3d3 { 
- | d7g7 -> -2
- | e5e4 -> -2
- | e5d5 -> -2
- | b4c4 -> -3
- | c3c4c5 -> -3
- | c3c4b6 -> -3
- | c3c4a7 -> -4
- | c3c4d6 -> -3
- | c3c4d3 -> CUT 
- | c3c4f2 -> CUT 
- | c3c4g1 -> CUT 
-} -> -4
-f2f4 { 
- | d7g7 -> -2
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -3
- | c3c4c5 -> -3
- | c3c4b6 -> -3
- | c3c4a7 -> -4
- | c3c4d6 -> -4
- | c3c4f4 -> CUT 
- | c3c4e3 -> -4
- | c3c4g1 -> -4
- | c3d3c5 -> -3
- | c3d3b6 -> -3
- | c3d3a7 -> CUT 
- | c3d3d6 -> -3
- | c3d3f4 -> -4
- | c3d3e3 -> -3
- | c3d3g1 -> -3
- | d2f2 -> -3
- | d2d3 -> -3
-} -> -4
-g1g4 { 
- | d7g7 -> -2
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -4
- | c3c4c5 -> -3
- | c3c4b6 -> -3
- | c3c4a7 -> -4
- | c3c4d6 -> -3
- | c3c4g4 -> -3
- | c3c4e3 -> CUT 
- | c3c4f2 -> -3
- | c3d3c5 -> -3
- | c3d3b6 -> -3
- | c3d3a7 -> CUT 
- | c3d3d6 -> -3
- | c3d3g4 -> -3
- | c3d3e3 -> -3
- | c3d3f2 -> -5
- | d2d3 -> CUT 
- | d1g1 -> CUT 
-} -> -4
-7 W--------B--------O
-6 |--W-----W-----O--|
-5 |--|--O--O--B--|--|
-4 B--B--O     O--O--O
-3 |--|--O--B--W--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: d6f6
-d6f6 { 
- | d7g7 -> -3
- | d7d6 -> -2
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -4
- | d3c3 -> -4
-} -> -4
-d6d5 { 
- | d7g7 -> -3
- | d7d6 -> -4
- | e5e4 -> -3
- | b4c4 -> -3
- | d3c3 -> -4
-} -> -4
-e3e4 { 
- | d7g7 -> -3
- | e5d5 -> -3
- | b4c4 -> -4
- | d3e3 -> -3
- | d3c3 -> -4
-} -> -4
-f2f4 { 
- | d7g7 -> -3
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -3
- | d3c3 -> -3
- | d2f2 -> -4
-} -> -4
-g1g4 { 
- | d7g7 -> -2
- | e5e4 -> -3
- | e5d5 -> -3
- | b4c4 -> -4
- | d3c3 -> -4
- | d1g1 -> -4
-} -> -4
-7 W--------B--------O
-6 |--W-----O-----W--|
-5 |--|--O--O--B--|--|
-4 B--B--O     O--O--O
-3 |--|--B--O--W--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Chosen action: b6d6
-b6d6 { 
- | d7g7 -> -4
- | e5e4 -> -5
- | e5d5 -> -5
- | b4b6 -> -5
- | b4c4 -> -5
- | c3c4a7 -> -5
- | c3c4d6 -> -5
- | c3c4f6 -> -5
- | c3c4e3 -> -5
- | c3c4f2 -> -6
- | c3c4g1 -> -6
- | c3d3a7 -> -6
- | c3d3d6 -> -6
- | c3d3f6 -> -6
- | c3d3e3 -> -6
- | c3d3f2 -> -6
- | c3d3g1 -> -6
- | d2d3 -> -6
-} -> -5
-f6f4 { 
- | d7g7 -> -5
- | d7d6 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | c3c4b6 -> -5
- | c3c4a7 -> -5
- | c3c4f4 -> -5
- | c3c4e3 -> -5
- | c3c4f2 -> -5
- | c3c4g1 -> -5
- | c3d3b6 -> -5
- | c3d3a7 -> -5
- | c3d3f4 -> -5
- | c3d3e3 -> -5
- | c3d3f2 -> -5
- | c3d3g1 -> -5
- | d2d3 -> -5
-} -> -5
-f6d6 { 
- | d7g7 -> -4
- | e5e4 -> -5
- | e5d5 -> -4
- | b4c4 -> -4
- | c3c4b6 -> -5
- | c3c4a7 -> -5
- | c3c4d6 -> -5
- | c3c4e3 -> CUT 
- | c3c4f2 -> -4
- | c3c4g1 -> CUT 
- | c3d3b6 -> -6
- | c3d3a7 -> -5
- | c3d3d6 -> -5
- | c3d3e3 -> CUT 
- | c3d3f2 -> -4
- | c3d3g1 -> CUT 
- | d2d3 -> -4
-} -> -5
-e3e4 { 
- | d7g7 -> -4
- | d7d6 -> -4
- | e5d5 -> -4
- | b4c4 -> -4
- | c3c4b6 -> -4
- | c3c4a7 -> -5
- | c3c4f6 -> -4
- | c3c4e4 -> -5
- | c3c4f2 -> -4
- | c3c4g1 -> -4
- | c3d3b6 -> -4
- | c3d3a7 -> -4
- | c3d3f6 -> -5
- | c3d3e4 -> -6
- | c3d3f2 -> -4
- | c3d3g1 -> -4
- | d2d3 -> -4
-} -> -5
-e3d3 { 
- | d7g7 -> -4
- | d7d6 -> -5
- | e5e4 -> -4
- | e5d5 -> -4
- | b4c4 -> -4
- | c3c4b6 -> -4
- | c3c4a7 -> -4
- | c3c4f6 -> -4
- | c3c4d3 -> -5
- | c3c4f2 -> -4
- | c3c4g1 -> -4
-} -> -5
-f2f4 { 
- | d7g7 -> -4
- | d7d6 -> -4
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -4
- | c3c4b6 -> -4
- | c3c4a7 -> -5
- | c3c4f6 -> -5
- | c3c4f4 -> -6
- | c3c4e3 -> -6
- | c3c4g1 -> -4
- | c3d3b6 -> -4
- | c3d3a7 -> CUT 
- | c3d3f6 -> -5
- | c3d3f4 -> -6
- | c3d3e3 -> -6
- | c3d3g1 -> -4
- | d2f2 -> -4
- | d2d3 -> -4
-} -> -5
-g1g4 { 
- | d7g7 -> -4
- | d7d6 -> -4
- | e5e4 -> -4
- | e5d5 -> -4
- | b4c4 -> -4
- | c3c4b6 -> -4
- | c3c4a7 -> -5
- | c3c4f6 -> -4
- | c3c4g4 -> -6
- | c3c4e3 -> -4
- | c3c4f2 -> -5
- | c3d3b6 -> -4
- | c3d3a7 -> -5
- | c3d3f6 -> CUT 
- | c3d3g4 -> -6
- | c3d3e3 -> -4
- | c3d3f2 -> -6
- | d2d3 -> -4
- | d1g1 -> -4
-} -> -5
-7 W--------B--------O
-6 |--O-----W-----W--|
-5 |--|--O--O--B--|--|
-4 B--B--O     O--O--O
+5 |--|--W--W--W--|--|
+4 O--O--O     O--O--O
 3 |--|--O--B--O--|--|
 2 |--B-----B-----W--|
 1 B--------B--------W
   a  b  c  d  e  f  g
 
-Chosen action: d6b6
-d6b6 { 
- | d7g7 -> -4
- | d7d6 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | d3e3 -> -6
- | d3c3 -> -6
-} -> -5
-d6d5 { 
- | d7g7 -> -5
- | d7d6 -> -6
- | e5e4 -> -4
- | b4b6 -> -5
- | b4c4 -> -5
- | d3e3 -> -5
- | d3c3 -> -5
-} -> -6
-f6f4 { 
- | d7g7 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4b6 -> -5
- | b4c4 -> -5
- | d3e3 -> -5
- | d3c3 -> -5
-} -> -5
-f2f4 { 
- | d7g7 -> -4
- | e5e4 -> -5
- | e5d5 -> -4
- | b4b6 -> -5
- | b4c4 -> CUT 
- | d3e3 -> -5
- | d3c3 -> CUT 
- | d2f2 -> CUT 
-} -> -5
-g1g4 { 
- | d7g7 -> -4
- | e5e4 -> -5
- | e5d5 -> -4
- | b4b6 -> -4
- | b4c4 -> -4
- | d3e3 -> -4
- | d3c3 -> -4
- | d1g1 -> -4
-} -> -5
-7 W--------B--------O
-6 |--W-----O-----W--|
-5 |--|--O--O--B--|--|
-4 B--B--O     O--O--O
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+Chosen action: d6 with depth 11
+Computation end
+a7 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+f6 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+e3 -> CUT 
+7 B--------O--------B
+6 |--W-----W-----O--|
+5 |--|--W--W--W--|--|
+4 O--O--O     O--O--O
+3 |--|--O--B--O--|--|
+2 |--B-----B-----W--|
+1 B--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Choosing an action with depth 13
+Timer end
+NOT FOUND 14336600850237 -> f6a7
+NOT FOUND 25074019096089 -> f6g7
+NOT FOUND 89867895722954 -> f6b2
+NOT FOUND 58862526813546 -> c4
+NOT FOUND 84679575208729 -> b4
+NOT FOUND 46630459958823 -> a4
+NOT FOUND 94721208746741 -> e4
+NOT FOUND 25275882560397 -> f4
+NOT FOUND 46639049867693 -> g4
+NOT FOUND 113086488913416 -> c3
+NOT FOUND 31018253830909 -> e3
+Chosen action: d7a7 with depth 13
+Computation end
+d7a7 -> CUT 
+d7g7 -> CUT 
+d7b2 -> CUT 
+d7a1 -> CUT 
+f6a7 -> CUT 
+f6g7 -> CUT 
+f6b2 -> CUT 
+f6a1 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+e3 -> CUT 
+7 O--------W--------B
+6 |--W-----W-----B--|
+5 |--|--W--W--W--|--|
+4 O--O--O     O--O--O
+3 |--|--O--B--O--|--|
+2 |--B-----B-----W--|
+1 B--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Choosing an action with depth 13
+Timer end
+NOT FOUND 129364414978858 -> b6b4
+NOT FOUND 19855633812901 -> d7a7
+NOT FOUND 49808735746621 -> f2f4
+NOT FOUND 37267431249654 -> g1g4
+Chosen action: c5c4 with depth 13
+Computation end
+c5c4 -> CUT 
+b6b4 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------B
+6 |--W-----W-----B--|
+5 |--|--O--W--W--|--|
+4 O--B--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----W--|
+1 B--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Timer end
+Chosen action: d5c5 with depth 12
+Computation end
+d5c5 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+c4c3 -> CUT 
+c4c5f6 -> CUT 
+c4c5g7 -> CUT 
+c4c5b4 -> CUT 
+c4c5a1 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------B
+6 |--W-----W-----B--|
+5 |--|--W--O--W--|--|
+4 B--B--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Choosing an action with depth 13
+Timer end
+NOT FOUND 45217415723509 -> c5d5b4
+NOT FOUND 54546084680881 -> c5d5a4
+NOT FOUND 17905718673480 -> d6d5f6
+NOT FOUND 103706280348377 -> d6d5g7
+NOT FOUND 33161442510532 -> d6d5b4
+NOT FOUND 7237019921280 -> d6d5a4
+NOT FOUND 127856881461617 -> d7a7
+NOT FOUND 117424405889636 -> e5e4
+NOT FOUND 33505039887025 -> e5d5f6
+NOT FOUND 88381837025312 -> e5d5g7
+NOT FOUND 17699560238141 -> e5d5b4
+NOT FOUND 9504762626425 -> e5d5a4
+NOT FOUND 82905753738631 -> c4c3
+NOT FOUND 82510616747753 -> f2f4
+NOT FOUND 78765405254178 -> g1g4
+Chosen action: c5d5f6 with depth 13
+Computation end
+c5d5f6 -> CUT 
+c5d5g7 -> CUT 
+c5d5b4 -> CUT 
+c5d5a4 -> CUT 
+d6d5f6 -> CUT 
+d6d5g7 -> CUT 
+d6d5b4 -> CUT 
+d6d5a4 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+e5d5f6 -> CUT 
+e5d5g7 -> CUT 
+e5d5b4 -> CUT 
+e5d5a4 -> CUT 
+c4c3 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 B--------W--------B
+6 |--W-----W-----O--|
+5 |--|--O--W--W--|--|
+4 O--B--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Timer end
+Chosen action: d5c5 with depth 12
+Computation end
+d5c5 -> CUT 
+d6f6 -> CUT 
+e5e4 -> CUT 
+c4c3 -> CUT 
+c4c5a7 -> CUT 
+c4c5g7 -> CUT 
+c4c5b4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 B--------W--------B
+6 |--W-----W-----O--|
+5 |--|--W--O--W--|--|
+4 B--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Choosing an action with depth 13
+Timer end
+NOT FOUND 123106647620958 -> c5d5g7
+NOT FOUND 60679297965063 -> c5d5a4
+NOT FOUND 23373212055368 -> b6b4
+NOT FOUND 54631984010201 -> d6f6
+NOT FOUND 73916387191627 -> d6d5a7
+NOT FOUND 97847944938095 -> d6d5g7
+NOT FOUND 244813144886 -> d6d5a4
+NOT FOUND 119159572662994 -> e5e4
+NOT FOUND 84705345012146 -> e5d5a7
+NOT FOUND 95442763278486 -> e5d5g7
+NOT FOUND 15431817513423 -> e5d5a4
+NOT FOUND 85534273705265 -> c4c3
+NOT FOUND 112240380358688 -> c4b4
+NOT FOUND 85379654882911 -> f2f4
+NOT FOUND 71532680346260 -> g1g4
+Chosen action: c5d5a7 with depth 13
+Computation end
+c5d5a7 -> CUT 
+c5d5g7 -> CUT 
+c5d5a4 -> CUT 
+b6b4 -> CUT 
+d6f6 -> CUT 
+d6d5a7 -> CUT 
+d6d5g7 -> CUT 
+d6d5a4 -> CUT 
+e5e4 -> CUT 
+e5d5a7 -> CUT 
+e5d5g7 -> CUT 
+e5d5a4 -> CUT 
+c4c3 -> CUT 
+c4b4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------B
+6 |--W-----W-----O--|
+5 |--|--O--W--W--|--|
+4 B--O--W     O--O--O
 3 |--|--B--O--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
+2 |--O-----B-----W--|
+1 O--------B--------W
   a  b  c  d  e  f  g
 
-Chosen action: b6d6
-b6d6 { 
- | d7g7 -> -5
- | e5e4 -> -6
- | e5d5 -> -6
- | b4b6 -> -6
- | b4c4 -> -6
- | c3c4a7 -> -6
- | c3c4d6 -> -6
- | c3c4f6 -> -6
- | c3c4f2 -> -6
- | c3c4g1 -> -6
- | c3d3a7 -> -6
- | c3d3d6 -> -6
- | c3d3f6 -> -6
- | c3d3f2 -> -6
- | c3d3g1 -> -6
- | d2d3 -> -6
-} -> -6
-f6f4 { 
- | d7g7 -> -6
- | d7d6 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | c3c4b6 -> -7
- | c3c4a7 -> -6
- | c3c4f4 -> -6
- | c3c4f2 -> -5
- | c3c4g1 -> -6
- | c3d3b6 -> -6
- | c3d3a7 -> -6
- | c3d3f4 -> -6
- | c3d3f2 -> -5
- | c3d3g1 -> CUT 
- | d2d3 -> -5
-} -> -6
-f6d6 { 
- | d7g7 -> -6
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | c3c4b6 -> -6
- | c3c4a7 -> -6
- | c3c4d6 -> -6
- | c3c4f2 -> -5
- | c3c4g1 -> -5
- | c3d3b6 -> -6
- | c3d3a7 -> CUT 
- | c3d3d6 -> -6
- | c3d3f2 -> -5
- | c3d3g1 -> CUT 
- | d2d3 -> -5
-} -> -6
-f2f4 { 
- | d7g7 -> -6
- | d7d6 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | c3c4b6 -> -7
- | c3c4a7 -> -6
- | c3c4f6 -> -5
- | c3c4f4 -> -6
- | c3c4g1 -> -5
- | c3d3b6 -> CUT 
- | c3d3a7 -> CUT 
- | c3d3f6 -> -5
- | c3d3f4 -> -6
- | c3d3g1 -> -5
- | d2f2 -> -5
- | d2d3 -> CUT 
-} -> -6
-g1g4 { 
- | d7g7 -> -5
- | d7d6 -> -5
- | e5e4 -> -5
- | e5d5 -> -5
- | b4c4 -> -5
- | c3c4b6 -> -5
- | c3c4a7 -> -5
- | c3c4f6 -> -6
- | c3c4g4 -> -6
- | c3c4f2 -> -5
- | c3d3b6 -> -5
- | c3d3a7 -> -5
- | c3d3f6 -> -5
- | c3d3g4 -> -6
- | c3d3f2 -> -5
- | d2d3 -> -5
- | d1g1 -> -5
-} -> -6
-7 W--------B--------O
-6 |--O-----O-----W--|
-5 |--|--O--O--B--|--|
-4 B--B--O     O--O--O
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+NOT FOUND 51105815884037 -> c4c5d1
+Chosen action: c4c5c3 with depth 11
+Computation end
+b6b4 -> CUT 
+d5c5 -> CUT 
+d6f6 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+c4c5g7 -> CUT 
+c4c5a4 -> CUT 
+c4c5c3 -> CUT 
+c4c5d2 -> CUT 
+c4c5d1 -> CUT 
+c4b4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------O
+6 |--W-----W-----O--|
+5 |--|--W--W--W--|--|
+4 B--O--O     O--O--B
+3 |--|--O--O--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Choosing an action with depth 13
+Timer end
+NOT FOUND 124506806944660 -> b6b4
+NOT FOUND 94347546617605 -> d6f6
+NOT FOUND 68771016376309 -> d7g7
+NOT FOUND 24850680796443 -> d7a7
+NOT FOUND 46007689699971 -> f2f4
+Chosen action: b6b4 with depth 13
+Computation end
+c5c4 -> CUT 
+b6b4 -> CUT 
+d6f6 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+f2f4 -> CUT 
+7 O--------W--------O
+6 |--O-----W-----O--|
+5 |--|--W--W--W--|--|
+4 B--W--O     O--B--O
+3 |--|--O--O--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Choosing an action with depth 12
+Timer end
+NOT FOUND 139998754009403 -> d6f6
+NOT FOUND 66297115185726 -> d6b6
+NOT FOUND 22089016830411 -> d7g7
+NOT FOUND 65974992651045 -> d7a7
+NOT FOUND 111196703302670 -> b4b2
+NOT FOUND 100768522704298 -> b4b6
+NOT FOUND 45015552250562 -> b4c4
+NOT FOUND 17501991737462 -> g1g4
+Chosen action: c5c4 with depth 12
+Computation end
+c5c4 -> CUT 
+d6f6 -> CUT 
+d6b6 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+b4b2 -> CUT 
+b4b6 -> CUT 
+b4c4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------O
+6 |--O-----W-----O--|
+5 |--|--O--W--W--|--|
+4 B--W--W     B--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+NOT FOUND 58291296162241 -> c4c3
+NOT FOUND 6554120112690 -> c4c5a4
+NOT FOUND 78323023617365 -> c4c5e4
+NOT FOUND 116793045712583 -> c4c5d2
+NOT FOUND 101198019456841 -> c4c5d1
+NOT FOUND 91298119811612 -> b4b2
+NOT FOUND 120452357829560 -> b4b6
+NOT FOUND 58720792892079 -> f2f4
+NOT FOUND 63496796520036 -> g1g4
+Chosen action: d7a7 with depth 11
+Computation end
+d5c5 -> CUT 
+d6f6 -> CUT 
+d6b6 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+c4c3 -> CUT 
+c4c5a4 -> CUT 
+c4c5e4 -> CUT 
+c4c5d2 -> CUT 
+c4c5d1 -> CUT 
+b4b2 -> CUT 
+b4b6 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 W--------O--------O
+6 |--O-----W-----O--|
+5 |--|--O--W--W--|--|
+4 B--W--W     O--O--O
+3 |--|--O--O--B--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+NOT FOUND 57105885195871 -> a7d7d2
+NOT FOUND 6335076794321 -> a7d7d1
+NOT FOUND 122397978030979 -> a7d7e3
+NOT FOUND 28492813068138 -> d5c5
+NOT FOUND 93067646365427 -> d6f6
+NOT FOUND 26100516261366 -> d6b6
+NOT FOUND 135025181865584 -> d6d7
+NOT FOUND 10398115854328 -> e5e4
+NOT FOUND 44933947877403 -> c4c3
+NOT FOUND 26577257657320 -> c4c5a4
+NOT FOUND 131816841299741 -> c4c5d2
+NOT FOUND 72361609025171 -> c4c5d1
+NOT FOUND 47558172891841 -> c4c5e3
+NOT FOUND 86668145081286 -> b4b2
+NOT FOUND 123518964468322 -> b4b6
+NOT FOUND 44744969317237 -> f2f4
+NOT FOUND 39694087751614 -> g1g4
+Chosen action: a7d7a4 with depth 11
+Computation end
+a7d7a4 -> CUT 
+a7d7d2 -> CUT 
+a7d7d1 -> CUT 
+a7d7e3 -> CUT 
+d5c5 -> CUT 
+d6f6 -> CUT 
+d6b6 -> CUT 
+d6d7 -> CUT 
+e5e4 -> CUT 
+c4c3 -> CUT 
+c4c5a4 -> CUT 
+c4c5d2 -> CUT 
+c4c5d1 -> CUT 
+c4c5e3 -> CUT 
+b4b2 -> CUT 
+b4b6 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------O
+6 |--O-----W-----O--|
+5 |--|--O--W--W--|--|
+4 O--W--O     O--O--O
 3 |--|--O--B--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
+2 |--O-----B-----W--|
+1 O--------B--------W
   a  b  c  d  e  f  g
 
-Chosen action: f6f4
-f6f4 { 
- | d7g7 -> -6
- | d7d6 -> -5
- | e5e4 -> -6
- | e5d5 -> -5
- | b4b6 -> -7
- | b4c4 -> -7
- | d3e3 -> -8
- | d3c3 -> -8
-} -> -6
-f6d6 { 
- | d7g7 -> -7
- | e5e4 -> -6
- | e5d5 -> -6
- | b4b6 -> -7
- | b4c4 -> -7
- | d3e3 -> -7
- | d3c3 -> CUT 
-} -> -8
-f2f4 { 
- | d7g7 -> -7
- | d7d6 -> -8
- | e5e4 -> -5
- | e5d5 -> -5
- | b4b6 -> -6
- | b4c4 -> -7
- | d3e3 -> -7
- | d3c3 -> -6
- | d2f2 -> -7
-} -> -8
-g1g4 { 
- | d7g7 -> -7
- | d7d6 -> -7
- | e5e4 -> -6
- | e5d5 -> -7
- | b4b6 -> -7
- | b4c4 -> -7
- | d3e3 -> -7
- | d3c3 -> -7
- | d1g1 -> -7
-} -> -7
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+NOT FOUND 77356655989438 -> d6f6
+NOT FOUND 5785320960443 -> d6b6
+NOT FOUND 49581102484046 -> d7g7
+NOT FOUND 5557687705760 -> d7a7
+NOT FOUND 30283814423477 -> e5e4
+NOT FOUND 101348343285643 -> b4b2
+NOT FOUND 108477989008943 -> b4b6
+NOT FOUND 15522011824650 -> b4a4
+NOT FOUND 19782619394375 -> b4c4
+NOT FOUND 64098091947832 -> f2f4
+NOT FOUND 60352880458739 -> g1g4
+Chosen action: d6f6 with depth 11
+Computation end
+d5c5 -> CUT 
+d6f6 -> CUT 
+d6b6 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+b4b2 -> CUT 
+b4b6 -> CUT 
+b4a4 -> CUT 
+b4c4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------O
+6 |--O-----B-----W--|
+5 |--|--O--W--W--|--|
+4 O--W--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Timer end
+Chosen action: b4b6 with depth 9
+Computation end
+d5c5 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+e5e4 -> CUT 
+f6f4 -> CUT 
+b4b2 -> CUT 
+b4b6 -> CUT 
+b4a4 -> CUT 
+b4c4 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
+7 O--------W--------O
+6 |--W-----O-----W--|
+5 |--|--O--O--W--|--|
+4 O--O--O     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----W--|
+1 O--------B--------W
+  a  b  c  d  e  f  g
+
+Computation start
+Choosing an action with depth 0
+Timer start
+Choosing an action with depth 1
+Choosing an action with depth 2
+Choosing an action with depth 3
+Choosing an action with depth 4
+Choosing an action with depth 5
+Choosing an action with depth 6
+Choosing an action with depth 7
+Choosing an action with depth 8
+Choosing an action with depth 9
+Choosing an action with depth 10
+Choosing an action with depth 11
+Timer end
+NOT FOUND 41665477739747 -> b6d6
+NOT FOUND 15109694979862 -> d7g7
+NOT FOUND 41403484755448 -> d7a7
+NOT FOUND 99664716110937 -> d7d6d1
+NOT FOUND 65064459599597 -> e5e4
+NOT FOUND 20388209769399 -> e5d5
+NOT FOUND 99978248730854 -> f6f4
+NOT FOUND 113236812785638 -> f6d6
+NOT FOUND 29592324694624 -> f2f4
+NOT FOUND 24472723656363 -> g1g4
+Chosen action: d7d6d3 with depth 11
+Computation end
+b6b4 -> CUT 
+b6d6 -> CUT 
+d7g7 -> CUT 
+d7a7 -> CUT 
+d7d6d3 -> CUT 
+d7d6d2 -> CUT 
+d7d6d1 -> CUT 
+e5e4 -> CUT 
+e5d5 -> CUT 
+f6f4 -> CUT 
+f6d6 -> CUT 
+f2f4 -> CUT 
+g1g4 -> CUT 
 connection closed
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>

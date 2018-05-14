@@ -21,7 +21,5 @@ White Checkers On Board: 0;
 Black Checkers On Board: 0;
 
 Waiting for W move...
-Player Whas not chosen move n1
-Player B WIN!!!
 
 C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>

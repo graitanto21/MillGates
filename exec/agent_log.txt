@@ -2,5 +2,3 @@
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
-
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>

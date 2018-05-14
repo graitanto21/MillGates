@@ -24,8 +24,8 @@
 #define AVERAGE_PAWNS_ON_BOARD 4
 #define MAX_MOVES_PHASE_2 4
 
-#define MIN_SEARCH_DEPTH 0
-#define MAX_SEARCH_DEPTH 20
+#define MIN_SEARCH_DEPTH 5
+#define MAX_SEARCH_DEPTH 100
 #define COMPUTATION_TIME 50
 
 #define WHITE_PAWNS_COUNT 9
@@ -48,6 +48,7 @@ typedef unsigned char pawn;
 typedef unsigned char uint8;
 typedef signed char sint8;
 typedef unsigned long long hashcode;
+typedef short eval_t;
 
 /*
  * XXYYZZVV

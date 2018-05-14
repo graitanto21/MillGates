@@ -2,4 +2,3 @@ Waiting for C++ Agent connection
 C++ Agent connected
 Connecting to server
 Connected to server
-Closing sockets

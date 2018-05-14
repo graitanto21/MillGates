@@ -1,74 +1,74 @@
-///*
-// * Main.cpp
-// *
-// *  Created on: Apr 21, 2018
-// *      Author: Luca
-// */
-//
-//#include <stdio.h>
-//#include "State.h"
-//#include "CubeStateImpl.h"
-//#include "IterativeDeepeningAI.h"
-//#include "connection.h"
-//#include <iostream>
-//#include <time.h>
-//
-//#define ACTION_STRLEN 7
-//#define STATE_STRLEN 82
-//
-//using namespace std;
-//
-//int main(int argc, char* argv[]) {
-//
-//	char actionStr[ACTION_STRLEN];
-//	char stateStr[STATE_STRLEN];
-//
-//	if (argc != 2) {
-//		exit(1);
-//	}
-//
-//	start_connection();
-//
-//	//srand(time(NULL));
-//	srand(8000);
-//
-//	IterativeDeepeningAI ai;
-//	ai.setAI(new NegaScoutAI());
-//	//NegaScoutAI ai;
-//
-//	if (!strcmp(argv[1], "white")) {
-//		State * state = new CubeStateImpl();
-//		state->setPlayer(PAWN_WHITE);
-//		Action action;
-//		while(1) {
-//			action = ai.choose(state);
-//			memset(actionStr, 0, sizeof(actionStr));
-//			strcpy(actionStr, action.toString().c_str());
-//
-//			if (send_data(actionStr, ACTION_STRLEN) == FAILURE)
-//				exit(1);
-//
-//			if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
-//				exit(1);
-//
-//			stateStr[STATE_STRLEN - 1] = '\0';
-//
-//			delete state;
-//			state = new CubeStateImpl(stateStr);
-//			state->setPlayer(PAWN_WHITE);
-//			cout << state->toNiceString();
-//			cout << "\n";
-//		}
-//	}
-//	else if (!strcmp(argv[1], "black")) {
-//		while(1) {
-//			recv_data(stateStr, STATE_STRLEN);
-//			stateStr[STATE_STRLEN - 1] = '\0';
-//			cout << stateStr << "\n";
-//			cout << "Insert your next move: ";
-//			cin >> actionStr;
-//			send_data(actionStr, ACTION_STRLEN);
-//		}
-//	}
-//
-//}
+/*
+ * Main.cpp
+ *
+ *  Created on: Apr 21, 2018
+ *      Author: Luca
+ */
+
+#include <stdio.h>
+#include "State.h"
+#include "CubeStateImpl.h"
+#include "IterativeDeepeningAI.h"
+#include "connection.h"
+#include <iostream>
+#include <time.h>
+
+#define ACTION_STRLEN 7
+#define STATE_STRLEN 82
+
+using namespace std;
+
+int main(int argc, char* argv[]) {
+
+	char actionStr[ACTION_STRLEN];
+	char stateStr[STATE_STRLEN];
+
+	if (argc != 2) {
+		exit(1);
+	}
+
+	start_connection();
+
+	//srand(time(NULL));
+	srand(8000);
+
+	IterativeDeepeningAI ai;
+	ai.setAI(new NegaScoutAI());
+	//NegaScoutAI ai;
+
+	if (!strcmp(argv[1], "white")) {
+		State * state = new CubeStateImpl();
+		state->setPlayer(PAWN_WHITE);
+		Action action;
+		while(1) {
+			action = ai.choose(state);
+			memset(actionStr, 0, sizeof(actionStr));
+			strcpy(actionStr, action.toString().c_str());
+
+			if (send_data(actionStr, ACTION_STRLEN) == FAILURE)
+				exit(1);
+
+			if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
+				exit(1);
+
+			stateStr[STATE_STRLEN - 1] = '\0';
+
+			delete state;
+			state = new CubeStateImpl(stateStr);
+			state->setPlayer(PAWN_WHITE);
+			cout << state->toNiceString();
+			cout << "\n";
+		}
+	}
+	else if (!strcmp(argv[1], "black")) {
+		while(1) {
+			recv_data(stateStr, STATE_STRLEN);
+			stateStr[STATE_STRLEN - 1] = '\0';
+			cout << stateStr << "\n";
+			cout << "Insert your next move: ";
+			cin >> actionStr;
+			send_data(actionStr, ACTION_STRLEN);
+		}
+	}
+
+}
