@@ -19,6 +19,7 @@ private:
 	TranspositionTable * _table;
 	ZobristHashing * _hasher;
 	uint8 _depth;
+	bool _stopFlag;
 
 	sint8 evaluate(State * state);
 	sint8 negaScout(State * state, hashcode quickhash, uint8 depth, sint8 alpha, sint8 beta, sint8 color);
@@ -30,6 +31,7 @@ public:
 	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
 	virtual void clear();
+	virtual void stop();
 	virtual void print(State * root, int depth);
 	virtual ~NegaScoutAI();
 };

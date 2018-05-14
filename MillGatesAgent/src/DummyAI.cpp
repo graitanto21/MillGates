@@ -27,5 +27,7 @@ void DummyAI::print(State * root, int depth) {}
 
 void DummyAI::clear() {}
 
+void DummyAI::stop() {}
+
 DummyAI::~DummyAI() {}
 

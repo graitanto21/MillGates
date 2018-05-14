@@ -17,7 +17,7 @@
 #endif
 
 IterativeDeepeningAI::IterativeDeepeningAI() {
-	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
+	//pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 	_ai = NULL;
 }
 
@@ -37,33 +37,39 @@ void IterativeDeepeningAI::clear() {
 	_ai->clear();
 }
 
+void IterativeDeepeningAI::stop() {
+	_ai->stop();
+}
+
 bool timeUp = false;
-bool computationFinished = false;
+bool aiComputing = false;
 
 void * IterativeDeepeningAI::refreshResult(State * state) {
 
-	computationFinished = false;
+	aiComputing = true;
 	std::cout << "Computation start\n";
+	Action lastChosen;
 
-//	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
-//		setDepth(depth);
-//		_tempAction = _ai->choose(state);
-//		clear();
-//		if (timeUp) {
-//			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
-//			break;
-//		}
-//	}
+	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
+		std::cout << "Choosing an action with depth " << depth << "\n";
+		setDepth(depth);
+		lastChosen = _ai->choose(state);
+		clear();
+		if (timeUp) {
+			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+			break;
+		}
+		else
+			_tempAction = lastChosen;
+	}
 
-	Sleep(60000);
-
-	computationFinished = true;
+	aiComputing = false;
 	std::cout << "Computation end\n";
 	pthread_exit(NULL);
 	return NULL;
 }
 
-void * timer(void * args) {
+void * IterativeDeepeningAI::timer() {
 
 	std::cout << "Timer start\n";
 	timeUp = false;
@@ -74,11 +80,12 @@ void * timer(void * args) {
 #if defined(LINUX)
 		sleep(1);
 #endif
-		if (computationFinished)
+		if (!aiComputing)
 			break;
 	}
 	std::cout << "Timer end\n";
 	timeUp = true;
+	this->stop();
 	pthread_exit(NULL);
 	return NULL;
 
@@ -86,6 +93,10 @@ void * timer(void * args) {
 
 static void * refreshResult_helper(void * args) {
 	return (reinterpret_cast<IterativeDeepeningAI*>(((void**)args)[0]))->refreshResult(reinterpret_cast<State*>(((void**)args)[1]));
+}
+
+static void * timer_helper(void * context) {
+	return (reinterpret_cast<IterativeDeepeningAI*>(context))->timer();
 }
 
 Action IterativeDeepeningAI::choose(State * state) {
@@ -98,10 +109,9 @@ Action IterativeDeepeningAI::choose(State * state) {
 	param[1] = state;
 
 	pthread_create(&ai_thread, NULL, refreshResult_helper, param);
-	pthread_create(&timer_thread, NULL, timer, NULL);
-	pthread_join(timer_thread, NULL);
-	if (!computationFinished)
-		pthread_cancel(ai_thread);
+	pthread_create(&timer_thread, NULL, timer_helper, this);
+	//pthread_join(timer_thread, NULL);
+	pthread_join(ai_thread, NULL);
 	print(state, 0);
 	free(param);
 	clear();

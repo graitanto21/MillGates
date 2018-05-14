@@ -18,6 +18,7 @@ public:
 	virtual void setDepth(uint8 depth) = 0;
 	virtual void clear() = 0;
 	virtual void print(State * root, int depth) = 0;
+	virtual void stop() = 0;
 	virtual ~AI();
 
 };

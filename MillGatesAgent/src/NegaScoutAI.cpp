@@ -13,6 +13,7 @@ NegaScoutAI::NegaScoutAI() {
 	_table = new TranspositionTable();
 	_hasher = ZobristHashing::getInstance();
 	_depth = DEPTH;
+	_stopFlag = false;
 }
 
 sint8 NegaScoutAI::evaluate(State * state) {
@@ -39,7 +40,7 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 		score = state->utility();
 		quickReturn = true;
 	}
-	else if (depth == 0) {
+	else if (depth == 0 || _stopFlag) {
 		score = evaluate(state);
 		quickReturn = true;
 	}
@@ -76,7 +77,7 @@ sint8 NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, sin
 		delete child;
 
 		alpha = (alpha > score) ? alpha : score;
-		if (alpha >= beta)
+		if (alpha >= beta || _stopFlag)
 			break;
 	}
 	delete actions;
@@ -109,8 +110,13 @@ void NegaScoutAI::clear() {
 	_table->clear();
 }
 
+void NegaScoutAI::stop() {
+	_stopFlag = true;
+}
+
 Action NegaScoutAI::choose(State * state) {
 
+	_stopFlag = false;
 	/*	if (state->getPawnsToPlay(state->getPlayer()) == 9)
 		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL); */
 

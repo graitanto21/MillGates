@@ -25,6 +25,7 @@ private:
 	int max(State * state, hashcode hashcode, int level);
 	bool visited(hashcode hashcode);
 	void add(hashcode hashcode);
+	virtual void stop();
 
 public:
 	MinMaxAI();

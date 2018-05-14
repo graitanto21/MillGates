@@ -24,9 +24,12 @@ public:
 	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
 	virtual void clear();
+	virtual void stop();
 	virtual void print(State * root, int depth);
-	void * refreshResult(State * state);
 	virtual ~IterativeDeepeningAI();
+
+	void * refreshResult(State * state);
+	void * timer();
 };
 
 #endif /* ITERATIVEDEEPENINGAI_H_ */

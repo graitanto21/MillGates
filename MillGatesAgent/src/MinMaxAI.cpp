@@ -22,6 +22,8 @@ void MinMaxAI::setDepth(uint8 depth) {
 	_depth = depth;
 }
 
+void MinMaxAI::stop() {}
+
 void MinMaxAI::clear() {}
 
 void MinMaxAI::print(State * root, int depth) {}

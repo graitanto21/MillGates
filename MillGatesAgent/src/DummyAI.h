@@ -18,6 +18,7 @@ public:
 	virtual void setDepth(uint8 depth);
 	virtual Action choose(State * state);
 	virtual void clear();
+	virtual void stop();
 	virtual void print(State * root, int depth);
 };
 
