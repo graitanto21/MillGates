@@ -61,6 +61,7 @@ public:
 	virtual uint8 blockedPawnCount(pawn player) const;
 	virtual uint8 potentialMorrisCount(pawn player) const;
 	virtual uint8 potentialDoubleMorrisCount(pawn player) const;
+	virtual uint8 doubleMorrisCount(pawn player) const;
 
 	//Utility methods
 	virtual State* clone() const = 0;

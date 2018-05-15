@@ -65,42 +65,70 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 		potentialSingleMorrises = state->potentialMorrisCount(PAWN_WHITE) - state->potentialMorrisCount(PAWN_BLACK);
 
 		sint8 potentialDoubleMorrises; // (6)
+		potentialDoubleMorrises = state->potentialDoubleMorrisCount(PAWN_WHITE) - state->potentialDoubleMorrisCount(PAWN_BLACK);
 
-		/*
-
-		Per ogni pedina vuota {
-			se può fare un morris nell'asse X {
-				per ciascuna delle altre due pedine del morris {
-					se può fare un morris nell'asse Y {
-						res++
-					}
-				}
-			}
-			se può fare un morris nell'asse Y {
-				per ciascuna delle altre due pedine del morris {
-					se può fare un morris nell'asse Z {
-						res++
-					}
-				}
-			}
-			se può fare un morris nell'asse Z {
-				per ciascuna delle altre due pedine del morris {
-					se può fare un morris nell'asse X {
-						res++
-					}
-				}
-			}
-		}
-
-
-		 */
-
+		result = 18 * morrisLastTurn +
+				26 	* morrises +
+				1 	* blockedPawns +
+				9 	* pawns +
+				10	* potentialSingleMorrises +
+				7 	* potentialDoubleMorrises;
 	}
 	else if (whiteOnBoard > 3 || blackOnBoard > 3) { //Phase 2
 
+		sint8 morrisLastTurn; // (1)
+		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+			morrisLastTurn = 1;
+		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+			morrisLastTurn = -1;
+		else
+			morrisLastTurn = 0;
+
+		sint8 morrises; // (2)
+		morrises = state->morrisCount(PAWN_WHITE) - state->morrisCount(PAWN_BLACK);
+
+		sint8 blockedPawns; // (3)
+		blockedPawns = state->blockedPawnCount(PAWN_WHITE) - state->blockedPawnCount(PAWN_BLACK);
+
+		sint8 pawns; // (4)
+		pawns = whiteToPlay + whiteOnBoard - blackToPlay - blackOnBoard;
+
+		sint8 doubleMorrises;
+		doubleMorrises = state->doubleMorrisCount(PAWN_WHITE) - state->doubleMorrisCount(PAWN_BLACK);
+
+		sint8 winning;
+		winning = (terminal) ? (state->getPlayer() == PAWN_WHITE ? -1 : 1) : 0;
+
+		result = 14 	* morrisLastTurn +
+				43 		* morrises +
+				10 		* blockedPawns +
+				11 		* pawns +
+				8 		* doubleMorrises +
+				1086 	* winning;
 	}
 	else if (whiteOnBoard == 3 || blackOnBoard == 3) { //Phase 3
 
+		sint8 morrisLastTurn; // (1)
+		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+			morrisLastTurn = 1;
+		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+			morrisLastTurn = -1;
+		else
+			morrisLastTurn = 0;
+
+		sint8 potentialSingleMorrises; // (5)
+		potentialSingleMorrises = state->potentialMorrisCount(PAWN_WHITE) - state->potentialMorrisCount(PAWN_BLACK);
+
+		sint8 potentialDoubleMorrises; // (6)
+		potentialDoubleMorrises = state->potentialDoubleMorrisCount(PAWN_WHITE) - state->potentialDoubleMorrisCount(PAWN_BLACK);
+
+		sint8 winning;
+		winning = (terminal) ? (state->getPlayer() == PAWN_WHITE ? -1 : 1) : 0;
+
+		result = 16 	* morrisLastTurn +
+				10 		* potentialSingleMorrises +
+				1 		* potentialDoubleMorrises +
+				1190 	* winning;
 	}
 
 	return result;
@@ -111,7 +139,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	entry * e = _table->get(quickhash);
 	if (e != NULL && e->depth >= depth)
-	//if (e != NULL)
+		//if (e != NULL)
 		return color * e->eval;
 
 	eval_t score = 0;
@@ -190,8 +218,8 @@ void NegaScoutAI::stop() {
 Action NegaScoutAI::choose(State * state) {
 
 	_stopFlag = false;
-//	if (state->getPawnsToPlay(state->getPlayer()) == 9)
-//		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL);
+	//	if (state->getPawnsToPlay(state->getPlayer()) == 9)
+	//		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL);
 
 	ExpVector<Action> * actions = state->getActions();
 
@@ -244,32 +272,32 @@ Action NegaScoutAI::choose(State * state) {
 
 void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 	entry * val = NULL;
-		ExpVector<Action> * actions = state->getActions();
-		State * child = NULL;
-		for (int i = 0; i < actions->getLogicSize(); i++) {
-			child = state->result(actions->get(i));
-			val = _table->get(_hasher->hash(child));
-			if (val == NULL) {
-				for (int j = 0; j < curdepth; j++)
-					std::cout << " | ";
-				std::cout << actions->get(i) << " -> CUT \n";
-			}
-			else if (depth == curdepth) {
-				for (int j = 0; j < curdepth; j++)
-					std::cout << " | ";
-				std::cout << actions->get(i) << " -> " << (int)val->eval << "\n";
-			}
-			else {
-				for (int j = 0; j < curdepth; j++)
-					std::cout << " | ";
-				std::cout << actions->get(i) << " { \n";
-				recurprint(child, depth, curdepth + 1);
-				for (int j = 0; j < curdepth; j++)
-					std::cout << " | ";
-				std::cout << "} -> " << (int)val->eval << "\n";
-			}
-			delete child;
+	ExpVector<Action> * actions = state->getActions();
+	State * child = NULL;
+	for (int i = 0; i < actions->getLogicSize(); i++) {
+		child = state->result(actions->get(i));
+		val = _table->get(_hasher->hash(child));
+		if (val == NULL) {
+			for (int j = 0; j < curdepth; j++)
+				std::cout << " | ";
+			std::cout << actions->get(i) << " -> CUT \n";
 		}
+		else if (depth == curdepth) {
+			for (int j = 0; j < curdepth; j++)
+				std::cout << " | ";
+			std::cout << actions->get(i) << " -> " << (int)val->eval << "\n";
+		}
+		else {
+			for (int j = 0; j < curdepth; j++)
+				std::cout << " | ";
+			std::cout << actions->get(i) << " { \n";
+			recurprint(child, depth, curdepth + 1);
+			for (int j = 0; j < curdepth; j++)
+				std::cout << " | ";
+			std::cout << "} -> " << (int)val->eval << "\n";
+		}
+		delete child;
+	}
 }
 
 void NegaScoutAI::print(State * state, int depth) {

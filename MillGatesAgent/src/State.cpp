@@ -425,6 +425,33 @@ uint8 State::potentialDoubleMorrisCount(pawn player) const {
 
 }
 
+uint8 State::doubleMorrisCount(pawn player) const {
+
+	uint8 res = 0;
+
+	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+			if (isInMorrisAxis(NEW_POS(x,y,0), Z_AXIS) && getPawnAt(x,y,0) == player)
+				for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
+					if (isInMorrisAxis(NEW_POS(x,y,z), X_AXIS))
+						res++;
+	for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(NEW_POS(0,y,z), X_AXIS) && getPawnAt(0,y,z) == player)
+				for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+					if (isInMorrisAxis(NEW_POS(x,y,z), Y_AXIS))
+						res++;
+
+	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(NEW_POS(x,0,z), Y_AXIS) && getPawnAt(x,0,z) == player)
+				for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+					if (isInMorrisAxis(NEW_POS(x,y,z), Z_AXIS))
+						res++;
+	return res;
+
+}
+
 bool State::isInMorris(uint8 pos) const {
 
 	bool morrisX = true;
