@@ -48,11 +48,19 @@ public:
 	virtual void setPawnsOnBoard(pawn pawn, uint8 count);
 	virtual uint8 getPawnsOnBoard(pawn pawn) const;
 
-	virtual pawn getPawnsToPlay(pawn player) const;
 	virtual void setPawnsToPlay(pawn player, uint8 count);
+	virtual uint8 getPawnsToPlay(pawn player) const;
 
 	virtual pawn getPlayer() const = 0;
 	virtual void setPlayer(pawn player) = 0;
+
+	virtual void setMorrisLastTurn(pawn player, bool value);
+	virtual bool getMorrisLastTurn(pawn player) const;
+
+	virtual uint8 morrisCount(pawn player) const;
+	virtual uint8 blockedPawnCount(pawn player) const;
+	virtual uint8 potentialMorrisCount(pawn player) const;
+	virtual uint8 potentialDoubleMorrisCount(pawn player) const;
 
 	//Utility methods
 	virtual State* clone() const = 0;
@@ -60,8 +68,9 @@ public:
 	virtual std::string toNiceString() const;
 
 	virtual bool isInMorris(uint8 pos) const;
-	virtual bool isInMorris(uint8 pos, uint8 axis) const;
+	virtual bool isInMorrisAxis(uint8 pos, uint8 axis) const;
 	virtual bool willBeInMorris(uint8 src, uint8 dest, pawn pawn) const;
+	virtual bool willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) const;
 	virtual ExpVector<uint8> getAllPositions(pawn pawn) const;
 	virtual ExpVector<uint8> getAvailablePositions(uint8 pos) const;
 

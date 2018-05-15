@@ -172,7 +172,7 @@ uint8 State::getBlackPawnsToPlayStr() const {
 	return getPawnsToPlay(PAWN_BLACK) + '1' - 1;
 }
 
-pawn State::getPawnsToPlay(pawn player) const {
+uint8 State::getPawnsToPlay(pawn player) const {
 	if (player == PAWN_WHITE)
 		return (getPawnAt(1,1,2) & 240) >> 4;
 	else if (player == PAWN_BLACK)
@@ -185,6 +185,21 @@ void State::setPawnsToPlay(pawn player, uint8 count) {
 		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 15) | (count << 4));
 	else if (player == PAWN_BLACK)
 		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 240) | count);
+}
+
+void State::setMorrisLastTurn(pawn player, bool value) {
+	if (player == PAWN_WHITE)
+		setPawnAt(1,1,0, (getPawnAt(1,1,0) & 15) | (value << 4));
+	else if (player == PAWN_BLACK)
+		setPawnAt(1,1,0, (getPawnAt(1,1,0) & 240) | value);
+}
+
+bool State::getMorrisLastTurn(pawn player) const {
+	if (player == PAWN_WHITE)
+		return (getPawnAt(1,1,0) & 240) >> 4;
+	else if (player == PAWN_BLACK)
+		return getPawnAt(1,1,0) & 15;
+	return false;
 }
 
 std::string State::toString() const {
@@ -210,14 +225,14 @@ std::string State::toString() const {
 std::string State::toNiceString() const {
 	std::string result = std::string();
 	result = result + "7 " + (char)getPawnAt(0, 0, 2) + "--------" + (char)getPawnAt(0, 1, 2) + "--------" + (char)getPawnAt(0, 2, 2) + "\n" +
-			 "6 |--" + (char)getPawnAt(0, 0, 1) + "-----" + (char)getPawnAt(0, 1, 1) + "-----" + (char)getPawnAt(0, 2, 1) + "--|\n" +
-			 "5 |--|--" + (char)getPawnAt(0, 0, 0) + "--" + (char)getPawnAt(0, 1, 0) + "--" + (char)getPawnAt(0, 2, 0) + "--|--|\n" +
-			 "4 " + (char)getPawnAt(1, 0, 2) + "--" + (char)getPawnAt(1, 0, 1) + "--" + (char)getPawnAt(1, 0, 0) + "     "
+			"6 |--" + (char)getPawnAt(0, 0, 1) + "-----" + (char)getPawnAt(0, 1, 1) + "-----" + (char)getPawnAt(0, 2, 1) + "--|\n" +
+			"5 |--|--" + (char)getPawnAt(0, 0, 0) + "--" + (char)getPawnAt(0, 1, 0) + "--" + (char)getPawnAt(0, 2, 0) + "--|--|\n" +
+			"4 " + (char)getPawnAt(1, 0, 2) + "--" + (char)getPawnAt(1, 0, 1) + "--" + (char)getPawnAt(1, 0, 0) + "     "
 			+ (char)getPawnAt(1, 2, 0) + "--" + (char)getPawnAt(1, 2, 1) + "--" + (char)getPawnAt(1, 2, 2) + "\n" +
-			 "3 |--|--" + (char)getPawnAt(2, 0, 0) + "--" + (char)getPawnAt(2, 1, 0) + "--" + (char)getPawnAt(2, 2, 0) + "--|--|\n" +
-			 "2 |--" + (char)getPawnAt(2, 0, 1) + "-----" + (char)getPawnAt(2, 1, 1) + "-----" + (char)getPawnAt(2, 2, 1) + "--|\n" +
-			 "1 " + (char)getPawnAt(2, 0, 2) + "--------" + (char)getPawnAt(2, 1, 2) + "--------" + (char)getPawnAt(2, 2, 2) + "\n" +
-			 "  a  b  c  d  e  f  g\n" ;
+			"3 |--|--" + (char)getPawnAt(2, 0, 0) + "--" + (char)getPawnAt(2, 1, 0) + "--" + (char)getPawnAt(2, 2, 0) + "--|--|\n" +
+			"2 |--" + (char)getPawnAt(2, 0, 1) + "-----" + (char)getPawnAt(2, 1, 1) + "-----" + (char)getPawnAt(2, 2, 1) + "--|\n" +
+			"1 " + (char)getPawnAt(2, 0, 2) + "--------" + (char)getPawnAt(2, 1, 2) + "--------" + (char)getPawnAt(2, 2, 2) + "\n" +
+			"  a  b  c  d  e  f  g\n" ;
 	return result;
 }
 
@@ -264,6 +279,150 @@ void State::toStringToSend() const{
 
 
 	ret[count] = '\0';
+}
+
+uint8 State::morrisCount(pawn player) const {
+
+	uint8 res = 0;
+
+	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+			if (isInMorrisAxis(NEW_POS(x,y,0), Z_AXIS) && getPawnAt(x,y,0) == player)
+				res++;
+	for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
+		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(NEW_POS(0,y,z), X_AXIS) && getPawnAt(0,y,z) == player)
+				res++;
+
+	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(NEW_POS(x,0,z), Y_AXIS) && getPawnAt(x,0,z) == player)
+				res++;
+	return res;
+
+}
+
+uint8 State::blockedPawnCount(pawn player) const {
+
+	uint8 res = 0, p;
+	ExpVector<uint8> pawns = getAllPositions(player);
+
+	for (uint8 i = 0; i < pawns.getLogicSize(); i++) {
+		p = FWX(pawns.get(i));
+		if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+
+		p = BWX(pawns.get(i));
+		if (GETX(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+
+		p = FWY(pawns.get(i));
+		if (GETY(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+
+		p = BWY(pawns.get(i));
+		if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
+		p = FWZ(pawns.get(i));
+		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+
+		p = BWZ(pawns.get(i));
+		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			continue;
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+		p = FWZ(pawns.get(i));
+		if (ON_PERPENDICULAR(p)) {
+			if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+				continue;
+
+			p = BWZ(pawns.get(i));
+			if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+				continue;
+		}
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+		p = FWZ(pawns.get(i));
+		if (ON_DIAGONAL(p)) {
+			if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+				continue;
+
+			p = BWZ(pawns.get(i));
+			if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+				continue;
+		}
+#endif
+		res++;
+	}
+	return res;
+}
+
+uint8 State::potentialMorrisCount(pawn player) const {
+	uint8 res = 0;
+
+	ExpVector<uint8> empty = getAllPositions(PAWN_NONE);
+	for (uint8 i = 0; i < empty.getLogicSize(); i++) {
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, X_AXIS))
+			res++;
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Y_AXIS))
+			res++;
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Z_AXIS))
+			res++;
+	}
+
+	return res;
+}
+
+uint8 State::potentialDoubleMorrisCount(pawn player) const {
+
+	uint8 res = 0;
+
+	ExpVector<uint8> empty = getAllPositions(PAWN_NONE);
+	for (uint8 i = 0; i < empty.getLogicSize(); i++) {
+		uint8 pos = empty.get(i);
+		uint8 app;
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, X_AXIS)) {
+			for (uint8 j = 0; j < CUBE_SIZE_X - 1; j++) { // 2 iterations
+				pos = FWX(pos);
+				app = pos;
+				for (uint8 k = 0; k < CUBE_SIZE_Y - 1; k++) {
+					app = FWY(app);
+					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Y_AXIS))
+						res++;
+				}
+			}
+		}
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Y_AXIS)) {
+			for (uint8 j = 0; j < CUBE_SIZE_Y - 1; j++) { // 2 iterations
+				pos = FWY(pos);
+				app = pos;
+				for (uint8 k = 0; k < CUBE_SIZE_Z - 1; k++) {
+					app = FWZ(app);
+					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Z_AXIS))
+						res++;
+				}
+			}
+		}
+		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Z_AXIS)) {
+			for (uint8 j = 0; j < CUBE_SIZE_Z - 1; j++) { // 2 iterations
+				pos = FWZ(pos);
+				app = pos;
+				for (uint8 k = 0; k < CUBE_SIZE_X - 1; k++) {
+					app = FWX(app);
+					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, X_AXIS))
+						res++;
+				}
+			}
+		}
+	}
+
+	return res;
+
 }
 
 bool State::isInMorris(uint8 pos) const {
@@ -362,43 +521,86 @@ bool State::isInMorris(uint8 pos) const {
 
 }
 
-bool State::isInMorris(uint8 pos, uint8 axis) const {
+bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 
 	pawn selected = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
 
 	if (selected == PAWN_NONE)
 		return false;
 
-	switch (axis) {
-
-	case X_AXIS :
-
-		for (int x = 0; x < CUBE_SIZE_X; x++)
-			if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected)
+	if (axis == X_AXIS) {
+		for (int x = 0; x < CUBE_SIZE_X; x++) {
+			if (POS_ENABLED_FAST(x, GETY(pos))) {
+				if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected)
+					return false;
+			}
+			else
 				return false;
-
-		break;
-
-	case Y_AXIS :
-
-		for (int y = 0; y < CUBE_SIZE_Y; y++)
-			if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected)
-				return false;
-		break;
-
-	case Z_AXIS :
-		for (int z = 0; z < CUBE_SIZE_Z; z++)
-			if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
-				return false;
-
-		break;
+		}
+		return true;
 	}
 
-	return true;
+	else if (axis == Y_AXIS) {
+		for (int y = 0; y < CUBE_SIZE_Y; y++) {
+			if (POS_ENABLED_FAST(GETX(pos), y)) {
+				if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected)
+					return false;
+			}
+			else
+				return false;
+		}
+		return true;
+	}
 
+	else if (axis == Z_AXIS) {
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+				if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+					return false;
+			}
+			else
+				return false;
+		}
+		return true;
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+		if (ON_PERPENDICULAR(pos)) {
+			for (int z = 0; z < CUBE_SIZE_Z; z++) {
+				if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+					if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+						return false;
+				}
+				else
+					return false;
+			}
+			return true;
+		}
+		else
+			return false;
+
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+		if (ON_DIAGONAL(pos)) {
+			for (int z = 0; z < CUBE_SIZE_Z; z++) {
+				if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
+					if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+						return false;
+				}
+				else
+					return false;
+			}
+			return true;
+		}
+		else
+			return false;
+#endif
+	}
+	return false;
 }
 
-//Pls specify in a comment what do parameters mean!
 bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 
 	bool morrisX = true;
@@ -509,6 +711,96 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #endif
 
 	return morrisX || morrisY || morrisZ;
+}
+
+bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) const {
+
+	if (pawn == PAWN_NONE)
+		return false;
+
+	if (getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) != PAWN_NONE)
+		return false;
+
+	if (axis == X_AXIS) {
+		for (int x = 0; x < CUBE_SIZE_X; x++) {
+			if (src == NEW_POS(x,GETY(dest), GETZ(dest)))
+				return false;
+			if (!POS_ENABLED_FAST(x, GETY(dest)))
+				return false;
+			if (x != GETX(dest)) {
+				if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn)
+					return false;
+			}
+		}
+		return true;
+	}
+
+	else if (axis == Y_AXIS) {
+		for (int y = 0; y < CUBE_SIZE_Y; y++) {
+			if (src == NEW_POS(GETX(dest), y, GETZ(dest)))
+				return false;
+			if (!POS_ENABLED_FAST(GETX(dest), y))
+				return false;
+			if (y != GETY(dest)) {
+				if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn)
+					return false;
+			}
+		}
+		return true;
+	}
+
+	else if (axis == Z_AXIS) {
+#if defined(DIAGONALS) && defined(PERPENDICULARS)
+		for (int z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+				return false;
+			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+				return false;
+			if (z != GETZ(dest)) {
+				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+					return false;
+			}
+		}
+		return true;
+#endif
+
+#if !defined(DIAGONALS) && defined(PERPENDICULARS)
+		if (ON_PERPENDICULAR(dest)) {
+			for (int z = 0; z < CUBE_SIZE_Z; z++) {
+				if (src == NEW_POS(GETX(dest), GETY(dest), z))
+					return false;
+				if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+					return false;
+				if (z != GETZ(dest)) {
+					if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+						return false;
+				}
+			}
+			return true;
+		}
+		else
+			return false;
+#endif
+
+#if defined(DIAGONALS) && !defined(PERPENDICULARS)
+		if (ON_DIAGONAL(dest)) {
+			for (int z = 0; z < CUBE_SIZE_Z; z++) {
+				if (src == NEW_POS(GETX(dest), GETY(dest), z))
+					return false;
+				if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+					return false;
+				if (z != GETZ(dest)) {
+					if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+						return false;
+				}
+			}
+			return true;
+		}
+		else
+			return false;
+#endif
+	}
+	return false;
 }
 
 ExpVector<uint8> State::getAllPositions(pawn pawn) const {
@@ -633,6 +925,7 @@ State * State::result(Action action) const {
 		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
 	}
 
+	state->setMorrisLastTurn(getPlayer(), IS_VALID(toRemove));
 	state->setPlayer(OPP(getPlayer()));
 
 	return state;

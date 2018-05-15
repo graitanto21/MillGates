@@ -42,7 +42,58 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 	whiteOnBoard = state->getPawnsOnBoard(PAWN_WHITE);
 	blackOnBoard = state->getPawnsOnBoard(PAWN_BLACK);
 
-	if (blackToPlay == 0) { //Phase 1
+	if (blackToPlay > 0) { //Phase 1
+
+		sint8 morrisLastTurn; // (1)
+		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+			morrisLastTurn = 1;
+		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+			morrisLastTurn = -1;
+		else
+			morrisLastTurn = 0;
+
+		sint8 morrises; // (2)
+		morrises = state->morrisCount(PAWN_WHITE) - state->morrisCount(PAWN_BLACK);
+
+		sint8 blockedPawns; // (3)
+		blockedPawns = state->blockedPawnCount(PAWN_WHITE) - state->blockedPawnCount(PAWN_BLACK);
+
+		sint8 pawns; // (4)
+		pawns = whiteToPlay + whiteOnBoard - blackToPlay - blackOnBoard;
+
+		sint8 potentialSingleMorrises; // (5)
+		potentialSingleMorrises = state->potentialMorrisCount(PAWN_WHITE) - state->potentialMorrisCount(PAWN_BLACK);
+
+		sint8 potentialDoubleMorrises; // (6)
+
+		/*
+
+		Per ogni pedina vuota {
+			se può fare un morris nell'asse X {
+				per ciascuna delle altre due pedine del morris {
+					se può fare un morris nell'asse Y {
+						res++
+					}
+				}
+			}
+			se può fare un morris nell'asse Y {
+				per ciascuna delle altre due pedine del morris {
+					se può fare un morris nell'asse Z {
+						res++
+					}
+				}
+			}
+			se può fare un morris nell'asse Z {
+				per ciascuna delle altre due pedine del morris {
+					se può fare un morris nell'asse X {
+						res++
+					}
+				}
+			}
+		}
+
+
+		 */
 
 	}
 	else if (whiteOnBoard > 3 || blackOnBoard > 3) { //Phase 2
