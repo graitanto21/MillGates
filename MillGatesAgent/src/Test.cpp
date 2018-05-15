@@ -196,10 +196,11 @@ void testDoubleMorrisesCount(State * state) {
 	state->setPawnAt2D('g', '7', PAWN_BLACK);
 	state->setPawnAt2D('d', '7', PAWN_BLACK);
 
-	std::cout << (int)state->doubleMorrisCount(PAWN_BLACK);
+	std::cout << (int)state->doubleMorrisCount(PAWN_BLACK) << "\n";
 
 }
 
+#if defined(DEBUG)
 int main(void) {
 
 	State * state = new CubeStateImpl();
@@ -213,7 +214,10 @@ int main(void) {
 	//testPotentialDoubleMorrises(state);
 	testDoubleMorrisesCount(state);
 
+	std::cout << (eval_t)((uint8)10 * (eval_t)1238);
+
 	delete state;
 
 }
+#endif
 

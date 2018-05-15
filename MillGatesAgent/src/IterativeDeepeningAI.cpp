@@ -51,13 +51,17 @@ void * IterativeDeepeningAI::refreshResult(State * state) {
 	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
 		setDepth(depth);
 		lastChosen = _ai->choose(state);
-		//clear(); // ????
 		if (timeUp) {
+			//clear(); // ????
 			std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
 			break;
 		}
-		else
+		else {
 			_tempAction = lastChosen;
+			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+			print(state, depth);
+			//clear(); // ????
+		}
 	}
 
 	aiComputing = false;
@@ -107,7 +111,6 @@ Action IterativeDeepeningAI::choose(State * state) {
 	pthread_create(&timer_thread, NULL, timer_helper, this);
 	pthread_join(timer_thread, NULL);
 	pthread_join(ai_thread, NULL);
-	print(state, 0);
 	free(param);
 	clear();
 	return _tempAction;

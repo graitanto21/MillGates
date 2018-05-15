@@ -2,1045 +2,453 @@
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
-Computation start
-Timer start
-Choosing an action with depth 0
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Timer end
-NOT FOUND 12511239763555 -> d2
-NOT FOUND 94205812702833 -> d1
-NOT FOUND 114220360293531 -> e3
-NOT FOUND 68264210218471 -> f2
-NOT FOUND 15564961483532 -> g1
-Chosen action: c5 with depth 8
-Computation end
-c5 -> CUT 
-b6 -> CUT 
-a7 -> CUT 
-d5 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-e5 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-c3 -> CUT 
-b2 -> CUT 
-a1 -> CUT 
-d3 -> CUT 
-d2 -> CUT 
-d1 -> CUT 
-e3 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
+Chosen action: c5 with depth 1
+c5 -> 0
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: c5 with depth 2
+c5 -> 10
+b6 -> 10
+a7 -> 10
+d5 -> 10
+d6 -> 10
+d7 -> 10
+e5 -> 10
+f6 -> 10
+g7 -> 10
+c4 -> 10
+b4 -> 10
+a4 -> 10
+e4 -> 10
+f4 -> 10
+g4 -> 10
+c3 -> 10
+b2 -> 10
+a1 -> 10
+d3 -> 10
+d2 -> 10
+d1 -> 10
+e3 -> 10
+f2 -> 10
+g1 -> 10
+Chosen action: e5 with depth 3
+c5 -> -6
+b6 -> -5
+a7 -> -4
+d5 -> -3
+d6 -> -2
+d7 -> -1
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
 7 O--------O--------O
 6 |--O-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--B--O--O--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Timer end
-NOT FOUND 83322365548479 -> c4
-NOT FOUND 56371445776844 -> b4
-NOT FOUND 92530775434482 -> a4
-NOT FOUND 44422846758944 -> e4
-NOT FOUND 115156663146840 -> f4
-NOT FOUND 92539365376888 -> g4
-NOT FOUND 6713033908595 -> b2
-NOT FOUND 31430570697840 -> a1
-NOT FOUND 80676665697410 -> d3
-NOT FOUND 16441134818000 -> d2
-NOT FOUND 88214333303490 -> d1
-NOT FOUND 108263240632360 -> e3
-NOT FOUND 65433826781524 -> f2
-NOT FOUND 12906376748991 -> g1
-Chosen action: b6 with depth 9
-Computation end
-b6 -> CUT 
-a7 -> CUT 
-d5 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-e5 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-b2 -> CUT 
-a1 -> CUT 
-d3 -> CUT 
-d2 -> CUT 
-d1 -> CUT 
-e3 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
-7 O--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--B--B--O--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Timer end
-NOT FOUND 121504624820058 -> d1
-NOT FOUND 102039833025968 -> e3
-NOT FOUND 5746666273996 -> f2
-NOT FOUND 58291296160295 -> g1
-Chosen action: e3 with depth 8
-Computation end
-a7 -> CUT 
-d5 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-e5 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-b2 -> CUT 
-a1 -> CUT 
-d2 -> CUT 
-d1 -> CUT 
-e3 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
-7 O--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--B--B--W--|--|
-2 |--B-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Timer end
-NOT FOUND 98466420239766 -> d6
-NOT FOUND 97637491540127 -> d7
-NOT FOUND 96473555421039 -> e5
-NOT FOUND 130455336671260 -> f6
-NOT FOUND 31499290176997 -> g7
-NOT FOUND 77966541356145 -> c4
-NOT FOUND 68599217662466 -> b4
-NOT FOUND 97895189598012 -> a4
-NOT FOUND 40982577949678 -> e4
-NOT FOUND 111724984300182 -> f4
-NOT FOUND 97903779522742 -> g4
-NOT FOUND 19477676691390 -> a1
-NOT FOUND 4213362936094 -> d2
-NOT FOUND 102366250549516 -> d1
-NOT FOUND 60069412602522 -> f2
-NOT FOUND 7267084678257 -> g1
-Chosen action: d5 with depth 10
-Computation end
-a7 -> CUT 
-d5 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-e5 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-a1 -> CUT 
-d2 -> CUT 
-d1 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
-7 O--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--W--O--|--|
-4 O--O--O     O--O--O
-3 |--|--B--B--W--|--|
-2 |--B-----B-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Timer end
-NOT FOUND 25245817790945 -> f2
-NOT FOUND 42640435336970 -> g1
-Chosen action: e5c3 with depth 9
-Computation end
-a7 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-e5c3 -> CUT 
-e5b2 -> CUT 
-e5d3 -> CUT 
-e5d2 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-a1 -> CUT 
-d1 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
-7 O--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--W--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--B-----B-----O--|
-1 O--------B--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Timer end
-NOT FOUND 54855322311992 -> d7
-NOT FOUND 34699040802235 -> f6
-NOT FOUND 129257040801858 -> g7
-NOT FOUND 52501680251350 -> c4
-NOT FOUND 95988224112549 -> b4
-NOT FOUND 52913997107867 -> a4
-NOT FOUND 84039625094729 -> e4
-NOT FOUND 13967233675057 -> f4
-NOT FOUND 52922587034897 -> g4
-NOT FOUND 136970802041524 -> c3
-NOT FOUND 132620000170521 -> a1
-NOT FOUND 7142530645569 -> e3
-NOT FOUND 105050605100861 -> f2
-NOT FOUND 122823179774422 -> g1
-Chosen action: f2 with depth 10
-Computation end
-a7 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-c3 -> CUT 
-a1 -> CUT 
-e3 -> CUT 
-f2 -> CUT 
-g1 -> CUT 
-7 O--------O--------O
-6 |--W-----O-----O--|
-5 |--|--W--W--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------O
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Timer end
-Chosen action: g1 with depth 10
-Computation end
-a7 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-f6 -> CUT 
-g7 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-c3 -> CUT 
-e3 -> CUT 
-g1 -> CUT 
-7 O--------O--------B
-6 |--W-----O-----O--|
-5 |--|--W--W--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-Chosen action: d6 with depth 11
-Computation end
-a7 -> CUT 
-d6 -> CUT 
-d7 -> CUT 
-f6 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-c3 -> CUT 
-e3 -> CUT 
-7 B--------O--------B
-6 |--W-----W-----O--|
-5 |--|--W--W--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Choosing an action with depth 13
-Timer end
-NOT FOUND 14336600850237 -> f6a7
-NOT FOUND 25074019096089 -> f6g7
-NOT FOUND 89867895722954 -> f6b2
-NOT FOUND 58862526813546 -> c4
-NOT FOUND 84679575208729 -> b4
-NOT FOUND 46630459958823 -> a4
-NOT FOUND 94721208746741 -> e4
-NOT FOUND 25275882560397 -> f4
-NOT FOUND 46639049867693 -> g4
-NOT FOUND 113086488913416 -> c3
-NOT FOUND 31018253830909 -> e3
-Chosen action: d7a7 with depth 13
-Computation end
-d7a7 -> CUT 
-d7g7 -> CUT 
-d7b2 -> CUT 
-d7a1 -> CUT 
-f6a7 -> CUT 
-f6g7 -> CUT 
-f6b2 -> CUT 
-f6a1 -> CUT 
-c4 -> CUT 
-b4 -> CUT 
-a4 -> CUT 
-e4 -> CUT 
-f4 -> CUT 
-g4 -> CUT 
-c3 -> CUT 
-e3 -> CUT 
-7 O--------W--------B
-6 |--W-----W-----B--|
-5 |--|--W--W--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--B-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Choosing an action with depth 13
-Timer end
-NOT FOUND 129364414978858 -> b6b4
-NOT FOUND 19855633812901 -> d7a7
-NOT FOUND 49808735746621 -> f2f4
-NOT FOUND 37267431249654 -> g1g4
-Chosen action: c5c4 with depth 13
-Computation end
-c5c4 -> CUT 
-b6b4 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------B
-6 |--W-----W-----B--|
-5 |--|--O--W--W--|--|
-4 O--B--W     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 B--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Timer end
-Chosen action: d5c5 with depth 12
-Computation end
-d5c5 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-c4c3 -> CUT 
-c4c5f6 -> CUT 
-c4c5g7 -> CUT 
-c4c5b4 -> CUT 
-c4c5a1 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------B
-6 |--W-----W-----B--|
-5 |--|--W--O--W--|--|
-4 B--B--W     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Choosing an action with depth 13
-Timer end
-NOT FOUND 45217415723509 -> c5d5b4
-NOT FOUND 54546084680881 -> c5d5a4
-NOT FOUND 17905718673480 -> d6d5f6
-NOT FOUND 103706280348377 -> d6d5g7
-NOT FOUND 33161442510532 -> d6d5b4
-NOT FOUND 7237019921280 -> d6d5a4
-NOT FOUND 127856881461617 -> d7a7
-NOT FOUND 117424405889636 -> e5e4
-NOT FOUND 33505039887025 -> e5d5f6
-NOT FOUND 88381837025312 -> e5d5g7
-NOT FOUND 17699560238141 -> e5d5b4
-NOT FOUND 9504762626425 -> e5d5a4
-NOT FOUND 82905753738631 -> c4c3
-NOT FOUND 82510616747753 -> f2f4
-NOT FOUND 78765405254178 -> g1g4
-Chosen action: c5d5f6 with depth 13
-Computation end
-c5d5f6 -> CUT 
-c5d5g7 -> CUT 
-c5d5b4 -> CUT 
-c5d5a4 -> CUT 
-d6d5f6 -> CUT 
-d6d5g7 -> CUT 
-d6d5b4 -> CUT 
-d6d5a4 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-e5d5f6 -> CUT 
-e5d5g7 -> CUT 
-e5d5b4 -> CUT 
-e5d5a4 -> CUT 
-c4c3 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 B--------W--------B
-6 |--W-----W-----O--|
-5 |--|--O--W--W--|--|
-4 O--B--W     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Timer end
-Chosen action: d5c5 with depth 12
-Computation end
-d5c5 -> CUT 
-d6f6 -> CUT 
-e5e4 -> CUT 
-c4c3 -> CUT 
-c4c5a7 -> CUT 
-c4c5g7 -> CUT 
-c4c5b4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 B--------W--------B
-6 |--W-----W-----O--|
-5 |--|--W--O--W--|--|
-4 B--O--W     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Choosing an action with depth 13
-Timer end
-NOT FOUND 123106647620958 -> c5d5g7
-NOT FOUND 60679297965063 -> c5d5a4
-NOT FOUND 23373212055368 -> b6b4
-NOT FOUND 54631984010201 -> d6f6
-NOT FOUND 73916387191627 -> d6d5a7
-NOT FOUND 97847944938095 -> d6d5g7
-NOT FOUND 244813144886 -> d6d5a4
-NOT FOUND 119159572662994 -> e5e4
-NOT FOUND 84705345012146 -> e5d5a7
-NOT FOUND 95442763278486 -> e5d5g7
-NOT FOUND 15431817513423 -> e5d5a4
-NOT FOUND 85534273705265 -> c4c3
-NOT FOUND 112240380358688 -> c4b4
-NOT FOUND 85379654882911 -> f2f4
-NOT FOUND 71532680346260 -> g1g4
-Chosen action: c5d5a7 with depth 13
-Computation end
-c5d5a7 -> CUT 
-c5d5g7 -> CUT 
-c5d5a4 -> CUT 
-b6b4 -> CUT 
-d6f6 -> CUT 
-d6d5a7 -> CUT 
-d6d5g7 -> CUT 
-d6d5a4 -> CUT 
-e5e4 -> CUT 
-e5d5a7 -> CUT 
-e5d5g7 -> CUT 
-e5d5a4 -> CUT 
-c4c3 -> CUT 
-c4b4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------B
-6 |--W-----W-----O--|
-5 |--|--O--W--W--|--|
-4 B--O--W     O--O--O
-3 |--|--B--O--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-NOT FOUND 51105815884037 -> c4c5d1
-Chosen action: c4c5c3 with depth 11
-Computation end
-b6b4 -> CUT 
-d5c5 -> CUT 
-d6f6 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-c4c5g7 -> CUT 
-c4c5a4 -> CUT 
-c4c5c3 -> CUT 
-c4c5d2 -> CUT 
-c4c5d1 -> CUT 
-c4b4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------O
-6 |--W-----W-----O--|
-5 |--|--W--W--W--|--|
-4 B--O--O     O--O--B
-3 |--|--O--O--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Choosing an action with depth 13
-Timer end
-NOT FOUND 124506806944660 -> b6b4
-NOT FOUND 94347546617605 -> d6f6
-NOT FOUND 68771016376309 -> d7g7
-NOT FOUND 24850680796443 -> d7a7
-NOT FOUND 46007689699971 -> f2f4
-Chosen action: b6b4 with depth 13
-Computation end
-c5c4 -> CUT 
-b6b4 -> CUT 
-d6f6 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-f2f4 -> CUT 
-7 O--------W--------O
-6 |--O-----W-----O--|
-5 |--|--W--W--W--|--|
-4 B--W--O     O--B--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Choosing an action with depth 12
-Timer end
-NOT FOUND 139998754009403 -> d6f6
-NOT FOUND 66297115185726 -> d6b6
-NOT FOUND 22089016830411 -> d7g7
-NOT FOUND 65974992651045 -> d7a7
-NOT FOUND 111196703302670 -> b4b2
-NOT FOUND 100768522704298 -> b4b6
-NOT FOUND 45015552250562 -> b4c4
-NOT FOUND 17501991737462 -> g1g4
-Chosen action: c5c4 with depth 12
-Computation end
-c5c4 -> CUT 
-d6f6 -> CUT 
-d6b6 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-b4b2 -> CUT 
-b4b6 -> CUT 
-b4c4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------O
-6 |--O-----W-----O--|
-5 |--|--O--W--W--|--|
-4 B--W--W     B--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-NOT FOUND 58291296162241 -> c4c3
-NOT FOUND 6554120112690 -> c4c5a4
-NOT FOUND 78323023617365 -> c4c5e4
-NOT FOUND 116793045712583 -> c4c5d2
-NOT FOUND 101198019456841 -> c4c5d1
-NOT FOUND 91298119811612 -> b4b2
-NOT FOUND 120452357829560 -> b4b6
-NOT FOUND 58720792892079 -> f2f4
-NOT FOUND 63496796520036 -> g1g4
-Chosen action: d7a7 with depth 11
-Computation end
-d5c5 -> CUT 
-d6f6 -> CUT 
-d6b6 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-c4c3 -> CUT 
-c4c5a4 -> CUT 
-c4c5e4 -> CUT 
-c4c5d2 -> CUT 
-c4c5d1 -> CUT 
-b4b2 -> CUT 
-b4b6 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 W--------O--------O
-6 |--O-----W-----O--|
-5 |--|--O--W--W--|--|
-4 B--W--W     O--O--O
-3 |--|--O--O--B--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-NOT FOUND 57105885195871 -> a7d7d2
-NOT FOUND 6335076794321 -> a7d7d1
-NOT FOUND 122397978030979 -> a7d7e3
-NOT FOUND 28492813068138 -> d5c5
-NOT FOUND 93067646365427 -> d6f6
-NOT FOUND 26100516261366 -> d6b6
-NOT FOUND 135025181865584 -> d6d7
-NOT FOUND 10398115854328 -> e5e4
-NOT FOUND 44933947877403 -> c4c3
-NOT FOUND 26577257657320 -> c4c5a4
-NOT FOUND 131816841299741 -> c4c5d2
-NOT FOUND 72361609025171 -> c4c5d1
-NOT FOUND 47558172891841 -> c4c5e3
-NOT FOUND 86668145081286 -> b4b2
-NOT FOUND 123518964468322 -> b4b6
-NOT FOUND 44744969317237 -> f2f4
-NOT FOUND 39694087751614 -> g1g4
-Chosen action: a7d7a4 with depth 11
-Computation end
-a7d7a4 -> CUT 
-a7d7d2 -> CUT 
-a7d7d1 -> CUT 
-a7d7e3 -> CUT 
-d5c5 -> CUT 
-d6f6 -> CUT 
-d6b6 -> CUT 
-d6d7 -> CUT 
-e5e4 -> CUT 
-c4c3 -> CUT 
-c4c5a4 -> CUT 
-c4c5d2 -> CUT 
-c4c5d1 -> CUT 
-c4c5e3 -> CUT 
-b4b2 -> CUT 
-b4b6 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------O
-6 |--O-----W-----O--|
-5 |--|--O--W--W--|--|
-4 O--W--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-NOT FOUND 77356655989438 -> d6f6
-NOT FOUND 5785320960443 -> d6b6
-NOT FOUND 49581102484046 -> d7g7
-NOT FOUND 5557687705760 -> d7a7
-NOT FOUND 30283814423477 -> e5e4
-NOT FOUND 101348343285643 -> b4b2
-NOT FOUND 108477989008943 -> b4b6
-NOT FOUND 15522011824650 -> b4a4
-NOT FOUND 19782619394375 -> b4c4
-NOT FOUND 64098091947832 -> f2f4
-NOT FOUND 60352880458739 -> g1g4
-Chosen action: d6f6 with depth 11
-Computation end
-d5c5 -> CUT 
-d6f6 -> CUT 
-d6b6 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-b4b2 -> CUT 
-b4b6 -> CUT 
-b4a4 -> CUT 
-b4c4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------O
-6 |--O-----B-----W--|
-5 |--|--O--W--W--|--|
-4 O--W--O     O--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Timer end
-Chosen action: b4b6 with depth 9
-Computation end
-d5c5 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-e5e4 -> CUT 
-f6f4 -> CUT 
-b4b2 -> CUT 
-b4b6 -> CUT 
-b4a4 -> CUT 
-b4c4 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-7 O--------W--------O
-6 |--W-----O-----W--|
 5 |--|--O--O--W--|--|
 4 O--O--O     O--O--O
-3 |--|--O--B--O--|--|
-2 |--O-----B-----W--|
-1 O--------B--------W
+3 |--|--O--O--O--|--|
+2 |--O-----O-----B--|
+1 O--------O--------O
   a  b  c  d  e  f  g
 
-Computation start
-Choosing an action with depth 0
-Timer start
-Choosing an action with depth 1
-Choosing an action with depth 2
-Choosing an action with depth 3
-Choosing an action with depth 4
-Choosing an action with depth 5
-Choosing an action with depth 6
-Choosing an action with depth 7
-Choosing an action with depth 8
-Choosing an action with depth 9
-Choosing an action with depth 10
-Choosing an action with depth 11
-Timer end
-NOT FOUND 41665477739747 -> b6d6
-NOT FOUND 15109694979862 -> d7g7
-NOT FOUND 41403484755448 -> d7a7
-NOT FOUND 99664716110937 -> d7d6d1
-NOT FOUND 65064459599597 -> e5e4
-NOT FOUND 20388209769399 -> e5d5
-NOT FOUND 99978248730854 -> f6f4
-NOT FOUND 113236812785638 -> f6d6
-NOT FOUND 29592324694624 -> f2f4
-NOT FOUND 24472723656363 -> g1g4
-Chosen action: d7d6d3 with depth 11
-Computation end
-b6b4 -> CUT 
-b6d6 -> CUT 
-d7g7 -> CUT 
-d7a7 -> CUT 
-d7d6d3 -> CUT 
-d7d6d2 -> CUT 
-d7d6d1 -> CUT 
-e5e4 -> CUT 
-e5d5 -> CUT 
-f6f4 -> CUT 
-f6d6 -> CUT 
-f2f4 -> CUT 
-g1g4 -> CUT 
-connection closed
+White morris in last turn: 0
+Black morris in last turn: 0
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>
+Chosen action: c5 with depth 1
+c5 -> 0
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+g1 -> 0
+Chosen action: c5 with depth 2
+c5 -> 52
+b6 -> 52
+a7 -> 52
+d5 -> 52
+d6 -> 52
+d7 -> 52
+f6 -> 52
+g7 -> 52
+c4 -> 52
+b4 -> 52
+a4 -> 52
+e4 -> 52
+f4 -> 52
+g4 -> 52
+c3 -> 52
+b2 -> 52
+a1 -> 52
+d3 -> 52
+d2 -> 52
+d1 -> 52
+e3 -> 52
+g1 -> 52
+Chosen action: e4 with depth 3
+c5 -> -11
+b6 -> -11
+a7 -> -11
+d5 -> -10
+d6 -> -10
+d7 -> -10
+f6 -> -10
+g7 -> -10
+c4 -> -10
+b4 -> -10
+a4 -> -10
+e4 -> -9
+f4 -> -9
+g4 -> -9
+c3 -> -9
+b2 -> -9
+a1 -> -9
+d3 -> -9
+d2 -> -9
+d1 -> -9
+e3 -> -9
+g1 -> -9
+7 O--------O--------O
+6 |--B-----O-----O--|
+5 |--|--O--O--W--|--|
+4 O--O--O     W--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----B--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: e3f2 with depth 1
+c5 -> 0
+a7 -> 0
+d5 -> 1
+d6 -> 0
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> -1
+a4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3b6 -> 2
+e3f2 -> 3
+g1 -> 0
+Chosen action: d5 with depth 2
+c5 -> 63
+a7 -> 63
+d5 -> 64
+d6 -> 64
+d7 -> 64
+f6 -> 64
+g7 -> 64
+c4 -> 64
+b4 -> 64
+a4 -> 64
+f4 -> 64
+g4 -> 64
+c3 -> 64
+b2 -> 64
+a1 -> 64
+d3 -> 64
+d2 -> 64
+d1 -> 64
+e3b6 -> 64
+e3f2 -> 64
+g1 -> 64
+Chosen action: c5 with depth 3
+c5 -> 53
+a7 -> 53
+d5 -> 53
+d6 -> 53
+d7 -> 53
+f6 -> 53
+g7 -> 53
+c4 -> 53
+b4 -> 53
+a4 -> 53
+f4 -> 53
+g4 -> 53
+c3 -> 53
+b2 -> 53
+a1 -> 53
+d3 -> 53
+d2 -> 53
+d1 -> 53
+e3b6 -> 53
+e3f2 -> 53
+g1 -> 53
+7 O--------O--------O
+6 |--B-----O-----O--|
+5 |--|--W--O--W--|--|
+4 O--O--O     W--O--O
+3 |--|--O--O--O--|--|
+2 |--B-----O-----B--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: e3f2 with depth 1
+a7 -> -63
+d5b6 -> -62
+d5b2 -> -61
+d5f2 -> -60
+d6 -> -64
+d7 -> -63
+f6 -> -63
+g7 -> -63
+c4 -> -59
+b4 -> -58
+a4 -> -63
+f4 -> -57
+g4 -> -56
+c3 -> -55
+a1 -> -63
+d3 -> -63
+d2 -> -54
+d1 -> -63
+e3b6 -> -53
+e3b2 -> -52
+e3f2 -> -51
+g1 -> -53
+Chosen action: e3b2 with depth 2
+a7 -> 45
+d5b6 -> 45
+d5b2 -> 46
+d5f2 -> 46
+d6 -> 46
+d7 -> 46
+f6 -> 46
+g7 -> 46
+c4 -> 46
+b4 -> 46
+a4 -> 46
+f4 -> 46
+g4 -> 46
+c3 -> 46
+a1 -> 46
+d3 -> 46
+d2 -> 46
+d1 -> 46
+e3b6 -> 46
+e3b2 -> 47
+e3f2 -> 47
+g1 -> 47
+Chosen action: e3b6 with depth 3
+a7 -> -54
+d5b6 -> -53
+d5b2 -> -53
+d5f2 -> -53
+d6 -> -53
+d7 -> -53
+f6 -> -53
+g7 -> -53
+c4 -> -53
+b4 -> -53
+a4 -> -53
+f4 -> -53
+g4 -> -53
+c3 -> -53
+a1 -> -53
+d3 -> -53
+d2 -> -52
+d1 -> -52
+e3b6 -> -51
+e3b2 -> -51
+e3f2 -> -51
+g1 -> -51
+7 O--------O--------O
+6 |--B-----O-----O--|
+5 |--|--W--O--W--|--|
+4 O--O--O     W--O--O
+3 |--|--O--O--W--|--|
+2 |--B-----O-----B--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 1
+Black morris in last turn: 0
+
+Chosen action: d2 with depth 1
+a7 -> -28
+d5b6 -> -27
+d5b2 -> -26
+d5f2 -> -25
+d6 -> -29
+d7 -> -28
+f6 -> -28
+g7 -> -28
+c4 -> -28
+b4 -> -24
+a4 -> -28
+f4 -> -23
+g4 -> -22
+c3 -> -21
+a1 -> -23
+d3 -> -20
+d2 -> -19
+d1 -> -23
+g1 -> -23
+Chosen action: d5f2 with depth 2
+a7 -> 34
+d5b6 -> 35
+d5b2 -> 36
+d5f2 -> 37
+d6 -> 37
+d7 -> 37
+f6 -> 37
+g7 -> 37
+c4 -> 37
+b4 -> 37
+a4 -> 37
+f4 -> 37
+g4 -> 37
+c3 -> 37
+a1 -> 37
+d3 -> 37
+d2 -> 37
+d1 -> 37
+g1 -> 37
+Chosen action: d5b6 with depth 3
+a7 -> -28
+d5b6 -> -27
+d5b2 -> -27
+d5f2 -> -27
+d6 -> -27
+d7 -> -27
+f6 -> -27
+g7 -> -27
+c4 -> -27
+b4 -> -28
+a4 -> -27
+f4 -> -28
+g4 -> -28
+c3 -> -28
+a1 -> -27
+d3 -> -28
+d2 -> -28
+d1 -> -27
+g1 -> -27
+7 O--------O--------O
+6 |--B-----O-----O--|
+5 |--|--W--W--W--|--|
+4 O--O--O     W--O--O
+3 |--|--O--O--W--|--|
+2 |--B-----O-----B--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 1
+Black morris in last turn: 0
+
+Chosen action: b4 with depth 1
+a7 -> 3
+d6 -> 4
+d7 -> 5
+f6 -> 6
+g7 -> 3
+c4 -> 7
+b4 -> 8
+a4 -> 3
+f4 -> 8
+g4 -> 8
+c3 -> 8
+a1 -> 3
+d3 -> 8
+d2 -> 8
+d1 -> 3
+g1 -> 3
+Chosen action: d2 with depth 2
+a7 -> 52
+d6 -> 52
+d7 -> 52
+f6 -> 52
+g7 -> 52
+c4 -> 52
+b4 -> 52
+a4 -> 52
+f4 -> 52
+g4 -> 52
+c3 -> 52
+a1 -> 52
+d3 -> 52
+d2 -> 53
+d1 -> 53
+g1 -> 53
+Chosen action: a7 with depth 3
+a7 -> -26
+d6 -> -26
+d7 -> -26
+f6 -> -26
+g7 -> -26
+c4 -> -26
+b4 -> -26
+a4 -> -26
+f4 -> -26
+g4 -> -26
+c3 -> -26
+a1 -> -26
+d3 -> -26
+d2 -> -26
+d1 -> -26
+g1 -> -26

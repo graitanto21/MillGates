@@ -45,9 +45,9 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 	if (blackToPlay > 0) { //Phase 1
 
 		sint8 morrisLastTurn; // (1)
-		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
 			morrisLastTurn = 1;
-		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;
@@ -56,7 +56,7 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 		morrises = state->morrisCount(PAWN_WHITE) - state->morrisCount(PAWN_BLACK);
 
 		sint8 blockedPawns; // (3)
-		blockedPawns = state->blockedPawnCount(PAWN_WHITE) - state->blockedPawnCount(PAWN_BLACK);
+		blockedPawns = state->blockedPawnCount(PAWN_BLACK) - state->blockedPawnCount(PAWN_WHITE);
 
 		sint8 pawns; // (4)
 		pawns = whiteToPlay + whiteOnBoard - blackToPlay - blackOnBoard;
@@ -74,21 +74,27 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 				10	* potentialSingleMorrises +
 				7 	* potentialDoubleMorrises;
 	}
-	else if (whiteOnBoard > 3 || blackOnBoard > 3) { //Phase 2
+	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard > 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard > 3)) { //Phase 2
 
 		sint8 morrisLastTurn; // (1)
-		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+		//		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+		//			morrisLastTurn = 1;
+		//		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+		//			morrisLastTurn = -1;
+		//		else
+		//			morrisLastTurn = 0;
+		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
 			morrisLastTurn = 1;
-		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;
 
 		sint8 morrises; // (2)
-		morrises = state->morrisCount(PAWN_WHITE) - state->morrisCount(PAWN_BLACK);
+		morrises = state->morrisCount(PAWN_BLACK) - state->morrisCount(PAWN_WHITE);
 
 		sint8 blockedPawns; // (3)
-		blockedPawns = state->blockedPawnCount(PAWN_WHITE) - state->blockedPawnCount(PAWN_BLACK);
+		blockedPawns = state->blockedPawnCount(PAWN_BLACK) - state->blockedPawnCount(PAWN_WHITE);
 
 		sint8 pawns; // (4)
 		pawns = whiteToPlay + whiteOnBoard - blackToPlay - blackOnBoard;
@@ -106,12 +112,12 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 				8 		* doubleMorrises +
 				1086 	* winning;
 	}
-	else if (whiteOnBoard == 3 || blackOnBoard == 3) { //Phase 3
+	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard <= 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard <= 3)) { //Phase 3
 
 		sint8 morrisLastTurn; // (1)
-		if (state->getMorrisLastTurn(PAWN_WHITE) && !state->getMorrisLastTurn(PAWN_BLACK))
+		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
 			morrisLastTurn = 1;
-		else if (state->getMorrisLastTurn(PAWN_BLACK) && !state->getMorrisLastTurn(PAWN_WHITE))
+		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;
@@ -231,7 +237,7 @@ Action NegaScoutAI::choose(State * state) {
 	hash = _hasher->hash(state);
 
 	if (state->getPlayer() == PAWN_WHITE) {
-		negaScout(state, hash, _depth + 1, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), 1);
+		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, 1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			tempscore = _table->get(quickhash);
@@ -248,7 +254,7 @@ Action NegaScoutAI::choose(State * state) {
 		}
 	}
 	else {
-		negaScout(state, hash, _depth + 1, -(PLAYER_WHITE_UTILITY + 1), -(PLAYER_BLACK_UTILITY - 1), -1);
+		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, -1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			tempscore = _table->get(quickhash);
