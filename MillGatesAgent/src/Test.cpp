@@ -178,9 +178,9 @@ void testPotentialMorrises(State * state) {
 
 void testPotentialDoubleMorrises(State * state) {
 	state->setPawnAt2D('a', '1', PAWN_BLACK);
-	state->setPawnAt2D('a', '4', PAWN_BLACK);
-	state->setPawnAt2D('g', '1', PAWN_BLACK);
-	state->setPawnAt2D('f', '6', PAWN_BLACK);
+	state->setPawnAt2D('a', '7', PAWN_BLACK);
+	state->setPawnAt2D('d', '7', PAWN_BLACK);
+	state->setPawnAt2D('d', '1', PAWN_BLACK);
 
 	std::cout << (int)state->potentialDoubleMorrisCount(PAWN_BLACK);
 }
