@@ -27,7 +27,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	bool terminal = false;
 	bool loop = false;
 
-	for (int i = _history->getLogicSize() - 1; i >= 0; i--)
+	for (short i = _history->getLogicSize() - 1; i >= 0; i--)
 		if (_history->get(i) == quickhash && _depth + 1 != depth) {
 			loop = true;
 			break;

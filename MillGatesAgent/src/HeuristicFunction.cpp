@@ -8,7 +8,7 @@
 #include "HeuristicFunction.h"
 
 eval_t HeuristicFunction::evaluate(State * state) {
-	return evaluate(state, false, false);
+	return evaluate(state, state->isTerminal(), false);
 }
 
 HeuristicFunction::~HeuristicFunction() {}
