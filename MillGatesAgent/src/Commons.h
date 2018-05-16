@@ -8,7 +8,7 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-//#define DEBUG
+#define DEBUG
 
 #define CUBE_SIZE_X 3
 #define CUBE_SIZE_Y 3
@@ -34,10 +34,6 @@
 #define BLACK_PAWNS_COUNT 9
 
 #define PAWNS_TO_ENTER_3RD_PHASE 3
-
-#define PLAYER_WHITE_UTILITY 10
-#define PLAYER_BLACK_UTILITY -10
-#define SPARE_UTILITY 0
 
 #define HASH_TABLE_WIDTH 27
 #define HASH_TABLE_HEIGHT 2

@@ -999,6 +999,6 @@ bool State::isTerminal() const {
 
 sint8 State::utility() const {
 
-	return getPlayer() == PAWN_WHITE ? PLAYER_BLACK_UTILITY: PLAYER_WHITE_UTILITY;
+	return getPlayer() == PAWN_WHITE ? -MAX_EVAL_T : MAX_EVAL_T;
 
 }

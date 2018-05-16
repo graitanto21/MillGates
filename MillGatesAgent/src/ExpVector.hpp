@@ -67,6 +67,11 @@ void ExpVector<T>::set(int index, T value){
 	wrapped[index] = value;
 }
 
+template <class T>
+void ExpVector<T>::swap(T valA, T valB){
+	std::swap(valA, valB);
+}
+
 //OUTPUT
 template <class T>
 void ExpVector<T>::print(){

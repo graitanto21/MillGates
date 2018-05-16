@@ -33,6 +33,7 @@ public:
 	int getLogicSize();
 	int getRealSize();
 
+	void swap(T valA, T valB);
 	void print();
 
 };
