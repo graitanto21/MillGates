@@ -156,11 +156,11 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	bool terminal = false;
 	bool loop = false;
 
-//	for (uint8 i = _history->getLogicSize() - 1; i >= 0; i--)
-//		if (_history->get(i) == quickhash && _depth + 1 != depth) {
-//			loop = true;
-//			break;
-//		}
+	for (int i = _history->getLogicSize() - 1; i >= 0; i--)
+		if (_history->get(i) == quickhash && _depth + 1 != depth) {
+			loop = true;
+			break;
+		}
 
 	if (depth == 0 || _stopFlag || loop || (terminal = state->isTerminal())) {
 		score = evaluate(state, terminal, loop);
