@@ -26,6 +26,8 @@ public:
 	virtual void clear();
 	virtual void stop();
 	virtual void print(State * root, int depth);
+	virtual void addHistory(State * state);
+	virtual void clearHistory();
 	virtual ~IterativeDeepeningAI();
 
 	void * refreshResult(State * state);

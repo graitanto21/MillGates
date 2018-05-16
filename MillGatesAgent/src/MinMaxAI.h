@@ -34,6 +34,8 @@ public:
 	virtual Action choose(State * state);
 	virtual void print(State * root, int depth);
 	virtual void clear();
+	virtual void addHistory(State * state);
+	virtual void clearHistory();
 };
 
 #endif /* MINMAXAI_H_ */

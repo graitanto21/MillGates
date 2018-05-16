@@ -41,6 +41,14 @@ void IterativeDeepeningAI::stop() {
 	_ai->stop();
 }
 
+void IterativeDeepeningAI::addHistory(State * state) {
+	_ai->addHistory(state);
+}
+
+void IterativeDeepeningAI::clearHistory() {
+	_ai->clearHistory();
+}
+
 bool timeUp = false;
 bool aiComputing = false;
 
@@ -59,7 +67,7 @@ void * IterativeDeepeningAI::refreshResult(State * state) {
 		else {
 			_tempAction = lastChosen;
 			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
-			print(state, depth);
+			print(state, 0);
 			//clear(); // ????
 		}
 	}

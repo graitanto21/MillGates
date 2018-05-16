@@ -29,5 +29,9 @@ void DummyAI::clear() {}
 
 void DummyAI::stop() {}
 
+void DummyAI::addHistory(State * state) {}
+
+void DummyAI::clearHistory() {}
+
 DummyAI::~DummyAI() {}
 

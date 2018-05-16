@@ -47,6 +47,7 @@ int main(int argc, char* argv[]) {
 
 		state->setPlayer(PAWN_WHITE);
 		while(1) {
+			ai.addHistory(state);
 			action = ai.choose(state);
 			memset(actionStr, 0, sizeof(actionStr));
 			strcpy(actionStr, action.toString().c_str());
@@ -61,6 +62,7 @@ int main(int argc, char* argv[]) {
 			delete state;
 			myMorrisLastTurn = app->getMorrisLastTurn(PAWN_WHITE);
 			myPawns = app->getPawnsToPlay(PAWN_WHITE) + app->getPawnsOnBoard(PAWN_WHITE);
+			ai.addHistory(app);
 			delete app;
 			state = new CubeStateImpl(stateStr);
 			state->setMorrisLastTurn(PAWN_WHITE, myMorrisLastTurn);

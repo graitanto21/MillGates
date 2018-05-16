@@ -18,6 +18,7 @@ NegaScoutAI::NegaScoutAI() {
 	_hasher = ZobristHashing::getInstance();
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
+	_history = new ExpVector<hashcode>();
 }
 
 #if (HEURISTIC == FAST_HEURISTIC)
@@ -34,13 +35,16 @@ sint8 NegaScoutAI::evaluate(State * state, bool terminal) {
 #endif
 
 #if (HEURISTIC == ROMANIAN_HEURISTIC)
-eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
+eval_t NegaScoutAI::evaluate(State * state, bool terminal, bool loop) {
 	uint8 whiteToPlay, blackToPlay, whiteOnBoard, blackOnBoard;
 	eval_t result = 0;
 	whiteToPlay = state->getPawnsToPlay(PAWN_WHITE);
 	blackToPlay = state->getPawnsToPlay(PAWN_BLACK);
 	whiteOnBoard = state->getPawnsOnBoard(PAWN_WHITE);
 	blackOnBoard = state->getPawnsOnBoard(PAWN_BLACK);
+
+	if (loop)
+		return 0;
 
 	if (blackToPlay > 0) { //Phase 1
 
@@ -144,15 +148,22 @@ eval_t NegaScoutAI::evaluate(State * state, bool terminal) {
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
 	entry * e = _table->get(quickhash);
-	if (e != NULL && e->depth >= depth)
+	if (e != NULL && e->depth > depth)
 		//if (e != NULL)
 		return color * e->eval;
 
 	eval_t score = 0;
 	bool terminal = false;
+	bool loop = false;
 
-	if (depth == 0 || _stopFlag || (terminal = state->isTerminal())) {
-		score = evaluate(state, terminal);
+//	for (uint8 i = _history->getLogicSize() - 1; i >= 0; i--)
+//		if (_history->get(i) == quickhash && _depth + 1 != depth) {
+//			loop = true;
+//			break;
+//		}
+
+	if (depth == 0 || _stopFlag || loop || (terminal = state->isTerminal())) {
+		score = evaluate(state, terminal, loop);
 		if (e == NULL) {
 			e = new entry();
 			e->depth = depth;
@@ -181,6 +192,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 		}
 		else
 			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha, -color);
+
 		delete child;
 
 		alpha = (alpha > score) ? alpha : score;
@@ -219,6 +231,15 @@ void NegaScoutAI::clear() {
 
 void NegaScoutAI::stop() {
 	_stopFlag = true;
+}
+
+void NegaScoutAI::addHistory(State * state) {
+	_history->add(_hasher->hash(state));
+}
+
+void NegaScoutAI::clearHistory() {
+	delete _history;
+	_history = new ExpVector<hashcode>();
 }
 
 Action NegaScoutAI::choose(State * state) {
@@ -314,5 +335,6 @@ void NegaScoutAI::print(State * state, int depth) {
 
 NegaScoutAI::~NegaScoutAI() {
 	delete _table;
+	delete _history;
 }
 

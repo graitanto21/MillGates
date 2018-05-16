@@ -19,6 +19,8 @@ public:
 	virtual void clear() = 0;
 	virtual void print(State * root, int depth) = 0;
 	virtual void stop() = 0;
+	virtual void addHistory(State * state) = 0;
+	virtual void clearHistory() = 0;
 	virtual ~AI();
 
 };

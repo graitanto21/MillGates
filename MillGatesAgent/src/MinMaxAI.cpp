@@ -221,6 +221,14 @@ Action MinMaxAI::choose(State * state) {
 	return action_result;
 }
 
+void MinMaxAI::addHistory(State * state) {
+
+}
+
+void MinMaxAI::clearHistory() {
+
+}
+
 MinMaxAI::~MinMaxAI() {
 	delete _hasher;
 }
