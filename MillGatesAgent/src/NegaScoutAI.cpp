@@ -19,7 +19,7 @@ NegaScoutAI::NegaScoutAI() {
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
 	entry * e = _table->get(quickhash);
-	if (e != NULL && e->depth > depth)
+	if (e != NULL && e->depth >= depth)
 		//if (e != NULL)
 		return color * e->eval;
 
@@ -51,10 +51,21 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	hashcode child_hash = 0;
 	ExpVector<Action> * actions = state->getActions();
+
+	//Ordering
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
-	sortActionsByValue(state, states, actions, color, quickhash, terminal, loop);
+	for(eval_t i = 0; i < actions->getLogicSize(); i++){
+			states->add(state->result(actions->get(i)));
+	}
+	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
+	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
+	}
+	quickSort(state, states, hashes, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
+
+	//Negascout
 	State * child = NULL;
-	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
+	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 		child = states->get(i);
 		child_hash = _hasher->quickHash(state, actions->get(i), quickhash);
 		if(i != 0) {
@@ -72,6 +83,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 			break;
 	}
 	delete actions;
+	delete hashes;
 	delete states;
 
 	if (e == NULL) {
@@ -205,25 +217,19 @@ void NegaScoutAI::print(State * state, int depth) {
 	recurprint(state, depth, 0);
 
 }
-void NegaScoutAI::sortActionsByValue(State * state, ExpVector<State*> * states, ExpVector<Action>* actions, sint8 color, hashcode quickhash, bool terminal, bool loop) {
-	for(uint8 i = 0; i < actions->getLogicSize(); i++){
-		states->add(state->result(actions->get(i)));
-	}
-	quickSort(state, states, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
-}
 
-void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop) {
+void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop) {
 	if(lo < hi) {
-		uint8 p = partition(state, states, actions, lo, hi, color, quickhash, terminal, loop);
-		quickSort(state, states, actions, lo, p-1, color, quickhash, terminal, loop);
-		quickSort(state, states, actions, p+1, hi, color, quickhash, terminal, loop);
+		uint8 p = partition(state, states, hashes, actions, lo, hi, color, quickhash, terminal, loop);
+		quickSort(state, states, hashes, actions, lo, p-1, color, quickhash, terminal, loop);
+		quickSort(state, states, hashes, actions, p+1, hi, color, quickhash, terminal, loop);
 	}
 }
 
-uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop){
+uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop){
 	//Find the pivot
 	sint8 x;
-	hashcode child_hash = _hasher->quickHash(state, actions->get(hi), quickhash);
+	hashcode child_hash = hashes->get(hi);
 	entry * e = _table->get(child_hash);
 			if (e != NULL)
 				x = e->eval * color;
@@ -234,7 +240,7 @@ uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<
 
 	for(int j=lo; j<hi-1; j++)   {
 		//get the resulting state
-		child_hash = _hasher->quickHash(state, actions->get(j), quickhash);
+		child_hash = hashes->get(hi);
 
 		//If I have the value of the state resulting from the Action, I use it
 		e = _table->get(child_hash);
@@ -248,10 +254,12 @@ uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<
 			actions->swap(i,j);
 //			std::cout << "SWAP: " << actions->get(i) << "(" << value << ") with " << actions->get(j) << "\n";
 			states->swap(i,j);
+			hashes->swap(i, j);
 		}
 	}
 	actions->swap(i+1, hi);
 	states->swap(i+1, hi);
+	hashes->swap(i+1, hi);
 	return i+1;
 }
 

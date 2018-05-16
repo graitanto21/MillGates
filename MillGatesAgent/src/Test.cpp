@@ -219,7 +219,14 @@ void testOrdering(State * state) {
 	std::cout << "\n";
 	NegaScoutAI ai;
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
-	ai.sortActionsByValue(state, states, actions, 1, ZobristHashing::getInstance()->hash(state), false, false);
+	for(eval_t i = 0; i < actions->getLogicSize(); i++){
+			states->add(state->result(actions->get(i)));
+	}
+	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
+	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+		hashes->add(ZobristHashing::getInstance()->quickHash(state, actions->get(i), ZobristHashing::getInstance()->hash(state)));
+	}
+	ai.quickSort(state, states, hashes, actions, 0, actions->getLogicSize()-1, -1, ZobristHashing::getInstance()->hash(state), false, false);
 	std::cout << "\n" << "NEW:\n";
 	for(int i = 0; i < actions->getLogicSize(); i++){
 		std::cout << actions->get(i) << "(";
@@ -232,6 +239,13 @@ void testOrdering(State * state) {
 		ch = states->get(i);
 		std::cout << ch->toString() << " ";
 	}
+	delete actions;
+	for(int i = 0; i < states->getLogicSize(); i++)
+		delete states->get(i);
+	delete states;
+	delete hashes;
+
+
 }
 
 #if defined(DEBUG)
