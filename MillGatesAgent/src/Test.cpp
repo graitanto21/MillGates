@@ -208,17 +208,29 @@ void testOrdering(State * state) {
 	state->setPawnsOnBoard(PAWN_WHITE, 2);
 	state->setPawnsOnBoard(PAWN_BLACK, 2);
 
+	RomanianHeuristic h;
 	ExpVector<Action> * actions = state->getActions();
+	State * child = NULL;
 	for(int i = 0; i < actions->getLogicSize(); i++){
-		std::cout << actions->get(i) << " ";
+		std::cout << actions->get(i) << "(";
+		child = state->result(actions->get(i));
+		std::cout << h.evaluate(child, false, false) << ") ";
 	}
 	std::cout << "\n";
 	NegaScoutAI ai;
-	ExpVector<State*>* states = ai.sortActionsByValue(state, actions, 1, ZobristHashing::getInstance()->hash(state), false, false);
-	delete states;
+	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
+	ai.sortActionsByValue(state, states, actions, 1, ZobristHashing::getInstance()->hash(state), false, false);
 	std::cout << "\n" << "NEW:\n";
 	for(int i = 0; i < actions->getLogicSize(); i++){
-		std::cout << actions->get(i) << " ";
+		std::cout << actions->get(i) << "(";
+		child = state->result(actions->get(i));
+		std::cout << h.evaluate(child, false, false) << ") ";
+	}
+	std::cout << "\nSize: " << states->getLogicSize()<<"\n";
+	State * ch = NULL;
+	for(int i = 0; i < states->getLogicSize(); i++){
+		ch = states->get(i);
+		std::cout << ch->toString() << " ";
 	}
 }
 

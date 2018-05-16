@@ -68,8 +68,10 @@ void ExpVector<T>::set(int index, T value){
 }
 
 template <class T>
-void ExpVector<T>::swap(T valA, T valB){
-	std::swap(valA, valB);
+void ExpVector<T>::swap(int i, int j){
+	T swapped = wrapped[i];
+	wrapped[i] = wrapped[j];
+	wrapped[j] = swapped;
 }
 
 //OUTPUT

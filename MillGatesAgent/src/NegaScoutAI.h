@@ -28,8 +28,8 @@ private:
 	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
 	void recurprint(State * state, int depth, int curdepth);
 
-	uint8 partition(State * state, ExpVector<State*> * states, ExpVector<Action> * actions, uint8 p, uint8 q, sint8 color, hashcode quickhash, bool terminal, bool loop);
-	void quickSort(State * state, ExpVector<State*> * states, ExpVector<Action> * actions, uint8 p, uint8 q, sint8 color, hashcode quickhash, bool terminal, bool loop);
+	uint8 partition(State * state, ExpVector<State*> * states, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash, bool terminal, bool loop);
+	void quickSort(State * state, ExpVector<State*> * states, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash, bool terminal, bool loop);
 
 public:
 	NegaScoutAI();
@@ -42,7 +42,7 @@ public:
 	virtual void addHistory(State * state);
 	virtual void clearHistory();
 
-	ExpVector<State*> * sortActionsByValue(State * state, ExpVector<Action>* actions, sint8 color, hashcode quickhash, bool terminal, bool loop);
+	void sortActionsByValue(State * state, ExpVector<State*>*states, ExpVector<Action>* actions, sint8 color, hashcode quickhash, bool terminal, bool loop);
 
 	virtual ~NegaScoutAI();
 };
