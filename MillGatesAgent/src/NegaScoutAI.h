@@ -12,6 +12,8 @@
 #include "ZobristHashing.h"
 #include "ExpVector.h"
 #include "TranspositionTable.h"
+#include "HeuristicFunction.h"
+#include "RomanianHeuristic.h"
 
 class NegaScoutAI: public AI {
 private:
@@ -19,10 +21,10 @@ private:
 	TranspositionTable * _table;
 	ExpVector<hashcode> * _history;
 	ZobristHashing * _hasher;
+	HeuristicFunction * _heuristic;
 	uint8 _depth;
 	bool _stopFlag;
 
-	eval_t evaluate(State * state, bool terminal, bool loop);
 	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
 	void recurprint(State * state, int depth, int curdepth);
 
