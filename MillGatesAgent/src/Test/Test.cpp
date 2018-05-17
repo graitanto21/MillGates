@@ -87,18 +87,26 @@ void testNegaScoutAI(State * state) {
 	NegaScoutAI ai;
 	srand(400);
 
-	//	state->setPawnAt2D('c', '5', PAWN_WHITE);
-	//	state->setPawnAt2D('a', '1', PAWN_BLACK);
-	//	state->setPawnAt2D('b', '6', PAWN_WHITE);
-	//	state->setPawnAt2D('d', '2', PAWN_BLACK);
-	//	state->setPlayer(PAWN_WHITE);
-	//	state->setPhase(PHASE_1);
-	//	state->setPawnsToPlay(PAWN_BLACK, 7);
-	//	state->setPawnsToPlay(PAWN_WHITE, 7);
-	//	state->setPawnsOnBoard(PAWN_WHITE, 2);
-	//	state->setPawnsOnBoard(PAWN_BLACK, 2);
+	ai.setDepth(6);
 
-	std::cout << ai.choose(state);
+	state->setPawnAt2D('b', '4', PAWN_BLACK);
+	state->setPawnAt2D('c', '4', PAWN_BLACK);
+	state->setPawnAt2D('d', '5', PAWN_BLACK);
+	state->setPawnAt2D('d', '6', PAWN_BLACK);
+	state->setPawnAt2D('c', '3', PAWN_WHITE);
+	state->setPawnAt2D('e', '3', PAWN_WHITE);
+	state->setPawnAt2D('c', '5', PAWN_WHITE);
+	state->setPawnAt2D('e', '5', PAWN_WHITE);
+	state->setPlayer(PAWN_WHITE);
+	state->setPawnsToPlay(PAWN_BLACK, 5);
+	state->setPawnsToPlay(PAWN_WHITE, 5);
+	state->setPawnsOnBoard(PAWN_WHITE, 4);
+	state->setPawnsOnBoard(PAWN_BLACK, 4);
+
+	std::cout << ai.choose(state) << "\n\n";
+
+	std::cout << "DEPTH 6" << "\n\n";
+	ai.print(state, 6);
 }
 
 void testIterativeDeepeningAI(State * state) {
@@ -221,7 +229,7 @@ void testOrdering(State * state) {
 	NegaScoutAI ai;
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
 	for(eval_t i = 0; i < actions->getLogicSize(); i++){
-			states->add(state->result(actions->get(i)));
+		states->add(state->result(actions->get(i)));
 	}
 	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
@@ -278,7 +286,7 @@ int main(void) {
 	State * state = new CubeStateImpl();
 
 	//testZobristHashing(state);
-	//testNegaScoutAI(state);
+	testNegaScoutAI(state);
 	//testIterativeDeepeningAI(state);
 	//testMorrisCount(state);
 	//testBlockedPawns(state);
@@ -286,7 +294,7 @@ int main(void) {
 	//testPotentialDoubleMorrises(state);
 	//testDoubleMorrisesCount(state);
 	//testOrdering(state);
-	testHashTable();
+	//testHashTable();
 
 
 	delete state;

@@ -11,11 +11,6 @@
 #include "../Domain/Action.h"
 #include "../Domain/State.h"
 
-typedef struct {
-	uint8 depth;
-	eval_t eval;
-} entry;
-
 class AI {
 public:
 

@@ -13,7 +13,7 @@ NegaScoutAI::NegaScoutAI() {
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 	_history = new ExpVector<hashcode>();
-	_heuristic = new RomanianHeuristic();
+	_heuristic = new PawnCountHeuristic();
 }
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
@@ -21,12 +21,19 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	entry * e;
 	bool presentInTable;
 	presentInTable = _table->get(quickhash, &e);
-	if (presentInTable && e->depth >= depth)
-		//if (e != NULL)
-		return color * e->eval;
+	if (presentInTable && e->depth >= depth) {
+		if (e->entryFlag == EXACT)
+			return color * e->eval;
+		if (e->entryFlag == ALPHA_PRUNE && color * e->eval > alpha)
+			alpha = e->eval * color;
+		if (e->entryFlag == BETA_PRUNE && color * e->eval < beta)
+			beta = e->eval * color;
+		if (alpha >= beta)
+			return alpha;
+	}
 
 	eval_t score = 0;
-	bool terminal = false;
+	bool terminal = state->isTerminal();
 	bool loop = false;
 
 	for (short i = _history->getLogicSize() - 1; i >= 0; i--)
@@ -35,19 +42,12 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 			break;
 		}
 
-	if (depth == 0 || _stopFlag || loop || (terminal = state->isTerminal())) {
+	if (depth == 0 || _stopFlag || loop || terminal) {
 		score = _heuristic->evaluate(state, terminal, loop);
-		if (!presentInTable) {
-			e = new entry();
-			e->depth = depth;
-			e->eval = score;
-			_table->add(quickhash, *e);
-			delete e;
-		}
-		else {
-			e->eval = score;
-			e->depth = depth;
-		}
+		if (!presentInTable)
+			_table->add(quickhash, entry{depth, EXACT, score});
+		else
+			*e = {depth, EXACT, score};
 		return color * score;
 	}
 
@@ -56,52 +56,56 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	//Ordering section ==> TODO put inside a fuction...
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
-	for(eval_t i = 0; i < actions->getLogicSize(); i++)
-		states->add(state->result(actions->get(i)));
-
 	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
-	for(eval_t i=0; i<actions->getLogicSize(); i++)
-		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
-
 	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
 	entry * e_tmp;
+
 	bool child_loop, thereIs;
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+		states->add(state->result(actions->get(i)));
+		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
 		thereIs = _table->get(quickhash, &e_tmp);
 		if (thereIs && e->depth >= depth-1)
-			values->add(e_tmp->eval * color);
+			values->add(e_tmp->eval * -color);
 		else {//Else I have to estimate the value using function
 			for (short j = _history->getLogicSize() - 1; j >= 0; j--)
 				if (_history->get(j) == child_hash && _depth + 1 != depth) {
 					child_loop = true;
 					break;
 				}
-			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * color);
+			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * -color);
 		}
 	}
 
-//	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
-	setMaxFirst(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
+	//	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, -color, quickhash);
+	setMaxFirst(state, states, hashes, values, actions);
 
 	//Negascout
 	State * child = NULL;
+	entryFlag_t flag = ALPHA_PRUNE;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 		child = states->get(i);
 		child_hash = hashes->get(i);
-		if(i != 0) {
+		if(i == 0)
+			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha, -color);
+		else {
 			score = -negaScout(child, child_hash, depth - 1, -alpha - 1, -alpha, -color);
 			if (score > alpha && score < beta)
 				score = -negaScout(child, child_hash, depth - 1, -beta, -score, -color);
 		}
-		else
-			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha, -color);
-
 		delete child;
 		states->set(i, NULL);
 
-		alpha = (alpha > score) ? alpha : score;
-		if (alpha >= beta || _stopFlag)
+		if (score > alpha) {
+			alpha = score;
+			flag = EXACT;
+		}
+
+		if (score >= beta) {
+			flag = BETA_PRUNE;
+			alpha = beta;
 			break;
+		}
 	}
 	delete actions;
 	delete hashes;
@@ -111,17 +115,10 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	delete states;
 	delete values;
 
-	if (!presentInTable) {
-		e = new entry();
-		e->depth = depth;
-		e->eval = color * alpha;
-		_table->add(quickhash, *e);
-		delete e;
-	}
-	else {
-		e->eval = color * alpha;
-		e->depth = depth;
-	}
+	if (!presentInTable)
+		_table->add(quickhash, entry{depth, flag, (eval_t)(alpha * color)});
+	else
+		*e = {depth, flag, (eval_t)(alpha * color)};
 
 	return alpha;
 
@@ -222,7 +219,7 @@ void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 		else if (depth == curdepth) {
 			for (int j = 0; j < curdepth; j++)
 				std::cout << " | ";
-			std::cout << actions->get(i) << " -> " << (int)val->eval << "\n";
+			std::cout << actions->get(i) << " -> " << (int)val->eval << ", " << (int)val->entryFlag <<"\n";
 		}
 		else {
 			for (int j = 0; j < curdepth; j++)
@@ -231,7 +228,7 @@ void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 			recurprint(child, depth, curdepth + 1);
 			for (int j = 0; j < curdepth; j++)
 				std::cout << " | ";
-			std::cout << "} -> " << (int)val->eval << "\n";
+			std::cout << "} -> " << (int)val->eval << ", " << (int)val->entryFlag << "\n";
 		}
 		delete child;
 	}
@@ -243,7 +240,7 @@ void NegaScoutAI::print(State * state, int depth) {
 
 }
 
-void NegaScoutAI::setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash) {
+void NegaScoutAI::setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions) {
 	// Find max
 	eval_t max = values->get(0);
 	eval_t indexMax = 0;

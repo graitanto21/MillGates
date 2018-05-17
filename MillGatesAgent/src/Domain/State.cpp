@@ -839,7 +839,6 @@ bool State::willBeInMorrisAxis(Position src, Position dest, pawn pawn, uint8 axi
 	return false;
 }
 
-
 ExpVector<Position> State::getAllPositions(pawn pawn) const {
 
 	ExpVector<Position> result(AVERAGE_PAWNS_ON_BOARD);
@@ -855,7 +854,6 @@ ExpVector<Position> State::getAllPositions(pawn pawn) const {
 
 }
 
-
 ExpVector<Position> State::getAvailablePositions(Position pos) const {
 
 	pawn myPawn = getPawnAt(pos.x, pos.y, pos.z);
@@ -866,38 +864,45 @@ ExpVector<Position> State::getAvailablePositions(Position pos) const {
 	ExpVector<Position> result(MAX_MOVES_PHASE_2);
 	Position p;
 
+	p = pos;
 	p.x = FWX(pos.x);
 	if (p.x != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
+	p = pos;
 	p.x = BWX(pos.x);
 	if (p.x != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
+	p = pos;
 	p.y = FWY(pos.y);
 	if (p.y != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
+	p = pos;
 	p.y = BWY(pos.y);
 	if (p.y != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
+	p = pos;
 	p.z = FWZ(pos.z);
 	if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
+	p = pos;
 	p.z = BWZ(pos.z);
 	if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
+	p = pos;
 	p.z = FWZ(pos.z);
 	if (ON_PERPENDICULAR(p.x, p.y)) {
 		if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
-
+		p = pos;
 		p.z = BWZ(pos.z);
 		if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
@@ -905,11 +910,13 @@ ExpVector<Position> State::getAvailablePositions(Position pos) const {
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
+	p = pos;
 	p.z = FWZ(pos.z);
 	if (ON_DIAGONAL(p.x, p.y)) {
 		if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
 
+		p = pos;
 		p.z = BWZ(pos.z);
 		if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);

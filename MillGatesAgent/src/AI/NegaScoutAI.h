@@ -16,6 +16,14 @@
 #include "Heuristic/PawnCountHeuristic.h"
 #include "Heuristic/RomanianHeuristic.h"
 
+typedef enum entryFlag_t {EXACT, ALPHA_PRUNE, BETA_PRUNE} entryFlag_t;
+
+typedef struct {
+	uint8 depth;
+	entryFlag_t entryFlag;
+	eval_t eval;
+} entry;
+
 class NegaScoutAI: public AI {
 private:
 
@@ -43,7 +51,7 @@ public:
 	virtual void clearHistory();
 
 	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
-	void setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
+	void setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions);
 
 	virtual ~NegaScoutAI();
 };
