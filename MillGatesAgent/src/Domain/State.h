@@ -19,7 +19,7 @@ class State {
 
 private:
 
-	virtual ExpVector<Action> addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer) const;
+	virtual ExpVector<Action> addActionsForPawn(Position src, ExpVector<Action> actionBuffer) const;
 
 public:
 
@@ -31,8 +31,8 @@ public:
 	virtual pawn getPawnAt2D(uint8 x, uint8 y) const;
 
 	//3D (abstract)
-	virtual pawn getPawnAt(uint8 x, uint8 y, uint8 z) const = 0;
-	virtual void setPawnAt(uint8 x, uint8 y, uint8 z, pawn value) = 0;
+	virtual pawn getPawnAt(sint8 x, sint8 y, sint8 z) const = 0;
+	virtual void setPawnAt(sint8 x, sint8 y, sint8 z, pawn value) = 0;
 
 	virtual void setWhitePawnsOnBoardStr(std::string number);
 	virtual uint8 getWhitePawnsOnBoardStr() const;
@@ -69,12 +69,12 @@ public:
 	virtual std::string toString() const;
 	virtual std::string toNiceString() const;
 
-	virtual bool isInMorris(uint8 pos) const;
-	virtual bool isInMorrisAxis(uint8 pos, uint8 axis) const;
-	virtual bool willBeInMorris(uint8 src, uint8 dest, pawn pawn) const;
-	virtual bool willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) const;
-	virtual ExpVector<uint8> getAllPositions(pawn pawn) const;
-	virtual ExpVector<uint8> getAvailablePositions(uint8 pos) const;
+	virtual bool isInMorris(Position pos) const;
+	virtual bool isInMorrisAxis(Position pos, uint8 axis) const;
+	virtual bool willBeInMorris(Position src, Position dest, pawn pawn) const;
+	virtual bool willBeInMorrisAxis(Position src, Position dest, pawn pawn, uint8 axis) const;
+	virtual ExpVector<Position> getAllPositions(pawn pawn) const;
+	virtual ExpVector<Position> getAvailablePositions(Position pos) const;
 
 	virtual ExpVector<Action> * getActions() const;
 	virtual State * result(Action action) const;

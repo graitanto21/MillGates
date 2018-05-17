@@ -156,7 +156,7 @@ Action NegaScoutAI::choose(State * state) {
 
 	_stopFlag = false;
 	//	if (state->getPawnsToPlay(state->getPlayer()) == 9)
-	//		return Action(POS_NULL, NEW_POS(2,2,1), POS_NULL);
+	//		return Action(POS_NULL, Position{2,2,1), POS_NULL);
 
 	ExpVector<Action> * actions = state->getActions();
 

@@ -24,8 +24,8 @@ public:
 	CubeStateImpl(std::string stringFromServer);
 
 	//Getters and setters
-	virtual pawn getPawnAt(uint8 x, uint8 y, uint8 z) const;
-	virtual void setPawnAt(uint8 x, uint8 y, uint8 z, pawn value);
+	virtual pawn getPawnAt(sint8 x, sint8 y, sint8 z) const;
+	virtual void setPawnAt(sint8 x, sint8 y, sint8 z, pawn value);
 
 	virtual pawn getPlayer() const;
 	virtual void setPlayer(pawn player);

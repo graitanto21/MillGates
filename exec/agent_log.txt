@@ -2,7 +2,7 @@
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
-Chosen action: c4 with depth 5
+Chosen action: d3 with depth 5
 c5 -> -8
 b6 -> -7
 a7 -> -6
@@ -21,12 +21,12 @@ g4 -> -1
 c3 -> -1
 b2 -> -1
 a1 -> -1
-d3 -> -1
-d2 -> -1
-d1 -> -1
-e3 -> -1
-f2 -> -1
-g1 -> -1
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
 Chosen action: c5 with depth 6
 c5 -> 10
 b6 -> 10
@@ -52,4 +52,163 @@ d1 -> 10
 e3 -> 10
 f2 -> 10
 g1 -> 10
+Chosen action: c5 with depth 6
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: d5 with depth 5
+b6 -> -1
+a7 -> -1
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: e5 with depth 6
+b6 -> 18
+a7 -> 18
+d5 -> 18
+d6 -> 18
+d7 -> 18
+e5 -> 19
+f6 -> 19
+g7 -> 19
+c4 -> 19
+b4 -> 19
+a4 -> 19
+e4 -> 19
+f4 -> 19
+g4 -> 19
+b2 -> 19
+a1 -> 19
+d3 -> 19
+d2 -> 19
+d1 -> 19
+e3 -> 19
+f2 -> 19
+g1 -> 19
+Chosen action: d3 with depth 7
+b6 -> -3
+a7 -> -3
+d5 -> -3
+d6 -> -3
+d7 -> -3
+e5 -> -2
+f6 -> -2
+g7 -> -2
+c4 -> -2
+b4 -> -2
+a4 -> -2
+e4 -> -2
+f4 -> -2
+g4 -> -2
+b2 -> -2
+a1 -> -2
+d3 -> -1
+d2 -> -1
+d1 -> -1
+e3 -> -1
+f2 -> -1
+g1 -> -1
+Chosen action: d3 with depth 7
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--B--W--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: d1 with depth 5
+b6 -> -42
+a7 -> -41
+d5 -> -40
+d6 -> -40
+d7 -> -39
+e5 -> -38
+f6 -> -38
+g7 -> -37
+c4 -> -36
+b4 -> -35
+a4 -> -34
+e4 -> -34
+f4 -> -34
+g4 -> -34
+b2 -> -34
+d2 -> -34
+d1 -> -33
+e3 -> -33
+f2 -> -33
+g1 -> -33
+Chosen action: b4 with depth 6
+b6 -> 6
+a7 -> 7
+d5 -> 8
+d6 -> 8
+d7 -> 9
+e5 -> 9
+f6 -> 9
+g7 -> 9
+c4 -> 9
+b4 -> 10
+a4 -> 10
+e4 -> 10
+f4 -> 10
+g4 -> 10
+b2 -> 10
+d2 -> 10
+d1 -> 10
+e3 -> 10
+f2 -> 10
+g1 -> 10
+Chosen action: a4 with depth 7
+b6 -> -49
+a7 -> -48
+d5 -> -47
+d6 -> -47
+d7 -> -47
+e5 -> -47
+f6 -> -46
+g7 -> -46
+c4 -> -46
+b4 -> -46
+a4 -> -45
+e4 -> -45
+f4 -> -45
+g4 -> -45
+b2 -> -45
+d2 -> -45
+d1 -> -45
+e3 -> -45
+f2 -> -45
+g1 -> -45
+Chosen action: a4 with depth 7
 Terminate batch job (Y/N)? 

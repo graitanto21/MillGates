@@ -10,22 +10,23 @@
 
 #include <iostream>
 #include "../Commons.h"
+#include "Position.h"
 
 class Action {
 private:
 
-	uint8 src;
-	uint8 dest;
-	uint8 removedPawn;
-	std::string get2Dcoordinates(uint8 pos) const;
+	Position src;
+	Position dest;
+	Position removedPawn;
+	std::string get2Dcoordinates(Position pos) const;
 
 public:
-	Action(uint8 src, uint8 dest, uint8 removedPawn);
+	Action(Position src, Position dest, Position removedPawn);
 	Action();
 
-	virtual uint8 getSrc() const;
-	virtual uint8 getDest() const;
-	virtual uint8 getRemovedPawn() const;
+	virtual Position getSrc() const;
+	virtual Position getDest() const;
+	virtual Position getRemovedPawn() const;
 
 	virtual std::string toString() const;
 

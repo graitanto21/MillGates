@@ -60,10 +60,10 @@ CubeStateImpl::CubeStateImpl(std::string stringFromServer) : CubeStateImpl() {
  */
 
 //Getters and setters
-void CubeStateImpl::setPawnAt(uint8 x, uint8 y, uint8 z, pawn value) {
+void CubeStateImpl::setPawnAt(sint8 x, sint8 y, sint8 z, pawn value) {
 	_pawns[x][y][z] = value;
 }
-pawn CubeStateImpl::getPawnAt(uint8 x, uint8 y, uint8 z) const {
+pawn CubeStateImpl::getPawnAt(sint8 x, sint8 y, sint8 z) const {
 	return _pawns[x][y][z];
 }
 
@@ -71,10 +71,10 @@ State * CubeStateImpl::clone() const {
 
 	State * clone = new CubeStateImpl();
 
-	for (int i = 0; i < CUBE_SIZE_X; i++)
-		for (int j = 0; j < CUBE_SIZE_Y; j++)
-			for (int k = 0; k < CUBE_SIZE_Z; k++)
-				clone->setPawnAt(i, j, k, getPawnAt(i, j, k));
+	for (sint8 i = 0; i < CUBE_SIZE_X; i++)
+		for (sint8 j = 0; j < CUBE_SIZE_Y; j++)
+			for (sint8 k = 0; k < CUBE_SIZE_Z; k++)
+				clone->setPawnAt(i,j,k, getPawnAt(i,j,k));
 
 	clone->setPlayer(getPlayer());
 //	clone->setPawnsOnBoard(PAWN_WHITE, getPawnsOnBoard(PAWN_WHITE));

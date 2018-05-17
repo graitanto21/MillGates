@@ -58,23 +58,31 @@ typedef short eval_t;
  * VV : 2 bits that state whether this position is valid or not, 11 for 'invalid', otherwise for 'valid'
  */
 
-#define IS_VALID(pos) (!((pos & 3) == 3))
-#define NEW_POS(x,y,z) (((x) << 6) | ((y) << 4) | ((z) << 2))
-#define POS_NULL 3
-#define GETX(pos) ((pos >> 6) & 3)
-#define GETY(pos) ((pos >> 4) & 3)
-#define GETZ(pos) ((pos >> 2) & 3)
-#define FWX(pos) (GETX(pos) == 2 ? NEW_POS(0, GETY(pos), GETZ(pos)) : NEW_POS(GETX(pos)+1, GETY(pos), GETZ(pos)))
-#define FWY(pos) (GETY(pos) == 2 ? NEW_POS(GETX(pos), 0, GETZ(pos)) : NEW_POS(GETX(pos), GETY(pos)+1, GETZ(pos)))
-#define FWZ(pos) (GETZ(pos) == 2 ? NEW_POS(GETX(pos), GETY(pos), 0) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)+1))
-#define BWX(pos) (GETX(pos) == 0 ? NEW_POS(2, GETY(pos), GETZ(pos)) : NEW_POS(GETX(pos)-1, GETY(pos), GETZ(pos)))
-#define BWY(pos) (GETY(pos) == 0 ? NEW_POS(GETX(pos), 2, GETZ(pos)) : NEW_POS(GETX(pos), GETY(pos)-1, GETZ(pos)))
-#define BWZ(pos) (GETZ(pos) == 0 ? NEW_POS(GETX(pos), GETY(pos), 2) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)-1))
-
-#define POS_ENABLED(pos) (GETX(pos) != 1 || GETY(pos) != 1)
-#define POS_ENABLED_FAST(x,y) (x != 1 || y != 1)
-#define ON_DIAGONAL(pos) (GETX(pos) != 1 && GETY(pos) != 1)
-#define ON_PERPENDICULAR(pos) (GETX(pos) == 1 || GETY(pos) == 1)
+#define IS_VALID(pos) (pos.x != -1)
+#define FWX(a) (a == CUBE_SIZE_X ? 0 : a + 1)
+#define FWY(a) (a == CUBE_SIZE_Y ? 0 : a + 1)
+#define FWZ(a) (a == CUBE_SIZE_Z ? 0 : a + 1)
+#define BWX(a) (a == CUBE_SIZE_X ? 0 : a - 1)
+#define BWY(a) (a == CUBE_SIZE_Y ? 0 : a - 1)
+#define BWZ(a) (a == CUBE_SIZE_Z ? 0 : a - 1)
+//#define NEW_POS(x,y,z) (((x) << 6) | ((y) << 4) | ((z) << 2))
+//#define POS_NULL 3
+//#define GETX(pos) ((pos >> 6) & 3)
+//#define GETY(pos) ((pos >> 4) & 3)
+//#define GETZ(pos) ((pos >> 2) & 3)
+//#define FWX(pos) (GETX(pos) == 2 ? NEW_POS(0, GETY(pos), GETZ(pos)) : NEW_POS(GETX(pos)+1, GETY(pos), GETZ(pos)))
+//#define FWY(pos) (GETY(pos) == 2 ? NEW_POS(GETX(pos), 0, GETZ(pos)) : NEW_POS(GETX(pos), GETY(pos)+1, GETZ(pos)))
+//#define FWZ(pos) (GETZ(pos) == 2 ? NEW_POS(GETX(pos), GETY(pos), 0) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)+1))
+//#define BWX(pos) (GETX(pos) == 0 ? NEW_POS(2, GETY(pos), GETZ(pos)) : NEW_POS(GETX(pos)-1, GETY(pos), GETZ(pos)))
+//#define BWY(pos) (GETY(pos) == 0 ? NEW_POS(GETX(pos), 2, GETZ(pos)) : NEW_POS(GETX(pos), GETY(pos)-1, GETZ(pos)))
+//#define BWZ(pos) (GETZ(pos) == 0 ? NEW_POS(GETX(pos), GETY(pos), 2) : NEW_POS(GETX(pos), GETY(pos), GETZ(pos)-1))
+//
+//#define POS_ENABLED(pos) (GETX(pos) != 1 || GETY(pos) != 1)
+#define POS_ENABLED(x,y) (x != 1 || y != 1)
+#define ON_DIAGONAL(x,y) (x != 1 && y != 1)
+#define ON_PERPENDICULAR(x,y) (x == 1 || y == 1)
+//#define ON_DIAGONAL(pos) (GETX(pos) != 1 && GETY(pos) != 1)
+//#define ON_PERPENDICULAR(pos) (GETX(pos) == 1 || GETY(pos) == 1)
 //#define DIAGONALS
 #define PERPENDICULARS
 

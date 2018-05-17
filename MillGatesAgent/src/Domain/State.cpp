@@ -23,7 +23,7 @@
  */
 
 bool State::setPawnAt2D(uint8 x, uint8 y, pawn value){
-	int i, j, k;
+	sint8 i, j, k;
 	i = j = k = -1;
 
 	//Convert from char to int
@@ -243,7 +243,7 @@ std::ostream& operator<<(std::ostream &strm, const State &s){
 }
 
 void State::toStringToSend() const{
-	char ret[25]; //TODO migliorare per inserire la casella al centro
+	char ret[25];
 	//24 + \0
 
 	//Insert left face
@@ -285,18 +285,18 @@ uint8 State::morrisCount(pawn player) const {
 
 	uint8 res = 0;
 
-	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-			if (isInMorrisAxis(NEW_POS(x,y,0), Z_AXIS) && getPawnAt(x,y,0) == player)
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+			if (isInMorrisAxis(Position{x,y,0}, Z_AXIS) && getPawnAt(x,y,0) == player)
 				res++;
-	for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-			if (isInMorrisAxis(NEW_POS(0,y,z), X_AXIS) && getPawnAt(0,y,z) == player)
+	for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(Position{0,y,z}, X_AXIS) && getPawnAt(0,y,z) == player)
 				res++;
 
-	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-			if (isInMorrisAxis(NEW_POS(x,0,z), Y_AXIS) && getPawnAt(x,0,z) == player)
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(Position{x,0,z}, Y_AXIS) && getPawnAt(x,0,z) == player)
 				res++;
 	return res;
 
@@ -304,56 +304,65 @@ uint8 State::morrisCount(pawn player) const {
 
 uint8 State::blockedPawnCount(pawn player) const {
 
-	uint8 res = 0, p;
-	ExpVector<uint8> pawns = getAllPositions(player);
-
+	uint8 res = 0;
+	Position p;
+	ExpVector<Position> pawns = getAllPositions(player);
 	for (uint8 i = 0; i < pawns.getLogicSize(); i++) {
-		p = FWX(pawns.get(i));
-		if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.x = FWX(p.x);
+		if (p.x != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 
-		p = BWX(pawns.get(i));
-		if (GETX(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.x = BWX(p.x);
+		if (p.x != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 
-		p = FWY(pawns.get(i));
-		if (GETY(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.y = FWY(p.y);
+		if (p.y != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 
-		p = BWY(pawns.get(i));
-		if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.y = BWX(p.y);
+		if (p.y != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
-		p = FWZ(pawns.get(i));
-		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+
+		p = pawns.get(i);
+		p.z = FWZ(p.z);
+		if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 
-		p = BWZ(pawns.get(i));
-		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.z = BWZ(p.z);
+		if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			continue;
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-		p = FWZ(pawns.get(i));
-		if (ON_PERPENDICULAR(p)) {
-			if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.z = FWZ(p.z);
+		if (ON_PERPENDICULAR(p.x, p.y)) {
+			if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 				continue;
-
-			p = BWZ(pawns.get(i));
-			if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			p = pawns.get(i);
+			p.z = BWZ(p.z);
+			if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 				continue;
 		}
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-		p = FWZ(pawns.get(i));
-		if (ON_DIAGONAL(p)) {
-			if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p = pawns.get(i);
+		p.z = FWZ(p.z);
+		if (ON_DIAGONAL(p.x, p.y)) {
+			if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 				continue;
-
-			p = BWZ(pawns.get(i));
-			if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+			p = pawns.get(i);
+			p.z = BWZ(p.z);
+			if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 				continue;
 		}
 #endif
@@ -365,7 +374,7 @@ uint8 State::blockedPawnCount(pawn player) const {
 uint8 State::potentialMorrisCount(pawn player) const {
 	uint8 res = 0;
 
-	ExpVector<uint8> empty = getAllPositions(PAWN_NONE);
+	ExpVector<Position> empty = getAllPositions(PAWN_NONE);
 	for (uint8 i = 0; i < empty.getLogicSize(); i++) {
 		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, X_AXIS))
 			res++;
@@ -382,39 +391,39 @@ uint8 State::potentialDoubleMorrisCount(pawn player) const {
 
 	uint8 res = 0;
 
-	ExpVector<uint8> empty = getAllPositions(PAWN_NONE);
+	ExpVector<Position> empty = getAllPositions(PAWN_NONE);
 	for (uint8 i = 0; i < empty.getLogicSize(); i++) {
-		uint8 pos = empty.get(i);
-		uint8 app;
+		Position pos = empty.get(i);
+		Position app;
 		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, X_AXIS)) {
 			for (uint8 j = 0; j < CUBE_SIZE_X - 1; j++) { // 2 iterations
-				pos = FWX(pos);
+				pos.x = FWX(pos.x);
 				app = pos;
 				for (uint8 k = 0; k < CUBE_SIZE_Y - 1; k++) {
-					app = FWY(app);
-					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Y_AXIS))
+					app.y = FWY(app.y);
+					if (getPawnAt(app.x, app.y, app.z) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Y_AXIS))
 						res++;
 				}
 			}
 		}
 		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Y_AXIS)) {
 			for (uint8 j = 0; j < CUBE_SIZE_Y - 1; j++) { // 2 iterations
-				pos = FWY(pos);
+				pos.y = FWY(pos.y);
 				app = pos;
 				for (uint8 k = 0; k < CUBE_SIZE_Z - 1; k++) {
-					app = FWZ(app);
-					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Z_AXIS))
+					app.z = FWZ(app.z);
+					if (getPawnAt(app.x, app.y, app.z) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, Z_AXIS))
 						res++;
 				}
 			}
 		}
 		if (willBeInMorrisAxis(POS_NULL, empty.get(i), player, Z_AXIS)) {
 			for (uint8 j = 0; j < CUBE_SIZE_Z - 1; j++) { // 2 iterations
-				pos = FWZ(pos);
+				pos.z = FWZ(pos.z);
 				app = pos;
 				for (uint8 k = 0; k < CUBE_SIZE_X - 1; k++) {
-					app = FWX(app);
-					if (getPawnAt(GETX(app), GETY(app), GETZ(app)) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, X_AXIS))
+					app.z = FWX(app.x);
+					if (getPawnAt(app.x, app.y, app.z) == PAWN_NONE && willBeInMorrisAxis(POS_NULL, app, player, X_AXIS))
 						res++;
 				}
 			}
@@ -429,42 +438,42 @@ uint8 State::doubleMorrisCount(pawn player) const {
 
 	uint8 res = 0;
 
-	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-			if (isInMorrisAxis(NEW_POS(x,y,0), Z_AXIS) && getPawnAt(x,y,0) == player)
-				for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-					if (isInMorrisAxis(NEW_POS(x,y,z), X_AXIS))
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+			if (isInMorrisAxis(Position{x,y,0}, Z_AXIS) && getPawnAt(x,y,0) == player)
+				for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+					if (isInMorrisAxis(Position{x,y,z}, X_AXIS))
 						res++;
-	for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-			if (isInMorrisAxis(NEW_POS(0,y,z), X_AXIS) && getPawnAt(0,y,z) == player)
-				for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-					if (isInMorrisAxis(NEW_POS(x,y,z), Y_AXIS))
+	for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(Position{0,y,z}, X_AXIS) && getPawnAt(0,y,z) == player)
+				for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+					if (isInMorrisAxis(Position{x,y,z}, Y_AXIS))
 						res++;
 
-	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-		for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-			if (isInMorrisAxis(NEW_POS(x,0,z), Y_AXIS) && getPawnAt(x,0,z) == player)
-				for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-					if (isInMorrisAxis(NEW_POS(x,y,z), Z_AXIS))
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+			if (isInMorrisAxis(Position{x,0,z}, Y_AXIS) && getPawnAt(x,0,z) == player)
+				for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+					if (isInMorrisAxis(Position{x,y,z}, Z_AXIS))
 						res++;
 	return res;
 
 }
 
-bool State::isInMorris(uint8 pos) const {
+bool State::isInMorris(Position pos) const {
 
 	bool morrisX = true;
 	bool morrisY = true;
 	bool morrisZ = true;
-	pawn selected = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
+	pawn selected = getPawnAt(pos.x, pos.y, pos.z);
 
 	if (selected == PAWN_NONE)
 		return false;
 
 	for (int x = 0; x < CUBE_SIZE_X; x++) {
-		if (POS_ENABLED_FAST(x, GETY(pos))) {
-			if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected) {
+		if (POS_ENABLED(x, pos.y)) {
+			if (getPawnAt(x, pos.y, pos.z) != selected) {
 				morrisX = false;
 				break;
 			}
@@ -477,8 +486,8 @@ bool State::isInMorris(uint8 pos) const {
 
 
 	for (int y = 0; y < CUBE_SIZE_Y; y++) {
-		if (POS_ENABLED_FAST(GETX(pos), y)) {
-			if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected) {
+		if (POS_ENABLED(pos.x, pos.y)) {
+			if (getPawnAt(pos.x, y, pos.z) != selected) {
 				morrisY = false;
 				break;
 			}
@@ -492,8 +501,8 @@ bool State::isInMorris(uint8 pos) const {
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
 	for (int z = 0; z < CUBE_SIZE_Z; z++) {
-		if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-			if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+		if (POS_ENABLED(pos.x, pos.y)) {
+			if (getPawnAt(pos.x, pos.y, z) != selected) {
 				morrisZ = false;
 				break;
 			}
@@ -506,10 +515,10 @@ bool State::isInMorris(uint8 pos) const {
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-	if (ON_PERPENDICULAR(pos)) {
+	if (ON_PERPENDICULAR(pos.x, pos.y)) {
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-				if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+			if (POS_ENABLED(pos.x, pos.y)) {
+				if (getPawnAt(pos.x, pos.y, z) != selected) {
 					morrisZ = false;
 					break;
 				}
@@ -528,8 +537,8 @@ bool State::isInMorris(uint8 pos) const {
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
 	if (ON_DIAGONAL(pos)) {
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-				if (getPawnAt(GETX(pos), GETY(pos), z) != selected) {
+			if (POS_ENABLED(pos.x, pos.y)) {
+				if (getPawnAt(pos.x, pos.y, z) != selected) {
 					morrisZ = false;
 					break;
 				}
@@ -548,17 +557,17 @@ bool State::isInMorris(uint8 pos) const {
 
 }
 
-bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
+bool State::isInMorrisAxis(Position pos, uint8 axis) const {
 
-	pawn selected = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
+	pawn selected = getPawnAt(pos.x, pos.y, pos.z);
 
 	if (selected == PAWN_NONE)
 		return false;
 
 	if (axis == X_AXIS) {
 		for (int x = 0; x < CUBE_SIZE_X; x++) {
-			if (POS_ENABLED_FAST(x, GETY(pos))) {
-				if (getPawnAt(x, GETY(pos), GETZ(pos)) != selected)
+			if (POS_ENABLED(x, pos.y)) {
+				if (getPawnAt(x, pos.y, pos.z) != selected)
 					return false;
 			}
 			else
@@ -569,8 +578,8 @@ bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 
 	else if (axis == Y_AXIS) {
 		for (int y = 0; y < CUBE_SIZE_Y; y++) {
-			if (POS_ENABLED_FAST(GETX(pos), y)) {
-				if (getPawnAt(GETX(pos), y, GETZ(pos)) != selected)
+			if (POS_ENABLED(pos.x, y)) {
+				if (getPawnAt(pos.x, y, pos.z) != selected)
 					return false;
 			}
 			else
@@ -582,8 +591,8 @@ bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 	else if (axis == Z_AXIS) {
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
 		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-				if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+			if (POS_ENABLED(pos.x, pos.y)) {
+				if (getPawnAt(pos.x, pos.y, z) != selected)
 					return false;
 			}
 			else
@@ -593,10 +602,10 @@ bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-		if (ON_PERPENDICULAR(pos)) {
+		if (ON_PERPENDICULAR(pos.x, pos.y)) {
 			for (int z = 0; z < CUBE_SIZE_Z; z++) {
-				if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-					if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+				if (POS_ENABLED(pos.x, pos.y)) {
+					if (getPawnAt(pos.x, pos.y, z) != selected)
 						return false;
 				}
 				else
@@ -610,10 +619,10 @@ bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-		if (ON_DIAGONAL(pos)) {
+		if (ON_DIAGONAL(pos.x, pos.y)) {
 			for (int z = 0; z < CUBE_SIZE_Z; z++) {
-				if (POS_ENABLED_FAST(GETX(pos), GETY(pos))) {
-					if (getPawnAt(GETX(pos), GETY(pos), z) != selected)
+				if (POS_ENABLED(pos.x, pos.y)) {
+					if (getPawnAt(pos.x, pos.y, z) != selected)
 						return false;
 				}
 				else
@@ -628,7 +637,7 @@ bool State::isInMorrisAxis(uint8 pos, uint8 axis) const {
 	return false;
 }
 
-bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
+bool State::willBeInMorris(Position src, Position dest, pawn pawn) const {
 
 	bool morrisX = true;
 	bool morrisY = true;
@@ -637,37 +646,37 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	if (pawn == PAWN_NONE)
 		return false;
 
-	if (getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) != PAWN_NONE)
+	if (getPawnAt(dest.x, dest.y, dest.z) != PAWN_NONE)
 		return false;
 
-	for (int x = 0; x < CUBE_SIZE_X; x++) {
-		if (src == NEW_POS(x,GETY(dest), GETZ(dest))) {
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++) {
+		if (src == Position{x,dest.y, dest.z}) {
 			morrisX = false;
 			break;
 		}
-		if (!POS_ENABLED_FAST(x, GETY(dest))) {
+		if (!POS_ENABLED(x, dest.y)) {
 			morrisX = false;
 			break;
 		}
-		if (x != GETX(dest)) {
-			if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn) {
+		if (x != dest.x) {
+			if (getPawnAt(x, dest.y, dest.z) != pawn) {
 				morrisX = false;
 				break;
 			}
 		}
 	}
 
-	for (int y = 0; y < CUBE_SIZE_Y; y++) {
-		if (src == NEW_POS(GETX(dest), y, GETZ(dest))) {
+	for (sint8 y = 0; y < CUBE_SIZE_Y; y++) {
+		if (src == Position{dest.x, y, dest.z}) {
 			morrisY = false;
 			break;
 		}
-		if (!POS_ENABLED_FAST(GETX(dest), y)) {
+		if (!POS_ENABLED(dest.x, y)) {
 			morrisY = false;
 			break;
 		}
-		if (y != GETY(dest)) {
-			if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn) {
+		if (y != dest.y) {
+			if (getPawnAt(dest.x, y, dest.z) != pawn) {
 				morrisY = false;
 				break;
 			}
@@ -675,17 +684,17 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	}
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
-	for (int z = 0; z < CUBE_SIZE_Z; z++) {
-		if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
+	for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+		if (src == Position{dest.x, dest.y, z}) {
 			morrisZ = false;
 			break;
 		}
-		if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
+		if (!POS_ENABLED(dest.x, dest.y)) {
 			morrisZ = false;
 			break;
 		}
-		if (z != GETZ(dest)) {
-			if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
+		if (z != dest.z) {
+			if (getPawnAt(dest.x, dest.y, z) != pawn) {
 				morrisZ = false;
 				break;
 			}
@@ -694,18 +703,18 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-	if (ON_PERPENDICULAR(dest))
-		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
+	if (ON_PERPENDICULAR(dest.x, dest.y))
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == Position{dest.x, dest.y, z}) {
 				morrisZ = false;
 				break;
 			}
-			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
+			if (!POS_ENABLED(dest.x, dest.y)) {
 				morrisZ = false;
 				break;
 			}
-			if (z != GETZ(dest)) {
-				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
+			if (z != dest.z) {
+				if (getPawnAt(dest.x, dest.y, z) != pawn) {
 					morrisZ = false;
 					break;
 				}
@@ -716,18 +725,18 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-	if (ON_DIAGONAL(dest))
-		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (src == NEW_POS(GETX(dest), GETY(dest), z)) {
+	if (ON_DIAGONAL(dest.x, dest.y))
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == Position{dest.x, dest.y, z}) {
 				morrisZ = false;
 				break;
 			}
-			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest))) {
+			if (!POS_ENABLED(dest.x, dest.y)) {
 				morrisZ = false;
 				break;
 			}
-			if (z != GETZ(dest)) {
-				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn) {
+			if (z != dest.z) {
+				if (getPawnAt(dest.x, dest.y, z) != pawn) {
 					morrisZ = false;
 					break;
 				}
@@ -740,22 +749,22 @@ bool State::willBeInMorris(uint8 src, uint8 dest, pawn pawn) const {
 	return morrisX || morrisY || morrisZ;
 }
 
-bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) const {
+bool State::willBeInMorrisAxis(Position src, Position dest, pawn pawn, uint8 axis) const {
 
 	if (pawn == PAWN_NONE)
 		return false;
 
-	if (getPawnAt(GETX(dest), GETY(dest), GETZ(dest)) != PAWN_NONE)
+	if (getPawnAt(dest.x, dest.y, dest.z) != PAWN_NONE)
 		return false;
 
 	if (axis == X_AXIS) {
-		for (int x = 0; x < CUBE_SIZE_X; x++) {
-			if (src == NEW_POS(x,GETY(dest), GETZ(dest)))
+		for (sint8 x = 0; x < CUBE_SIZE_X; x++) {
+			if (src == Position{x,dest.y, dest.z})
 				return false;
-			if (!POS_ENABLED_FAST(x, GETY(dest)))
+			if (!POS_ENABLED(x, dest.y))
 				return false;
-			if (x != GETX(dest)) {
-				if (getPawnAt(x, GETY(dest), GETZ(dest)) != pawn)
+			if (x != dest.x) {
+				if (getPawnAt(x, dest.y, dest.z) != pawn)
 					return false;
 			}
 		}
@@ -763,13 +772,13 @@ bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) con
 	}
 
 	else if (axis == Y_AXIS) {
-		for (int y = 0; y < CUBE_SIZE_Y; y++) {
-			if (src == NEW_POS(GETX(dest), y, GETZ(dest)))
+		for (sint8 y = 0; y < CUBE_SIZE_Y; y++) {
+			if (src == Position{dest.x, y, dest.z})
 				return false;
-			if (!POS_ENABLED_FAST(GETX(dest), y))
+			if (!POS_ENABLED(dest.x, y))
 				return false;
-			if (y != GETY(dest)) {
-				if (getPawnAt(GETX(dest), y, GETZ(dest)) != pawn)
+			if (y != dest.y) {
+				if (getPawnAt(dest.x, y, dest.z) != pawn)
 					return false;
 			}
 		}
@@ -778,13 +787,13 @@ bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) con
 
 	else if (axis == Z_AXIS) {
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
-		for (int z = 0; z < CUBE_SIZE_Z; z++) {
-			if (src == NEW_POS(GETX(dest), GETY(dest), z))
+		for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+			if (src == Position{dest.x, dest.y, z})
 				return false;
-			if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+			if (!POS_ENABLED(dest.x, dest.y))
 				return false;
-			if (z != GETZ(dest)) {
-				if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+			if (z != dest.z) {
+				if (getPawnAt(dest.x, dest.y, z) != pawn)
 					return false;
 			}
 		}
@@ -792,14 +801,14 @@ bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) con
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-		if (ON_PERPENDICULAR(dest)) {
-			for (int z = 0; z < CUBE_SIZE_Z; z++) {
-				if (src == NEW_POS(GETX(dest), GETY(dest), z))
+		if (ON_PERPENDICULAR(dest.x, dest.y)) {
+			for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+				if (src == Position{dest.x, dest.y, z})
 					return false;
-				if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+				if (!POS_ENABLED(dest.x, dest.y))
 					return false;
-				if (z != GETZ(dest)) {
-					if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+				if (z != dest.z) {
+					if (getPawnAt(dest.x, dest.y, z) != pawn)
 						return false;
 				}
 			}
@@ -810,14 +819,14 @@ bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) con
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-		if (ON_DIAGONAL(dest)) {
-			for (int z = 0; z < CUBE_SIZE_Z; z++) {
-				if (src == NEW_POS(GETX(dest), GETY(dest), z))
+		if (ON_DIAGONAL(dest.x, dest.y)) {
+			for (sint8 z = 0; z < CUBE_SIZE_Z; z++) {
+				if (src == Position{dest.x, dest.y, z})
 					return false;
-				if (!POS_ENABLED_FAST(GETX(dest), GETY(dest)))
+				if (!POS_ENABLED(dest.x, dest.y))
 					return false;
-				if (z != GETZ(dest)) {
-					if (getPawnAt(GETX(dest), GETY(dest), z) != pawn)
+				if (z != dest.z) {
+					if (getPawnAt(dest.x, dest.y, z) != pawn)
 						return false;
 				}
 			}
@@ -830,77 +839,79 @@ bool State::willBeInMorrisAxis(uint8 src, uint8 dest, pawn pawn, uint8 axis) con
 	return false;
 }
 
-ExpVector<uint8> State::getAllPositions(pawn pawn) const {
 
-	ExpVector<uint8> result(AVERAGE_PAWNS_ON_BOARD);
+ExpVector<Position> State::getAllPositions(pawn pawn) const {
 
-	for (uint8 x = 0; x < CUBE_SIZE_X; x++)
-		for (uint8 y = 0; y < CUBE_SIZE_Y; y++)
-			for (uint8 z = 0; z < CUBE_SIZE_Z; z++)
-				if (getPawnAt(x, y, z) == pawn && POS_ENABLED_FAST(x,y)) {
-					result.add(NEW_POS(x,y,z));
+	ExpVector<Position> result(AVERAGE_PAWNS_ON_BOARD);
+
+	for (sint8 x = 0; x < CUBE_SIZE_X; x++)
+		for (sint8 y = 0; y < CUBE_SIZE_Y; y++)
+			for (sint8 z = 0; z < CUBE_SIZE_Z; z++)
+				if (getPawnAt(x, y, z) == pawn && POS_ENABLED(x,y)) {
+					result.add(Position{x,y,z});
 				}
 
 	return result;
 
 }
 
-ExpVector<uint8> State::getAvailablePositions(uint8 pos) const {
 
-	pawn myPawn = getPawnAt(GETX(pos), GETY(pos), GETZ(pos));
+ExpVector<Position> State::getAvailablePositions(Position pos) const {
+
+	pawn myPawn = getPawnAt(pos.x, pos.y, pos.z);
 
 	if (getPawnsToPlay(getPlayer()) > 0 || getPawnsOnBoard(myPawn) == 3)
 		return getAllPositions(PAWN_NONE);
 
-	ExpVector<uint8> result(MAX_MOVES_PHASE_2);
-	uint8 p;
+	ExpVector<Position> result(MAX_MOVES_PHASE_2);
+	Position p;
 
-	p = FWX(pos);
-	if (GETX(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.x = FWX(pos.x);
+	if (p.x != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
-	p = BWX(pos);
-	if (GETX(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.x = BWX(pos.x);
+	if (p.x != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
-	p = FWY(pos);
-	if (GETY(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.y = FWY(pos.y);
+	if (p.y != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
-	p = BWY(pos);
-	if (GETY(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.y = BWY(pos.y);
+	if (p.y != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
 #if defined(DIAGONALS) && defined(PERPENDICULARS)
-	p = FWZ(pos);
-	if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.z = FWZ(pos.z);
+	if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 
-	p = BWZ(pos);
-	if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.z = BWZ(pos.z);
+	if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 		result.add(p);
 #endif
 
 #if !defined(DIAGONALS) && defined(PERPENDICULARS)
-	p = FWZ(pos);
-	if (ON_PERPENDICULAR(p)) {
-		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.z = FWZ(pos.z);
+	if (ON_PERPENDICULAR(p.x, p.y)) {
+		if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
 
-		p = BWZ(pos);
-		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p.z = BWZ(pos.z);
+		if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
 	}
 #endif
 
 #if defined(DIAGONALS) && !defined(PERPENDICULARS)
-	p = FWZ(pos);
-	if (ON_DIAGONAL(p)) {
-		if (GETZ(p) != 0 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+	p.z = FWZ(pos.z);
+	if (ON_DIAGONAL(p.x, p.y)) {
+		if (p.z != 0 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
 
-		p = BWZ(pos);
-		if (GETZ(p) != 2 && getPawnAt(GETX(p), GETY(p), GETZ(p)) == PAWN_NONE && POS_ENABLED(p))
+		p.z = BWZ(pos.z);
+		if (p.z != 2 && getPawnAt(p.x, p.y, p.z) == PAWN_NONE && POS_ENABLED(p.x, p.y))
 			result.add(p);
 	}
 #endif
@@ -917,7 +928,7 @@ ExpVector<Action> * State::getActions() const {
 		*result = addActionsForPawn(POS_NULL, *result);
 	}
 	else {
-		ExpVector<uint8> myPawns = getAllPositions(getPlayer());
+		ExpVector<Position> myPawns = getAllPositions(getPlayer());
 		for (uint8 k = 0; k < myPawns.getLogicSize(); k++)
 			*result = addActionsForPawn(myPawns.get(k), *result);
 	}
@@ -930,25 +941,25 @@ State * State::result(Action action) const {
 
 	State * state = clone();
 
-	uint8 src = action.getSrc();
-	uint8 dest = action.getDest();
-	uint8 toRemove = action.getRemovedPawn();
+	Position src = action.getSrc();
+	Position dest = action.getDest();
+	Position toRemove = action.getRemovedPawn();
 
 	// fase 1 (pedina in dest)
 	if(!IS_VALID(src) && IS_VALID(dest)) {
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), getPlayer());
+		state->setPawnAt(dest.x, dest.y, dest.z, getPlayer());
 		state->setPawnsOnBoard(getPlayer(), state->getPawnsOnBoard(getPlayer()) + 1);
 		state->setPawnsToPlay(getPlayer(), state->getPawnsToPlay(getPlayer()) - 1);
 	}
 	// fasi 2 e 3 (pedina da src a dest)
 	if(IS_VALID(src) && IS_VALID(dest)) {
-		state->setPawnAt(GETX(src), GETY(src), GETZ(src), PAWN_NONE);
-		state->setPawnAt(GETX(dest), GETY(dest), GETZ(dest), getPlayer());
+		state->setPawnAt(src.x, src.y, src.z, PAWN_NONE);
+		state->setPawnAt(dest.x, dest.y, dest.z, getPlayer());
 	}
 
 	// rimozione pedina avversaria
 	if(IS_VALID(toRemove)) {
-		state->setPawnAt(GETX(toRemove), GETY(toRemove), GETZ(toRemove), PAWN_NONE);
+		state->setPawnAt(toRemove.x, toRemove.y, toRemove.z, PAWN_NONE);
 		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
 	}
 
@@ -959,12 +970,12 @@ State * State::result(Action action) const {
 
 }
 
-ExpVector<Action> State::addActionsForPawn(uint8 src, ExpVector<Action> actionBuffer) const {
+ExpVector<Action> State::addActionsForPawn(Position src, ExpVector<Action> actionBuffer) const {
 
-	ExpVector<uint8> available = getAvailablePositions(src);
+	ExpVector<Position> available = getAvailablePositions(src);
 	for (uint8 i = 0; i < available.getLogicSize(); i++) {
 		if (willBeInMorris(src, available.get(i), getPlayer())) {
-			ExpVector<uint8> pos = getAllPositions(OPP(getPlayer()));
+			ExpVector<Position> pos = getAllPositions(OPP(getPlayer()));
 			bool added = false;
 			for (uint8 j = 0; j < pos.getLogicSize(); j++)
 				if (!isInMorris(pos.get(j))) {
