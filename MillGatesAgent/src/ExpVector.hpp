@@ -7,6 +7,7 @@
 
 
 //CONSTRUCTORS AND DESTRRUCTORS
+
 template <class T>
 ExpVector<T>::ExpVector(){
 	logicSize = 0;

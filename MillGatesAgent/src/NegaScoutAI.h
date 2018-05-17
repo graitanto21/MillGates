@@ -11,7 +11,7 @@
 #include "AI.h"
 #include "ZobristHashing.h"
 #include "ExpVector.h"
-#include "TranspositionTable.h"
+#include "HashSet.h"
 #include "HeuristicFunction.h"
 #include "RomanianHeuristic.h"
 #include "PawnCountHeuristic.h"
@@ -19,7 +19,7 @@
 class NegaScoutAI: public AI {
 private:
 
-	TranspositionTable * _table;
+	HashSet<entry> * _table;
 	ExpVector<hashcode> * _history;
 	ZobristHashing * _hasher;
 	HeuristicFunction * _heuristic;

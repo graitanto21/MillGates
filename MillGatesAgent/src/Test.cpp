@@ -13,6 +13,7 @@
 #include "DummyAI.h"
 #include "NegaScoutAI.h"
 #include "IterativeDeepeningAI.h"
+#include "HashSet.h"
 #include <string.h>
 
 #include "ZobristHashing.h"
@@ -252,6 +253,25 @@ void testOrdering(State * state) {
 
 }
 
+void testHashTable() {
+
+	HashSet<int> * hashTable = new HashSet<int>;
+
+	int * val = new int();
+	*val = 10;
+	int * val2 = new int();
+	*val2 = 30;
+
+	hashTable->add(100, 223);
+	hashTable->add(167772214, 222);
+
+	hashTable->get(100, &val);
+	hashTable->get(167772214, &val2);
+
+	std::cout << *val << "\n";
+	std::cout << *val2 << "\n";
+}
+
 #if defined(DEBUG)
 int main(void) {
 
@@ -265,7 +285,9 @@ int main(void) {
 	//testPotentialMorrises(state);
 	//testPotentialDoubleMorrises(state);
 	//testDoubleMorrisesCount(state);
-	testOrdering(state);
+	//testOrdering(state);
+	testHashTable();
+
 
 	delete state;
 

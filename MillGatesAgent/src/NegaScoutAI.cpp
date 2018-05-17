@@ -8,7 +8,7 @@
 #include "NegaScoutAI.h"
 
 NegaScoutAI::NegaScoutAI() {
-	_table = new TranspositionTable();
+	_table = new HashSet<entry>();
 	_hasher = ZobristHashing::getInstance();
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
@@ -18,8 +18,10 @@ NegaScoutAI::NegaScoutAI() {
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
-	entry * e = _table->get(quickhash);
-	if (e != NULL && e->depth >= depth)
+	entry * e;
+	bool presentInTable;
+	presentInTable = _table->get(quickhash, &e);
+	if (presentInTable && e->depth >= depth)
 		//if (e != NULL)
 		return color * e->eval;
 
@@ -35,12 +37,12 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	if (depth == 0 || _stopFlag || loop || (terminal = state->isTerminal())) {
 		score = _heuristic->evaluate(state, terminal, loop);
-		if (e == NULL) {
+		if (!presentInTable) {
 			e = new entry();
 			e->depth = depth;
 			e->eval = score;
-			e->hash = quickhash;
-			_table->add(e);
+			_table->add(quickhash, *e);
+			delete e;
 		}
 		else {
 			e->eval = score;
@@ -65,7 +67,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	entry * e_tmp;
 	bool child_loop;
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
-		e_tmp = _table->get(child_hash);
+		_table->get(child_hash, &e_tmp);
 		//		if (e_tmp != NULL)
 		//			values->add(e_tmp->eval * color);
 		//		else //Else I have to estimate the value using function
@@ -107,12 +109,12 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	delete states;
 	delete values;
 
-	if (e == NULL) {
+	if (!presentInTable) {
 		e = new entry();
 		e->depth = depth;
 		e->eval = color * alpha;
-		e->hash = quickhash;
-		_table->add(e);
+		_table->add(quickhash, *e);
+		delete e;
 	}
 	else {
 		e->eval = color * alpha;
@@ -167,7 +169,7 @@ Action NegaScoutAI::choose(State * state) {
 		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, 1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
-			tempscore = _table->get(quickhash);
+			_table->get(quickhash, &tempscore);
 			if (tempscore != NULL) {
 				if (i == 0 || tempscore->eval > score) {
 					score = tempscore->eval;
@@ -184,7 +186,7 @@ Action NegaScoutAI::choose(State * state) {
 		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, -1);
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
-			tempscore = _table->get(quickhash);
+			_table->get(quickhash, &tempscore);
 			if (tempscore != NULL) {
 				if (i == 0 || tempscore->eval < score) {
 					score = tempscore->eval;
@@ -209,7 +211,7 @@ void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 	State * child = NULL;
 	for (int i = 0; i < actions->getLogicSize(); i++) {
 		child = state->result(actions->get(i));
-		val = _table->get(_hasher->hash(child));
+		_table->get(_hasher->hash(child), &val);
 		if (val == NULL) {
 			for (int j = 0; j < curdepth; j++)
 				std::cout << " | ";
