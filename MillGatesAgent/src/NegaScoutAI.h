@@ -14,6 +14,7 @@
 #include "TranspositionTable.h"
 #include "HeuristicFunction.h"
 #include "RomanianHeuristic.h"
+#include "PawnCountHeuristic.h"
 
 class NegaScoutAI: public AI {
 private:
@@ -28,7 +29,7 @@ private:
 	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
 	void recurprint(State * state, int depth, int curdepth);
 
-	uint8 partition(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash, bool terminal, bool loop);
+	uint8 partition(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
 
 public:
 	NegaScoutAI();
@@ -41,7 +42,7 @@ public:
 	virtual void addHistory(State * state);
 	virtual void clearHistory();
 
-	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash, bool terminal, bool loop);
+	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
 
 	virtual ~NegaScoutAI();
 };

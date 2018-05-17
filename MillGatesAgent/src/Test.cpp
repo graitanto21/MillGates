@@ -230,7 +230,7 @@ void testOrdering(State * state) {
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
 		values->add(h.evaluate(states->get(i), false, false) * 1);
 	}
-	ai.quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, 1, ZobristHashing::getInstance()->hash(state), false, false);
+	ai.quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, 1, ZobristHashing::getInstance()->hash(state));
 	std::cout << "\n" << "NEW:\n";
 	for(int i = 0; i < actions->getLogicSize(); i++){
 		std::cout << actions->get(i) << "(";

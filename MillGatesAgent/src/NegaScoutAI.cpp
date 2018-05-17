@@ -13,7 +13,7 @@ NegaScoutAI::NegaScoutAI() {
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 	_history = new ExpVector<hashcode>();
-	_heuristic = new RomanianHeuristic();
+	_heuristic = new PawnCountHeuristic();
 }
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
@@ -54,24 +54,30 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	//Ordering section ==> TODO put inside a fuction...
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
-	for(eval_t i = 0; i < actions->getLogicSize(); i++){
-			states->add(state->result(actions->get(i)));
-	}
+	for(eval_t i = 0; i < actions->getLogicSize(); i++)
+		states->add(state->result(actions->get(i)));
+
 	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
-	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+	for(eval_t i=0; i<actions->getLogicSize(); i++)
 		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
-	}
+
 	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
 	entry * e_tmp;
+	bool child_loop;
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
 		e_tmp = _table->get(child_hash);
-		if (e_tmp != NULL)
-			values->add(e_tmp->eval * color);
-		else //Else I have to estimate the value using function
-			values->add(_heuristic->evaluate(states->get(i), terminal, loop) * color);
+		//		if (e_tmp != NULL)
+		//			values->add(e_tmp->eval * color);
+		//		else //Else I have to estimate the value using function
+		for (short j = _history->getLogicSize() - 1; j >= 0; j--)
+			if (_history->get(j) == child_hash && _depth + 1 != depth) {
+				child_loop = true;
+				break;
+			}
+		values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * color);
 	}
-	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
 
+	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
 
 	//Negascout
 	State * child = NULL;
@@ -87,6 +93,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha, -color);
 
 		delete child;
+		states->set(i, NULL);
 
 		alpha = (alpha > score) ? alpha : score;
 		if (alpha >= beta || _stopFlag)
@@ -94,6 +101,9 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	}
 	delete actions;
 	delete hashes;
+	for (uint8 i = 0; i < states->getLogicSize(); i++)
+		if (states->get(i) != NULL)
+			delete states->get(i);
 	delete states;
 	delete values;
 
@@ -229,15 +239,15 @@ void NegaScoutAI::print(State * state, int depth) {
 
 }
 
-void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop) {
+void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash) {
 	if(lo < hi) {
-		uint8 p = partition(state, states, hashes, values, actions, lo, hi, color, quickhash, terminal, loop);
-		quickSort(state, states, hashes, values, actions, lo, p-1, color, quickhash, terminal, loop);
-		quickSort(state, states, hashes, values, actions, p+1, hi, color, quickhash, terminal, loop);
+		uint8 p = partition(state, states, hashes, values, actions, lo, hi, color, quickhash);
+		quickSort(state, states, hashes, values, actions, lo, p-1, color, quickhash);
+		quickSort(state, states, hashes, values, actions, p+1, hi, color, quickhash);
 	}
 }
 
-uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop){
+uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash){
 	//Find the pivot
 	sint8 x = values->get(hi);
 	eval_t i = lo-1;
@@ -248,7 +258,7 @@ uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<
 		if (value > x){
 			i++;
 			actions->swap(i,j);
-//			std::cout << "SWAP: " << actions->get(i) << "(" << value << ") with " << actions->get(j) << "\n";
+			//			std::cout << "SWAP: " << actions->get(i) << "(" << value << ") with " << actions->get(j) << "\n";
 			states->swap(i,j);
 			hashes->swap(i, j);
 			values->swap(i,j);

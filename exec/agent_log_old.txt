@@ -3,8 +3,176 @@ C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release
 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
 Chosen action: c5 with depth 5
-c5 -> -1
-b6 -> -1
+c5 -> 0
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: c5 with depth 6
+c5 -> 0
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: c5 with depth 7
+c5 -> 0
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+a1 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: c5 with depth 7
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: b6 with depth 5
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: e5 with depth 6
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 1
+f6 -> 1
+g7 -> 1
+c4 -> 1
+b4 -> 1
+a4 -> 1
+e4 -> 1
+f4 -> 1
+g4 -> 1
+c3 -> 1
+b2 -> 1
+d3 -> 1
+d2 -> 1
+d1 -> 1
+e3 -> 1
+f2 -> 1
+g1 -> 0
+Chosen action: b6 with depth 7
+b6 -> 0
+a7 -> 0
+d5 -> 0
+d6 -> 0
+d7 -> 0
+e5 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+a4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: b6 with depth 7
+7 O--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: a7 with depth 5
 a7 -> -1
 d5 -> -1
 d6 -> -1
@@ -20,57 +188,16 @@ f4 -> -1
 g4 -> -1
 c3 -> -1
 b2 -> -1
-a1 -> -1
 d3 -> -1
 d2 -> -1
 d1 -> -1
 e3 -> -1
 f2 -> -1
-g1 -> -1
-Chosen action: c5 with depth 6
-c5 -> 10
-b6 -> 10
-a7 -> 10
-d5 -> 10
-d6 -> 10
-d7 -> 10
-e5 -> 10
-f6 -> 10
-g7 -> 10
-c4 -> 10
-b4 -> 10
-a4 -> 10
-e4 -> 10
-f4 -> 10
-g4 -> 10
-c3 -> 10
-b2 -> 10
-a1 -> 10
-d3 -> 10
-d2 -> 10
-d1 -> 10
-e3 -> 10
-f2 -> 10
-g1 -> 10
-Chosen action: c5 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-White morris in last turn: 0
-Black morris in last turn: 0
-
-Chosen action: e5 with depth 5
-b6 -> -9
-a7 -> -9
-d5 -> -2
-d6 -> -2
-d7 -> -2
+Chosen action: a7 with depth 6
+a7 -> -1
+d5 -> -1
+d6 -> -1
+d7 -> -1
 e5 -> -1
 f6 -> -1
 g7 -> -1
@@ -82,272 +209,1927 @@ f4 -> -1
 g4 -> -1
 c3 -> -1
 b2 -> -1
-a1 -> -1
 d3 -> -1
+d2 -> -1
 d1 -> -1
 e3 -> -1
 f2 -> -1
-g1 -> -1
-Chosen action: e5 with depth 6
-b6 -> 10
-a7 -> 10
-d5 -> 15
-d6 -> 24
-d7 -> 25
-e5 -> 34
-f6 -> 34
-g7 -> 34
-c4 -> 34
-b4 -> 34
-a4 -> 34
-e4 -> 34
-f4 -> 34
-g4 -> 34
-c3 -> 34
-b2 -> 34
-a1 -> 34
-d3 -> 34
-d1 -> 34
-e3 -> 34
-f2 -> 34
-g1 -> 34
-Chosen action: e5 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--W--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----B-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-White morris in last turn: 0
-Black morris in last turn: 0
-
-Chosen action: c3 with depth 5
-b6 -> -9
-a7 -> -9
-d6 -> -8
-d7 -> -8
-f6 -> -8
-g7 -> -8
-c4 -> -3
-b4 -> -3
-a4 -> -3
-e4 -> -3
-f4 -> -3
-g4 -> -3
-c3 -> 22
-b2 -> 22
-a1 -> 22
-d3 -> 22
-d1 -> 22
-e3 -> 22
-f2 -> 22
-g1 -> 22
-Chosen action: c3 with depth 6
-b6 -> 2
-a7 -> 3
-d6 -> 4
-d7 -> 4
-f6 -> 4
-g7 -> 4
-c4 -> 7
-b4 -> 8
-a4 -> 9
-e4 -> 9
-f4 -> 9
-g4 -> 9
-c3 -> 31
-b2 -> 31
-a1 -> 31
-d3 -> 31
-d1 -> 31
-e3 -> 31
-f2 -> 31
-g1 -> 31
-Chosen action: c3 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--W--|--|
-4 O--O--B     O--O--O
-3 |--|--W--O--O--|--|
-2 |--O-----B-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-White morris in last turn: 0
-Black morris in last turn: 0
-
-Chosen action: e3 with depth 5
-b6 -> -18
-a7 -> -18
-d6 -> -18
-d7 -> -18
-f6 -> -18
-g7 -> -18
-b4 -> -17
-a4 -> -17
-e4 -> -5
-f4 -> -5
-g4 -> -5
-b2 -> -5
-a1 -> -5
-d3 -> -5
-d1 -> -5
-e3 -> 18
-f2 -> 18
-g1 -> 18
-Chosen action: e3 with depth 6
-b6 -> 0
-a7 -> 0
-d6 -> 1
-d7 -> 1
-f6 -> 1
-g7 -> 1
-b4 -> 1
-a4 -> 1
-e4 -> 6
-f4 -> 6
-g4 -> 7
-b2 -> 7
-a1 -> 7
-d3 -> 7
-d1 -> 7
-e3 -> 32
-f2 -> 32
-g1 -> 32
-Chosen action: e3 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--W--|--|
-4 O--O--B     O--O--O
-3 |--|--W--B--W--|--|
-2 |--O-----B-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-White morris in last turn: 0
-Black morris in last turn: 0
-
-Chosen action: e4d3 with depth 5
-b6 -> -35
-a7 -> -35
-d6 -> -35
-d7 -> -35
-f6 -> -35
-g7 -> -35
-b4 -> -35
-a4 -> -35
-e4d5 -> -2
-e4c4 -> -2
-e4d3 -> 7
-e4d2 -> 7
-f4 -> 7
-g4 -> 7
-b2 -> 7
-a1 -> 7
-d1 -> 7
-f2 -> 7
-g1 -> 7
-Chosen action: e4d3 with depth 6
-b6 -> -10
-a7 -> -10
-d6 -> -10
-d7 -> -10
+Chosen action: d1 with depth 7
+a7 -> -2
+d5 -> -2
+d6 -> -2
+d7 -> -2
+e5 -> -2
 f6 -> -2
 g7 -> -2
+c4 -> -2
 b4 -> -2
 a4 -> -2
-e4d5 -> 16
-e4c4 -> 16
-e4d3 -> 33
-e4d2 -> 33
-f4 -> 33
-g4 -> 33
-b2 -> 33
-a1 -> 33
-d1 -> 33
-f2 -> 33
-g1 -> 33
-Chosen action: e4d3 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--W--|--|
-4 O--O--B     W--O--O
-3 |--|--W--B--W--|--|
-2 |--O-----B-----O--|
-1 O--------O--------O
+e4 -> -2
+f4 -> -2
+g4 -> -2
+c3 -> -2
+b2 -> -2
+d3 -> -2
+d2 -> -2
+d1 -> -1
+e3 -> -1
+f2 -> -2
+Chosen action: d1 with depth 7
+7 B--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------W--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: a4 with depth 5
+d5 -> -2
+d6 -> -2
+d7 -> -2
+e5 -> -2
+f6 -> -2
+g7 -> -2
+c4 -> -2
+b4 -> -2
+a4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -2
+d2 -> -2
+e3 -> -1
+f2 -> -2
+Chosen action: d5 with depth 6
+d5 -> -1
+d6 -> -1
+d7 -> -1
+e5 -> -1
+f6 -> -1
+g7 -> -1
+c4 -> -1
+b4 -> -1
+a4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -1
+d2 -> -1
+e3 -> -1
+f2 -> -1
+Chosen action: a4 with depth 7
+d5 -> -2
+d6 -> -2
+d7 -> -2
+e5 -> -2
+f6 -> -2
+g7 -> -2
+c4 -> -2
+b4 -> -2
+a4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -1
+d2 -> -1
+e3 -> -1
+f2 -> -2
+Chosen action: d5 with depth 8
+d5 -> -1
+d6 -> -1
+d7 -> -1
+e5 -> -1
+f6 -> -1
+g7 -> -1
+c4 -> -1
+b4 -> -1
+a4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -1
+d2 -> -1
+e3 -> -1
+f2 -> -1
+Chosen action: d5 with depth 8
+7 B--------O--------O
+6 |--W-----O-----O--|
+5 |--|--W--W--O--|--|
+4 B--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 1
+
+Chosen action: e5g1 with depth 5
+d6 -> -2
+d7 -> -2
+e5g1 -> -1
+f6 -> -1
+g7 -> -1
+c4 -> -1
+b4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -1
+d2 -> -1
+d1 -> -1
+e3 -> -1
+f2 -> -2
+Chosen action: e5g1 with depth 6
+d6 -> -1
+d7 -> -1
+e5g1 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> -1
+Chosen action: d6 with depth 7
+d6 -> -1
+d7 -> -1
+e5g1 -> -1
+f6 -> -1
+g7 -> -1
+c4 -> -1
+b4 -> -1
+e4 -> -1
+f4 -> -1
+g4 -> -1
+c3 -> -1
+b2 -> -1
+d3 -> -1
+d2 -> -1
+d1 -> -1
+e3 -> -1
+f2 -> -1
+Chosen action: e5g1 with depth 8
+d6 -> -1
+d7 -> -1
+e5g1 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> -1
+Chosen action: e5g1 with depth 9
+d6 -> -1
+d7 -> -1
+e5g1 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> -1
+Chosen action: e5g1 with depth 9
+7 B--------O--------O
+6 |--W-----B-----O--|
+5 |--|--W--W--W--|--|
+4 B--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
   a  b  c  d  e  f  g
 
 White morris in last turn: 1
 Black morris in last turn: 0
 
-Chosen action: d1 with depth 5
-b6 -> -30
-a7 -> -30
-d6 -> -30
-d7 -> -30
-f6 -> -30
-g7 -> -28
-b4 -> -28
-a4 -> -28
-f4 -> -14
-g4 -> -14
-b2 -> -14
-a1 -> -14
-d1 -> -12
-f2 -> -12
-g1 -> -12
-Chosen action: d1 with depth 6
-b6 -> -2
-a7 -> -2
-d6 -> -2
-d7 -> -2
-f6 -> -2
-g7 -> -2
-b4 -> -2
-a4 -> -2
-f4 -> -2
-g4 -> -2
-b2 -> -2
-a1 -> -2
-d1 -> 23
-f2 -> 23
-g1 -> 23
-Chosen action: d6 with depth 7
-b6 -> -62
-a7 -> -62
-d6 -> -52
-d7 -> -52
-f6 -> -52
-g7 -> -52
-b4 -> -52
-a4 -> -52
-f4 -> -52
-g4 -> -52
-b2 -> -52
-a1 -> -52
-d1 -> -52
-f2 -> -52
-g1 -> -52
-Chosen action: b6 with depth 8
-b6 -> -42
-a7 -> -42
-d6 -> -42
-d7 -> -42
-f6 -> -42
-g7 -> -42
-b4 -> -42
-a4 -> -42
-f4 -> -42
-g4 -> -42
-b2 -> -42
-a1 -> -42
-d1 -> -42
-f2 -> -42
-g1 -> -42
-Chosen action: b6 with depth 8
-connection closed
+Chosen action: e3 with depth 5
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 1
+f2 -> 1
+g1 -> 0
+Chosen action: b4 with depth 6
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 1
+e4 -> 1
+f4 -> 1
+g4 -> 1
+c3 -> 1
+b2 -> 1
+d3 -> 1
+d2 -> 1
+d1 -> 1
+e3 -> 1
+f2 -> 1
+g1 -> 0
+Chosen action: d7 with depth 7
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: d7 with depth 8
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: d7 with depth 9
+d7 -> 0
+f6 -> 0
+g7 -> 0
+c4 -> 0
+b4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: d7 with depth 9
+7 B--------W--------O
+6 |--W-----B-----O--|
+5 |--|--W--W--W--|--|
+4 B--B--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
+  a  b  c  d  e  f  g
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: c4 with depth 5
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 6
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 7
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 8
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 9
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 10
+f6 -> -1
+g7 -> -1
+c4 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+c3 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: c4 with depth 10
+7 B--------W--------O
+6 |--W-----B-----O--|
+5 |--|--W--W--W--|--|
+4 B--B--W     O--O--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: e4 with depth 5
+f6 -> -1
+g7 -> -1
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: f6 with depth 6
+f6 -> 0
+g7 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: f6 with depth 7
+f6 -> 0
+g7 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: f6 with depth 8
+f6 -> 0
+g7 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: f4 with depth 9
+f6 -> -1
+g7 -> -1
+e4 -> -1
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> -1
+Chosen action: f6 with depth 10
+f6 -> 0
+g7 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: f6 with depth 11
+f6 -> 0
+g7 -> 0
+e4 -> 0
+f4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: f6 with depth 11
+7 B--------W--------O
+6 |--W-----B-----W--|
+5 |--|--W--W--W--|--|
+4 B--B--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------O
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: g7 with depth 5
+g7 -> 1
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 6
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 7
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 8
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 9
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 10
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 11
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 12
+g7 -> 0
+e4 -> 0
+g4 -> 0
+b2 -> 0
+d3 -> 0
+d2 -> 0
+d1 -> 0
+e3 -> 0
+f2 -> 0
+g1 -> 0
+Chosen action: g7 with depth 12
+7 B--------W--------W
+6 |--W-----B-----W--|
+5 |--|--W--W--W--|--|
+4 B--B--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------O--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: e5e4 with depth 5
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 6
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 7
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 8
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 9
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 10
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 11
+e5e4 -> -1
+g7g4 -> -2
+Chosen action: e5e4 with depth 11
+7 B--------W--------W
+6 |--W-----B-----W--|
+5 |--|--W--W--O--|--|
+4 B--B--W     W--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: d5e5 with depth 5
+d5e5 -> 0
+g7g4 -> 0
+e4e3 -> 0
+e4e5a7 -> 0
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> 0
+e4e5c3 -> 0
+e4e5d1 -> 0
+e4e5g1 -> 0
+Chosen action: d5e5 with depth 6
+d5e5 -> 0
+g7g4 -> 0
+e4e3 -> 0
+e4e5a7 -> 0
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> 0
+e4e5c3 -> 0
+e4e5d1 -> 0
+e4e5g1 -> 0
+Chosen action: e4e5d6 with depth 7
+d5e5 -> -1
+g7g4 -> -1
+e4e3 -> -1
+e4e5a7 -> -1
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> -1
+e4e5c3 -> 0
+e4e5d1 -> -1
+e4e5g1 -> -1
+Chosen action: e4e5d6 with depth 8
+d5e5 -> -1
+g7g4 -> -1
+e4e3 -> -1
+e4e5a7 -> -1
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> 0
+e4e5c3 -> 0
+e4e5d1 -> -1
+e4e5g1 -> -1
+Chosen action: e4e5d6 with depth 9
+d5e5 -> -1
+g7g4 -> -1
+e4e3 -> -1
+e4e5a7 -> -1
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> 0
+e4e5c3 -> 0
+e4e5d1 -> -1
+e4e5g1 -> -1
+Chosen action: e4e5d6 with depth 10
+d5e5 -> -1
+g7g4 -> -1
+e4e3 -> -1
+e4e5a7 -> -1
+e4e5d6 -> 0
+e4e5b4 -> 0
+e4e5a4 -> 0
+e4e5f4 -> 0
+e4e5c3 -> 0
+e4e5d1 -> -1
+e4e5g1 -> -1
+Chosen action: e4e5d6 with depth 10
+7 B--------W--------W
+6 |--O-----O-----W--|
+5 |--|--W--W--W--|--|
+4 O--B--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 1
+Black morris in last turn: 1
+
+Chosen action: d5d6 with depth 5
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 0
+f6d6b4 -> 0
+f6d6f4 -> 0
+f6d6c3 -> 0
+g7g4 -> -1
+Chosen action: f6d6a7 with depth 6
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 1
+f6d6b4 -> 1
+f6d6f4 -> 1
+f6d6c3 -> 1
+g7g4 -> -1
+Chosen action: f6d6a7 with depth 7
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 1
+f6d6b4 -> 1
+f6d6f4 -> 1
+f6d6c3 -> 1
+g7g4 -> -1
+Chosen action: f6d6a7 with depth 8
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 1
+f6d6b4 -> 1
+f6d6f4 -> 1
+f6d6c3 -> 1
+g7g4 -> 0
+Chosen action: f6d6a7 with depth 9
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 1
+f6d6b4 -> 1
+f6d6f4 -> 1
+f6d6c3 -> 1
+g7g4 -> -1
+Chosen action: f6d6a7 with depth 10
+d5d6 -> 0
+d7d6 -> 0
+e5e4 -> 0
+f6d6a7 -> 1
+f6d6b4 -> 1
+f6d6f4 -> 1
+f6d6c3 -> 1
+g7g4 -> 0
+Chosen action: f6d6a7 with depth 10
+7 O--------W--------W
+6 |--O-----W-----O--|
+5 |--|--W--W--W--|--|
+4 B--B--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 1
+Black morris in last turn: 0
+
+Chosen action: d7a7 with depth 5
+d6f6 -> 0
+d6b6 -> 0
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d7a7 with depth 6
+d6f6 -> 0
+d6b6 -> 0
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d6f6 with depth 7
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d6f6 with depth 8
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d6f6 with depth 9
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d6f6 with depth 10
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+Chosen action: d6f6 with depth 10
+7 O--------W--------W
+6 |--O-----O-----O--|
+5 |--|--W--W--W--|--|
+4 O--B--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 1
+
+Chosen action: d5d6 with depth 5
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> -1
+Chosen action: d5d6 with depth 6
+d5d6 -> 1
+d7a7 -> 1
+d7d6 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d5d6 with depth 7
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> -1
+Chosen action: d5d6 with depth 8
+d5d6 -> 1
+d7a7 -> 1
+d7d6 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d5d6 with depth 9
+d5d6 -> 1
+d7a7 -> 1
+d7d6 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d5d6 with depth 10
+d5d6 -> 1
+d7a7 -> 1
+d7d6 -> 1
+e5e4 -> 1
+g7g4 -> 0
+Chosen action: d5d6 with depth 10
+7 O--------W--------W
+6 |--O-----W-----O--|
+5 |--|--W--O--W--|--|
+4 O--O--W     O--B--O
+3 |--|--B--O--O--|--|
+2 |--B-----O-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: c5d5f4 with depth 5
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 0
+Chosen action: c5d5f4 with depth 6
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 1
+Chosen action: c5d5f4 with depth 7
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 1
+Chosen action: c5d5f4 with depth 8
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 1
+Chosen action: c5d5f4 with depth 9
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 0
+Chosen action: c5d5f4 with depth 10
+c5d5f4 -> 1
+c5d5c3 -> 1
+c5d5b2 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d6d5f4 -> 1
+d6d5c3 -> 1
+d6d5b2 -> 1
+d7a7 -> 1
+e5e4 -> 1
+e5d5f4 -> 1
+e5d5c3 -> 1
+e5d5b2 -> 1
+g7g4 -> 1
+c4b4 -> 0
+Chosen action: c5d5f4 with depth 10
+7 O--------W--------W
+6 |--O-----W-----O--|
+5 |--|--O--W--W--|--|
+4 O--O--W     O--O--O
+3 |--|--B--O--O--|--|
+2 |--O-----B-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 1
+Black morris in last turn: 0
+
+Chosen action: d5c5 with depth 5
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 1
+c4c5d2 -> 1
+c4b4 -> 0
+Chosen action: c4c5c3 with depth 6
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 2
+c4c5d2 -> 2
+c4b4 -> 1
+Chosen action: d5c5 with depth 7
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 1
+c4c5d2 -> 1
+c4b4 -> 0
+Chosen action: d5c5 with depth 8
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 1
+c4c5d2 -> 1
+c4b4 -> 1
+Chosen action: d5c5 with depth 9
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 1
+c4c5d2 -> 1
+c4b4 -> 1
+Chosen action: d5c5 with depth 10
+d5c5 -> 1
+d6f6 -> 1
+d6b6 -> 1
+d7a7 -> 1
+e5e4 -> 1
+g7g4 -> 1
+c4c5c3 -> 1
+c4c5d2 -> 1
+c4b4 -> 1
+Chosen action: d5c5 with depth 10
+7 O--------W--------W
+6 |--O-----O-----O--|
+5 |--|--W--O--W--|--|
+4 O--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 1
+
+Chosen action: c5d5 with depth 5
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> -1
+Chosen action: c5d5 with depth 6
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 7
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 8
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 9
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 10
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 11
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 12
+c5d5 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+e5d5 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4b4 -> 0
+Chosen action: c5d5 with depth 12
+7 O--------W--------W
+6 |--O-----O-----O--|
+5 |--|--O--W--W--|--|
+4 B--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----O--|
+1 O--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: d5d6 with depth 5
+d5c5 -> -1
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 0
+c4c5g1 -> 0
+c4b4 -> 0
+Chosen action: c4c5a4 with depth 6
+d5c5 -> 0
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 1
+c4c5g1 -> 1
+c4b4 -> 0
+Chosen action: c4c5a4 with depth 7
+d5c5 -> 0
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 1
+c4c5g1 -> 1
+c4b4 -> 0
+Chosen action: c4c5a4 with depth 8
+d5c5 -> 0
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 1
+c4c5g1 -> 1
+c4b4 -> 0
+Chosen action: d5c5 with depth 9
+d5c5 -> 0
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 0
+c4c5g1 -> 0
+c4b4 -> 0
+Chosen action: d5c5 with depth 10
+d5c5 -> 0
+d5d6 -> 0
+d7a7 -> 0
+d7d6 -> 0
+e5e4 -> 0
+g7g4 -> 0
+c4c3 -> 0
+c4c5a4 -> 0
+c4c5g1 -> 0
+c4b4 -> 0
+Chosen action: d5c5 with depth 10
+7 O--------W--------W
+6 |--O-----O-----O--|
+5 |--|--O--O--W--|--|
+4 O--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 1
+
+Chosen action: d7a7 with depth 5
+d7a7 -> -2
+d7d6 -> -2
+e5e4 -> -2
+e5d5 -> -2
+g7g4 -> -2
+c4c3 -> -2
+c4c5 -> -2
+c4b4 -> -2
+Chosen action: d7a7 with depth 6
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 7
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 8
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 9
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 10
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 11
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 12
+d7a7 -> -1
+d7d6 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: d7a7 with depth 12
+7 W--------O--------W
+6 |--O-----O-----O--|
+5 |--|--O--O--W--|--|
+4 B--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----O--|
+1 O--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: e5d5 with depth 5
+a7d7 -> -2
+e5e4 -> -2
+e5d5 -> -1
+g7g4 -> -2
+g7d7 -> -2
+c4c3 -> -2
+c4c5 -> -2
+c4b4 -> -2
+Chosen action: a7d7 with depth 6
+a7d7 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+g7d7 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: a7d7 with depth 7
+a7d7 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+g7d7 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: a7d7 with depth 8
+a7d7 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+g7d7 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: a7d7 with depth 9
+a7d7 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+g7d7 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: a7d7 with depth 10
+a7d7 -> -1
+e5e4 -> -1
+e5d5 -> -1
+g7g4 -> -1
+g7d7 -> -1
+c4c3 -> -1
+c4c5 -> -1
+c4b4 -> -1
+Chosen action: a7d7 with depth 10
+7 O--------O--------W
+6 |--O-----O-----O--|
+5 |--|--O--O--W--|--|
+4 O--O--W     O--O--O
+3 |--|--O--B--O--|--|
+2 |--O-----B-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 1
+
+Chosen action: e5a7 with depth 5
+e5c5 -> -2
+e5b6 -> -2
+e5a7 -> -1
+e5d5 -> -1
+e5d6 -> -1
+e5d7 -> -1
+e5f6 -> -1
+e5b4 -> -1
+e5a4 -> -1
+e5e4 -> -1
+e5f4 -> -1
+e5g4 -> -1
+e5c3 -> -1
+e5b2 -> -1
+e5e3 -> -1
+e5f2 -> -1
+g7c5 -> -1
+g7b6 -> -1
+g7a7 -> -1
+g7d5 -> -1
+g7d6 -> -1
+g7d7 -> -1
+g7f6 -> -1
+g7b4 -> -1
+g7a4 -> -1
+g7e4 -> -1
+g7f4 -> -1
+g7g4 -> -1
+g7c3 -> -1
+g7b2 -> -1
+g7e3 -> -1
+g7f2 -> -1
+c4c5 -> -1
+c4b6 -> -1
+c4a7 -> -1
+c4d5 -> -1
+c4d6 -> -1
+c4d7 -> -1
+c4f6 -> -1
+c4b4 -> -1
+c4a4 -> -1
+c4e4 -> -1
+c4f4 -> -1
+c4g4 -> -1
+c4c3 -> -1
+c4b2 -> -1
+c4e3 -> -1
+c4f2 -> -2
+Chosen action: e5a7 with depth 6
+e5c5 -> -1
+e5b6 -> -1
+e5a7 -> 0
+e5d5 -> 0
+e5d6 -> 0
+e5d7 -> 0
+e5f6 -> 0
+e5b4 -> 0
+e5a4 -> 0
+e5e4 -> 0
+e5f4 -> 0
+e5g4 -> 0
+e5c3 -> 0
+e5b2 -> 0
+e5e3 -> 0
+e5f2 -> 0
+g7c5 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7c3 -> 0
+g7b2 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4c5 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4c3 -> 0
+c4b2 -> 0
+c4e3 -> 0
+c4f2 -> -1
+Chosen action: e5c5 with depth 7
+e5c5 -> 0
+e5b6 -> 0
+e5a7 -> 0
+e5d5 -> 0
+e5d6 -> 0
+e5d7 -> 0
+e5f6 -> 0
+e5b4 -> 0
+e5a4 -> 0
+e5e4 -> 0
+e5f4 -> 0
+e5g4 -> 0
+e5c3 -> 0
+e5b2 -> 0
+e5e3 -> 0
+e5f2 -> 0
+g7c5 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7c3 -> 0
+g7b2 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4c5 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4c3 -> 0
+c4b2 -> 0
+c4e3 -> 0
+c4f2 -> -1
+Chosen action: e5c5 with depth 8
+e5c5 -> 0
+e5b6 -> 0
+e5a7 -> 0
+e5d5 -> 0
+e5d6 -> 0
+e5d7 -> 0
+e5f6 -> 0
+e5b4 -> 0
+e5a4 -> 0
+e5e4 -> 0
+e5f4 -> 0
+e5g4 -> 0
+e5c3 -> 0
+e5b2 -> 0
+e5e3 -> 0
+e5f2 -> 0
+g7c5 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7c3 -> 0
+g7b2 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4c5 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4c3 -> 0
+c4b2 -> 0
+c4e3 -> 0
+c4f2 -> 0
+Chosen action: e5c5 with depth 9
+e5c5 -> 0
+e5b6 -> 0
+e5a7 -> 0
+e5d5 -> 0
+e5d6 -> 0
+e5d7 -> 0
+e5f6 -> 0
+e5b4 -> 0
+e5a4 -> 0
+e5e4 -> 0
+e5f4 -> 0
+e5g4 -> 0
+e5c3 -> 0
+e5b2 -> 0
+e5e3 -> 0
+e5f2 -> 0
+g7c5 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7c3 -> 0
+g7b2 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4c5 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4c3 -> 0
+c4b2 -> 0
+c4e3 -> 0
+c4f2 -> 0
+Chosen action: e5c5 with depth 9
+7 O--------O--------W
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--W     O--O--O
+3 |--|--B--O--O--|--|
+2 |--O-----B-----O--|
+1 B--------B--------B
+  a  b  c  d  e  f  g
+
+White morris in last turn: 0
+Black morris in last turn: 0
+
+Chosen action: c5b6 with depth 5
+c5b6 -> -1
+c5a7 -> -1
+c5d5 -> -1
+c5d6 -> -1
+c5d7 -> -1
+c5e5 -> -1
+c5f6 -> -1
+c5b4 -> -1
+c5a4 -> -1
+c5e4 -> -1
+c5f4 -> -1
+c5g4 -> -1
+c5b2 -> -1
+c5d3 -> -1
+c5e3 -> -1
+c5f2 -> -1
+g7b6 -> -1
+g7a7 -> -1
+g7d5 -> -1
+g7d6 -> -1
+g7d7 -> -1
+g7e5 -> -1
+g7f6 -> -1
+g7b4 -> -1
+g7a4 -> -1
+g7e4 -> -1
+g7f4 -> -1
+g7g4 -> -1
+g7b2 -> -1
+g7d3 -> -1
+g7e3 -> -1
+g7f2 -> -1
+c4b6 -> -1
+c4a7 -> -1
+c4d5 -> -1
+c4d6 -> -1
+c4d7 -> -1
+c4e5 -> -1
+c4f6 -> -1
+c4b4 -> -1
+c4a4 -> -1
+c4e4 -> -1
+c4f4 -> -1
+c4g4 -> -1
+c4b2 -> -1
+c4d3 -> -1
+c4e3 -> -1
+c4f2 -> -2
+Chosen action: c5a7 with depth 6
+c5b6 -> -1
+c5a7 -> 0
+c5d5 -> 0
+c5d6 -> 0
+c5d7 -> 0
+c5e5 -> 0
+c5f6 -> 0
+c5b4 -> 0
+c5a4 -> 0
+c5e4 -> 0
+c5f4 -> 0
+c5g4 -> 0
+c5b2 -> 0
+c5d3 -> 0
+c5e3 -> 0
+c5f2 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7e5 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7b2 -> 0
+g7d3 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4e5 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4b2 -> 0
+c4d3 -> 0
+c4e3 -> 0
+c4f2 -> -1
+Chosen action: c5b6 with depth 7
+c5b6 -> 0
+c5a7 -> 0
+c5d5 -> 0
+c5d6 -> 0
+c5d7 -> 0
+c5e5 -> 0
+c5f6 -> 0
+c5b4 -> 0
+c5a4 -> 0
+c5e4 -> 0
+c5f4 -> 0
+c5g4 -> 0
+c5b2 -> 0
+c5d3 -> 0
+c5e3 -> 0
+c5f2 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7e5 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7b2 -> 0
+g7d3 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4e5 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4b2 -> 0
+c4d3 -> 0
+c4e3 -> 0
+c4f2 -> 0
+Chosen action: c5b6 with depth 8
+c5b6 -> 0
+c5a7 -> 0
+c5d5 -> 0
+c5d6 -> 0
+c5d7 -> 0
+c5e5 -> 0
+c5f6 -> 0
+c5b4 -> 0
+c5a4 -> 0
+c5e4 -> 0
+c5f4 -> 0
+c5g4 -> 0
+c5b2 -> 0
+c5d3 -> 0
+c5e3 -> 0
+c5f2 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7e5 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7b2 -> 0
+g7d3 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4e5 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4b2 -> 0
+c4d3 -> 0
+c4e3 -> 0
+c4f2 -> 0
+Chosen action: c5b6 with depth 9
+c5b6 -> 0
+c5a7 -> 0
+c5d5 -> 0
+c5d6 -> 0
+c5d7 -> 0
+c5e5 -> 0
+c5f6 -> 0
+c5b4 -> 0
+c5a4 -> 0
+c5e4 -> 0
+c5f4 -> 0
+c5g4 -> 0
+c5b2 -> 0
+c5d3 -> 0
+c5e3 -> 0
+c5f2 -> 0
+g7b6 -> 0
+g7a7 -> 0
+g7d5 -> 0
+g7d6 -> 0
+g7d7 -> 0
+g7e5 -> 0
+g7f6 -> 0
+g7b4 -> 0
+g7a4 -> 0
+g7e4 -> 0
+g7f4 -> 0
+g7g4 -> 0
+g7b2 -> 0
+g7d3 -> 0
+g7e3 -> 0
+g7f2 -> 0
+c4b6 -> 0
+c4a7 -> 0
+c4d5 -> 0
+c4d6 -> 0
+c4d7 -> 0
+c4e5 -> 0
+c4f6 -> 0
+c4b4 -> 0
+c4a4 -> 0
+c4e4 -> 0
+c4f4 -> 0
+c4g4 -> 0
+c4b2 -> 0
+c4d3 -> 0
+c4e3 -> 0
+c4f2 -> 0
+Chosen action: c5b6 with depth 9
+Terminate batch job (Y/N)? 
