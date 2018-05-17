@@ -5,12 +5,12 @@
  *      Author: Luca
  */
 
-#ifndef MINMAXAI_H_
-#define MINMAXAI_H_
+#ifndef AI_MINMAXAI_H_
+#define AI_MINMAXAI_H_
 
+#include "../Utils/ExpVector.h"
 #include "AI.h"
-#include "ExpVector.h"
-#include "ZobristHashing.h"
+#include "Hash/ZobristHashing.h"
 
 class MinMaxAI: public AI {
 private:
@@ -38,4 +38,4 @@ public:
 	virtual void clearHistory();
 };
 
-#endif /* MINMAXAI_H_ */
+#endif /* AI_MINMAXAI_H_ */

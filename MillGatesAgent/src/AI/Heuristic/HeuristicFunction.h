@@ -8,8 +8,8 @@
 #ifndef HEURISTICFUNCTION_H_
 #define HEURISTICFUNCTION_H_
 
-#include "Commons.h"
-#include "State.h"
+#include "../../Commons.h"
+#include "../../Domain/State.h"
 
 class HeuristicFunction {
 public:

@@ -6,12 +6,13 @@
  */
 
 #include <stdio.h>
-#include "State.h"
-#include "CubeStateImpl.h"
-#include "IterativeDeepeningAI.h"
-#include "connection.h"
 #include <iostream>
 #include <time.h>
+
+#include "AI/IterativeDeepeningAI.h"
+#include "Domain/CubeStateImpl.h"
+#include "Domain/State.h"
+#include "Netcode/connection.h"
 
 #if !defined(DEBUG)
 

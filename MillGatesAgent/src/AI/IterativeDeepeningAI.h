@@ -5,8 +5,8 @@
  *      Author: Luca
  */
 
-#ifndef ITERATIVEDEEPENINGAI_H_
-#define ITERATIVEDEEPENINGAI_H_
+#ifndef AI_ITERATIVEDEEPENINGAI_H_
+#define AI_ITERATIVEDEEPENINGAI_H_
 
 #include "NegaScoutAI.h"
 
@@ -34,4 +34,4 @@ public:
 	void * timer();
 };
 
-#endif /* ITERATIVEDEEPENINGAI_H_ */
+#endif /* AI_ITERATIVEDEEPENINGAI_H_ */

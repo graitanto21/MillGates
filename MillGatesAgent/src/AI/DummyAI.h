@@ -5,8 +5,8 @@
  *      Author: Luca
  */
 
-#ifndef DUMMYAI_H_
-#define DUMMYAI_H_
+#ifndef AI_DUMMYAI_H_
+#define AI_DUMMYAI_H_
 
 #include "AI.h"
 
@@ -24,4 +24,4 @@ public:
 	virtual void clearHistory();
 };
 
-#endif /* DUMMYAI_H_ */
+#endif /* AI_DUMMYAI_H_ */

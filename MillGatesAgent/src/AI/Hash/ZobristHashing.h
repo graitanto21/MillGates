@@ -5,12 +5,12 @@
  *      Author: Luca
  */
 
-#ifndef ZOBRISTHASHING_H_
-#define ZOBRISTHASHING_H_
+#ifndef AI_HASH_ZOBRISTHASHING_H_
+#define AI_HASH_ZOBRISTHASHING_H_
 
-#include "Commons.h"
-#include "State.h"
+#include "../../Commons.h"
 #include <stdlib.h>
+#include "../../Domain/State.h"
 
 class ZobristHashing {
 private:
@@ -28,4 +28,4 @@ public:
 	virtual ~ZobristHashing();
 };
 
-#endif /* ZOBRISTHASHING_H_ */
+#endif /* AI_HASH_ZOBRISTHASHING_H_ */

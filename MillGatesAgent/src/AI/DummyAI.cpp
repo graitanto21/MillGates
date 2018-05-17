@@ -6,9 +6,10 @@
  */
 
 #include "DummyAI.h"
-#include "ExpVector.h"
+
 #include <time.h>
 #include <stdlib.h>
+#include "../Utils/ExpVector.h"
 
 DummyAI::DummyAI() {}
 

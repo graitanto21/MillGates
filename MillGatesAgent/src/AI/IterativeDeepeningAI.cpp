@@ -6,9 +6,10 @@
  */
 
 #include "IterativeDeepeningAI.h"
+
 #include <pthread.h>
 #include <semaphore.h>
-#include "os.h"
+#include "../os.h"
 #if defined(WINDOWS)
 #endif
 #include "windows.h"

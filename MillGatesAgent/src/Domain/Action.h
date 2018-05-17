@@ -5,11 +5,11 @@
  *      Author: Luca
  */
 
-#ifndef ACTION_H_
-#define ACTION_H_
+#ifndef DOMAIN_ACTION_H_
+#define DOMAIN_ACTION_H_
 
 #include <iostream>
-#include "Commons.h"
+#include "../Commons.h"
 
 class Action {
 private:
@@ -35,4 +35,4 @@ public:
 // To print a state without explicitly calling every time the ToString().
 std::ostream& operator<<(std::ostream &strm, const Action &a);
 
-#endif /* ACTION_H_ */
+#endif /* DOMAIN_ACTION_H_ */

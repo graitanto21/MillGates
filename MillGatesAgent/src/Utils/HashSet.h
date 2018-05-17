@@ -5,12 +5,12 @@
  *      Author: Luca
  */
 
-#ifndef HASHSET_H_
-#define HASHSET_H_
+#ifndef UTILS_HASHSET_H_
+#define UTILS_HASHSET_H_
 
+#include "../Commons.h"
+#include "../Domain/State.h"
 #include "ExpVector.h"
-#include "State.h"
-#include "Commons.h"
 
 template <class T> struct HashSetEntry {
 	hashcode hash;
@@ -35,4 +35,4 @@ public:
 
 #include "HashSet.hpp"
 
-#endif /* HASHSET_H_ */
+#endif /* UTILS_HASHSET_H_ */

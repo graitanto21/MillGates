@@ -6,17 +6,17 @@
  */
 
 
-#include "CubeStateImpl.h"
-#include "State.h"
 #include <iostream>
-#include "MinMaxAI.h"
-#include "DummyAI.h"
-#include "NegaScoutAI.h"
-#include "IterativeDeepeningAI.h"
-#include "HashSet.h"
 #include <string.h>
 
-#include "ZobristHashing.h"
+#include "../AI/DummyAI.h"
+#include "../AI/Hash/ZobristHashing.h"
+#include "../AI/IterativeDeepeningAI.h"
+#include "../AI/MinMaxAI.h"
+#include "../AI/NegaScoutAI.h"
+#include "../Domain/CubeStateImpl.h"
+#include "../Domain/State.h"
+#include "../Utils/HashSet.h"
 
 State * random_state() {
 	State * result = new CubeStateImpl();

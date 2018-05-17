@@ -5,14 +5,15 @@
  *      Author: Lorenzo Rosa
  */
 
-#ifndef STATE_H_
-#define STATE_H_
+#ifndef DOMAIN_STATE_H_
+#define DOMAIN_STATE_H_
 
-#include "Commons.h"
-#include "ExpVector.h"
-#include "Action.h"
+#include "../Commons.h"
 #include <iostream>
 #include <string>
+
+#include "../Utils/ExpVector.h"
+#include "Action.h"
 
 class State {
 
@@ -92,4 +93,4 @@ public:
 std::ostream& operator<<(std::ostream &strm, const State &s);
 
 
-#endif /* STATE_H_ */
+#endif /* DOMAIN_STATE_H_ */

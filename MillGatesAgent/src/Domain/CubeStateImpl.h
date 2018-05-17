@@ -5,10 +5,10 @@
  *      Author: Lorenzo Rosa
  */
 
-#ifndef CUBESTATEIMPL_H_
-#define CUBESTATEIMPL_H_
+#ifndef DOMAIN_CUBESTATEIMPL_H_
+#define DOMAIN_CUBESTATEIMPL_H_
 
-#include "Commons.h"
+#include "../Commons.h"
 #include "State.h"
 
 class CubeStateImpl : public State {
@@ -35,4 +35,4 @@ public:
 	virtual ~CubeStateImpl();
 };
 
-#endif /* CUBESTATEIMPL_H_ */
+#endif /* DOMAIN_CUBESTATEIMPL_H_ */

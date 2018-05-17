@@ -5,16 +5,16 @@
  *      Author: Luca
  */
 
-#ifndef NEGASCOUTAI_H_
-#define NEGASCOUTAI_H_
+#ifndef AI_NEGASCOUTAI_H_
+#define AI_NEGASCOUTAI_H_
 
+#include "../Utils/ExpVector.h"
+#include "../Utils/HashSet.h"
 #include "AI.h"
-#include "ZobristHashing.h"
-#include "ExpVector.h"
-#include "HashSet.h"
-#include "HeuristicFunction.h"
-#include "RomanianHeuristic.h"
-#include "PawnCountHeuristic.h"
+#include "Hash/ZobristHashing.h"
+#include "Heuristic/HeuristicFunction.h"
+#include "Heuristic/PawnCountHeuristic.h"
+#include "Heuristic/RomanianHeuristic.h"
 
 class NegaScoutAI: public AI {
 private:
@@ -47,4 +47,4 @@ public:
 	virtual ~NegaScoutAI();
 };
 
-#endif /* NEGASCOUTAI_H_ */
+#endif /* AI_NEGASCOUTAI_H_ */

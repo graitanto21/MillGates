@@ -5,11 +5,11 @@
  *      Author: Luca
  */
 
-#ifndef NODE_H_
-#define NODE_H_
+#ifndef DOMAIN_NODE_H_
+#define DOMAIN_NODE_H_
 
+#include "../Utils/ExpVector.h"
 #include "State.h"
-#include "ExpVector.h"
 
 //typedef unsigned char sasso;
 
@@ -37,4 +37,4 @@ public:
 
 };
 
-#endif /* NODE_H_ */
+#endif /* DOMAIN_NODE_H_ */

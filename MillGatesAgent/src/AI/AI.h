@@ -5,11 +5,11 @@
  *      Author: Luca
  */
 
-#ifndef AI_H_
-#define AI_H_
+#ifndef AI_AI_H_
+#define AI_AI_H_
 
-#include "Action.h"
-#include "State.h"
+#include "../Domain/Action.h"
+#include "../Domain/State.h"
 
 typedef struct {
 	uint8 depth;
@@ -30,4 +30,4 @@ public:
 
 };
 
-#endif /* AI_H_ */
+#endif /* AI_AI_H_ */
