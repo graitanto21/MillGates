@@ -43,6 +43,7 @@ public:
 	virtual void clearHistory();
 
 	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
+	void setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
 
 	virtual ~NegaScoutAI();
 };

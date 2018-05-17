@@ -13,7 +13,7 @@ NegaScoutAI::NegaScoutAI() {
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 	_history = new ExpVector<hashcode>();
-	_heuristic = new PawnCountHeuristic();
+	_heuristic = new RomanianHeuristic();
 }
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
@@ -65,21 +65,23 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
 	entry * e_tmp;
-	bool child_loop;
+	bool child_loop, thereIs;
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
-		_table->get(child_hash, &e_tmp);
-		//		if (e_tmp != NULL)
-		//			values->add(e_tmp->eval * color);
-		//		else //Else I have to estimate the value using function
-		for (short j = _history->getLogicSize() - 1; j >= 0; j--)
-			if (_history->get(j) == child_hash && _depth + 1 != depth) {
-				child_loop = true;
-				break;
-			}
-		values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * color);
+		thereIs = _table->get(quickhash, &e_tmp);
+		if (thereIs && e->depth >= depth-1)
+			values->add(e_tmp->eval * color);
+		else {//Else I have to estimate the value using function
+			for (short j = _history->getLogicSize() - 1; j >= 0; j--)
+				if (_history->get(j) == child_hash && _depth + 1 != depth) {
+					child_loop = true;
+					break;
+				}
+			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * color);
+		}
 	}
 
-	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
+//	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
+	setMaxFirst(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash);
 
 	//Negascout
 	State * child = NULL;
@@ -239,6 +241,24 @@ void NegaScoutAI::print(State * state, int depth) {
 
 	recurprint(state, depth, 0);
 
+}
+
+void NegaScoutAI::setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash) {
+	// Find max
+	eval_t max = values->get(0);
+	eval_t indexMax = 0;
+	for(eval_t i=1; i<values->getLogicSize(); i++) {
+		if(values->get(i) > max) {
+			max = values->get(i);
+			indexMax = i;
+		}
+	}
+	if(indexMax!=0) {
+		actions->swap(0, indexMax);
+		states->swap(0, indexMax);
+		hashes->swap(0, indexMax);
+		values->swap(0, indexMax);
+	}
 }
 
 void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash) {
