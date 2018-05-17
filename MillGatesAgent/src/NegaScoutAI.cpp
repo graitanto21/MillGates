@@ -52,7 +52,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	hashcode child_hash = 0;
 	ExpVector<Action> * actions = state->getActions();
 
-	//Ordering
+	//Ordering section ==> TODO put inside a fuction...
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
 	for(eval_t i = 0; i < actions->getLogicSize(); i++){
 			states->add(state->result(actions->get(i)));
@@ -72,11 +72,12 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	}
 	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
 
+
 	//Negascout
 	State * child = NULL;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 		child = states->get(i);
-		child_hash = _hasher->quickHash(state, actions->get(i), quickhash);
+		child_hash = hashes->get(i);
 		if(i != 0) {
 			score = -negaScout(child, child_hash, depth - 1, -alpha - 1, -alpha, -color);
 			if (score > alpha && score < beta)
