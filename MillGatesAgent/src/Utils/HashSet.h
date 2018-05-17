@@ -21,9 +21,11 @@ template <class T> class HashSet {
 private:
 
 	std::vector<ExpVector<HashSetEntry<T>*>*> * _table;
+	unsigned long long _hashMask;
 
 public:
 	HashSet();
+	HashSet(uint8 bits);
 
 	virtual bool get(hashcode hash, T ** ret);
 	virtual void add(hashcode hash, T entry);
