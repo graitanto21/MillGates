@@ -61,7 +61,16 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
 		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
 	}
-	quickSort(state, states, hashes, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
+	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
+	entry * e_tmp;
+	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+		e_tmp = _table->get(child_hash);
+		if (e_tmp != NULL)
+			values->add(e_tmp->eval * color);
+		else //Else I have to estimate the value using function
+			values->add(_heuristic->evaluate(states->get(i), terminal, loop) * color);
+	}
+	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, color, quickhash, terminal, loop);
 
 	//Negascout
 	State * child = NULL;
@@ -85,6 +94,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	delete actions;
 	delete hashes;
 	delete states;
+	delete values;
 
 	if (e == NULL) {
 		e = new entry();
@@ -218,48 +228,35 @@ void NegaScoutAI::print(State * state, int depth) {
 
 }
 
-void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop) {
+void NegaScoutAI::quickSort(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop) {
 	if(lo < hi) {
-		uint8 p = partition(state, states, hashes, actions, lo, hi, color, quickhash, terminal, loop);
-		quickSort(state, states, hashes, actions, lo, p-1, color, quickhash, terminal, loop);
-		quickSort(state, states, hashes, actions, p+1, hi, color, quickhash, terminal, loop);
+		uint8 p = partition(state, states, hashes, values, actions, lo, hi, color, quickhash, terminal, loop);
+		quickSort(state, states, hashes, values, actions, lo, p-1, color, quickhash, terminal, loop);
+		quickSort(state, states, hashes, values, actions, p+1, hi, color, quickhash, terminal, loop);
 	}
 }
 
-uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop){
+uint8 NegaScoutAI::partition(State*state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t lo, eval_t hi, sint8 color, hashcode quickhash, bool terminal, bool loop){
 	//Find the pivot
-	sint8 x;
-	hashcode child_hash = hashes->get(hi);
-	entry * e = _table->get(child_hash);
-			if (e != NULL)
-				x = e->eval * color;
-			else //Else I have to estimate the value using function
-				x = _heuristic->evaluate(states->get(hi), terminal, loop) * color;
+	sint8 x = values->get(hi);
 	eval_t i = lo-1;
 	eval_t value;
 
 	for(int j=lo; j<hi-1; j++)   {
-		//get the resulting state
-		child_hash = hashes->get(hi);
-
-		//If I have the value of the state resulting from the Action, I use it
-		e = _table->get(child_hash);
-		if (e != NULL)
-			value = e->eval * color;
-		else //Else I have to estimate the value using function
-			value = _heuristic->evaluate(states->get(j), terminal, loop) * color;
-
+		value = values->get(j);
 		if (value > x){
 			i++;
 			actions->swap(i,j);
 //			std::cout << "SWAP: " << actions->get(i) << "(" << value << ") with " << actions->get(j) << "\n";
 			states->swap(i,j);
 			hashes->swap(i, j);
+			values->swap(i,j);
 		}
 	}
 	actions->swap(i+1, hi);
 	states->swap(i+1, hi);
 	hashes->swap(i+1, hi);
+	values->swap(i+1, hi);
 	return i+1;
 }
 

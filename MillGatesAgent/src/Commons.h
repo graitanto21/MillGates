@@ -8,7 +8,7 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-//#define DEBUG //
+//#define DEBUG
 
 #define CUBE_SIZE_X 3
 #define CUBE_SIZE_Y 3
