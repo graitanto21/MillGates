@@ -23,10 +23,10 @@ terminal                   0
 
 
 7 O--------O--------O
-6 |--W-----O-----O--|
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--B--|--|
+4 O--O--W     O--O--O
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
 1 O--------O--------O
   a  b  c  d  e  f  g
@@ -36,19 +36,19 @@ pawns on board             2, 1
 new morris                 0
 morrises                   0, 0
 blocked pawns              0, 0
-potential morrises         0, 0
+potential morrises         1, 0
 potential double morrises  0, 0
 double morrises            0, 0
 terminal                   0
 
 
-7 O--------O--------O
-6 |--W-----B-----O--|
+7 B--------O--------O
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
 4 O--O--W     O--O--O
-3 |--|--O--O--B--|--|
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
-1 O--------O--------O
+1 W--------O--------O
   a  b  c  d  e  f  g
 
 pawns to play              6, 7
@@ -62,46 +62,4 @@ double morrises            0, 0
 terminal                   0
 
 
-7 O--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              5, 6
-pawns on board             4, 2
-new morris                 0
-morrises                   1, 0
-blocked pawns              0, 0
-potential morrises         0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-7 B--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--W--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              4, 5
-pawns on board             5, 3
-new morris                 0
-morrises                   1, 0
-blocked pawns              2, 0
-potential morrises         2, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-connection closed
-
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>
+^C

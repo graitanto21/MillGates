@@ -86,7 +86,7 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 				8 		* doubleMorrises +
 				1086 	* winning;
 	}
-	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard == 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard == 3)) { //Phase 3
+	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard <= 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard <= 3)) { //Phase 3
 
 		sint8 potentialSingleMorrises; // (5)
 		potentialSingleMorrises = state->potentialMorrisCount(PAWN_WHITE) - state->potentialMorrisCount(PAWN_BLACK);

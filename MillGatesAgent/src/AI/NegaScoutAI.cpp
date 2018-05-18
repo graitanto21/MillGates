@@ -150,12 +150,6 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	entryFlag_t flag = ALPHA_PRUNE;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 
-		//		//DEBUG TODO
-		//		if (actions->get(i).getSrc() == Position{0,0,0} && actions->get(i).getDest() == Position{1,2,0}){
-		//			std::cout << "sasso\n";
-		//		}
-		//		//DEBUG TODO
-
 		child = states->get(i);
 		child_hash = hashes->get(i);
 		if(i == 0)

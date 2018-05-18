@@ -37,12 +37,12 @@ White Checkers On Board: 1;
 Black Checkers On Board: 0;
 
 Waiting for B move...
-Player B move n1: e3
+Player B move n1: b6
 7 O--------O--------O
-6 |--O-----O-----O--|
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
 4 O--O--O     O--O--O
-3 |--|--O--O--B--|--|
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
 1 O--------O--------O
   a  b  c  d  e  f  g
@@ -53,12 +53,12 @@ White Checkers On Board: 1;
 Black Checkers On Board: 1;
 
 Waiting for W move...
-Player W move n2: b6
+Player W move n2: c4
 7 O--------O--------O
-6 |--W-----O-----O--|
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--B--|--|
+4 O--O--W     O--O--O
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
 1 O--------O--------O
   a  b  c  d  e  f  g
@@ -69,12 +69,12 @@ White Checkers On Board: 2;
 Black Checkers On Board: 1;
 
 Waiting for B move...
-Player B move n2: d6
-7 O--------O--------O
-6 |--W-----B-----O--|
+Player B move n2: a7
+7 B--------O--------O
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--B--|--|
+4 O--O--W     O--O--O
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
 1 O--------O--------O
   a  b  c  d  e  f  g
@@ -85,14 +85,14 @@ White Checkers On Board: 2;
 Black Checkers On Board: 2;
 
 Waiting for W move...
-Player W move n3: c4
-7 O--------O--------O
-6 |--W-----B-----O--|
+Player W move n3: a1
+7 B--------O--------O
+6 |--B-----O-----O--|
 5 |--|--W--O--O--|--|
 4 O--O--W     O--O--O
-3 |--|--O--O--B--|--|
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
-1 O--------O--------O
+1 W--------O--------O
   a  b  c  d  e  f  g
 Phase: First;
 White Checkers: 6;
@@ -101,14 +101,14 @@ White Checkers On Board: 3;
 Black Checkers On Board: 2;
 
 Waiting for B move...
-Player B move n3: b4
-7 O--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--B--W     O--O--O
-3 |--|--O--O--B--|--|
+Player B move n3: e5
+7 B--------O--------O
+6 |--B-----O-----O--|
+5 |--|--W--O--B--|--|
+4 O--O--W     O--O--O
+3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
-1 O--------O--------O
+1 W--------O--------O
   a  b  c  d  e  f  g
 Phase: First;
 White Checkers: 6;
@@ -117,75 +117,4 @@ White Checkers On Board: 3;
 Black Checkers On Board: 3;
 
 Waiting for W move...
-Player W move n4: c3b4
-7 O--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-Phase: First;
-White Checkers: 5;
-Black Checkers: 6;
-White Checkers On Board: 4;
-Black Checkers On Board: 2;
-
-Waiting for B move...
-Player B move n4: a7
-7 B--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--O--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-Phase: First;
-White Checkers: 5;
-Black Checkers: 5;
-White Checkers On Board: 4;
-Black Checkers On Board: 3;
-
-Waiting for W move...
-Player W move n5: b4
-7 B--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--O--O--|--|
-4 O--W--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-Phase: First;
-White Checkers: 4;
-Black Checkers: 5;
-White Checkers On Board: 5;
-Black Checkers On Board: 3;
-
-Waiting for B move...
-Player B move n5: d5
-7 B--------O--------O
-6 |--W-----B-----O--|
-5 |--|--W--B--O--|--|
-4 O--W--W     O--O--O
-3 |--|--W--O--B--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-Phase: First;
-White Checkers: 4;
-Black Checkers: 4;
-White Checkers On Board: 5;
-Black Checkers On Board: 4;
-
-Waiting for W move...
-Player W move n6: b4d6
-it.unibo.ai.didattica.mulino.actions.PositionNotEmptyException: Position b4 Not Empty
-	at it.unibo.ai.didattica.mulino.actions.Phase1.initialChecks(Phase1.java:78)
-	at it.unibo.ai.didattica.mulino.actions.Phase1.applyMove(Phase1.java:25)
-	at it.unibo.ai.didattica.mulino.engine.Engine.run(Engine.java:156)
-	at it.unibo.ai.didattica.mulino.engine.Engine.main(Engine.java:224)
-
-C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>
+^C
