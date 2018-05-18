@@ -76,11 +76,11 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	entryFlag_t flag = ALPHA_PRUNE;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 
-//		//DEBUG TODO
-//		if (actions->get(i).getSrc() == Position{0,0,0} && actions->get(i).getDest() == Position{1,2,0}){
-//			std::cout << "sasso\n";
-//		}
-//		//DEBUG TODO
+		//		//DEBUG TODO
+		//		if (actions->get(i).getSrc() == Position{0,0,0} && actions->get(i).getDest() == Position{1,2,0}){
+		//			std::cout << "sasso\n";
+		//		}
+		//		//DEBUG TODO
 
 		child = states->get(i);
 		child_hash = hashes->get(i);
@@ -99,11 +99,11 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 			flag = EXACT;
 		}
 
-//		if (score >= beta) {
-//			flag = BETA_PRUNE;
-//			alpha = beta;
-//			break;
-//		}
+		//		if (score >= beta) {
+		//			flag = BETA_PRUNE;
+		//			alpha = beta;
+		//			break;
+		//		}
 		if (alpha >= beta) {
 			flag = BETA_PRUNE;
 			break;
@@ -164,30 +164,17 @@ Action NegaScoutAI::choose(State * state) {
 	hashcode quickhash, hash;
 
 	hash = _hasher->hash(state);
+	uint8 color = state->getPlayer() == PAWN_WHITE ? 1 : 1;
 
-	if (state->getPlayer() == PAWN_WHITE) {
-		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, 1);
-		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			quickhash = _hasher->quickHash(state, actions->get(i), hash);
-			_table->get(quickhash, &tempscore);
-			if (tempscore != NULL)
-				if (i == 0 || (tempscore->eval > score && tempscore->entryFlag == EXACT)) {
-					score = tempscore->eval;
-					res = actions->get(i);
-				}
-		}
-	}
-	else {
-		negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, -1);
-		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
-			quickhash = _hasher->quickHash(state, actions->get(i), hash);
-			_table->get(quickhash, &tempscore);
-			if (tempscore != NULL)
-				if (i == 0 || (tempscore->eval < score && tempscore->entryFlag == EXACT)) {
-					score = tempscore->eval;
-					res = actions->get(i);
-				}
-		}
+	negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, color);
+	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
+		quickhash = _hasher->quickHash(state, actions->get(i), hash);
+		_table->get(quickhash, &tempscore);
+		if (tempscore != NULL)
+			if (i == 0 || (tempscore->eval * color > score * color && tempscore->entryFlag == EXACT)) {
+				score = tempscore->eval;
+				res = actions->get(i);
+			}
 	}
 
 	delete actions;
