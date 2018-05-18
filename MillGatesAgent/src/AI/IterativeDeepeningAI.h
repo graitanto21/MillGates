@@ -12,7 +12,7 @@
 
 void * timer(void * args);
 
-class IterativeDeepeningAI {
+class IterativeDeepeningAI : public AI{
 private:
 	AI * _ai;
 	Action _tempAction;

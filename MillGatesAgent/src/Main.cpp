@@ -21,10 +21,81 @@
 
 using namespace std;
 
+State * receiveState(State * old, pawn player) {
+	char stateStr[STATE_STRLEN];
+	State * state;
+	uint8 myPawns;
+
+	if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
+		exit(1);
+
+	stateStr[STATE_STRLEN - 1] = '\0';
+
+	state = new CubeStateImpl(stateStr);
+
+	myPawns = old->getPawnsToPlay(player) + old->getPawnsOnBoard(player);
+
+	state->setNewMorris(state->getPawnsToPlay(player) + state->getPawnsOnBoard(player) < myPawns);
+	state->setPlayer(player);
+	state->print();
+
+	return state;
+}
+
+void sendAction(Action action) {
+	char actionStr[ACTION_STRLEN];
+
+	memset(actionStr, 0, sizeof(actionStr));
+	strcpy(actionStr, action.toString().c_str());
+
+	if (send_data(actionStr, ACTION_STRLEN) == FAILURE)
+		exit(1);
+}
+
+void loop(pawn player) {
+
+	AI * ai = new IterativeDeepeningAI();
+	((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
+
+	State * state = new CubeStateImpl();
+	State * child;
+	Action action;
+
+	if (player == PAWN_WHITE) {
+
+		state->setPlayer(PAWN_WHITE);
+		while(1) {
+			action = ai->choose(state);
+			sendAction(action);
+			child = state->result(action);
+			ai->addHistory(child);
+			delete state;
+			state = receiveState(child, PAWN_WHITE);
+			delete child;
+		}
+	}
+	else if (player == PAWN_BLACK) {
+		child = state->clone();
+		state = receiveState(child, PAWN_WHITE);
+		delete child;
+		while(1) {
+			action = ai->choose(state);
+			sendAction(action);
+			child = state->result(action);
+			ai->addHistory(child);
+			delete state;
+			state = receiveState(child, PAWN_WHITE);
+			delete child;
+		}
+	}
+
+	delete ai;
+
+}
+
 int main(int argc, char* argv[]) {
 
-	char actionStr[ACTION_STRLEN];
-	char stateStr[STATE_STRLEN];
+	pawn player;
 
 	if (argc != 2) {
 		exit(1);
@@ -32,53 +103,14 @@ int main(int argc, char* argv[]) {
 
 	start_connection();
 
-	//srand(time(NULL));
-	srand(8000);
+	srand(time(NULL));
 
-	IterativeDeepeningAI ai;
-	ai.setAI(new NegaScoutAI());
+	if (!strcmp(argv[1], "white"))
+		player = PAWN_WHITE;
+	else
+		player = PAWN_BLACK;
 
-	State * state = new CubeStateImpl();
-	State * app;
-	Action action;
-	uint8 myPawns = 0;
-
-	if (!strcmp(argv[1], "white")) {
-
-		state->setPlayer(PAWN_WHITE);
-		while(1) {
-			ai.addHistory(state);
-			action = ai.choose(state);
-			memset(actionStr, 0, sizeof(actionStr));
-			strcpy(actionStr, action.toString().c_str());
-
-			if (send_data(actionStr, ACTION_STRLEN) == FAILURE)
-				exit(1);
-			if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
-				exit(1);
-
-			stateStr[STATE_STRLEN - 1] = '\0';
-			app = state->result(action);
-			delete state;
-			myPawns = app->getPawnsToPlay(PAWN_WHITE) + app->getPawnsOnBoard(PAWN_WHITE);
-			ai.addHistory(app);
-			delete app;
-			state = new CubeStateImpl(stateStr);
-			state->setNewMorris(state->getPawnsToPlay(PAWN_WHITE) + state->getPawnsOnBoard(PAWN_WHITE) < myPawns);
-			state->setPlayer(PAWN_WHITE);
-			state->print();
-		}
-	}
-	else if (!strcmp(argv[1], "black")) {
-		while(1) {
-			recv_data(stateStr, STATE_STRLEN);
-			stateStr[STATE_STRLEN - 1] = '\0';
-			cout << stateStr << "\n";
-			cout << "Insert your next move: ";
-			cin >> actionStr;
-			send_data(actionStr, ACTION_STRLEN);
-		}
-	}
+	loop(player);
 
 }
 #endif

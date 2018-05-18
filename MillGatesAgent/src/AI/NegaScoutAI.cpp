@@ -13,14 +13,14 @@ NegaScoutAI::NegaScoutAI() {
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 	_history = new HashSet<bool>();
-	_heuristic = new PawnCountHeuristic();
+	_heuristic = new RomanianHeuristic();
 }
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
 	entry * e;
 	bool presentInTable = _table->get(quickhash, &e);
-	if (presentInTable && e->depth >= depth) {
+	if (presentInTable && e->depth > depth) {
 		if (e->entryFlag == EXACT)
 			return color * e->eval;
 		if (e->entryFlag == ALPHA_PRUNE && color * e->eval > alpha)
@@ -59,7 +59,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
 		child_present = _table->get(hashes->get(i), &e_tmp);
 
-		if (child_present && e_tmp->depth >= depth-1)
+		if (child_present && e_tmp->depth > depth-1)
 			values->add(e_tmp->eval * -color);
 		else {//Else I have to estimate the value using function
 			child_loop = _history->contains(hashes->get(i));
@@ -75,6 +75,13 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 	hashcode child_hash = 0;
 	entryFlag_t flag = ALPHA_PRUNE;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
+
+//		//DEBUG TODO
+//		if (actions->get(i).getSrc() == Position{0,0,0} && actions->get(i).getDest() == Position{1,2,0}){
+//			std::cout << "sasso\n";
+//		}
+//		//DEBUG TODO
+
 		child = states->get(i);
 		child_hash = hashes->get(i);
 		if(i == 0)
@@ -163,16 +170,11 @@ Action NegaScoutAI::choose(State * state) {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			_table->get(quickhash, &tempscore);
-			if (tempscore != NULL) {
-				if (i == 0 || (tempscore->eval > score && tempscore->depth >= _depth - 1)) {
+			if (tempscore != NULL)
+				if (i == 0 || (tempscore->eval > score && tempscore->entryFlag == EXACT)) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
-			}
-			else {
-				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
-				//res = actions->get(0);
-			}
 		}
 	}
 	else {
@@ -180,16 +182,11 @@ Action NegaScoutAI::choose(State * state) {
 		for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			_table->get(quickhash, &tempscore);
-			if (tempscore != NULL) {
-				if (i == 0 || (tempscore->eval < score && tempscore->depth >= _depth - 1)) {
+			if (tempscore != NULL)
+				if (i == 0 || (tempscore->eval < score && tempscore->entryFlag == EXACT)) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
-			}
-			else {
-				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
-				//res = actions->get(0);
-			}
 		}
 	}
 

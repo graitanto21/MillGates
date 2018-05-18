@@ -3,4 +3,70 @@ C:\Users\Luca\Documents\fia\MillGates\exec>cd ../Mulino/bin
 
 C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>java it.unibo.ai.didattica.mulino.engine.Engine 
 Launching game with timeout 60
+Waiting for connections...
+Player W connected!
+Player B connected!
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 9;
+Black Checkers: 9;
+White Checkers On Board: 0;
+Black Checkers On Board: 0;
+
+Waiting for W move...
+Player W move n1: c5
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 8;
+Black Checkers: 9;
+White Checkers On Board: 1;
+Black Checkers On Board: 0;
+
+Waiting for B move...
+Player B move n1: d1
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------B--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 8;
+Black Checkers: 8;
+White Checkers On Board: 1;
+Black Checkers On Board: 1;
+
+Waiting for W move...
+Player W move n2: d5
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--W--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 O--------B--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 7;
+Black Checkers: 8;
+White Checkers On Board: 2;
+Black Checkers On Board: 1;
+
+Waiting for B move...
 ^C

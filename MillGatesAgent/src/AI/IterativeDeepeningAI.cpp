@@ -57,18 +57,20 @@ void * IterativeDeepeningAI::refreshResult(State * state) {
 
 	Action lastChosen;
 
+	addHistory(state);
+
 	for(int depth = MIN_SEARCH_DEPTH; depth <= MAX_SEARCH_DEPTH; depth++) {
 		setDepth(depth);
 		lastChosen = _ai->choose(state);
 		if (timeUp) {
 			//clear(); // ????
-			std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
+			//std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
 			break;
 		}
 		else {
 			_tempAction = lastChosen;
-			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
-			print(state, 0);
+			//std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+			//print(state, 0);
 			//clear(); // ????
 		}
 	}
@@ -126,6 +128,6 @@ Action IterativeDeepeningAI::choose(State * state) {
 }
 
 IterativeDeepeningAI::~IterativeDeepeningAI() {
-	// TODO Auto-generated destructor stub
+	delete _ai;
 }
 

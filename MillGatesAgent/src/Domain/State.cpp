@@ -231,15 +231,15 @@ std::string State::toNiceString() const {
 
 void State::print() const {
 	std::cout << toNiceString() << "\n";
-	std::cout << "pawns to play				" << (int)getPawnsToPlay(PAWN_WHITE) << ", " << (int)getPawnsToPlay(PAWN_BLACK) << "\n";
-	std::cout << "pawns on board				" << (int)getPawnsOnBoard(PAWN_WHITE) << ", " << (int)getPawnsOnBoard(PAWN_BLACK) << "\n";
-	std::cout << "new morris			" << (int)getNewMorris() << "\n";
-	std::cout << "morrises					" << (int)morrisCount(PAWN_WHITE) << ", " << (int)morrisCount(PAWN_BLACK) << "\n";
-	std::cout << "blocked pawns				" << (int)blockedPawnCount(PAWN_WHITE) << ", " << (int)blockedPawnCount(PAWN_BLACK) << "\n";
-	std::cout << "potential morrises			" << (int)potentialMorrisCount(PAWN_WHITE) << ", " << (int)potentialMorrisCount(PAWN_BLACK) << "\n";
-	std::cout << "potential double morrises	" << (int)potentialDoubleMorrisCount(PAWN_WHITE) << ", " << (int)potentialDoubleMorrisCount(PAWN_BLACK) << "\n";
-	std::cout << "double morrises				" << (int)doubleMorrisCount(PAWN_WHITE) << ", " << (int)doubleMorrisCount(PAWN_BLACK) << "\n";
-	std::cout << "terminal 					" << isTerminal() << "\n";
+	std::cout << "pawns to play              " << (int)getPawnsToPlay(PAWN_WHITE) << ", " << (int)getPawnsToPlay(PAWN_BLACK) << "\n";
+	std::cout << "pawns on board             " << (int)getPawnsOnBoard(PAWN_WHITE) << ", " << (int)getPawnsOnBoard(PAWN_BLACK) << "\n";
+	std::cout << "new morris                 " << (int)getNewMorris() << "\n";
+	std::cout << "morrises                   " << (int)morrisCount(PAWN_WHITE) << ", " << (int)morrisCount(PAWN_BLACK) << "\n";
+	std::cout << "blocked pawns              " << (int)blockedPawnCount(PAWN_WHITE) << ", " << (int)blockedPawnCount(PAWN_BLACK) << "\n";
+	std::cout << "potential morrises         " << (int)potentialMorrisCount(PAWN_WHITE) << ", " << (int)potentialMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "potential double morrises  " << (int)potentialDoubleMorrisCount(PAWN_WHITE) << ", " << (int)potentialDoubleMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "double morrises            " << (int)doubleMorrisCount(PAWN_WHITE) << ", " << (int)doubleMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "terminal                   " << isTerminal() << "\n";
 	std::cout << "\n\n";
 }
 
