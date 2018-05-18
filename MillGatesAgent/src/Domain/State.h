@@ -55,8 +55,8 @@ public:
 	virtual pawn getPlayer() const = 0;
 	virtual void setPlayer(pawn player) = 0;
 
-	virtual void setMorrisLastTurn(pawn player, bool value);
-	virtual bool getMorrisLastTurn(pawn player) const;
+	virtual void setNewMorris(bool value);
+	virtual bool getNewMorris() const;
 
 	virtual uint8 morrisCount(pawn player) const;
 	virtual uint8 blockedPawnCount(pawn player) const;
@@ -68,6 +68,7 @@ public:
 	virtual State* clone() const = 0;
 	virtual std::string toString() const;
 	virtual std::string toNiceString() const;
+	virtual void print() const;
 
 	virtual bool isInMorris(Position pos) const;
 	virtual bool isInMorrisAxis(Position pos, uint8 axis) const;

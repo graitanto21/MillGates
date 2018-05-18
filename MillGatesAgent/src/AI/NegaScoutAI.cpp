@@ -12,15 +12,14 @@ NegaScoutAI::NegaScoutAI() {
 	_hasher = ZobristHashing::getInstance();
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
-	_history = new ExpVector<hashcode>();
+	_history = new HashSet<bool>();
 	_heuristic = new PawnCountHeuristic();
 }
 
 eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color) {
 
 	entry * e;
-	bool presentInTable;
-	presentInTable = _table->get(quickhash, &e);
+	bool presentInTable = _table->get(quickhash, &e);
 	if (presentInTable && e->depth >= depth) {
 		if (e->entryFlag == EXACT)
 			return color * e->eval;
@@ -34,13 +33,7 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 
 	eval_t score = 0;
 	bool terminal = state->isTerminal();
-	bool loop = false;
-
-	for (short i = _history->getLogicSize() - 1; i >= 0; i--)
-		if (_history->get(i) == quickhash && _depth + 1 != depth) {
-			loop = true;
-			break;
-		}
+	bool loop = _history->contains(quickhash) && depth != _depth + 1;
 
 	if (depth == 0 || _stopFlag || loop || terminal) {
 		score = _heuristic->evaluate(state, terminal, loop);
@@ -51,37 +44,35 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 		return color * score;
 	}
 
-	hashcode child_hash = 0;
 	ExpVector<Action> * actions = state->getActions();
-
-	//Ordering section ==> TODO put inside a fuction...
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
 	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
 	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
+
 	entry * e_tmp;
 
-	bool child_loop, thereIs;
+	bool child_loop, child_present;
+
 	for(eval_t i=0; i<actions->getLogicSize(); i++) {
+
 		states->add(state->result(actions->get(i)));
 		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
-		thereIs = _table->get(quickhash, &e_tmp);
-		if (thereIs && e->depth >= depth-1)
+		child_present = _table->get(hashes->get(i), &e_tmp);
+
+		if (child_present && e_tmp->depth >= depth-1)
 			values->add(e_tmp->eval * -color);
 		else {//Else I have to estimate the value using function
-			for (short j = _history->getLogicSize() - 1; j >= 0; j--)
-				if (_history->get(j) == child_hash && _depth + 1 != depth) {
-					child_loop = true;
-					break;
-				}
+			child_loop = _history->contains(hashes->get(i));
 			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop) * -color);
 		}
+
 	}
 
 	//	quickSort(state, states, hashes, values, actions, 0, actions->getLogicSize()-1, -color, quickhash);
-	setMaxFirst(state, states, hashes, values, actions);
+	setMaxFirst(states, hashes, values, actions);
 
-	//Negascout
 	State * child = NULL;
+	hashcode child_hash = 0;
 	entryFlag_t flag = ALPHA_PRUNE;
 	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
 		child = states->get(i);
@@ -101,9 +92,13 @@ eval_t NegaScoutAI::negaScout(State * state, hashcode quickhash, uint8 depth, ev
 			flag = EXACT;
 		}
 
-		if (score >= beta) {
+//		if (score >= beta) {
+//			flag = BETA_PRUNE;
+//			alpha = beta;
+//			break;
+//		}
+		if (alpha >= beta) {
 			flag = BETA_PRUNE;
-			alpha = beta;
 			break;
 		}
 	}
@@ -141,12 +136,11 @@ void NegaScoutAI::stop() {
 }
 
 void NegaScoutAI::addHistory(State * state) {
-	_history->add(_hasher->hash(state));
+	_history->add(_hasher->hash(state), true);
 }
 
 void NegaScoutAI::clearHistory() {
-	delete _history;
-	_history = new ExpVector<hashcode>();
+	_history->clear();
 }
 
 Action NegaScoutAI::choose(State * state) {
@@ -240,7 +234,7 @@ void NegaScoutAI::print(State * state, int depth) {
 
 }
 
-void NegaScoutAI::setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions) {
+void NegaScoutAI::setMaxFirst(ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions) {
 	// Find max
 	eval_t max = values->get(0);
 	eval_t indexMax = 0;

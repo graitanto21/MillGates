@@ -41,7 +41,6 @@ int main(int argc, char* argv[]) {
 	State * state = new CubeStateImpl();
 	State * app;
 	Action action;
-	bool myMorrisLastTurn = false;
 	uint8 myPawns = 0;
 
 	if (!strcmp(argv[1], "white")) {
@@ -61,18 +60,13 @@ int main(int argc, char* argv[]) {
 			stateStr[STATE_STRLEN - 1] = '\0';
 			app = state->result(action);
 			delete state;
-			myMorrisLastTurn = app->getMorrisLastTurn(PAWN_WHITE);
 			myPawns = app->getPawnsToPlay(PAWN_WHITE) + app->getPawnsOnBoard(PAWN_WHITE);
 			ai.addHistory(app);
 			delete app;
 			state = new CubeStateImpl(stateStr);
-			state->setMorrisLastTurn(PAWN_WHITE, myMorrisLastTurn);
-			state->setMorrisLastTurn(PAWN_BLACK, state->getPawnsToPlay(PAWN_WHITE) + state->getPawnsOnBoard(PAWN_WHITE) < myPawns);
+			state->setNewMorris(state->getPawnsToPlay(PAWN_WHITE) + state->getPawnsOnBoard(PAWN_WHITE) < myPawns);
 			state->setPlayer(PAWN_WHITE);
-			cout << state->toNiceString() << "\n";
-			cout << "White morris in last turn: " << state->getMorrisLastTurn(PAWN_WHITE) << "\n";
-			cout << "Black morris in last turn: " << state->getMorrisLastTurn(PAWN_BLACK) << "\n";
-			cout << "\n";
+			state->print();
 		}
 	}
 	else if (!strcmp(argv[1], "black")) {

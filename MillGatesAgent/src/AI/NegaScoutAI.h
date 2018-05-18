@@ -28,7 +28,7 @@ class NegaScoutAI: public AI {
 private:
 
 	HashSet<entry> * _table;
-	ExpVector<hashcode> * _history;
+	HashSet<bool> * _history;
 	ZobristHashing * _hasher;
 	HeuristicFunction * _heuristic;
 	uint8 _depth;
@@ -51,7 +51,7 @@ public:
 	virtual void clearHistory();
 
 	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
-	void setMaxFirst(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions);
+	void setMaxFirst(ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions);
 
 	virtual ~NegaScoutAI();
 };

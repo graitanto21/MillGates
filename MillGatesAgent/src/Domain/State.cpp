@@ -187,19 +187,12 @@ void State::setPawnsToPlay(pawn player, uint8 count) {
 		setPawnAt(1,1,2, (getPawnAt(1,1,2) & 240) | count);
 }
 
-void State::setMorrisLastTurn(pawn player, bool value) {
-	if (player == PAWN_WHITE)
-		setPawnAt(1,1,0, (getPawnAt(1,1,0) & 15) | (value << 4));
-	else if (player == PAWN_BLACK)
-		setPawnAt(1,1,0, (getPawnAt(1,1,0) & 240) | value);
+void State::setNewMorris(bool value) {
+	setPawnAt(1,1,0, value);
 }
 
-bool State::getMorrisLastTurn(pawn player) const {
-	if (player == PAWN_WHITE)
-		return (getPawnAt(1,1,0) & 240) >> 4;
-	else if (player == PAWN_BLACK)
-		return getPawnAt(1,1,0) & 15;
-	return false;
+bool State::getNewMorris() const {
+	return getPawnAt(1, 1, 0);
 }
 
 std::string State::toString() const {
@@ -234,6 +227,20 @@ std::string State::toNiceString() const {
 			"1 " + (char)getPawnAt(2, 0, 2) + "--------" + (char)getPawnAt(2, 1, 2) + "--------" + (char)getPawnAt(2, 2, 2) + "\n" +
 			"  a  b  c  d  e  f  g\n" ;
 	return result;
+}
+
+void State::print() const {
+	std::cout << toNiceString() << "\n";
+	std::cout << "pawns to play				" << (int)getPawnsToPlay(PAWN_WHITE) << ", " << (int)getPawnsToPlay(PAWN_BLACK) << "\n";
+	std::cout << "pawns on board				" << (int)getPawnsOnBoard(PAWN_WHITE) << ", " << (int)getPawnsOnBoard(PAWN_BLACK) << "\n";
+	std::cout << "new morris			" << (int)getNewMorris() << "\n";
+	std::cout << "morrises					" << (int)morrisCount(PAWN_WHITE) << ", " << (int)morrisCount(PAWN_BLACK) << "\n";
+	std::cout << "blocked pawns				" << (int)blockedPawnCount(PAWN_WHITE) << ", " << (int)blockedPawnCount(PAWN_BLACK) << "\n";
+	std::cout << "potential morrises			" << (int)potentialMorrisCount(PAWN_WHITE) << ", " << (int)potentialMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "potential double morrises	" << (int)potentialDoubleMorrisCount(PAWN_WHITE) << ", " << (int)potentialDoubleMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "double morrises				" << (int)doubleMorrisCount(PAWN_WHITE) << ", " << (int)doubleMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "terminal 					" << isTerminal() << "\n";
+	std::cout << "\n\n";
 }
 
 State::~State() {}
@@ -970,7 +977,7 @@ State * State::result(Action action) const {
 		state->setPawnsOnBoard(OPP(getPlayer()), state->getPawnsOnBoard(OPP(getPlayer())) - 1);
 	}
 
-	state->setMorrisLastTurn(getPlayer(), IS_VALID(toRemove));
+	state->setNewMorris(IS_VALID(toRemove));
 	state->setPlayer(OPP(getPlayer()));
 
 	return state;

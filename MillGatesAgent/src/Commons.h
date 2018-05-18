@@ -8,7 +8,7 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-//#define DEBUG
+#define DEBUG
 
 #define CUBE_SIZE_X 3
 #define CUBE_SIZE_Y 3
@@ -27,7 +27,7 @@
 #define MAX_MOVES_PHASE_2 4
 
 #define MIN_SEARCH_DEPTH 2
-#define MAX_SEARCH_DEPTH 50
+#define MAX_SEARCH_DEPTH 6
 #define COMPUTATION_TIME 50
 
 #define WHITE_PAWNS_COUNT 9

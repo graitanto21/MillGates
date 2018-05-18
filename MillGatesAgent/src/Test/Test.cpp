@@ -7,6 +7,8 @@
 
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 #include <string.h>
 
 #include "../AI/DummyAI.h"
@@ -20,20 +22,14 @@
 
 State * random_state() {
 	State * result = new CubeStateImpl();
-	uint8 x, y, z, pawn;
-	uint8 n = rand() % 24;
-	for(uint8 i = 0; i < n; i++) {
-		x = rand() % 3;
-		y = rand() % 3;
-		z = rand() % 3;
-		pawn = rand() % 3;
-		if (pawn == 0)
-			pawn = 'O';
-		else if (pawn == 1)
-			pawn = 'W';
-		else
-			pawn = 'B';
-		result->setPawnAt(x, y, z, pawn);
+	State * temp;
+	ExpVector<Action> * actions;
+	int n = 3 + rand() % 50;
+	for (int i = 0; i < n && !result->isTerminal(); i++) {
+		temp = result;
+		actions = result->getActions();
+		result = result->result(actions->get(rand() % actions->getLogicSize()));
+		delete temp;
 	}
 	return result;
 }
@@ -101,45 +97,42 @@ void testNegaScoutAI(State * state) {
 	//	state->setPawnsOnBoard(PAWN_WHITE, 4);
 	//	state->setPawnsOnBoard(PAWN_BLACK, 4);
 
-	state->setPawnAt2D('d', '1', PAWN_BLACK);
-	state->setPawnAt2D('d', '2', PAWN_BLACK);
 	state->setPawnAt2D('d', '3', PAWN_BLACK);
-	state->setPawnAt2D('d', '5', PAWN_BLACK);
-	state->setPawnAt2D('d', '6', PAWN_BLACK);
-	state->setPawnAt2D('a', '7', PAWN_BLACK);
-	state->setPawnAt2D('b', '4', PAWN_BLACK);
 	state->setPawnAt2D('e', '3', PAWN_BLACK);
+	state->setPawnAt2D('c', '4', PAWN_BLACK);
 	state->setPawnAt2D('f', '4', PAWN_BLACK);
+	state->setPawnAt2D('e', '5', PAWN_BLACK);
+	state->setPawnAt2D('f', '6', PAWN_BLACK);
 
-	state->setPawnAt2D('b', '6', PAWN_WHITE);
-	state->setPawnAt2D('b', '2', PAWN_WHITE);
-	state->setPawnAt2D('e', '4', PAWN_WHITE);
-	state->setPawnAt2D('e', '5', PAWN_WHITE);
-	state->setPawnAt2D('c', '4', PAWN_WHITE);
+	state->setPawnAt2D('c', '3', PAWN_WHITE);
+	state->setPawnAt2D('c', '5', PAWN_WHITE);
+	state->setPawnAt2D('d', '7', PAWN_WHITE);
 
 	state->setPlayer(PAWN_WHITE);
 	state->setPawnsToPlay(PAWN_BLACK, 0);
 	state->setPawnsToPlay(PAWN_WHITE, 0);
-	state->setPawnsOnBoard(PAWN_WHITE, 5);
-	state->setPawnsOnBoard(PAWN_BLACK, 9);
+	state->setPawnsOnBoard(PAWN_WHITE, 3);
+	state->setPawnsOnBoard(PAWN_BLACK, 6);
 
-	ai.setDepth(6);
+	ai.setDepth(1);
 	std::cout << ai.choose(state) << "\n\n";
+
+	state->print();
 
 	std::cout << "DEPTH 0" << "\n\n";
 	ai.print(state, 0);
 	std::cout << "DEPTH 1" << "\n\n";
 	ai.print(state, 1);
-	std::cout << "DEPTH 2" << "\n\n";
-	ai.print(state, 2);
-	std::cout << "DEPTH 3" << "\n\n";
-	ai.print(state, 3);
-	std::cout << "DEPTH 4" << "\n\n";
-	ai.print(state, 4);
-	std::cout << "DEPTH 5" << "\n\n";
-	ai.print(state, 5);
-	std::cout << "DEPTH 6" << "\n\n";
-	ai.print(state, 6);
+//	std::cout << "DEPTH 2" << "\n\n";
+//	ai.print(state, 2);
+//	std::cout << "DEPTH 3" << "\n\n";
+//	ai.print(state, 3);
+//	std::cout << "DEPTH 4" << "\n\n";
+//	ai.print(state, 4);
+//	std::cout << "DEPTH 5" << "\n\n";
+//	ai.print(state, 5);
+//	std::cout << "DEPTH 6" << "\n\n";
+//	ai.print(state, 6);
 }
 
 void testIterativeDeepeningAI(State * state) {
@@ -313,6 +306,20 @@ void testHashTable() {
 	std::cout << *val2 << "\n";
 }
 
+void testRomanianHeuristic() {
+
+	srand(time(NULL));
+
+	for (int i = 0; i < 1000; i++) {
+		State * state = random_state();
+
+		state->print();
+
+		delete state;
+	}
+
+}
+
 #if defined(DEBUG)
 int main(void) {
 
@@ -328,7 +335,7 @@ int main(void) {
 	//testDoubleMorrisesCount(state);
 	//testOrdering(state);
 	//testHashTable();
-
+	//testRomanianHeuristic();
 
 	delete state;
 

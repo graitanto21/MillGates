@@ -19,8 +19,7 @@ CubeStateImpl::CubeStateImpl() {
 	setPawnsOnBoard(PAWN_BLACK, 0);
 	setPawnsToPlay(PAWN_WHITE, WHITE_PAWNS_COUNT);
 	setPawnsToPlay(PAWN_BLACK, BLACK_PAWNS_COUNT);
-	setMorrisLastTurn(PAWN_WHITE, false);
-	setMorrisLastTurn(PAWN_BLACK, false);
+	setNewMorris(false);
 	setPlayer(PAWN_WHITE);
 }
 

@@ -22,10 +22,20 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 
 	if (blackToPlay > 0) { //Phase 1
 
+		/* Closed Morris refers to a new closed morris, that offers the advantage to
+		  * grab one opponent piece.
+		  *
+		  *  1  if a morris is closed by the WHITE player
+		  *
+		  * -1  if a morris is closed by the BLACK player
+		  *
+		  *  0 otherwise
+		  */
+
 		sint8 morrisLastTurn; // (1)
-		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
+		if (state->getPlayer() == PAWN_BLACK && state->getNewMorris())
 			morrisLastTurn = 1;
-		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
+		else if (state->getPlayer() == PAWN_WHITE && state->getNewMorris())
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;
@@ -55,9 +65,9 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard > 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard > 3)) { //Phase 2
 
 		sint8 morrisLastTurn; // (1)
-		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
+		if (state->getPlayer() == PAWN_BLACK && state->getNewMorris())
 			morrisLastTurn = 1;
-		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
+		else if (state->getPlayer() == PAWN_WHITE && state->getNewMorris())
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;
@@ -87,9 +97,9 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard <= 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard <= 3)) { //Phase 3
 
 		sint8 morrisLastTurn; // (1)
-		if (state->getPlayer() == PAWN_BLACK && state->getMorrisLastTurn(PAWN_WHITE))
+		if (state->getPlayer() == PAWN_BLACK && state->getNewMorris())
 			morrisLastTurn = 1;
-		else if (state->getPlayer() == PAWN_WHITE && state->getMorrisLastTurn(PAWN_BLACK))
+		else if (state->getPlayer() == PAWN_WHITE && state->getNewMorris())
 			morrisLastTurn = -1;
 		else
 			morrisLastTurn = 0;

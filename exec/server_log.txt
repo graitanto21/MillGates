@@ -3,6 +3,4 @@ C:\Users\Luca\Documents\fia\MillGates\exec>cd ../Mulino/bin
 
 C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>java it.unibo.ai.didattica.mulino.engine.Engine 
 Launching game with timeout 60
-Waiting for connections...
-Player W connected!
 ^C
