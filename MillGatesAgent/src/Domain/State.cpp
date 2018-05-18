@@ -1015,7 +1015,7 @@ bool State::isTerminal() const {
 	return result;
 }
 
-sint8 State::utility() const {
+eval_t State::utility() const {
 
 	return getPlayer() == PAWN_WHITE ? -MAX_EVAL_T : MAX_EVAL_T;
 

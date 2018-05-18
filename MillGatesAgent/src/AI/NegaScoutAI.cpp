@@ -170,14 +170,14 @@ Action NegaScoutAI::choose(State * state) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			_table->get(quickhash, &tempscore);
 			if (tempscore != NULL) {
-				if (i == 0 || tempscore->eval > score) {
+				if (i == 0 || (tempscore->eval > score && tempscore->depth >= _depth - 1)) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
 			}
 			else {
 				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
-				res = actions->get(0);
+				//res = actions->get(0);
 			}
 		}
 	}
@@ -187,14 +187,14 @@ Action NegaScoutAI::choose(State * state) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
 			_table->get(quickhash, &tempscore);
 			if (tempscore != NULL) {
-				if (i == 0 || tempscore->eval < score) {
+				if (i == 0 || (tempscore->eval < score && tempscore->depth >= _depth - 1)) {
 					score = tempscore->eval;
 					res = actions->get(i);
 				}
 			}
 			else {
 				std::cout << "NOT FOUND " << quickhash << " -> " << actions->get(i) << "\n";
-				res = actions->get(0);
+				//res = actions->get(0);
 			}
 		}
 	}
@@ -219,7 +219,7 @@ void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 		else if (depth == curdepth) {
 			for (int j = 0; j < curdepth; j++)
 				std::cout << " | ";
-			std::cout << actions->get(i) << " -> " << (int)val->eval << ", " << (int)val->entryFlag <<"\n";
+			std::cout << actions->get(i) << " -> " << (int)val->eval << ", " << (int)val->entryFlag << ", " << (int)val->depth <<"\n";
 		}
 		else {
 			for (int j = 0; j < curdepth; j++)
@@ -228,7 +228,7 @@ void NegaScoutAI::recurprint(State * state, int depth, int curdepth) {
 			recurprint(child, depth, curdepth + 1);
 			for (int j = 0; j < curdepth; j++)
 				std::cout << " | ";
-			std::cout << "} -> " << (int)val->eval << ", " << (int)val->entryFlag << "\n";
+			std::cout << "} -> " << (int)val->eval << ", " << (int)val->entryFlag << ", " << (int)val->depth <<"\n";
 		}
 		delete child;
 	}

@@ -87,24 +87,57 @@ void testNegaScoutAI(State * state) {
 	NegaScoutAI ai;
 	srand(400);
 
-	ai.setDepth(6);
+	//	state->setPawnAt2D('b', '4', PAWN_BLACK);
+	//	state->setPawnAt2D('c', '4', PAWN_BLACK);
+	//	state->setPawnAt2D('d', '5', PAWN_BLACK);
+	//	state->setPawnAt2D('d', '6', PAWN_BLACK);
+	//	state->setPawnAt2D('c', '3', PAWN_WHITE);
+	//	state->setPawnAt2D('e', '3', PAWN_WHITE);
+	//	state->setPawnAt2D('c', '5', PAWN_WHITE);
+	//	state->setPawnAt2D('e', '5', PAWN_WHITE);
+	//	state->setPlayer(PAWN_WHITE);
+	//	state->setPawnsToPlay(PAWN_BLACK, 5);
+	//	state->setPawnsToPlay(PAWN_WHITE, 5);
+	//	state->setPawnsOnBoard(PAWN_WHITE, 4);
+	//	state->setPawnsOnBoard(PAWN_BLACK, 4);
 
-	state->setPawnAt2D('b', '4', PAWN_BLACK);
-	state->setPawnAt2D('c', '4', PAWN_BLACK);
+	state->setPawnAt2D('d', '1', PAWN_BLACK);
+	state->setPawnAt2D('d', '2', PAWN_BLACK);
+	state->setPawnAt2D('d', '3', PAWN_BLACK);
 	state->setPawnAt2D('d', '5', PAWN_BLACK);
 	state->setPawnAt2D('d', '6', PAWN_BLACK);
-	state->setPawnAt2D('c', '3', PAWN_WHITE);
-	state->setPawnAt2D('e', '3', PAWN_WHITE);
-	state->setPawnAt2D('c', '5', PAWN_WHITE);
-	state->setPawnAt2D('e', '5', PAWN_WHITE);
-	state->setPlayer(PAWN_WHITE);
-	state->setPawnsToPlay(PAWN_BLACK, 5);
-	state->setPawnsToPlay(PAWN_WHITE, 5);
-	state->setPawnsOnBoard(PAWN_WHITE, 4);
-	state->setPawnsOnBoard(PAWN_BLACK, 4);
+	state->setPawnAt2D('a', '7', PAWN_BLACK);
+	state->setPawnAt2D('b', '4', PAWN_BLACK);
+	state->setPawnAt2D('e', '3', PAWN_BLACK);
+	state->setPawnAt2D('f', '4', PAWN_BLACK);
 
+	state->setPawnAt2D('b', '6', PAWN_WHITE);
+	state->setPawnAt2D('b', '2', PAWN_WHITE);
+	state->setPawnAt2D('e', '4', PAWN_WHITE);
+	state->setPawnAt2D('e', '5', PAWN_WHITE);
+	state->setPawnAt2D('c', '4', PAWN_WHITE);
+
+	state->setPlayer(PAWN_WHITE);
+	state->setPawnsToPlay(PAWN_BLACK, 0);
+	state->setPawnsToPlay(PAWN_WHITE, 0);
+	state->setPawnsOnBoard(PAWN_WHITE, 5);
+	state->setPawnsOnBoard(PAWN_BLACK, 9);
+
+	ai.setDepth(6);
 	std::cout << ai.choose(state) << "\n\n";
 
+	std::cout << "DEPTH 0" << "\n\n";
+	ai.print(state, 0);
+	std::cout << "DEPTH 1" << "\n\n";
+	ai.print(state, 1);
+	std::cout << "DEPTH 2" << "\n\n";
+	ai.print(state, 2);
+	std::cout << "DEPTH 3" << "\n\n";
+	ai.print(state, 3);
+	std::cout << "DEPTH 4" << "\n\n";
+	ai.print(state, 4);
+	std::cout << "DEPTH 5" << "\n\n";
+	ai.print(state, 5);
 	std::cout << "DEPTH 6" << "\n\n";
 	ai.print(state, 6);
 }

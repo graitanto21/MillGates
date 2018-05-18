@@ -80,7 +80,7 @@ public:
 	virtual State * result(Action action) const;
 
 	virtual bool isTerminal() const;
-	virtual sint8 utility() const;
+	virtual eval_t utility() const;
 
 
 	//For debug
