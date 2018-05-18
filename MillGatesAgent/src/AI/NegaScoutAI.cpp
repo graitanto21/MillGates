@@ -150,6 +150,10 @@ void NegaScoutAI::clearHistory() {
 	_history->clear();
 }
 
+void NegaScoutAI::parallel_negaScout(State * state) {
+
+}
+
 Action NegaScoutAI::choose(State * state) {
 
 	_stopFlag = false;
@@ -166,7 +170,9 @@ Action NegaScoutAI::choose(State * state) {
 	hash = _hasher->hash(state);
 	uint8 color = state->getPlayer() == PAWN_WHITE ? 1 : 1;
 
-	negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, color);
+	//parallel_negaScout(state);
+	//negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, color);
+
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
 		_table->get(quickhash, &tempscore);

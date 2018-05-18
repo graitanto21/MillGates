@@ -34,7 +34,6 @@ private:
 	uint8 _depth;
 	bool _stopFlag;
 
-	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
 	void recurprint(State * state, int depth, int curdepth);
 
 	uint8 partition(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
@@ -49,6 +48,9 @@ public:
 	virtual void print(State * root, int depth);
 	virtual void addHistory(State * state);
 	virtual void clearHistory();
+
+	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color);
+	void parallel_negaScout(State * state);
 
 	void quickSort(State * state, ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions, eval_t p, eval_t q, sint8 color, hashcode quickhash);
 	void setMaxFirst(ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions);
