@@ -22,8 +22,9 @@
 using namespace std;
 
 State * receiveState(State * old, pawn player) {
+
 	char stateStr[STATE_STRLEN];
-	State * state;
+	State * result;
 	uint8 myPawns;
 
 	if (recv_data(stateStr, STATE_STRLEN) == FAILURE)
@@ -31,15 +32,15 @@ State * receiveState(State * old, pawn player) {
 
 	stateStr[STATE_STRLEN - 1] = '\0';
 
-	state = new CubeStateImpl(stateStr);
+	result = new CubeStateImpl(stateStr);
 
 	myPawns = old->getPawnsToPlay(player) + old->getPawnsOnBoard(player);
 
-	state->setNewMorris(state->getPawnsToPlay(player) + state->getPawnsOnBoard(player) < myPawns);
-	state->setPlayer(player);
-	state->print();
+	result->setNewMorris(result->getPawnsToPlay(player) + result->getPawnsOnBoard(player) < myPawns);
+	result->setPlayer(player);
+	result->print();
 
-	return state;
+	return result;
 }
 
 void sendAction(Action action) {
@@ -61,32 +62,22 @@ void loop(pawn player) {
 	State * child;
 	Action action;
 
-	if (player == PAWN_WHITE) {
+	state->setPlayer(player);
 
-		state->setPlayer(PAWN_WHITE);
-		while(1) {
-			action = ai->choose(state);
-			sendAction(action);
-			child = state->result(action);
-			ai->addHistory(child);
-			delete state;
-			state = receiveState(child, PAWN_WHITE);
-			delete child;
-		}
-	}
-	else if (player == PAWN_BLACK) {
+	if (player == PAWN_BLACK) {
 		child = state->clone();
-		state = receiveState(child, PAWN_WHITE);
+		state = receiveState(child, player);
 		delete child;
-		while(1) {
-			action = ai->choose(state);
-			sendAction(action);
-			child = state->result(action);
-			ai->addHistory(child);
-			delete state;
-			state = receiveState(child, PAWN_WHITE);
-			delete child;
-		}
+	}
+
+	while(1) {
+		action = ai->choose(state);
+		sendAction(action);
+		child = state->result(action);
+		ai->addHistory(child);
+		delete state;
+		state = receiveState(child, player);
+		delete child;
 	}
 
 	delete ai;
@@ -107,8 +98,10 @@ int main(int argc, char* argv[]) {
 
 	if (!strcmp(argv[1], "white"))
 		player = PAWN_WHITE;
-	else
+	else if(!strcmp(argv[1], "black"))
 		player = PAWN_BLACK;
+	else
+		exit(-1);
 
 	loop(player);
 
