@@ -7,6 +7,8 @@
 
 #include "AlphaBetaAI.h"
 
+//#define PRINT 2
+
 AlphaBetaAI::AlphaBetaAI() {
 	_heuristic = new RomanianHeuristic();
 	_hasher = ZobristHashing::getInstance();
@@ -32,9 +34,30 @@ eval_t AlphaBetaAI::min(State * state, hashcode hash, eval_t alpha, eval_t beta,
 	for (short i = 0; i < actions->getLogicSize(); i++) {
 		child = state->result(actions->get(i));
 		child_hash = _hasher->quickHash(state, actions->get(i), hash);
+#if defined(PRINT)
+		if (_depth + 1 - depth <= PRINT) {
+			for (int j = 0; j < _depth + 1 - depth; j++)
+				std::cout << " | ";
+			std::cout << actions->get(i) << " { \n";
+		}
+#endif
 		tempScore = max(child, child_hash, alpha, beta, depth - 1);
+#if defined(PRINT)
+		if (_depth + 1 - depth <= PRINT) {
+			for (int j = 0; j < _depth + 1 - depth; j++)
+				std::cout << " | ";
+			std::cout << "} -> " << (int)tempScore << "\n";
+		}
+#endif
 		score = (score < tempScore) ? score : tempScore;
 		if (score <= alpha) {
+#if defined(PRINT)
+			if (_depth + 1 - depth <= PRINT) {
+				for (int j = 0; j < _depth + 1 - depth; j++)
+					std::cout << " | ";
+				std::cout << " CUT score <= alpha [" << (int)alpha << "," << (int)score << "," << (int)beta << "]" << "\n";
+			}
+#endif
 			delete child;
 			break;
 		}
@@ -63,9 +86,30 @@ eval_t AlphaBetaAI::max(State * state, hashcode hash, eval_t alpha, eval_t beta,
 	for (short i = 0; i < actions->getLogicSize(); i++) {
 		child = state->result(actions->get(i));
 		child_hash = _hasher->quickHash(state, actions->get(i), hash);
+#if defined(PRINT)
+		if (_depth + 1 - depth <= PRINT) {
+			for (int j = 0; j < _depth + 1 - depth; j++)
+				std::cout << " | ";
+			std::cout << actions->get(i) << " { \n";
+		}
+#endif
 		tempScore = min(child, child_hash, alpha, beta, depth - 1);
+#if defined(PRINT)
+		if (_depth + 1 - depth <= PRINT) {
+			for (int j = 0; j < _depth + 1 - depth; j++)
+				std::cout << " | ";
+			std::cout << "} -> " << (int)tempScore << "\n";
+		}
+#endif
 		score = (score > tempScore) ? score : tempScore;
 		if (score >= beta) {
+#if defined(PRINT)
+			if (_depth + 1 - depth <= PRINT) {
+				for (int j = 0; j < _depth + 1 - depth; j++)
+					std::cout << " | ";
+				std::cout << " CUT score >= beta [" << (int)alpha << "," << (int)score << "," << (int)beta << "]" << "\n";
+			}
+#endif
 			delete child;
 			break;
 		}
@@ -92,7 +136,13 @@ Action AlphaBetaAI::choose(State * state) {
 		for (short i = 0; i < actions->getLogicSize(); i++) {
 			child = state->result(actions->get(i));
 			child_hash = _hasher->quickHash(state, actions->get(i), father_hash);
-			temp = min(child, child_hash, MAX_EVAL_T, best, _depth);
+#if defined(PRINT)
+			std::cout << actions->get(i) << " { \n";
+#endif
+			temp = min(child, child_hash, best, MAX_EVAL_T, _depth);
+#if defined(PRINT)
+			std::cout << "} -> " << (int)temp << "\n";
+#endif
 			if (temp > best) {
 				best = temp;
 				action = actions->get(i);
@@ -105,7 +155,13 @@ Action AlphaBetaAI::choose(State * state) {
 		for (short i = 0; i < actions->getLogicSize(); i++) {
 			child = state->result(actions->get(i));
 			child_hash = _hasher->quickHash(state, actions->get(i), father_hash);
+#if defined(PRINT)
+			std::cout << actions->get(i) << " { \n";
+#endif
 			temp = max(child, child_hash, -MAX_EVAL_T, best, _depth);
+#if defined(PRINT)
+			std::cout << "} -> " << (int)temp << "\n";
+#endif
 			if (temp < best) {
 				best = temp;
 				action = actions->get(i);
