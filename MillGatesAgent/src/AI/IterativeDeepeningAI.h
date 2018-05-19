@@ -8,7 +8,7 @@
 #ifndef AI_ITERATIVEDEEPENINGAI_H_
 #define AI_ITERATIVEDEEPENINGAI_H_
 
-#include "NegaScoutAI.h"
+#include "AI.h"
 
 void * timer(void * args);
 

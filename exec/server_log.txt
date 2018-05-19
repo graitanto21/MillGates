@@ -21,14 +21,14 @@ White Checkers On Board: 0;
 Black Checkers On Board: 0;
 
 Waiting for W move...
-Player W move n1: a1
+Player W move n1: f2
 7 O--------O--------O
 6 |--O-----O-----O--|
 5 |--|--O--O--O--|--|
 4 O--O--O     O--O--O
 3 |--|--O--O--O--|--|
-2 |--O-----O-----O--|
-1 W--------O--------O
+2 |--O-----O-----W--|
+1 O--------O--------O
   a  b  c  d  e  f  g
 Phase: First;
 White Checkers: 8;
@@ -37,7 +37,68 @@ White Checkers On Board: 1;
 Black Checkers On Board: 0;
 
 Waiting for B move...
-Player Bhas not chosen move n1
-Player W WIN!!!
+Player B move n1: b2
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--B-----O-----W--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 8;
+Black Checkers: 8;
+White Checkers On Board: 1;
+Black Checkers On Board: 1;
 
-C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>
+Waiting for W move...
+Player W move n2: d2
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--B-----W-----W--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 7;
+Black Checkers: 8;
+White Checkers On Board: 2;
+Black Checkers On Board: 1;
+
+Waiting for B move...
+Player B move n2: b4
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--B--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--B-----W-----W--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 7;
+Black Checkers: 7;
+White Checkers On Board: 2;
+Black Checkers On Board: 2;
+
+Waiting for W move...
+Player W move n3: d3
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--B--O     O--O--O
+3 |--|--O--W--O--|--|
+2 |--B-----W-----W--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 6;
+Black Checkers: 7;
+White Checkers On Board: 3;
+Black Checkers On Board: 2;
+
+Waiting for B move...
+^C

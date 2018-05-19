@@ -7,7 +7,5 @@
 
 #include "AI.h"
 
-AI::~AI() {
-	// TODO Auto-generated destructor stub
-}
+AI::~AI() {}
 

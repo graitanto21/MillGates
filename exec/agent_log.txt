@@ -1,18 +1,31 @@
 
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe black 
+C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
+Chosen action: c5 with depth 0
+Chosen action: c5 with depth 1
+Chosen action: d6 with depth 2
+Chosen action: d6 with depth 3
+Chosen action: e5 with depth 4
+Chosen action: f6 with depth 5
+Chosen action: f6 with depth 6
+Chosen action: g7 with depth 7
+Chosen action: b4 with depth 8
+Chosen action: e3 with depth 9
+Chosen action: g7 with depth 10
+Chosen action: f2 with depth 11
+Chosen action: f2 with depth 11
 7 O--------O--------O
 6 |--O-----O-----O--|
 5 |--|--O--O--O--|--|
 4 O--O--O     O--O--O
 3 |--|--O--O--O--|--|
-2 |--O-----O-----O--|
-1 W--------O--------O
+2 |--B-----O-----W--|
+1 O--------O--------O
   a  b  c  d  e  f  g
 
-pawns to play              8, 9
-pawns on board             1, 0
+pawns to play              8, 8
+pawns on board             1, 1
 new morris                 0
 morrises                   0, 0
 blocked pawns              0, 0
@@ -22,79 +35,57 @@ double morrises            0, 0
 terminal                   0
 
 
-Chosen action:  with depth 3
-c5 -> 17, 0, 3
-b6 -> 17, 2, 3
-a7 -> 10, 0, 3
-d5 -> 10, 2, 3
-d6 -> 10, 2, 3
-d7 -> 10, 2, 3
-e5 -> 10, 2, 3
-f6 -> 10, 2, 3
-g7 -> 10, 2, 3
-c4 -> 10, 2, 3
-b4 -> 10, 2, 3
-a4 -> 9, 2, 3
-e4 -> 9, 2, 3
-f4 -> 9, 2, 3
-g4 -> 9, 2, 3
-c3 -> 9, 2, 3
-b2 -> 9, 2, 3
-d3 -> 9, 2, 3
-d2 -> 9, 2, 3
-d1 -> 9, 2, 3
-e3 -> 9, 2, 3
-f2 -> 9, 2, 3
-g1 -> 9, 2, 3
-Chosen action:  with depth 4
-c5 -> -1, 0, 4
-b6 -> -1, 2, 4
-a7 -> -1, 2, 4
-d5 -> -1, 2, 4
-d6 -> -1, 2, 4
-d7 -> -1, 2, 4
-e5 -> -1, 2, 4
-f6 -> -1, 2, 4
-g7 -> -1, 2, 4
-c4 -> -1, 2, 4
-b4 -> -1, 2, 4
-a4 -> -1, 2, 4
-e4 -> -1, 2, 4
-f4 -> -1, 2, 4
-g4 -> -1, 2, 4
-c3 -> -1, 2, 4
-b2 -> -1, 2, 4
-d3 -> -1, 2, 4
-d2 -> -1, 2, 4
-d1 -> -1, 2, 4
-e3 -> -1, 2, 4
-f2 -> -1, 2, 4
-g1 -> -1, 2, 4
-Chosen action:  with depth 5
-c5 -> 26, 0, 5
-b6 -> 26, 2, 5
-a7 -> 10, 0, 5
-d5 -> 10, 2, 5
-d6 -> 10, 2, 5
-d7 -> 10, 2, 5
-e5 -> 10, 2, 5
-f6 -> 10, 2, 5
-g7 -> 10, 2, 5
-c4 -> 10, 2, 5
-b4 -> 10, 2, 5
-a4 -> 10, 2, 5
-e4 -> 10, 2, 5
-f4 -> 10, 2, 5
-g4 -> 10, 2, 5
-c3 -> 10, 2, 5
-b2 -> 10, 2, 5
-d3 -> 10, 2, 5
-d2 -> 10, 2, 5
-d1 -> 10, 2, 5
-e3 -> 10, 2, 5
-f2 -> 10, 2, 5
-g1 -> 10, 2, 5
-Chosen action:  with depth 5
-connection closed
+Chosen action: f6 with depth 0
+Chosen action: f6 with depth 1
+Chosen action: f4 with depth 2
+Chosen action: f4 with depth 3
+Chosen action: f4 with depth 4
+Chosen action: f6 with depth 5
+Chosen action: e5 with depth 6
+Chosen action: f4 with depth 7
+Chosen action: g4 with depth 8
+Chosen action: e3 with depth 9
+Chosen action: e3 with depth 10
+Chosen action: e3 with depth 11
+Chosen action: g1 with depth 12
+Chosen action: e3 with depth 13
+Chosen action: d3 with depth 14
+Chosen action: d1 with depth 15
+Chosen action: d2 with depth 16
+Chosen action: d2 with depth 16
+7 O--------O--------O
+6 |--O-----O-----O--|
+5 |--|--O--O--O--|--|
+4 O--B--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--B-----W-----W--|
+1 O--------O--------O
+  a  b  c  d  e  f  g
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>
+pawns to play              7, 7
+pawns on board             2, 2
+new morris                 0
+morrises                   0, 0
+blocked pawns              0, 1
+potential morrises         0, 1
+potential double morrises  0, 0
+double morrises            0, 0
+terminal                   0
+
+
+Chosen action: b6 with depth 0
+Chosen action: b6 with depth 1
+Chosen action: f4 with depth 2
+Chosen action: d3 with depth 3
+Chosen action: f4 with depth 4
+Chosen action: d3 with depth 5
+Chosen action: d3 with depth 6
+Chosen action: d3 with depth 7
+Chosen action: g4 with depth 8
+Chosen action: g1 with depth 9
+Chosen action: g1 with depth 10
+Chosen action: c3 with depth 11
+Chosen action: d3 with depth 12
+Chosen action: d3 with depth 13
+Chosen action: d3 with depth 13
+^C
