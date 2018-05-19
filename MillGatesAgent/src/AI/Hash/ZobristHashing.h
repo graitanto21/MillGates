@@ -14,7 +14,7 @@
 
 class ZobristHashing {
 private:
-	hashcode _table[HASH_TABLE_WIDTH][HASH_TABLE_HEIGHT];
+	hashcode _table[CUBE_SIZE_X][CUBE_SIZE_Y][CUBE_SIZE_Z][HASH_TABLE_HEIGHT];
 	static ZobristHashing * instance;
 	ZobristHashing();
 

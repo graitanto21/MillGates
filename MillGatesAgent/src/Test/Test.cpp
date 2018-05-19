@@ -28,8 +28,9 @@ State * random_state() {
 	for (int i = 0; i < n && !result->isTerminal(); i++) {
 		temp = result;
 		actions = result->getActions();
-		result = result->result(actions->get(rand() % actions->getLogicSize()));
+		result = temp->result(actions->get(rand() % actions->getLogicSize()));
 		delete temp;
+		delete actions;
 	}
 	return result;
 }
@@ -43,11 +44,17 @@ void testZobristHashing(State * state) {
 	DummyAI ai;
 	Action a;
 	srand(7200);
+	State * father;
+	State * child;
 
-	for(int i = 0; i < 20000000; i++) {
-		State * father = random_state();
+	for(int i = 0; i < 200000; i++) {
+		father = random_state();
+		if (father->isTerminal()) {
+			delete father;
+			continue;
+		}
 		a = ai.choose(father);
-		State * child = father->result(a);
+		child = father->result(a);
 		if(hasher->hash(child) != hasher->quickHash(father, a, hasher->hash(father))) {
 			std::cout << "Error" << i << "\n";
 		}
@@ -291,8 +298,8 @@ int main(void) {
 
 	State * state = new CubeStateImpl();
 
-	//testZobristHashing(state);
-	testNegaScoutAI(state);
+	testZobristHashing(state);
+	//testNegaScoutAI(state);
 	//testIterativeDeepeningAI(state);
 	//testMorrisCount(state);
 	//testBlockedPawns(state);
