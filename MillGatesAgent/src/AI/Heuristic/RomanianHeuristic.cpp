@@ -58,8 +58,8 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 		result = 18 * morrisLastTurn +
 				26 	* morrises +
 				1 	* blockedPawns +
-				9 	* pawns +
-				10	* potentialSingleMorrises +
+				6 	* pawns +
+				12	* potentialSingleMorrises +
 				7 	* potentialDoubleMorrises;
 	}
 	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard > 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard > 3)) { //Phase 2
@@ -73,33 +73,37 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 		sint8 pawns; // (4)
 		pawns = whiteToPlay + whiteOnBoard - blackToPlay - blackOnBoard;
 
-		sint8 doubleMorrises;
+		sint8 openedMorrises; // (5)
+		openedMorrises = state->openedMorrisCount(PAWN_WHITE) - state->openedMorrisCount(PAWN_BLACK);
+
+		sint8 doubleMorrises; // (6)
 		doubleMorrises = state->doubleMorrisCount(PAWN_WHITE) - state->doubleMorrisCount(PAWN_BLACK);
 
-		sint8 winning;
+		sint8 winning; // (7)
 		winning = (terminal) ? (state->getPlayer() == PAWN_WHITE ? -1 : 1) : 0;
 
 		result = 14 	* morrisLastTurn +
 				43 		* morrises +
 				10 		* blockedPawns +
-				11 		* pawns +
-				8 		* doubleMorrises +
+				8 		* pawns +
+				7 		* openedMorrises +
+				42		* doubleMorrises +
 				1086 	* winning;
 	}
 	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard <= 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard <= 3)) { //Phase 3
 
-		sint8 potentialSingleMorrises; // (5)
+		sint8 potentialSingleMorrises; // (1)
 		potentialSingleMorrises = state->potentialMorrisCount(PAWN_WHITE) - state->potentialMorrisCount(PAWN_BLACK);
 
-		sint8 potentialDoubleMorrises; // (6)
+		sint8 potentialDoubleMorrises; // (2)
 		potentialDoubleMorrises = state->potentialDoubleMorrisCount(PAWN_WHITE) - state->potentialDoubleMorrisCount(PAWN_BLACK);
 
-		sint8 winning;
+		sint8 winning; // (4)
 		winning = (terminal) ? (state->getPlayer() == PAWN_WHITE ? -1 : 1) : 0;
 
-		result = 16 	* morrisLastTurn +
-				10 		* potentialSingleMorrises +
+		result = 10 	* potentialSingleMorrises +
 				1 		* potentialDoubleMorrises +
+				16 		* morrisLastTurn +
 				1190 	* winning;
 	}
 

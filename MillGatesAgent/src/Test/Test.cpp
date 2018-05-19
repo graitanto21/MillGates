@@ -279,17 +279,33 @@ void testHashTable() {
 	std::cout << *val2 << "\n";
 }
 
+/*
+
+7 W--------O--------O
+6 |--B-----O-----B--|
+5 |--|--O--O--O--|--|
+4 W--B--O     O--W--W
+3 |--|--O--O--O--|--|
+2 |--O-----W-----O--|
+1 B--------O--------O
+ a  b  c  d  e  f  g
+
+ */
+
 void testRomanianHeuristic() {
 
 	srand(time(NULL));
 
+	State * state;
+
 	for (int i = 0; i < 1000; i++) {
-		State * state = random_state();
+		state = random_state();
 
 		state->print();
 
 		delete state;
 	}
+
 
 }
 
@@ -308,7 +324,7 @@ int main(void) {
 	//testDoubleMorrisesCount(state);
 	//testOrdering(state);
 	//testHashTable();
-	//testRomanianHeuristic();
+	testRomanianHeuristic();
 
 	delete state;
 

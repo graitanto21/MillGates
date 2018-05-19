@@ -237,6 +237,7 @@ void State::print() const {
 	std::cout << "morrises                   " << (int)morrisCount(PAWN_WHITE) << ", " << (int)morrisCount(PAWN_BLACK) << "\n";
 	std::cout << "blocked pawns              " << (int)blockedPawnCount(PAWN_WHITE) << ", " << (int)blockedPawnCount(PAWN_BLACK) << "\n";
 	std::cout << "potential morrises         " << (int)potentialMorrisCount(PAWN_WHITE) << ", " << (int)potentialMorrisCount(PAWN_BLACK) << "\n";
+	std::cout << "opened morrises            " << (int)openedMorrisCount(PAWN_WHITE) << ", " << (int)openedMorrisCount(PAWN_BLACK) << "\n";
 	std::cout << "potential double morrises  " << (int)potentialDoubleMorrisCount(PAWN_WHITE) << ", " << (int)potentialDoubleMorrisCount(PAWN_BLACK) << "\n";
 	std::cout << "double morrises            " << (int)doubleMorrisCount(PAWN_WHITE) << ", " << (int)doubleMorrisCount(PAWN_BLACK) << "\n";
 	std::cout << "terminal                   " << isTerminal() << "\n";
@@ -307,6 +308,36 @@ uint8 State::morrisCount(pawn player) const {
 				res++;
 	return res;
 
+}
+
+uint8 State::openedMorrisCount(pawn player) const {
+
+	State * state = clone();
+	state->setPlayer(player);
+
+	ExpVector<Action> * actions = state->getActions();
+	ExpVector<Position> * morrises = new ExpVector<Position>();
+	uint8 res = 0;
+	bool found = false;
+
+	for (short i = 0; i < actions->getLogicSize(); i++)
+		if (IS_VALID(actions->get(i).getRemovedPawn())) {
+			found = false;
+			for (short j = 0; j < morrises->getLogicSize(); j++)
+				if (morrises->get(j) == actions->get(i).getDest()) {
+					found = true;
+					break;
+				}
+			if (!found) {
+				morrises->add(actions->get(i).getDest());
+				res++;
+			}
+		}
+
+	delete actions;
+	delete state;
+	delete morrises;
+	return res;
 }
 
 uint8 State::blockedPawnCount(pawn player) const {
