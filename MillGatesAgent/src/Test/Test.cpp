@@ -83,38 +83,26 @@ void testNegaScoutAI(State * state) {
 	NegaScoutAI ai;
 	srand(400);
 
-	//	state->setPawnAt2D('b', '4', PAWN_BLACK);
-	//	state->setPawnAt2D('c', '4', PAWN_BLACK);
-	//	state->setPawnAt2D('d', '5', PAWN_BLACK);
-	//	state->setPawnAt2D('d', '6', PAWN_BLACK);
-	//	state->setPawnAt2D('c', '3', PAWN_WHITE);
-	//	state->setPawnAt2D('e', '3', PAWN_WHITE);
-	//	state->setPawnAt2D('c', '5', PAWN_WHITE);
-	//	state->setPawnAt2D('e', '5', PAWN_WHITE);
-	//	state->setPlayer(PAWN_WHITE);
-	//	state->setPawnsToPlay(PAWN_BLACK, 5);
-	//	state->setPawnsToPlay(PAWN_WHITE, 5);
-	//	state->setPawnsOnBoard(PAWN_WHITE, 4);
-	//	state->setPawnsOnBoard(PAWN_BLACK, 4);
+	pawn player = PAWN_BLACK;
 
-	state->setPawnAt2D('d', '3', PAWN_BLACK);
-	state->setPawnAt2D('e', '3', PAWN_BLACK);
-	state->setPawnAt2D('c', '4', PAWN_BLACK);
-	state->setPawnAt2D('f', '4', PAWN_BLACK);
-	state->setPawnAt2D('e', '5', PAWN_BLACK);
-	state->setPawnAt2D('f', '6', PAWN_BLACK);
+	state->setPawnAt2D('d', '3', OPP(player));
+	state->setPawnAt2D('e', '3', OPP(player));
+	state->setPawnAt2D('c', '4', OPP(player));
+	state->setPawnAt2D('f', '4', OPP(player));
+	state->setPawnAt2D('e', '5', OPP(player));
+	state->setPawnAt2D('f', '6', OPP(player));
 
-	state->setPawnAt2D('c', '3', PAWN_WHITE);
-	state->setPawnAt2D('c', '5', PAWN_WHITE);
-	state->setPawnAt2D('d', '7', PAWN_WHITE);
+	state->setPawnAt2D('c', '3', player);
+	state->setPawnAt2D('c', '5', player);
+	state->setPawnAt2D('d', '7', player);
 
-	state->setPlayer(PAWN_WHITE);
-	state->setPawnsToPlay(PAWN_BLACK, 0);
-	state->setPawnsToPlay(PAWN_WHITE, 0);
-	state->setPawnsOnBoard(PAWN_WHITE, 3);
-	state->setPawnsOnBoard(PAWN_BLACK, 6);
+	state->setPlayer(player);
+	state->setPawnsToPlay(OPP(player), 0);
+	state->setPawnsToPlay(player, 0);
+	state->setPawnsOnBoard(player, 3);
+	state->setPawnsOnBoard(OPP(player), 6);
 
-	ai.setDepth(1);
+	ai.setDepth(2);
 	std::cout << ai.choose(state) << "\n\n";
 
 	state->print();
@@ -123,8 +111,8 @@ void testNegaScoutAI(State * state) {
 	ai.print(state, 0);
 	std::cout << "DEPTH 1" << "\n\n";
 	ai.print(state, 1);
-//	std::cout << "DEPTH 2" << "\n\n";
-//	ai.print(state, 2);
+	std::cout << "DEPTH 2" << "\n\n";
+	ai.print(state, 2);
 //	std::cout << "DEPTH 3" << "\n\n";
 //	ai.print(state, 3);
 //	std::cout << "DEPTH 4" << "\n\n";
@@ -138,28 +126,6 @@ void testNegaScoutAI(State * state) {
 void testIterativeDeepeningAI(State * state) {
 
 	srand(8000);
-
-	//	state->setPawnAt2D('a', '1', PAWN_BLACK);
-	//	state->setPawnAt2D('g', '1', PAWN_BLACK);
-	//	state->setPawnAt2D('b', '2', PAWN_BLACK);
-	//	state->setPawnAt2D('d', '3', PAWN_BLACK);
-	//	state->setPawnAt2D('e', '5', PAWN_BLACK);
-	//	state->setPawnAt2D('d', '7', PAWN_BLACK);
-	//	state->setPawnAt2D('g', '7', PAWN_BLACK);
-	//
-	//	state->setPawnAt2D('d', '1', PAWN_WHITE);
-	//	state->setPawnAt2D('g', '4', PAWN_WHITE);
-	//	state->setPawnAt2D('d', '5', PAWN_WHITE);
-	//	state->setPawnAt2D('c', '5', PAWN_WHITE);
-	//	state->setPawnAt2D('b', '6', PAWN_WHITE);
-	//	state->setPawnAt2D('d', '6', PAWN_WHITE);
-	//	state->setPawnAt2D('f', '6', PAWN_WHITE);
-	//	state->setPawnAt2D('a', '7', PAWN_WHITE);
-	//
-	//	state->setPawnsToPlay(PAWN_WHITE, 1);
-	//	state->setPawnsToPlay(PAWN_BLACK, 1);
-	//	state->setPawnsOnBoard(PAWN_WHITE, 8);
-	//	state->setPawnsToPlay(PAWN_BLACK, 7);
 
 	state->setPlayer(PAWN_WHITE);
 

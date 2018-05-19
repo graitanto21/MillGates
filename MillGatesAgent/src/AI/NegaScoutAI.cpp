@@ -207,12 +207,12 @@ Action NegaScoutAI::choose(State * state) {
 	ExpVector<Action> * actions = state->getActions();
 
 	Action res;
-	eval_t score;
 	entry * tempscore;
 	hashcode quickhash, hash;
 
 	hash = _hasher->hash(state);
-	uint8 color = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
+	sint8 color = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
+	eval_t score = MAX_EVAL_T * -color;
 
 	//parallel_negaScout(state);
 	negaScout(state, hash, _depth + 1, -MAX_EVAL_T, MAX_EVAL_T, color);
@@ -220,11 +220,18 @@ Action NegaScoutAI::choose(State * state) {
 	for (uint8 i = 0; i < actions->getLogicSize(); i++) {
 		quickhash = _hasher->quickHash(state, actions->get(i), hash);
 		_table->get(quickhash, &tempscore);
-		if (tempscore != NULL)
-			if (i == 0 || (tempscore->eval * color > score * color && tempscore->entryFlag == EXACT)) {
+		if (tempscore != NULL && color == 1) {
+			if (tempscore->eval > score && tempscore->entryFlag == EXACT) {
 				score = tempscore->eval;
 				res = actions->get(i);
 			}
+		}
+		else if (tempscore != NULL && color == -1) {
+			if (tempscore->eval < score  && tempscore->entryFlag == EXACT) {
+				score = tempscore->eval;
+				res = actions->get(i);
+			}
+		}
 	}
 
 	delete actions;

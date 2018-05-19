@@ -64,13 +64,13 @@ void * IterativeDeepeningAI::refreshResult(State * state) {
 		lastChosen = _ai->choose(state);
 		if (timeUp) {
 			//clear(); // ????
-			//std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
+			std::cout << "Chosen action: " << _tempAction << " with depth " << depth - 1 << "\n";
 			break;
 		}
 		else {
 			_tempAction = lastChosen;
-			//std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
-			//print(state, 0);
+			std::cout << "Chosen action: " << _tempAction << " with depth " << depth << "\n";
+			print(state, 0);
 			//clear(); // ????
 		}
 	}
