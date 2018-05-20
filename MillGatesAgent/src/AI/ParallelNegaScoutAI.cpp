@@ -145,27 +145,27 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 			values->add(e_tmp->eval * -color);
 		else {
 			//Check the other tables
-			for(int i=0; i<NUM_CORES; i++) {
-				if (i!=tid) {
-					child_present = _tables->get(i)->get(hashes->get(i), &e_tmp);
-					if (child_present && e_tmp->depth > depth - 1) {
-						values->add(e_tmp->eval * -color);
-						break;
-					}
-				}
-			}
+//			for(int i=0; i<NUM_CORES; i++) {
+//				if (i!=tid) {
+//					child_present = _tables->get(i)->get(hashes->get(i), &e_tmp);
+//					if (child_present && e_tmp->depth > depth - 1) {
+//						values->add(e_tmp->eval * -color);
+//						break;
+//					}
+//				}
+//			}
 			if(!child_present) {//Else I have to estimate the value using function
 				child_loop = _histories->get(tid)->contains(hashes->get(i));
 
-				if(!child_loop) { //Check the others
-					for(int i=0; i<NUM_CORES && !child_loop; i++) {
-						if (i!=tid) {
-							child_loop = _histories->get(i)->contains(hashes->get(i));
-							if(child_loop) //Update the history
-								_histories->get(tid)->add(hashes->get(i), child_loop);
-						}
-					}
-				}
+//				if(!child_loop) { //Check the others
+//					for(int i=0; i<NUM_CORES && !child_loop; i++) {
+//						if (i!=tid) {
+//							child_loop = _histories->get(i)->contains(hashes->get(i));
+//							if(child_loop) //Update the history
+//								_histories->get(tid)->add(hashes->get(i), child_loop);
+//						}
+//					}
+//				}
 
 				values->add(
 						_heuristic->evaluate(states->get(i),
@@ -249,8 +249,8 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 //		std::cout << actions->get(i) << "\n";
 //	}
 	//TODO: debug
-
-	//THIS PART EQUALS TO NEGASCOUT
+//
+//	//THIS PART EQUALS TO NEGASCOUT
 	HashSet<entry> * _table = _tables->get(tid);
 
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
@@ -276,7 +276,6 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 
 	State * child = NULL;
 	hashcode child_hash = 0;
-	entryFlag_t flag = ALPHA_PRUNE;
 	int alpha = -MAX_EVAL_T;
 	int beta = MAX_EVAL_T;
 	eval_t score = 0;
@@ -297,16 +296,6 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 		}
 		delete child;
 		states->set(i, NULL);
-
-		if (score > alpha) {
-			alpha = score;
-			flag = EXACT;
-		}
-
-		if (alpha >= beta) {
-			flag = BETA_PRUNE;
-			break;
-		}
 	}
 	delete hashes;
 	for (uint8 i = 0; i < states->getLogicSize(); i++)
@@ -315,7 +304,6 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 	delete states;
 	delete values;
 
-//	 EXPLODES! WHY?
 	actions = NULL;
 	delete actions;
 	pthread_exit(NULL);
