@@ -13,5 +13,5 @@ java.net.SocketException: Connection reset
 	at java.base/java.io.ObjectInputStream.readObject0(Unknown Source)
 	at java.base/java.io.ObjectInputStream.readObject(Unknown Source)
 	at it.unibo.ai.didattica.mulino.client.MulinoClient.read(MulinoClient.java:56)
-	at it.millgates.mw.MGCppAgent.main(MGCppAgent.java:102)
+	at it.millgates.mw.MGCppAgent.main(MGCppAgent.java:97)
 Closing sockets
