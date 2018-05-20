@@ -1,16 +1,9 @@
 
-C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\exec>cd ..\MillGatesAgent\Release 
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe black 
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--O--O--O--|--|
-4 O--O--O     O--O--O
-3 |--|--O--O--O--|--|
-2 |--O-----O-----O--|
-1 W--------O--------O
-  a  b  c  d  e  f  g
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
 
+<<<<<<< HEAD
 pawns to play              8, 9
 pawns on board             1, 0
 new morris                 0
@@ -19908,3 +19901,6 @@ f2 {
 } -> -2
 Chosen action: d3 with depth 2
 ^C
+=======
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\MillGatesAgent\Release>
+>>>>>>> parallel_negascout

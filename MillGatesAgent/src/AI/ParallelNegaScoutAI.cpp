@@ -304,8 +304,8 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 	delete states;
 	delete values;
 
-	actions = NULL;
-	delete actions;
+//	actions = NULL;
+//	delete actions;
 	pthread_exit(NULL);
 	return NULL;
 }

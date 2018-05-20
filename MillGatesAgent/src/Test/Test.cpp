@@ -388,28 +388,19 @@ int main(void) {
 
 	State * state = new CubeStateImpl();
 
-<<<<<<< HEAD
-	testZobristHashing(state);
-=======
-	//testZobristHashing(state);
->>>>>>> parallel_negascout
-	//testNegaScoutAI(state);
-	//testIterativeDeepeningAI(state);
-	//testMorrisCount(state);
-	//testBlockedPawns(state);
-	//testPotentialMorrises(state);
-	//testPotentialDoubleMorrises(state);
-	//testDoubleMorrisesCount(state);
-	//testOrdering(state);
-	//testHashTable();
-<<<<<<< HEAD
-	testRomanianHeuristic();
-
-=======
-	//testRomanianHeuristic();
-	//testParallelNegaScoutAI(state);
+//	testZobristHashing(state);
+//	testNegaScoutAI(state);
+//	testIterativeDeepeningAI(state);
+//	testMorrisCount(state);
+//	testBlockedPawns(state);
+//	testPotentialMorrises(state);
+//	testPotentialDoubleMorrises(state);
+//	testDoubleMorrisesCount(state);
+//	testOrdering(state);
+//	testHashTable();
+//	testRomanianHeuristic();
+//	testParallelNegaScoutAI(state);
 	testParallelIterativeDeepeningAI(state);
->>>>>>> parallel_negascout
 	delete state;
 
 }

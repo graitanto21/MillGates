@@ -1,7 +1,7 @@
 
-C:\Users\Luca\Documents\fia\MillGates\exec>cd ../Mulino/bin 
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\exec>cd ../Mulino/bin 
 
-C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>java it.unibo.ai.didattica.mulino.engine.Engine 
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\Mulino\bin>java it.unibo.ai.didattica.mulino.engine.Engine 
 Launching game with timeout 60
 Waiting for connections...
 Player W connected!
@@ -21,6 +21,7 @@ White Checkers On Board: 0;
 Black Checkers On Board: 0;
 
 Waiting for W move...
+<<<<<<< HEAD
 Player W move n1: a1
 7 O--------O--------O
 6 |--O-----O-----O--|
@@ -118,3 +119,9 @@ Black Checkers On Board: 3;
 
 Waiting for W move...
 ^C
+=======
+Player Whas not chosen move n1
+Player B WIN!!!
+
+C:\Users\maura\Documents\UNIBO\Laurea magistrale\Fondamenti di Intelligenza Artificiale\workspace\MillGates\MillGates\Mulino\bin>
+>>>>>>> parallel_negascout

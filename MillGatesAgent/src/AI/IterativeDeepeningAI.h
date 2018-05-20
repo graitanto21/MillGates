@@ -9,6 +9,7 @@
 #define AI_ITERATIVEDEEPENINGAI_H_
 
 #include "AI.h"
+#include "ParallelNegaScoutAI.h"
 
 void * timer(void * args);
 

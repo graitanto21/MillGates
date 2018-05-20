@@ -57,8 +57,9 @@ void sendAction(Action action) {
 void loop(pawn player) {
 
 	AI * ai = new IterativeDeepeningAI();
-	//((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
-	((IterativeDeepeningAI*)ai)->setAI(new AlphaBetaAI());
+//	((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
+//	((IterativeDeepeningAI*)ai)->setAI(new AlphaBetaAI());
+	((IterativeDeepeningAI*)ai)->setAI(new ParallelNegaScoutAI());
 
 	State * state = new CubeStateImpl();
 	State * child;
