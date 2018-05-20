@@ -85,7 +85,20 @@ White Checkers On Board: 2;
 Black Checkers On Board: 2;
 
 Waiting for W move...
-Player Whas not chosen move n3
-Player B WIN!!!
+Player W move n3: g1
+7 W--------O--------O
+6 |--O-----O-----O--|
+5 |--|--W--O--O--|--|
+4 O--O--O     O--O--O
+3 |--|--O--O--O--|--|
+2 |--O-----O-----O--|
+1 B--------B--------W
+  a  b  c  d  e  f  g
+Phase: First;
+White Checkers: 6;
+Black Checkers: 7;
+White Checkers On Board: 3;
+Black Checkers On Board: 2;
 
-C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>
+Waiting for B move...
+^C

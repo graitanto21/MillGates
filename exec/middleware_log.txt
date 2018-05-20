@@ -2,9 +2,3 @@ Waiting for C++ Agent connection
 C++ Agent connected
 Connecting to server
 Connected to server
-java.net.SocketException: Connection reset
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/java.net.SocketInputStream.read(Unknown Source)
-	at java.base/java.io.DataInputStream.read(Unknown Source)
-	at it.millgates.mw.MGCppAgent.main(MGCppAgent.java:86)
-Closing sockets
