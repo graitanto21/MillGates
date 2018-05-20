@@ -35,12 +35,12 @@ typedef struct {
 } entry;
 
 typedef struct {
-	pthread_t tid;
-	State * state;
-	ExpVector<Action> * actions;
-	hashcode hash;
-	sint8 color;
-	uint8 depth;
+	int tid[NUM_CORES];
+	State * state[NUM_CORES];
+	ExpVector<Action> * actions[NUM_CORES];
+	hashcode hash[NUM_CORES];
+	sint8 color[NUM_CORES];
+	uint8 depth[NUM_CORES];
 } args;
 
 class ParallelNegaScoutAI: public AI {
@@ -69,7 +69,7 @@ public:
 	virtual void clearHistory();
 
 	static void * negaScoutThread_helper(void * arg);
-	void * negaScoutThread(args * arg);
+	void * negaScoutThread(args *);
 	eval_t negaScout(State * state, hashcode quickhash, uint8 depth, eval_t alpha, eval_t beta, sint8 color, int tid);
 
 	void setMaxFirst(ExpVector<State*> * states, ExpVector<hashcode> * hashes, ExpVector<eval_t> * values, ExpVector<Action> * actions);

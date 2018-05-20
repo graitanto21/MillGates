@@ -38,7 +38,9 @@ void ParallelNegaScoutAI::stop() {
 }
 
 void ParallelNegaScoutAI::addHistory(State * state) {
-
+	for(int i = 0; i<NUM_CORES; i++) {
+		addHistory(state, i);
+	}
 }
 
 void ParallelNegaScoutAI::addHistory(State * state, int tid) {
@@ -94,10 +96,8 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 	if (depth == 0 || _stopFlag || loop || terminal) {
 		score = ParallelNegaScoutAI::_heuristic->evaluate(state, terminal,
 				loop);
-		if (!presentInTable) {
+		if (!presentInTable)
 			_tables->get(tid)->add(quickhash, entry { depth, EXACT, score });
-			std::cout << "[" << tid << "] Added: " << quickhash << "\n";
-		}
 		else
 			*e = {depth, EXACT, score};
 		return color * score;
@@ -170,10 +170,14 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 	delete states;
 	delete values;
 
-	if (!presentInTable)
+	if (!presentInTable) {
 		_tables->get(tid)->add(quickhash, entry { depth, flag, (eval_t) (alpha * color) });
-	else
+//		std::cout << "[" << tid << "] Added: " << quickhash << "\n";
+	}
+	else {
 		*e = {depth, flag, (eval_t)(alpha * color)};
+//		std::cout << "[" << tid << "] Updated: " << quickhash << "\n";
+	}
 
 	return alpha;
 
@@ -186,45 +190,46 @@ void * ParallelNegaScoutAI::negaScoutThread_helper(void * param) {
 
 void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 
+	int index = pthread_self()%NUM_CORES;
+	int tid = arg->tid[index];
+	State * state = arg->state[index];
+	ExpVector<Action> * actions = arg->actions[index];
+	hashcode hash = arg->hash[index];
+	sint8 color = arg->color[index];
+	uint8 depth = arg->depth[index];
+
 	// TODO: debug
-	std::cout << "Ciao, sono il thread " << (int)arg->tid << "\n";
-//	for(int i = 0; i < arg->actions->getLogicSize(); i++) {
-//		std::cout << arg->actions->get(i) << "\n";
+//	std::cout << "Ciaone, sono il pthread " << index << "\n";
+//	for(int i = 0; i < actions->getLogicSize(); i++) {
+//		std::cout << actions->get(i) << "\n";
 //	}
 	//TODO: debug
 
 	//Check the table??
 
 	//THIS PART EQUALS TO NEGASCOUT
-	HashSet<entry> * _table = _tables->get(arg->tid);
+	HashSet<entry> * _table = _tables->get(tid);
 
-	ExpVector<State*> * states = new ExpVector<State*>(arg->actions->getLogicSize());
-	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(arg->actions->getLogicSize());
-	ExpVector<eval_t> * values = new ExpVector<eval_t>(arg->actions->getLogicSize());
+	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
+	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
+	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
 
 
 	entry * e_tmp;
 	bool child_loop, child_present;
 
-	for (int i = 0; i < arg->actions->getLogicSize(); i++) {
-		states->add(arg->state->result(arg->actions->get(i)));
-		hashes->add(
-				_hasher->quickHash(arg->state, arg->actions->get(i),
-						arg->hash));
-
+	for (int i = 0; i < actions->getLogicSize(); i++) {
+		states->add(state->result(actions->get(i)));
+		hashes->add(_hasher->quickHash(state, actions->get(i), hash));
 		child_present = _table->get(hashes->get(i), &e_tmp);
-		if (child_present && e_tmp->depth > arg->depth - 1)
-			values->add(e_tmp->eval * -arg->color);
+		if (child_present && e_tmp->depth > depth - 1)
+			values->add(e_tmp->eval * -color);
 		else { //Else I have to estimate the value using function
-			child_loop = _histories->get(arg->tid)->contains(hashes->get(i));
-			values->add(
-					_heuristic->evaluate(states->get(i),
-							states->get(i)->isTerminal(), child_loop)
-							* -arg->color);
+			child_loop = _histories->get(tid)->contains(hashes->get(i));
+			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop)* -color);
 		}
 	}
-	setMaxFirst(states, hashes, values, arg->actions);
-	std::cout << "MAX: " << arg->actions->get(0) << "\n";
+	setMaxFirst(states, hashes, values, actions);
 
 	State * child = NULL;
 	hashcode child_hash = 0;
@@ -232,20 +237,20 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 	int alpha = -MAX_EVAL_T;
 	int beta = MAX_EVAL_T;
 	eval_t score = 0;
-	for (int i = 0; i < arg->actions->getLogicSize(); i++) {
+	for (int i = 0; i < actions->getLogicSize(); i++) {
 		child = states->get(i);
 		child_hash = hashes->get(i);
 
 		//DEBUG
 		if (i == 0)
-			score = -negaScout(child, child_hash, arg->depth - 1, -beta, -alpha,
-					-arg->color, arg->tid);
+			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha,
+					-color, tid);
 		else {
-			score = -negaScout(child, child_hash, arg->depth - 1, -alpha - 1,
-					-alpha, -arg->color, arg->tid);
+			score = -negaScout(child, child_hash, depth - 1, -alpha - 1,
+					-alpha, -color, tid);
 			if (score > alpha && score < beta)
-				score = -negaScout(child, child_hash, arg->depth - 1, -beta,
-						-score, -arg->color, arg->tid);
+				score = -negaScout(child, child_hash, depth - 1, -beta,
+						-score, -color, tid);
 		}
 		delete child;
 		states->set(i, NULL);
@@ -272,11 +277,9 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 //			;
 //		else
 //			*e = {depth, flag, (eval_t)(alpha * color)};
-	// EXPLODES! WHY?
-	//	arg->actions = NULL;
-	//	delete arg->actions;
-//	arg = NULL;
-//	delete arg;
+//	 EXPLODES! WHY?
+//		arg->actions = NULL;
+//		delete arg->actions;
 	pthread_exit(NULL);
 	return NULL;
 }
@@ -293,7 +296,7 @@ Action ParallelNegaScoutAI::choose(State * state) {
 
 	hash = _hasher->hash(state);
 	sint8 color = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
-	eval_t score = MAX_EVAL_T * -color;
+	eval_t score = - MAX_EVAL_T * color;
 
 	// Thread creation
 	void ** param = (void**) malloc(sizeof(void*) * 2);
@@ -301,7 +304,7 @@ Action ParallelNegaScoutAI::choose(State * state) {
 
 	pthread_t thread[NUM_CORES];
 	int rc;
-	args * arguments;
+	args arguments;
 	ExpVector<pthread_t> threads;
 
 	//create the action to give to each thread
@@ -311,31 +314,29 @@ Action ParallelNegaScoutAI::choose(State * state) {
 	for (int i = 0; i < NUM_CORES; i++) {
 		actions_for_thread = new ExpVector<Action>();
 		for (int k = i * num_actions_per_thread;
-				k < (((pthread_t)i * num_actions_per_thread) + num_actions_per_thread
+				k < ((i * num_actions_per_thread) + num_actions_per_thread
 								+ ((i == NUM_CORES - 1) ? rest_of_actions : 0));
 				k++)
 			actions_for_thread->add(actions->get(k));
 
-		arguments =
-				new args {i, state, actions_for_thread, hash, color, _depth };
-		param[1] = arguments;
-		rc = pthread_create(&thread[i], NULL, negaScoutThread_helper,
-				param);
+		arguments.tid[i] = i;
+		arguments.state[i] = state;
+		arguments.actions[i] = actions_for_thread;
+		arguments.hash[i] = hash;
+		arguments.color[i] = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
+		arguments.depth[i] = _depth;
+		param[1] = &arguments;
+		rc = pthread_create(&thread[i], NULL, negaScoutThread_helper,param);
 		std::cout << "Avviato thread: " << thread[i] << "\n";
 		if (rc) {
 			std::cout << "ERRORE: " << rc;
 			exit(-1);
 		}
-		actions_for_thread = NULL;
 	}
 
 	for (int t = 0; t < NUM_CORES; t++) {
 		rc = pthread_join(thread[t], NULL);
 	}
-	clear();
-	delete actions_for_thread;
-	free(param);
-
 	for(int j=0; j<NUM_CORES; j++) {
 		for (int i = 0; i < actions->getLogicSize(); i++) {
 			quickhash = _hasher->quickHash(state, actions->get(i), hash);
@@ -343,26 +344,22 @@ Action ParallelNegaScoutAI::choose(State * state) {
 			if (tempscore != NULL && color == 1) {
 				if (tempscore->eval > score && tempscore->entryFlag == EXACT) {
 					score = tempscore->eval;
-					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
+//					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
 					res = actions->get(i);
 				}
 			} else if (tempscore != NULL && color == -1) {
 				if (tempscore->eval < score && tempscore->entryFlag == EXACT) {
 					score = tempscore->eval;
-					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
+//					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
 					res = actions->get(i);
 				}
 
 			}
 		}
-		std::cout << "Action chosen by " << j << ": " << res << "\n";
+//		std::cout << "Action chosen by " << j << ": " << res << "\n";
 	}
-
-	/*
-	 * DEBUG!!!!
-	 */
-//	res = actions->get(0);
-
+	delete actions_for_thread;
+	free(param);
 	delete actions;
 	return res;
 }

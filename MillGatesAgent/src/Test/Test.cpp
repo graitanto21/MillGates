@@ -290,7 +290,7 @@ void testParallelNegaScoutAI(State * state) {
 	ParallelNegaScoutAI ai;
 	srand(400);
 
-	pawn player = PAWN_BLACK;
+	pawn player = PAWN_WHITE;
 
 	state->setPawnAt2D('d', '3', OPP(player));
 	state->setPawnAt2D('e', '3', OPP(player));
@@ -338,19 +338,27 @@ void testParallelNegaScoutAI(State * state) {
 //	ai.print(state, 6);
 }
 
-//void testIterativeDeepeningAI(State * state) {
-//
-//	srand(8000);
-//
-//	state->setPlayer(PAWN_WHITE);
-//
-//	IterativeDeepeningAI * ai = new IterativeDeepeningAI();
-//	ai->setAI(new NegaScoutAI());
-//
-//	ai->choose(state);
-//	ai->choose(state);
-//
-//}
+void testParallelIterativeDeepeningAI(State * state) {
+
+	IterativeDeepeningAI ai;
+	ai.setAI(new ParallelNegaScoutAI());
+
+	Action action;
+
+	srand(400);
+
+	pawn player = PAWN_WHITE;
+
+	//State blank
+	state->setPlayer(player);
+	state->setPawnsToPlay(OPP(player), 9);
+	state->setPawnsToPlay(player, 9);
+	state->setPawnsOnBoard(player, 0);
+	state->setPawnsOnBoard(OPP(player), 0);
+
+	std::cout << "\nChosen action: " << ai.choose(state) << "\n\n";
+
+}
 
 #if defined(DEBUG)
 int main(void) {
@@ -368,8 +376,8 @@ int main(void) {
 	//testOrdering(state);
 	//testHashTable();
 	//testRomanianHeuristic();
-
-	testParallelNegaScoutAI(state);
+	//testParallelNegaScoutAI(state);
+	testParallelIterativeDeepeningAI(state);
 	delete state;
 
 }
