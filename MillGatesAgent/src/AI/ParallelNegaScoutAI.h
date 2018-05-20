@@ -26,26 +26,27 @@ typedef struct {
 	uint8 depth;
 	entryFlagParallel_t entryFlag;
 	eval_t eval;
-} entryParallel;
+} entry_p;
 
 typedef struct {
-	int tid[NUM_CORES];
-	State * state[NUM_CORES];
-	ExpVector<Action> * actions[NUM_CORES];
-	hashcode hash[NUM_CORES];
-	sint8 color[NUM_CORES];
-	uint8 depth[NUM_CORES];
-} args;
+	bool terminal;
+	eval_t score;
+	Action a;
+} result;
 
 class ParallelNegaScoutAI: public AI {
 private:
-	ExpVector<HashSet<entryParallel>*> * _tables;
+	ExpVector<HashSet<entry_p>*> * _tables;
 	ExpVector<HashSet<bool>*> * _histories;
 	ZobristHashing * _hasher;
 	HeuristicFunction * _heuristic;
 	uint8 _depth;
 	bool _stopFlag;
-	args _arguments;
+	ExpVector<Action> * _actions;
+	result _results[NUM_CORES];
+	State * _state;
+	hashcode _hash;
+	sint8 _color;
 
 	void recurprint(State * state, int depth, int curdepth);
 

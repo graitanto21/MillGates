@@ -101,4 +101,5 @@ White Checkers On Board: 3;
 Black Checkers On Board: 2;
 
 Waiting for B move...
-^C
+
+C:\Users\Luca\Documents\fia\MillGates\Mulino\bin>

@@ -6,6 +6,7 @@
  */
 
 #include "ParallelNegaScoutAI.h"
+
 #if defined(WINDOWS)
 #include "windows.h"
 #endif
@@ -15,16 +16,22 @@
 #endif
 
 ParallelNegaScoutAI::ParallelNegaScoutAI() {
-	_tables = new ExpVector<HashSet<entryParallel>*>(NUM_CORES);
+	_tables = new ExpVector<HashSet<entry_p>*>(NUM_CORES);
 	_histories = new ExpVector<HashSet<bool>*>(NUM_CORES);
 	for (int i = 0; i < NUM_CORES; i++) {
-		_tables->add(new HashSet<entryParallel>());
+		_tables->add(new HashSet<entry_p>());
 		_histories->add(new HashSet<bool>());
+
+		_results[i].terminal = false;
 	}
 	_hasher = ZobristHashing::getInstance();
 	_depth = MIN_SEARCH_DEPTH;
 	_stopFlag = false;
 	_heuristic = new RomanianHeuristic();
+	_actions = new ExpVector<Action>();
+	_hash = 0;
+	_color = 1;
+	_state = NULL;
 }
 
 uint8 ParallelNegaScoutAI::getDepth() {
@@ -83,7 +90,7 @@ void ParallelNegaScoutAI::setMaxFirst(ExpVector<State*> * states,
 eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 	uint8 depth, eval_t alpha, eval_t beta, sint8 color, int tid) {
 
-	entryParallel * e;
+	entry_p * e;
 	bool presentInTable = _tables->get(tid)->get(quickhash, &e);
 	if (presentInTable && e->depth > depth) {
 		if (e->entryFlag == EXACT_P)
@@ -95,28 +102,27 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 		if (alpha >= beta)
 			return alpha;
 	}
-//	else { //Check in the tables of the other threads (READONLY)
-//		for(int i=0; i<NUM_CORES; i++) {
-//			if (i!=tid) {
-//				presentInTable = _tables->get(i)->get(quickhash, &e);
-//				if (presentInTable && e->depth > depth) {
-////					std::cout << "[" << tid << "] Found a match in table " << i << "\n";
-//					//Update my table with the entry, so I advantage of the work of the others
-//					_tables->get(tid)->add(quickhash, *e);
-//					//Then proceeds as above
-//					if (e->entryFlag == EXACT)
-//						return color * e->eval;
-//					if (e->entryFlag == ALPHA_PRUNE && color * e->eval > alpha)
-//						alpha = e->eval * color;
-//					if (e->entryFlag == BETA_PRUNE && color * e->eval < beta)
-//						beta = e->eval * color;
-//					if (alpha >= beta)
-//						return alpha;
-//				}
-//			}
-//		}
-//	}
-
+	else { //Check in the tables of the other threads (READONLY)
+		for(int i=0; i<NUM_CORES; i++) {
+			if (i!=tid) {
+				presentInTable = _tables->get(i)->get(quickhash, &e);
+				if (presentInTable && e->depth > depth) {
+//					std::cout << "[" << tid << "] Found a match in table " << i << "\n";
+					//Update my table with the entry, so I advantage of the work of the others
+					_tables->get(tid)->add(quickhash, *e);
+					//Then proceeds as above
+					if (e->entryFlag == EXACT_P)
+						return color * e->eval;
+					if (e->entryFlag == ALPHA_PRUNE_P && color * e->eval > alpha)
+						alpha = e->eval * color;
+					if (e->entryFlag == BETA_PRUNE_P && color * e->eval < beta)
+						beta = e->eval * color;
+					if (alpha >= beta)
+						return alpha;
+				}
+			}
+		}
+	}
 
 	eval_t score = 0;
 	bool terminal = state->isTerminal();
@@ -126,7 +132,7 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 		score = ParallelNegaScoutAI::_heuristic->evaluate(state, terminal,
 				loop);
 		if (!presentInTable)
-			_tables->get(tid)->add(quickhash, entryParallel { depth, EXACT_P, score });
+			_tables->get(tid)->add(quickhash, entry_p { depth, EXACT_P, score });
 		else
 			*e = {depth, EXACT_P, score};
 		return color * score;
@@ -138,7 +144,7 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 			actions->getLogicSize());
 	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
 
-	entryParallel * e_tmp;
+	entry_p * e_tmp;
 
 	bool child_loop, child_present;
 
@@ -220,7 +226,7 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 	delete values;
 
 	if (!presentInTable) {
-		_tables->get(tid)->add(quickhash, entryParallel { depth, flag, (eval_t) (alpha * color) });
+		_tables->get(tid)->add(quickhash, entry_p { depth, flag, (eval_t) (alpha * color) });
 //		std::cout << "[" << tid << "] Added: " << quickhash << "\n";
 	}
 	else {
@@ -233,79 +239,46 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 }
 
 void * ParallelNegaScoutAI::negaScoutThread_helper(void * param) {
-	return (reinterpret_cast<ParallelNegaScoutAI*>(((void**) param)[0]))->negaScoutThread();
+	return (reinterpret_cast<ParallelNegaScoutAI*>(param))->negaScoutThread();
 }
 
 void * ParallelNegaScoutAI::negaScoutThread() {
 
-	int index = pthread_self()%NUM_CORES;
-	int tid = _arguments.tid[index];
-	State * state = _arguments.state[index];
-	ExpVector<Action> * actions = _arguments.actions[index];
-	hashcode hash = _arguments.hash[index];
-	sint8 color = _arguments.color[index];
-	uint8 depth = _arguments.depth[index];
-
+	int tid = pthread_self()%NUM_CORES;
 	// TODO: debug
-//	std::cout << "Ciaone, sono il pthread " << index << "\n";
+	std::cout << "Ciaone, sono il pthread " << tid << "\n";
 //	for(int i = 0; i < actions->getLogicSize(); i++) {
 //		std::cout << actions->get(i) << "\n";
 //	}
 	//TODO: debug
-//
-//	//THIS PART EQUALS TO NEGASCOUT
-	HashSet<entryParallel> * _table = _tables->get(tid);
 
-	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
-	ExpVector<hashcode> * hashes = new ExpVector<hashcode>(actions->getLogicSize());
-	ExpVector<eval_t> * values = new ExpVector<eval_t>(actions->getLogicSize());
+	State * child;
+	hashcode quickhash;
+	eval_t tempscore;
+	_results[tid].score = -MAX_EVAL_T;
+	ExpVector<Action>* actions = _actions;
+	int num_actions_per_thread = (actions->getLogicSize() / NUM_CORES);
+	int rest_of_actions = (actions->getLogicSize() % NUM_CORES);
 
-
-	entryParallel * e_tmp;
-	bool child_loop, child_present;
-
-	for (int i = 0; i < actions->getLogicSize(); i++) {
-		states->add(state->result(actions->get(i)));
-		hashes->add(_hasher->quickHash(state, actions->get(i), hash));
-		child_present = _table->get(hashes->get(i), &e_tmp);
-		if (child_present && e_tmp->depth > depth - 1)
-			values->add(e_tmp->eval * -color);
-		else { //Else I have to estimate the value using function
-			child_loop = _histories->get(tid)->contains(hashes->get(i));
-			values->add(_heuristic->evaluate(states->get(i), states->get(i)->isTerminal(), child_loop)* -color);
+	for (int k = tid * num_actions_per_thread;
+					k < ((tid * num_actions_per_thread) + num_actions_per_thread
+									+ ((tid == NUM_CORES - 1) ? rest_of_actions : 0));
+					k++) {
+		child = _state->result(_actions->get(k));
+		if (child->isTerminal()) {
+			_results[tid].terminal = true;
+			_results[tid].a = actions->get(k);
+			delete child;
+			break;
 		}
-	}
-	setMaxFirst(states, hashes, values, actions);
-
-	State * child = NULL;
-	hashcode child_hash = 0;
-	int alpha = -MAX_EVAL_T;
-	int beta = MAX_EVAL_T;
-	eval_t score = 0;
-	for (int i = 0; i < actions->getLogicSize(); i++) {
-		child = states->get(i);
-		child_hash = hashes->get(i);
-
-		if (i == 0)
-			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha,
-					-color, tid);
-		else {
-			score = -negaScout(child, child_hash, depth - 1, -alpha - 1,
-					-alpha, -color, tid);
-			if (score > alpha && score < beta)
-				score = -negaScout(child, child_hash, depth - 1, -beta,
-						-score, -color, tid);
+		quickhash = _hasher->quickHash(_state, actions->get(k), _hash);
+		tempscore = -negaScout(child, quickhash, _depth, -MAX_EVAL_T, - _results[tid].score, - _color, tid);
+		if (tempscore > _results[tid].score) {
+			_results[tid].score = tempscore;
+			_results[tid].a = actions->get(k);
 		}
 		delete child;
-		states->set(i, NULL);
 	}
-	delete hashes;
-	for (uint8 i = 0; i < states->getLogicSize(); i++)
-		if (states->get(i) != NULL)
-			delete states->get(i);
-	delete states;
-	delete values;
-
 	pthread_exit(NULL);
 	return NULL;
 }
@@ -313,45 +286,22 @@ void * ParallelNegaScoutAI::negaScoutThread() {
 Action ParallelNegaScoutAI::choose(State * state) {
 
 	_stopFlag = false;
-
-	ExpVector<Action> * actions = state->getActions();
-
+	_actions = state->getActions();
 	Action res;
-	entryParallel * tempscore;
-	hashcode quickhash, hash;
-
-	hash = _hasher->hash(state);
-	sint8 color = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
-	eval_t score = - MAX_EVAL_T * color;
+	_color = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
+	eval_t score = - MAX_EVAL_T * _color;
+	_state = state;
+	_hash = _hasher->hash(state);
 
 	// Thread creation
-	void ** param = (void**) malloc(sizeof(void*));
-	param[0] = this;
-
 	pthread_t thread[NUM_CORES];
 	int rc;
-	ExpVector<pthread_t> threads;
 
-	//create the action to give to each thread
-	int num_actions_per_thread = (actions->getLogicSize() / NUM_CORES);
-	int rest_of_actions = (actions->getLogicSize() % NUM_CORES);
 	for (int i = 0; i < NUM_CORES; i++) {
-		_arguments.actions[i] = new ExpVector<Action>();
-		for (int k = i * num_actions_per_thread;
-				k < ((i * num_actions_per_thread) + num_actions_per_thread
-								+ ((i == NUM_CORES - 1) ? rest_of_actions : 0));
-				k++)
-			_arguments.actions[i]->add(actions->get(k));
-
-		_arguments.tid[i] = i;
-		_arguments.state[i] = state;
-		_arguments.hash[i] = hash;
-		_arguments.color[i] = (state->getPlayer() == PAWN_WHITE) ? 1 : -1;
-		_arguments.depth[i] = _depth;
-		rc = pthread_create(&thread[i], NULL, negaScoutThread_helper,param);
+		rc = pthread_create(&thread[i], NULL, negaScoutThread_helper, this);
 		std::cout << "Avviato thread: " << thread[i] << "\n";
 		if (rc) {
-			std::cout << "ERRORE: " << rc;
+			std::cout << "ERROR: " << rc;
 			exit(-1);
 		}
 	}
@@ -359,37 +309,23 @@ Action ParallelNegaScoutAI::choose(State * state) {
 	for (int t = 0; t < NUM_CORES; t++) {
 		rc = pthread_join(thread[t], NULL);
 	}
-	for(int j=0; j<NUM_CORES; j++) {
-		for (int i = 0; i < actions->getLogicSize(); i++) {
-			quickhash = _hasher->quickHash(state, actions->get(i), hash);
-			_tables->get(j)->get(quickhash, &tempscore);
-			if (tempscore != NULL && color == 1) {
-				if (tempscore->eval > score && tempscore->entryFlag == EXACT_P) {
-					score = tempscore->eval;
-//					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
-					res = actions->get(i);
-				}
-			} else if (tempscore != NULL && color == -1) {
-				if (tempscore->eval < score && tempscore->entryFlag == EXACT_P) {
-					score = tempscore->eval;
-//					std::cout << "[" << j << "] Score (" << i << "): " << score << "\n";
-					res = actions->get(i);
-				}
 
-			}
+	//Yield the results
+	for (int t = 0; t < NUM_CORES; t++) {
+		if(_results[t].terminal){
+			res = _results[t].a;
+			break;
 		}
-//		std::cout << "Action chosen by " << j << ": " << res << "\n";
+		if(_results[t].score > score) {
+			score = _results[t].score;
+			res = _results[t].a;
+		}
 	}
-	for(int i=0; i<NUM_CORES; i++) {
-		delete _arguments.actions[i];
-	}
-	free(param);
-	delete actions;
 	return res;
 }
 
 void ParallelNegaScoutAI::recurprint(State * state, int depth, int curdepth) {
-	entryParallel * val = NULL;
+	entry_p * val = NULL;
 	ExpVector<Action> * actions = state->getActions();
 	State * child = NULL;
 	for (int j = 0; j < NUM_CORES; j++) {
@@ -435,4 +371,5 @@ ParallelNegaScoutAI::~ParallelNegaScoutAI() {
 	delete _tables;
 	delete _histories;
 	delete _heuristic;
+	delete _actions;
 }

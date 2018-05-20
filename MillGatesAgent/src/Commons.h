@@ -28,7 +28,7 @@
 
 #define MIN_SEARCH_DEPTH 3
 #define MAX_SEARCH_DEPTH 50
-#define COMPUTATION_TIME 59
+#define COMPUTATION_TIME 58
 
 #define NUM_CORES 3
 
