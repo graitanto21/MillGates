@@ -8,7 +8,7 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-//#define DEBUG
+#define DEBUG
 
 #define CUBE_SIZE_X 3
 #define CUBE_SIZE_Y 3
@@ -26,9 +26,17 @@
 #define AVERAGE_PAWNS_ON_BOARD 4
 #define MAX_MOVES_PHASE_2 4
 
+<<<<<<< HEAD
 #define MIN_SEARCH_DEPTH 2
 #define MAX_SEARCH_DEPTH 50
 #define COMPUTATION_TIME 55
+=======
+#define MIN_SEARCH_DEPTH 5
+#define MAX_SEARCH_DEPTH 30
+#define COMPUTATION_TIME 58
+
+#define NUM_CORES 3
+>>>>>>> parallel_negascout
 
 #define WHITE_PAWNS_COUNT 9
 #define BLACK_PAWNS_COUNT 9
