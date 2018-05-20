@@ -145,27 +145,27 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 			values->add(e_tmp->eval * -color);
 		else {
 			//Check the other tables
-//			for(int i=0; i<NUM_CORES; i++) {
-//				if (i!=tid) {
-//					child_present = _tables->get(i)->get(hashes->get(i), &e_tmp);
-//					if (child_present && e_tmp->depth > depth - 1) {
-//						values->add(e_tmp->eval * -color);
-//						break;
-//					}
-//				}
-//			}
+			for(int i=0; i<NUM_CORES; i++) {
+				if (i!=tid) {
+					child_present = _tables->get(i)->get(hashes->get(i), &e_tmp);
+					if (child_present && e_tmp->depth > depth - 1) {
+						values->add(e_tmp->eval * -color);
+						break;
+					}
+				}
+			}
 			if(!child_present) {//Else I have to estimate the value using function
 				child_loop = _histories->get(tid)->contains(hashes->get(i));
 
-//				if(!child_loop) { //Check the others
-//					for(int i=0; i<NUM_CORES && !child_loop; i++) {
-//						if (i!=tid) {
-//							child_loop = _histories->get(i)->contains(hashes->get(i));
-//							if(child_loop) //Update the history
-//								_histories->get(tid)->add(hashes->get(i), child_loop);
-//						}
-//					}
-//				}
+				if(!child_loop) { //Check the others
+					for(int i=0; i<NUM_CORES && !child_loop; i++) {
+						if (i!=tid) {
+							child_loop = _histories->get(i)->contains(hashes->get(i));
+							if(child_loop) //Update the history
+								_histories->get(tid)->add(hashes->get(i), child_loop);
+						}
+					}
+				}
 
 				values->add(
 						_heuristic->evaluate(states->get(i),
@@ -283,7 +283,6 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 		child = states->get(i);
 		child_hash = hashes->get(i);
 
-		//DEBUG
 		if (i == 0)
 			score = -negaScout(child, child_hash, depth - 1, -beta, -alpha,
 					-color, tid);
@@ -304,8 +303,8 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 	delete states;
 	delete values;
 
-//	actions = NULL;
-//	delete actions;
+	actions = NULL;
+	delete actions;
 	pthread_exit(NULL);
 	return NULL;
 }

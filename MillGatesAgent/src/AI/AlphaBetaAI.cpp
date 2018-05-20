@@ -135,6 +135,11 @@ Action AlphaBetaAI::choose(State * state) {
 		best = -MAX_EVAL_T;
 		for (short i = 0; i < actions->getLogicSize(); i++) {
 			child = state->result(actions->get(i));
+			if (child->isTerminal()) {
+				action = actions->get(i);
+				delete child;
+				break;
+			}
 			child_hash = _hasher->quickHash(state, actions->get(i), father_hash);
 #if defined(PRINT)
 			std::cout << actions->get(i) << " { \n";
@@ -154,6 +159,11 @@ Action AlphaBetaAI::choose(State * state) {
 		best = MAX_EVAL_T;
 		for (short i = 0; i < actions->getLogicSize(); i++) {
 			child = state->result(actions->get(i));
+			if (child->isTerminal()) {
+				action = actions->get(i);
+				delete child;
+				break;
+			}
 			child_hash = _hasher->quickHash(state, actions->get(i), father_hash);
 #if defined(PRINT)
 			std::cout << actions->get(i) << " { \n";

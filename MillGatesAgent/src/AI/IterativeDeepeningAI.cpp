@@ -121,6 +121,7 @@ Action IterativeDeepeningAI::choose(State * state) {
 	pthread_create(&ai_thread, NULL, refreshResult_helper, param);
 	pthread_create(&timer_thread, NULL, timer_helper, this);
 	pthread_join(timer_thread, NULL);
+	pthread_join(ai_thread, NULL);
 	free(param);
 	clear();
 	return _tempAction;
