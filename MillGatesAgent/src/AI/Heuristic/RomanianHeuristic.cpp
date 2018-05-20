@@ -57,10 +57,10 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 
 		result = 18 * morrisLastTurn +
 				26 	* morrises +
-				1 	* blockedPawns +
-				6 	* pawns +
-				12	* potentialSingleMorrises +
-				7 	* potentialDoubleMorrises;
+				25 	* blockedPawns +
+				50 	* pawns +
+				55	* potentialSingleMorrises +
+				45 	* potentialDoubleMorrises;
 	}
 	else if ((state->getPlayer() == PAWN_BLACK && whiteOnBoard > 3) || (state->getPlayer() == PAWN_WHITE && blackOnBoard > 3)) { //Phase 2
 
@@ -84,9 +84,9 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 
 		result = 14 	* morrisLastTurn +
 				43 		* morrises +
-				10 		* blockedPawns +
-				8 		* pawns +
-				7 		* openedMorrises +
+				30 		* blockedPawns +
+				45 		* pawns +
+				50		* openedMorrises +
 				42		* doubleMorrises +
 				1086 	* winning;
 	}
@@ -101,7 +101,7 @@ eval_t RomanianHeuristic::evaluate(State * state, bool terminal, bool loop) {
 		sint8 winning; // (4)
 		winning = (terminal) ? (state->getPlayer() == PAWN_WHITE ? -1 : 1) : 0;
 
-		result = 10 	* potentialSingleMorrises +
+		result = 20 	* potentialSingleMorrises +
 				1 		* potentialDoubleMorrises +
 				16 		* morrisLastTurn +
 				1190 	* winning;
