@@ -11,8 +11,8 @@
 #include <semaphore.h>
 #include "../os.h"
 #if defined(WINDOWS)
-#endif
 #include "windows.h"
+#endif
 #if defined(LINUX)
 #include "unistd.h"
 #endif
