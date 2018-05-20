@@ -1,90 +1,346 @@
 
 C:\Users\Luca\Documents\fia\MillGates\exec>cd ..\MillGatesAgent\Release 
 
-C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white 
-Chosen action: d6 with depth 3
+C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>.\MillGatesAgent.exe white  
+Avviato thread: 4
+Avviato thread: 5
+Avviato thread: 6
+Chosen action: c5 with depth 3
+TABLE OF THREAD 0
+ ==== 
+c5 -> 55, 0, 2
+b6 -> 55, 0, 2
+a7 -> 55, 0, 2
+d5 -> 55, 0, 2
+d6 -> 55, 0, 2
+d7 -> 55, 0, 2
+e5 -> 55, 0, 2
+f6 -> 55, 0, 2
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> 55, 0, 2
+c4 -> 55, 0, 2
+b4 -> 55, 0, 2
+a4 -> 55, 0, 2
+e4 -> 55, 0, 2
+f4 -> 55, 0, 2
+g4 -> 55, 0, 2
+c3 -> 55, 0, 2
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> 55, 0, 2
+a1 -> 55, 0, 2
+d3 -> 55, 0, 2
+d2 -> 55, 0, 2
+d1 -> 55, 0, 2
+e3 -> 55, 0, 2
+f2 -> 55, 0, 2
+g1 -> 55, 0, 2
+Avviato thread: 7
+Avviato thread: 8
+Avviato thread: 9
+Chosen action: d6 with depth 4
+TABLE OF THREAD 0
+ ==== 
 c5 -> -25, 0, 3
-b6 -> -25, 2, 3
-a7 -> -25, 2, 3
-d5 -> -25, 2, 3
+b6 -> -25, 0, 3
+a7 -> -25, 0, 3
+d5 -> -25, 0, 3
 d6 -> 0, 0, 3
-d7 -> 0, 2, 3
-e5 -> 0, 2, 3
-f6 -> 0, 2, 3
-g7 -> 0, 2, 3
-c4 -> 0, 2, 3
-b4 -> 0, 2, 3
-a4 -> 0, 2, 3
-e4 -> 0, 2, 3
-f4 -> 0, 2, 3
-g4 -> 0, 2, 3
-c3 -> 0, 2, 3
-b2 -> 0, 2, 3
-a1 -> 0, 2, 3
-d3 -> 0, 2, 3
-d2 -> 0, 2, 3
-d1 -> 0, 2, 3
-e3 -> 0, 2, 3
-f2 -> 0, 2, 3
-g1 -> 0, 2, 3
-Chosen action: d5 with depth 4
+d7 -> -25, 0, 3
+e5 -> -25, 0, 3
+f6 -> -25, 0, 3
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> -25, 0, 3
+c4 -> -25, 0, 3
+b4 -> 0, 0, 3
+a4 -> -25, 0, 3
+e4 -> -25, 0, 3
+f4 -> 0, 0, 3
+g4 -> -25, 0, 3
+c3 -> -25, 0, 3
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> -25, 0, 3
+a1 -> -25, 0, 3
+d3 -> -25, 0, 3
+d2 -> 0, 0, 3
+d1 -> -25, 0, 3
+e3 -> -25, 0, 3
+f2 -> -25, 0, 3
+g1 -> -25, 0, 3
+Avviato thread: 10
+Avviato thread: 11
+Avviato thread: 12
+Chosen action: d5 with depth 5
+TABLE OF THREAD 0
+ ==== 
 c5 -> 30, 0, 4
-b6 -> 30, 2, 4
-a7 -> 30, 2, 4
+b6 -> 30, 0, 4
+a7 -> 30, 0, 4
 d5 -> 55, 0, 4
-d6 -> 55, 2, 4
-d7 -> 55, 2, 4
-e5 -> 55, 2, 4
-f6 -> 55, 2, 4
-g7 -> 55, 2, 4
-c4 -> 55, 2, 4
-b4 -> 55, 2, 4
-a4 -> 55, 2, 4
-e4 -> 55, 2, 4
-f4 -> 55, 2, 4
-g4 -> 55, 2, 4
-c3 -> 55, 2, 4
-b2 -> 55, 2, 4
-a1 -> 55, 2, 4
-d3 -> 55, 2, 4
-d2 -> 55, 2, 4
-d1 -> 55, 2, 4
-e3 -> 55, 2, 4
-f2 -> 55, 2, 4
-g1 -> 55, 2, 4
-Chosen action: c5 with depth 5
+d6 -> 55, 0, 4
+d7 -> 55, 0, 4
+e5 -> 30, 0, 4
+f6 -> 30, 0, 4
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> 30, 0, 4
+c4 -> 55, 0, 4
+b4 -> 55, 0, 4
+a4 -> 55, 0, 4
+e4 -> 55, 0, 4
+f4 -> 55, 0, 4
+g4 -> 55, 0, 4
+c3 -> 30, 0, 4
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> 30, 0, 4
+a1 -> 30, 0, 4
+d3 -> 55, 0, 4
+d2 -> 55, 0, 4
+d1 -> 55, 0, 4
+e3 -> 30, 0, 4
+f2 -> 30, 0, 4
+g1 -> 30, 0, 4
+Avviato thread: 13
+Avviato thread: 14
+Avviato thread: 15
+Chosen action: c5 with depth 6
+TABLE OF THREAD 0
+ ==== 
 c5 -> -25, 0, 5
-b6 -> -25, 2, 5
-a7 -> -25, 2, 5
-d5 -> -25, 2, 5
-d6 -> -25, 2, 5
-d7 -> -25, 2, 5
-e5 -> -25, 2, 5
-f6 -> -25, 2, 5
-g7 -> -25, 2, 5
-c4 -> -25, 2, 5
-b4 -> -25, 2, 5
-a4 -> -25, 2, 5
-e4 -> -25, 2, 5
-f4 -> -25, 2, 5
-g4 -> -25, 2, 5
-c3 -> -25, 2, 5
-b2 -> -25, 2, 5
-a1 -> -25, 2, 5
-d3 -> -25, 2, 5
-d2 -> -25, 2, 5
-d1 -> -25, 2, 5
-e3 -> -25, 2, 5
-f2 -> -25, 2, 5
-g1 -> -25, 2, 5
-Chosen action: c5 with depth 5
+b6 -> -25, 0, 5
+a7 -> -25, 0, 5
+d5 -> -25, 0, 5
+d6 -> -25, 0, 5
+d7 -> -25, 0, 5
+e5 -> -25, 0, 5
+f6 -> -25, 0, 5
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> -25, 0, 5
+c4 -> -25, 0, 5
+b4 -> -25, 0, 5
+a4 -> -25, 0, 5
+e4 -> -25, 0, 5
+f4 -> -25, 0, 5
+g4 -> -25, 0, 5
+c3 -> -25, 0, 5
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+d1 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+c5 -> CUT 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> -25, 0, 5
+a1 -> -25, 0, 5
+d3 -> -25, 0, 5
+d2 -> -25, 0, 5
+d1 -> -25, 0, 5
+e3 -> -25, 0, 5
+f2 -> -25, 0, 5
+g1 -> -25, 0, 5
+Avviato thread: 16
+Avviato thread: 17
+Avviato thread: 18
+Chosen action: c5 with depth 6
 7 O--------O--------O
 6 |--O-----O-----O--|
-5 |--|--W--B--O--|--|
+5 |--|--W--O--O--|--|
 4 O--O--O     O--O--O
 3 |--|--O--O--O--|--|
 2 |--O-----O-----O--|
-1 O--------O--------O
+1 O--------B--------O
   a  b  c  d  e  f  g
 
 pawns to play              8, 8
@@ -99,1426 +355,264 @@ double morrises            0, 0
 terminal                   0
 
 
-Chosen action: d7 with depth 3
-b6 -> -50, 0, 3
-a7 -> -50, 2, 3
-d6 -> -30, 0, 3
-d7 -> -25, 0, 3
-e5 -> -25, 2, 3
-f6 -> -25, 2, 3
-g7 -> -25, 2, 3
-c4 -> -25, 2, 3
-b4 -> -25, 2, 3
-a4 -> -25, 2, 3
-e4 -> -25, 2, 3
-f4 -> -25, 2, 3
-g4 -> -25, 2, 3
-c3 -> -25, 2, 3
-b2 -> -25, 2, 3
-a1 -> -25, 2, 3
-d3 -> -25, 2, 3
-d2 -> -25, 2, 3
-d1 -> -25, 2, 3
-e3 -> -25, 2, 3
-f2 -> -25, 2, 3
-g1 -> -25, 2, 3
-Chosen action: d3 with depth 4
-b6 -> 30, 0, 4
-a7 -> 30, 2, 4
-d6 -> 30, 2, 4
-d7 -> 30, 2, 4
-e5 -> 30, 2, 4
-f6 -> 30, 2, 4
-g7 -> 30, 2, 4
-c4 -> 30, 2, 4
-b4 -> 30, 2, 4
-a4 -> 30, 2, 4
-e4 -> 30, 2, 4
-f4 -> 30, 2, 4
-g4 -> 30, 2, 4
-c3 -> 30, 2, 4
-b2 -> 30, 2, 4
-a1 -> 30, 2, 4
+Avviato thread: 21
+Avviato thread: 22
+Avviato thread: 23
+Chosen action: e3 with depth 3
+TABLE OF THREAD 0
+ ==== 
+b6 -> 0, 0, 2
+a7 -> 0, 0, 2
+d5 -> 55, 0, 2
+d6 -> 55, 0, 2
+d7 -> 55, 0, 2
+e5 -> 55, 0, 2
+f6 -> 0, 0, 2
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> 0, 0, 2
+c4 -> 55, 0, 2
+b4 -> 55, 0, 2
+a4 -> 55, 0, 2
+e4 -> 55, 0, 2
+f4 -> 0, 0, 2
+g4 -> 0, 0, 2
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> 55, 0, 2
+b2 -> 0, 0, 2
+a1 -> 0, 0, 2
+d3 -> 55, 0, 2
+d2 -> 25, 0, 2
+e3 -> 100, 0, 2
+f2 -> 0, 0, 2
+g1 -> 0, 0, 2
+Avviato thread: 24
+Avviato thread: 25
+Avviato thread: 26
+Chosen action: d5 with depth 4
+TABLE OF THREAD 0
+ ==== 
+b6 -> -55, 0, 3
+a7 -> -55, 0, 3
+d5 -> -25, 0, 3
+d6 -> -55, 0, 3
+d7 -> -55, 0, 3
+e5 -> -25, 0, 3
+f6 -> -55, 0, 3
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> -55, 0, 3
+c4 -> -30, 0, 3
+b4 -> -55, 0, 3
+a4 -> -55, 0, 3
+e4 -> -55, 0, 3
+f4 -> -55, 0, 3
+g4 -> -55, 0, 3
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> -25, 0, 3
+b2 -> -55, 0, 3
+a1 -> -55, 0, 3
+d3 -> -55, 0, 3
+d2 -> -55, 0, 3
+e3 -> -55, 0, 3
+f2 -> -55, 0, 3
+g1 -> -55, 0, 3
+Avviato thread: 27
+Avviato thread: 28
+Avviato thread: 29
+Chosen action: d6 with depth 5
+TABLE OF THREAD 0
+ ==== 
+b6 -> 25, 0, 4
+a7 -> 25, 0, 4
+d5 -> 30, 0, 4
+d6 -> 75, 0, 4
+d7 -> 55, 0, 4
+e5 -> 69, 0, 4
+f6 -> 25, 0, 4
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> 25, 0, 4
+c4 -> 30, 0, 4
+b4 -> 34, 0, 4
+a4 -> 34, 0, 4
+e4 -> 55, 0, 4
+f4 -> 25, 0, 4
+g4 -> 25, 0, 4
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 2
+ ==== 
+b6 -> CUT 
+a7 -> CUT 
+d5 -> CUT 
+d6 -> CUT 
+d7 -> CUT 
+e5 -> CUT 
+f6 -> CUT 
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> 69, 0, 4
+b2 -> 25, 0, 4
+a1 -> 25, 0, 4
 d3 -> 55, 0, 4
-d2 -> 55, 2, 4
-d1 -> 55, 2, 4
-e3 -> 55, 2, 4
-f2 -> 55, 2, 4
-g1 -> 55, 2, 4
-Chosen action: e3 with depth 5
-b6 -> -50, 0, 5
-a7 -> -50, 2, 5
-d6 -> -50, 2, 5
-d7 -> -50, 2, 5
-e5 -> -50, 2, 5
-f6 -> -50, 2, 5
-g7 -> -50, 2, 5
-c4 -> -50, 2, 5
-b4 -> -50, 2, 5
-a4 -> -49, 0, 5
-e4 -> -49, 2, 5
-f4 -> -49, 2, 5
-g4 -> -49, 2, 5
-c3 -> -49, 2, 5
-b2 -> -49, 2, 5
-a1 -> -49, 2, 5
-d3 -> -49, 2, 5
-d2 -> -49, 2, 5
-d1 -> -49, 2, 5
-e3 -> -30, 0, 5
-f2 -> -30, 2, 5
-g1 -> -30, 2, 5
-Chosen action: e3 with depth 5
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--O--|--|
-4 O--O--O     O--O--O
-3 |--|--B--O--W--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              7, 7
-pawns on board             2, 2
-new morris                 0
-morrises                   0, 0
-blocked pawns              0, 0
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: d6 with depth 3
-b6 -> -25, 0, 3
-a7 -> -25, 2, 3
-d6 -> 0, 0, 3
-d7 -> 0, 2, 3
-e5 -> 0, 2, 3
-f6 -> 0, 2, 3
-g7 -> 0, 2, 3
-c4 -> 0, 2, 3
-b4 -> 0, 2, 3
-a4 -> 0, 2, 3
-e4 -> 0, 2, 3
-f4 -> 0, 2, 3
-g4 -> 0, 2, 3
-b2 -> 0, 2, 3
-a1 -> 0, 2, 3
-d3 -> 0, 2, 3
-d2 -> 0, 2, 3
-d1 -> 0, 2, 3
-f2 -> 0, 2, 3
-g1 -> 0, 2, 3
-Chosen action: e4 with depth 4
-b6 -> 55, 0, 4
-a7 -> 55, 2, 4
-d6 -> 55, 2, 4
-d7 -> 55, 2, 4
-e5 -> 55, 2, 4
-f6 -> 55, 2, 4
-g7 -> 55, 2, 4
-c4 -> 55, 2, 4
-b4 -> 55, 2, 4
-a4 -> 55, 2, 4
-e4 -> 80, 0, 4
-f4 -> 80, 2, 4
-g4 -> 80, 2, 4
-b2 -> 80, 2, 4
-a1 -> 80, 2, 4
-d3 -> 80, 2, 4
-d2 -> 80, 2, 4
-d1 -> 80, 2, 4
-f2 -> 80, 2, 4
-g1 -> 80, 2, 4
-Chosen action: d6 with depth 5
-b6 -> -25, 0, 5
-a7 -> -25, 2, 5
-d6 -> 0, 0, 5
-d7 -> 0, 2, 5
-e5 -> 0, 2, 5
-f6 -> 0, 2, 5
-g7 -> 0, 2, 5
-c4 -> 0, 2, 5
-b4 -> 0, 2, 5
-a4 -> 0, 2, 5
-e4 -> 0, 2, 5
-f4 -> 0, 2, 5
-g4 -> 0, 2, 5
-b2 -> 0, 2, 5
-a1 -> 0, 2, 5
-d3 -> 0, 2, 5
-d2 -> 0, 2, 5
-d1 -> 0, 2, 5
-f2 -> 0, 2, 5
-g1 -> 0, 2, 5
-Chosen action: e4 with depth 6
-b6 -> 69, 0, 6
-a7 -> 69, 2, 6
-d6 -> 79, 0, 6
-d7 -> 79, 2, 6
-e5 -> 79, 2, 6
-f6 -> 79, 2, 6
-g7 -> 79, 2, 6
-c4 -> 79, 2, 6
-b4 -> 79, 2, 6
-a4 -> 79, 2, 6
-e4 -> 80, 0, 6
-f4 -> 80, 2, 6
-g4 -> 80, 2, 6
-b2 -> 80, 2, 6
-a1 -> 80, 2, 6
-d3 -> 80, 2, 6
-d2 -> 80, 2, 6
-d1 -> 80, 2, 6
-f2 -> 80, 2, 6
-g1 -> 80, 2, 6
-Chosen action: e4 with depth 6
-7 O--------O--------O
-6 |--O-----O-----O--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--O--O
-3 |--|--B--O--W--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              6, 6
-pawns on board             3, 3
-new morris                 0
-morrises                   0, 0
-blocked pawns              0, 1
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: b6 with depth 3
-b6 -> 0, 0, 3
-a7 -> 0, 2, 3
-d6 -> 0, 2, 3
-d7 -> 0, 2, 3
-f6 -> 0, 2, 3
-g7 -> 0, 2, 3
-c4 -> 0, 2, 3
-b4 -> 0, 2, 3
-a4 -> 0, 2, 3
-f4 -> 0, 2, 3
-g4 -> 0, 2, 3
-b2 -> 0, 2, 3
-a1 -> 0, 2, 3
-d3 -> 0, 2, 3
-d2 -> 0, 2, 3
-d1 -> 0, 2, 3
-f2 -> 0, 2, 3
-g1 -> 0, 2, 3
-Chosen action: a7 with depth 4
-b6 -> 55, 0, 4
-a7 -> 80, 0, 4
-d6 -> 80, 2, 4
-d7 -> 80, 2, 4
-f6 -> 80, 2, 4
-g7 -> 80, 2, 4
-c4 -> 80, 2, 4
-b4 -> 80, 2, 4
-a4 -> 80, 2, 4
-f4 -> 80, 2, 4
-g4 -> 80, 2, 4
-b2 -> 80, 2, 4
-a1 -> 80, 2, 4
-d3 -> 80, 2, 4
-d2 -> 80, 2, 4
-d1 -> 80, 2, 4
-f2 -> 80, 2, 4
-g1 -> 80, 2, 4
-Chosen action: d6 with depth 5
-b6 -> 0, 0, 5
-a7 -> 0, 2, 5
-d6 -> 25, 0, 5
-d7 -> 25, 2, 5
-f6 -> 25, 2, 5
-g7 -> 25, 2, 5
-c4 -> 25, 2, 5
-b4 -> 25, 2, 5
-a4 -> 25, 2, 5
-f4 -> 25, 2, 5
-g4 -> 25, 2, 5
-b2 -> 25, 2, 5
-a1 -> 25, 2, 5
-d3 -> 25, 2, 5
-d2 -> 25, 2, 5
-d1 -> 25, 2, 5
-f2 -> 25, 2, 5
-g1 -> 25, 2, 5
-Chosen action: d6 with depth 6
-b6 -> 76, 0, 6
-a7 -> 76, 2, 6
-d6 -> 80, 0, 6
-d7 -> 80, 2, 6
-f6 -> 80, 2, 6
-g7 -> 80, 2, 6
-c4 -> 80, 2, 6
-b4 -> 80, 2, 6
-a4 -> 80, 2, 6
-f4 -> 80, 2, 6
-g4 -> 80, 2, 6
-b2 -> 80, 2, 6
-a1 -> 80, 2, 6
-d3 -> 80, 2, 6
-d2 -> 80, 2, 6
-d1 -> 80, 2, 6
-f2 -> 80, 2, 6
-g1 -> 80, 2, 6
-Chosen action: d6 with depth 6
-7 O--------O--------O
-6 |--O-----W-----O--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--B--O
-3 |--|--B--O--W--|--|
-2 |--O-----O-----O--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              5, 5
-pawns on board             4, 4
-new morris                 0
-morrises                   0, 0
-blocked pawns              1, 2
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: b6 with depth 3
-b6 -> 25, 0, 3
-a7 -> 25, 2, 3
-d7 -> 25, 2, 3
-f6 -> 25, 2, 3
-g7 -> 25, 2, 3
-c4 -> 25, 2, 3
-b4 -> 25, 2, 3
-a4 -> 25, 2, 3
-g4 -> 25, 2, 3
-b2 -> 25, 2, 3
-a1 -> 25, 2, 3
-d3 -> 25, 2, 3
-d2 -> 25, 2, 3
-d1 -> 25, 2, 3
-f2 -> 25, 2, 3
-g1 -> 25, 2, 3
-Chosen action: g7 with depth 4
-b6 -> 75, 0, 4
-a7 -> 75, 2, 4
-d7 -> 75, 2, 4
-f6 -> 75, 2, 4
-g7 -> 80, 0, 4
-c4 -> 80, 2, 4
-b4 -> 80, 2, 4
-a4 -> 80, 2, 4
-g4 -> 80, 2, 4
-b2 -> 80, 2, 4
-a1 -> 80, 2, 4
-d3 -> 80, 2, 4
-d2 -> 80, 2, 4
-d1 -> 80, 2, 4
-f2 -> 80, 2, 4
-g1 -> 80, 2, 4
-Chosen action: b4 with depth 5
-b6 -> 0, 0, 5
-a7 -> 0, 2, 5
-d7 -> 0, 2, 5
-f6 -> 0, 2, 5
-g7 -> 0, 2, 5
-c4 -> 0, 2, 5
-b4 -> 21, 0, 5
-a4 -> 21, 2, 5
-g4 -> 21, 2, 5
-b2 -> 21, 2, 5
-a1 -> 21, 2, 5
-d3 -> 21, 2, 5
-d2 -> 21, 2, 5
-d1 -> 21, 2, 5
-f2 -> 21, 2, 5
-g1 -> 21, 2, 5
-Chosen action: g7 with depth 6
-b6 -> 59, 0, 6
-a7 -> 76, 0, 6
-d7 -> 76, 2, 6
-f6 -> 76, 2, 6
-g7 -> 80, 0, 6
-c4 -> 80, 2, 6
-b4 -> 80, 2, 6
-a4 -> 80, 2, 6
-g4 -> 80, 2, 6
-b2 -> 80, 2, 6
-a1 -> 80, 2, 6
-d3 -> 80, 2, 6
-d2 -> 80, 2, 6
-d1 -> 80, 2, 6
-f2 -> 80, 2, 6
-g1 -> 80, 2, 6
-Chosen action: g7 with depth 6
-7 O--------O--------W
-6 |--O-----W-----O--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--B--O
-3 |--|--B--O--W--|--|
-2 |--O-----O-----B--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              4, 4
-pawns on board             5, 5
-new morris                 0
-morrises                   0, 0
-blocked pawns              1, 2
-potential morrises         0, 1
-opened morrises            0, 1
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: f6 with depth 3
-b6 -> -81, 0, 3
-a7 -> -44, 0, 3
-d7 -> -44, 2, 3
-f6 -> -25, 0, 3
-c4 -> -25, 2, 3
-b4 -> -25, 2, 3
-a4 -> -25, 2, 3
-g4 -> -25, 2, 3
-b2 -> -25, 2, 3
-a1 -> -25, 2, 3
-d3 -> -25, 2, 3
-d2 -> -25, 2, 3
-d1 -> -25, 2, 3
-g1 -> -25, 2, 3
-Chosen action: f6 with depth 4
-b6 -> -1, 0, 4
-a7 -> 54, 0, 4
-d7 -> 54, 2, 4
-f6 -> 94, 0, 4
-c4 -> 94, 2, 4
-b4 -> 94, 2, 4
-a4 -> 94, 2, 4
-g4 -> 94, 2, 4
-b2 -> 94, 2, 4
-a1 -> 94, 2, 4
-d3 -> 94, 2, 4
-d2 -> 94, 2, 4
-d1 -> 94, 2, 4
-g1 -> 94, 2, 4
-Chosen action: g1 with depth 5
-b6 -> -51, 0, 5
-a7 -> -34, 0, 5
-d7 -> -34, 2, 5
-f6 -> -25, 0, 5
-c4 -> -25, 2, 5
-b4 -> -25, 2, 5
-a4 -> -25, 2, 5
-g4 -> -25, 2, 5
-b2 -> -25, 2, 5
-a1 -> -25, 2, 5
-d3 -> -25, 2, 5
-d2 -> -23, 0, 5
-d1 -> -23, 2, 5
-g1 -> -19, 0, 5
-Chosen action: g1 with depth 6
-b6 -> 29, 0, 6
-a7 -> 79, 0, 6
-d7 -> 79, 2, 6
-f6 -> 79, 2, 6
-c4 -> 79, 2, 6
-b4 -> 79, 2, 6
-a4 -> 79, 2, 6
-g4 -> 79, 2, 6
-b2 -> 79, 2, 6
-a1 -> 98, 0, 6
-d3 -> 98, 2, 6
-d2 -> 98, 2, 6
-d1 -> 98, 2, 6
-g1 -> 99, 0, 6
-Chosen action: g1 with depth 6
-7 O--------O--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--B--O
-3 |--|--B--O--W--|--|
-2 |--O-----O-----B--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              3, 3
-pawns on board             5, 6
-new morris                 1
-morrises                   0, 1
-blocked pawns              1, 3
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a7 with depth 3
-b6 -> -51, 0, 3
-a7 -> -1, 0, 3
-d7 -> -1, 2, 3
-c4 -> -1, 2, 3
-b4 -> -1, 2, 3
-a4 -> -1, 2, 3
-g4 -> -1, 2, 3
-b2 -> -1, 2, 3
-a1 -> -1, 2, 3
-d3 -> -1, 2, 3
-d2 -> -1, 2, 3
-d1 -> -1, 2, 3
-g1 -> -1, 2, 3
-Chosen action: g1 with depth 4
-b6 -> 29, 0, 4
-a7 -> 79, 0, 4
-d7 -> 79, 2, 4
-c4 -> 79, 2, 4
-b4 -> 79, 2, 4
-a4 -> 79, 2, 4
-g4 -> 79, 2, 4
-b2 -> 79, 2, 4
-a1 -> 98, 0, 4
-d3 -> 98, 2, 4
-d2 -> 98, 2, 4
-d1 -> 98, 2, 4
-g1 -> 99, 0, 4
-Chosen action: d2 with depth 5
-b6 -> 8, 0, 5
-a7 -> 62, 0, 5
-d7 -> 62, 2, 5
-c4 -> 62, 2, 5
-b4 -> 62, 2, 5
-a4 -> 62, 2, 5
-g4 -> 74, 0, 5
-b2 -> 74, 2, 5
-a1 -> 74, 2, 5
-d3 -> 74, 2, 5
-d2 -> 88, 0, 5
-d1 -> 88, 2, 5
-g1 -> 88, 2, 5
-Chosen action: d2 with depth 6
-b6 -> 88, 0, 6
-a7 -> 118, 0, 6
-d7 -> 118, 2, 6
-c4 -> 118, 2, 6
-b4 -> 138, 0, 6
-a4 -> 139, 0, 6
-g4 -> 139, 2, 6
-b2 -> 139, 2, 6
-a1 -> 139, 2, 6
-d3 -> 139, 2, 6
-d2 -> 148, 0, 6
-d1 -> 148, 2, 6
-g1 -> 148, 2, 6
-Chosen action: d2 with depth 6
-7 O--------O--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--B--B
-3 |--|--B--O--W--|--|
-2 |--O-----W-----B--|
-1 O--------O--------O
-  a  b  c  d  e  f  g
-
-pawns to play              2, 2
-pawns on board             6, 7
-new morris                 0
-morrises                   0, 1
-blocked pawns              1, 5
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a7 with depth 3
-b6 -> 58, 0, 3
-a7 -> 118, 0, 3
-d7 -> 118, 2, 3
-c4 -> 118, 2, 3
-b4 -> 118, 2, 3
-a4 -> 118, 2, 3
-b2 -> 118, 2, 3
-a1 -> 118, 2, 3
-d3 -> 118, 2, 3
-d1 -> 118, 2, 3
-g1 -> 118, 2, 3
-Chosen action: d1 with depth 4
-b6 -> 88, 0, 4
-a7 -> 148, 0, 4
-d7 -> 148, 2, 4
-c4 -> 148, 2, 4
-b4 -> 148, 2, 4
-a4 -> 167, 0, 4
-b2 -> 167, 2, 4
-a1 -> 167, 2, 4
-d3 -> 167, 2, 4
-d1 -> 168, 0, 4
-g1 -> 168, 2, 4
-Chosen action: a7 with depth 5
-b6 -> 58, 0, 5
-a7 -> 118, 0, 5
-d7 -> 118, 2, 5
-c4 -> 118, 2, 5
-b4 -> 118, 2, 5
-a4 -> 118, 2, 5
-b2 -> 118, 2, 5
-a1 -> 118, 2, 5
-d3 -> 118, 2, 5
-d1 -> 118, 2, 5
-g1 -> 118, 2, 5
-Chosen action: d1 with depth 6
-b6 -> 90, 0, 6
-a7 -> 118, 0, 6
-d7 -> 118, 2, 6
-c4 -> 118, 2, 6
-b4 -> 118, 2, 6
-a4 -> 138, 0, 6
-b2 -> 138, 2, 6
-a1 -> 138, 2, 6
-d3 -> 138, 2, 6
-d1 -> 148, 0, 6
-g1 -> 148, 2, 6
-Chosen action: g1 with depth 7
-b6 -> 58, 0, 7
-a7 -> 117, 0, 7
-d7 -> 117, 2, 7
-c4 -> 117, 2, 7
-b4 -> 117, 2, 7
-a4 -> 117, 2, 7
-b2 -> 117, 2, 7
-a1 -> 117, 2, 7
-d3 -> 117, 2, 7
-d1 -> 117, 2, 7
-g1 -> 118, 0, 7
-Chosen action: g1 with depth 7
-7 O--------O--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 O--O--O     W--B--B
-3 |--|--B--O--W--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              1, 1
-pawns on board             7, 8
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 6
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a7 with depth 3
-b6 -> 58, 0, 3
-a7 -> 118, 0, 3
-d7 -> 118, 2, 3
-c4 -> 118, 2, 3
-b4 -> 118, 2, 3
-a4 -> 118, 2, 3
-b2 -> 118, 2, 3
-a1 -> 118, 2, 3
-d3 -> 118, 2, 3
-Chosen action: a7 with depth 4
-b6 -> 88, 0, 4
-a7 -> 118, 0, 4
-d7 -> 118, 2, 4
-c4 -> 118, 2, 4
-b4 -> 118, 2, 4
-a4 -> 118, 2, 4
-b2 -> 118, 2, 4
-a1 -> 118, 2, 4
-d3 -> 118, 2, 4
-Chosen action: a7 with depth 5
-b6 -> 88, 0, 5
-a7 -> 118, 0, 5
-d7 -> 118, 2, 5
-c4 -> 118, 2, 5
-b4 -> 118, 2, 5
-a4 -> 118, 2, 5
-b2 -> 118, 2, 5
-a1 -> 118, 2, 5
-d3 -> 118, 2, 5
-Chosen action: b4 with depth 6
-b6 -> 118, 0, 6
-a7 -> 138, 0, 6
-d7 -> 138, 2, 6
-c4 -> 138, 2, 6
-b4 -> 148, 0, 6
-a4 -> 148, 2, 6
-b2 -> 148, 2, 6
-a1 -> 148, 2, 6
-d3 -> 148, 2, 6
-Chosen action: a7 with depth 7
-b6 -> 42, 0, 7
-a7 -> 118, 0, 7
-d7 -> 118, 2, 7
-c4 -> 118, 2, 7
-b4 -> 118, 2, 7
-a4 -> 118, 2, 7
-b2 -> 118, 2, 7
-a1 -> 118, 2, 7
-d3 -> 118, 2, 7
-Chosen action: a4 with depth 8
-b6 -> 68, 0, 8
-a7 -> 118, 0, 8
-d7 -> 118, 2, 8
-c4 -> 118, 2, 8
-b4 -> 118, 2, 8
-a4 -> 148, 0, 8
-b2 -> 148, 2, 8
-a1 -> 148, 2, 8
-d3 -> 148, 2, 8
-Chosen action: a4 with depth 8
-7 B--------O--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 W--O--O     W--B--B
-3 |--|--B--O--W--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 6
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: e3d3 with depth 3
-c5c4 -> 58, 0, 3
-d6b6 -> 58, 2, 3
-d6d7 -> 58, 2, 3
-g7d7 -> 58, 2, 3
-a4a1 -> 58, 2, 3
-a4b4 -> 58, 2, 3
-d2b2 -> 58, 2, 3
-d2d3 -> 58, 2, 3
-e3d3 -> 118, 0, 3
-Chosen action: e3d3 with depth 4
-c5c4 -> 88, 0, 4
-d6b6 -> 58, 0, 0
-d6d7 -> 58, 0, 0
-g7d7 -> 118, 0, 0
-a4a1 -> 148, 0, 0
-a4b4 -> 118, 0, 0
-d2b2 -> 88, 0, 0
-d2d3 -> 88, 2, 4
-e3d3 -> 118, 0, 4
-Chosen action: e3d3 with depth 5
-c5c4 -> 58, 0, 5
-d6b6 -> 88, 2, 1
-d6d7 -> 88, 2, 1
-g7d7 -> 118, 2, 1
-a4a1 -> 118, 2, 1
-a4b4 -> 118, 0, 5
-d2b2 -> 118, 2, 5
-d2d3 -> 118, 2, 5
-e3d3 -> 148, 0, 5
-Chosen action: e3d3 with depth 6
-c5c4 -> 58, 0, 6
-d6b6 -> 78, 2, 2
-d6d7 -> 78, 2, 2
-g7d7 -> 88, 0, 6
-a4a1 -> 148, 2, 2
-a4b4 -> 108, 0, 6
-d2b2 -> 148, 2, 2
-d2d3 -> 108, 2, 6
-e3d3 -> 149, 0, 6
-Chosen action: e3d3 with depth 7
-c5c4 -> 58, 0, 7
-d6b6 -> 144, 2, 3
-d6d7 -> 108, 2, 3
-g7d7 -> 138, 2, 3
-a4a1 -> 118, 2, 3
-a4b4 -> 58, 2, 3
-d2b2 -> 58, 2, 7
-d2d3 -> 58, 2, 7
-e3d3 -> 138, 0, 7
-Chosen action: e3d3 with depth 7
-7 B--------O--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 W--O--B     W--B--B
-3 |--|--O--W--O--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 6
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a4a1 with depth 3
-d6b6 -> -111, 0, 3
-d6d7 -> -111, 2, 3
-g7d7 -> 118, 0, 3
-a4a1 -> 148, 0, 3
-a4b4 -> 148, 2, 3
-e4e3 -> 148, 2, 3
-d3e3 -> 148, 2, 3
-d3c3 -> 148, 2, 3
-d2b2 -> 148, 2, 3
-Chosen action: a4a1 with depth 4
-d6b6 -> -37, 0, 4
-d6d7 -> -34, 0, 4
-g7d7 -> 138, 0, 4
-a4a1 -> 148, 0, 4
-a4b4 -> 118, 0, 0
-e4e3 -> 148, 2, 4
-d3e3 -> 88, 0, 0
-d3c3 -> 148, 2, 4
-d2b2 -> 148, 2, 4
-Chosen action: g7d7 with depth 5
-d6b6 -> -110, 0, 5
-d6d7 -> -110, 2, 5
-g7d7 -> 118, 0, 5
-a4a1 -> 118, 2, 5
-a4b4 -> 88, 2, 1
-e4e3 -> 118, 2, 5
-d3e3 -> 118, 2, 5
-d3c3 -> 118, 2, 5
-d2b2 -> 118, 2, 5
-Chosen action: g7d7 with depth 6
-d6b6 -> -90, 0, 6
-d6d7 -> -80, 0, 6
-g7d7 -> 148, 0, 6
-a4a1 -> 148, 2, 6
-a4b4 -> 148, 2, 2
-e4e3 -> 148, 2, 6
-d3e3 -> 148, 2, 6
-d3c3 -> 148, 2, 6
-d2b2 -> 148, 2, 6
-Chosen action: d3c3 with depth 7
-d6b6 -> -156, 0, 7
-d6d7 -> -156, 2, 7
-g7d7 -> 118, 0, 7
-a4a1 -> 147, 2, 3
-a4b4 -> 137, 0, 7
-e4e3 -> 137, 2, 7
-d3e3 -> 0, 2, 7
-d3c3 -> 148, 0, 7
-d2b2 -> 148, 2, 7
-Chosen action: d3c3 with depth 7
-7 O--------B--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 W--O--B     W--B--B
-3 |--|--W--O--O--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              3, 6
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a4a1 with depth 3
-d6b6 -> -236, 0, 3
-a4a1 -> 118, 0, 3
-a4a7 -> 118, 2, 3
-a4b4 -> 118, 2, 3
-e4e3 -> 118, 2, 3
-c3d3 -> 118, 2, 3
-d2b2 -> 118, 2, 3
-d2d3 -> 118, 2, 3
-Chosen action: a4b4 with depth 4
-d6b6 -> -159, 0, 4
-a4a1 -> 118, 0, 4
-a4a7 -> 118, 0, 0
-a4b4 -> 148, 0, 4
-e4e3 -> 148, 2, 4
-c3d3 -> 148, 2, 4
-d2b2 -> 148, 2, 4
-d2d3 -> 148, 2, 4
-Chosen action: a4a7 with depth 5
-d6b6 -> -271, 0, 5
-a4a1 -> 118, 0, 5
-a4a7 -> 148, 0, 5
-a4b4 -> 148, 2, 1
-e4e3 -> 148, 2, 5
-c3d3 -> 148, 2, 5
-d2b2 -> 148, 2, 5
-d2d3 -> 148, 2, 5
-Chosen action: a4a7 with depth 6
-d6b6 -> -230, 0, 6
-a4a1 -> 118, 0, 6
-a4a7 -> 164, 0, 6
-a4b4 -> 168, 1, 2
-e4e3 -> 164, 2, 6
-c3d3 -> 164, 2, 6
-d2b2 -> 164, 2, 6
-d2d3 -> 164, 2, 6
-Chosen action: a4a7 with depth 7
-d6b6 -> -356, 0, 7
-a4a1 -> 118, 0, 7
-a4a7 -> 164, 0, 7
-a4b4 -> 164, 2, 3
-e4e3 -> 164, 2, 7
-c3d3 -> 164, 2, 7
-d2b2 -> 164, 2, 7
-d2d3 -> 164, 2, 7
-Chosen action: a4a7 with depth 7
-7 W--------B--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 O--B--O     W--B--B
-3 |--|--W--O--O--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 7
-potential morrises         1, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: c3d3 with depth 3
-c5c4 -> 58, 0, 3
-a7a4 -> 0, 2, 3
-d6b6 -> 58, 2, 3
-e4e3 -> 58, 2, 3
-c3c4 -> 88, 0, 3
-c3d3 -> 118, 0, 3
-d2b2 -> 118, 2, 3
-d2d3 -> 118, 2, 3
-Chosen action: c3c4 with depth 4
-c5c4 -> 108, 0, 4
-a7a4 -> 118, 0, 0
-d6b6 -> 108, 2, 4
-e4e3 -> 88, 0, 0
-c3c4 -> 168, 0, 4
-c3d3 -> 148, 0, 0
-d2b2 -> 168, 2, 4
-d2d3 -> 168, 2, 4
-Chosen action: c3c4 with depth 5
-c5c4 -> 87, 0, 5
-a7a4 -> 118, 2, 1
-d6b6 -> 87, 2, 5
-e4e3 -> 118, 2, 1
-c3c4 -> 148, 0, 5
-c3d3 -> 148, 2, 5
-d2b2 -> 148, 2, 5
-d2d3 -> 148, 2, 5
-Chosen action: c3c4 with depth 6
-c5c4 -> 108, 0, 6
-a7a4 -> 148, 2, 2
-d6b6 -> 108, 2, 6
-e4e3 -> 108, 2, 2
-c3c4 -> 164, 0, 6
-c3d3 -> 164, 2, 6
-d2b2 -> 164, 2, 6
-d2d3 -> 164, 2, 6
-Chosen action: c3c4 with depth 7
-c5c4 -> 78, 0, 7
-a7a4 -> 148, 2, 3
-d6b6 -> 78, 2, 7
-e4e3 -> 147, 2, 3
-c3c4 -> 148, 0, 7
-c3d3 -> 148, 2, 7
-d2b2 -> 148, 2, 7
-d2d3 -> 148, 2, 7
-Chosen action: c3c4 with depth 8
-c5c4 -> 108, 0, 8
-a7a4 -> 118, 0, 0
-d6b6 -> 8, 0, 0
-e4e3 -> 88, 0, 0
-c3c4 -> 242, 0, 8
-c3d3 -> 148, 0, 0
-d2b2 -> 242, 2, 8
-d2d3 -> 242, 2, 8
-Chosen action: c3c4 with depth 8
-7 W--------B--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 B--O--W     W--B--B
-3 |--|--O--O--O--|--|
-2 |--O-----W-----B--|
-1 O--------B--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              4, 7
-potential morrises         1, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: c4b4 with depth 3
-d6b6 -> -266, 0, 3
-c4c3 -> 0, 0, 3
-c4b4 -> 148, 0, 3
-e4e3 -> 148, 2, 3
-d2b2 -> 148, 2, 3
-d2d3 -> 148, 2, 3
-Chosen action: c4b4 with depth 4
-d6b6 -> -140, 0, 4
-c4c3 -> 0, 0, 4
-c4b4 -> 198, 0, 4
-e4e3 -> 198, 2, 4
-d2b2 -> 198, 2, 4
-d2d3 -> 198, 2, 4
-Chosen action: c4b4 with depth 5
-d6b6 -> -265, 0, 5
-c4c3 -> 0, 0, 5
-c4b4 -> 178, 0, 5
-e4e3 -> 178, 2, 5
-d2b2 -> 178, 2, 5
-d2d3 -> 178, 2, 5
-Chosen action: c4b4 with depth 6
-d6b6 -> -234, 0, 6
-c4c3 -> 0, 0, 6
-c4b4 -> 228, 0, 6
-e4e3 -> 228, 2, 6
-d2b2 -> 228, 2, 6
-d2d3 -> 228, 2, 6
-Chosen action: c4b4 with depth 7
-d6b6 -> -356, 0, 7
-c4c3 -> 0, 0, 7
-c4b4 -> 118, 0, 7
-e4e3 -> 118, 2, 7
-d2b2 -> 118, 2, 7
-d2d3 -> 118, 2, 7
-Chosen action: c4b4 with depth 8
-d6b6 -> -286, 0, 8
-c4c3 -> 0, 0, 8
-c4b4 -> 1264, 0, 8
-e4e3 -> 1264, 2, 8
-d2b2 -> 1264, 2, 8
-d2d3 -> 1264, 2, 8
-Chosen action: c4b4 with depth 8
-7 W--------B--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 B--W--O     W--B--B
-3 |--|--O--O--O--|--|
-2 |--O-----W-----B--|
-1 B--------O--------W
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 8
-potential morrises         0, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: g1d1 with depth 3
-c5c4 -> 58, 0, 3
-d6b6 -> 58, 2, 3
-b4b2 -> 58, 2, 3
-b4b6 -> 58, 2, 3
-b4c4 -> 0, 2, 3
-e4e3 -> 58, 2, 3
-d2b2 -> 58, 2, 3
-d2d1 -> 58, 2, 3
-d2d3 -> 58, 2, 3
-g1d1 -> 178, 0, 3
-Chosen action: g1d1 with depth 4
-c5c4 -> 78, 0, 4
-d6b6 -> 78, 2, 4
-b4b2 -> 148, 0, 0
-b4b6 -> 118, 0, 0
-b4c4 -> 118, 0, 0
-e4e3 -> 68, 0, 0
-d2b2 -> 198, 0, 0
-d2d1 -> 78, 2, 4
-d2d3 -> 148, 0, 0
-g1d1 -> 228, 0, 4
-Chosen action: g1d1 with depth 5
-c5c4 -> 88, 0, 5
-d6b6 -> 88, 2, 5
-b4b2 -> 88, 2, 5
-b4b6 -> 88, 2, 5
-b4c4 -> 88, 2, 5
-e4e3 -> 60, 2, 1
-d2b2 -> 88, 2, 5
-d2d1 -> 88, 2, 5
-d2d3 -> 88, 2, 5
-g1d1 -> 118, 0, 5
-Chosen action: g1d1 with depth 6
-c5c4 -> 108, 0, 6
-d6b6 -> 108, 2, 6
-b4b2 -> 118, 2, 2
-b4b6 -> 1264, 2, 2
-b4c4 -> 168, 2, 2
-e4e3 -> 124, 2, 2
-d2b2 -> 1264, 2, 2
-d2d1 -> 108, 2, 6
-d2d3 -> 1264, 2, 2
-g1d1 -> 1264, 0, 6
-Chosen action: g1d1 with depth 7
-c5c4 -> 58, 0, 7
-d6b6 -> 58, 2, 7
-b4b2 -> 88, 2, 3
-b4b6 -> 1264, 2, 3
-b4c4 -> 148, 2, 3
-e4e3 -> 1264, 2, 3
-d2b2 -> 1264, 2, 3
-d2d1 -> 58, 2, 7
-d2d3 -> 1264, 2, 3
-g1d1 -> 1264, 0, 7
-Chosen action: g1d1 with depth 8
-c5c4 -> 108, 0, 8
-d6b6 -> 88, 0, 0
-b4b2 -> 148, 0, 0
-b4b6 -> 118, 0, 0
-b4c4 -> 118, 0, 0
-e4e3 -> 68, 0, 0
-d2b2 -> 198, 0, 0
-d2d1 -> 108, 2, 8
-d2d3 -> 148, 0, 0
-g1d1 -> 1264, 0, 8
-Chosen action: g1d1 with depth 8
-7 W--------B--------W
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 B--W--O     W--B--O
-3 |--|--O--O--O--|--|
-2 |--O-----W-----B--|
-1 B--------W--------B
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 7
-potential morrises         1, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: g7g4 with depth 3
-c5c4 -> 45, 0, 3
-d6b6 -> 45, 2, 3
-g7g4 -> 118, 0, 3
-b4b2 -> 118, 2, 3
-b4b6 -> 118, 2, 3
-b4c4 -> 118, 2, 3
-e4e3 -> 118, 2, 3
-d2b2 -> 118, 2, 3
-d2d3 -> 118, 2, 3
-Chosen action: g7g4 with depth 4
-c5c4 -> 95, 0, 4
-d6b6 -> 95, 2, 4
-g7g4 -> 1264, 0, 4
-b4b2 -> 118, 0, 0
-b4b6 -> 88, 0, 0
-b4c4 -> 88, 0, 0
-e4e3 -> 168, 0, 0
-d2b2 -> 1264, 2, 4
-d2d3 -> 1264, 2, 4
-Chosen action: g7g4 with depth 5
-c5c4 -> 95, 0, 5
-d6b6 -> 95, 2, 5
-g7g4 -> 1264, 0, 5
-b4b2 -> 148, 2, 1
-b4b6 -> 118, 2, 1
-b4c4 -> 118, 2, 1
-e4e3 -> 118, 2, 1
-d2b2 -> 1264, 2, 5
-d2d3 -> 1264, 2, 5
-Chosen action: g7g4 with depth 6
-c5c4 -> 141, 0, 6
-d6b6 -> 141, 2, 6
-g7g4 -> 1264, 0, 6
-b4b2 -> 1264, 2, 2
-b4b6 -> 1264, 2, 2
-b4c4 -> 1264, 2, 2
-e4e3 -> 1264, 2, 2
-d2b2 -> 1264, 2, 6
-d2d3 -> 1264, 2, 6
-Chosen action: g7g4 with depth 7
-c5c4 -> 127, 0, 7
-d6b6 -> 127, 2, 7
-g7g4 -> 1264, 0, 7
-b4b2 -> 1264, 2, 3
-b4b6 -> 1264, 2, 3
-b4c4 -> 1264, 2, 3
-e4e3 -> 1264, 2, 3
-d2b2 -> 1264, 2, 7
-d2d3 -> 1264, 2, 7
-Chosen action: g7g4 with depth 8
-c5c4 -> 243, 0, 8
-d6b6 -> 243, 2, 8
-g7g4 -> 1264, 0, 8
-b4b2 -> 118, 0, 0
-b4b6 -> 88, 0, 0
-b4c4 -> 88, 0, 0
-e4e3 -> 168, 0, 0
-d2b2 -> 198, 0, 0
-d2d3 -> 1264, 2, 8
-Chosen action: g7g4 with depth 9
-c5c4 -> 185, 0, 9
-d6b6 -> 185, 2, 9
-g7g4 -> 1264, 0, 9
-b4b2 -> 148, 2, 1
-b4b6 -> 118, 2, 1
-b4c4 -> 118, 2, 1
-e4e3 -> 118, 2, 1
-d2b2 -> 198, 2, 1
-d2d3 -> 1264, 2, 9
-Chosen action: g7g4 with depth 9
-7 W--------O--------B
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 B--W--O     W--B--W
-3 |--|--O--O--O--|--|
-2 |--O-----W-----B--|
-1 B--------W--------B
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              2, 8
-potential morrises         1, 0
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: a7d7 with depth 3
-c5c4 -> 168, 0, 3
-a7d7 -> 1264, 0, 3
-d6b6 -> 1264, 2, 3
-d6d7 -> 1264, 2, 3
-b4b2 -> 1264, 2, 3
-b4b6 -> 1264, 2, 3
-b4c4 -> 1264, 2, 3
-e4e3 -> 1264, 2, 3
-d2b2 -> 1264, 2, 3
-d2d3 -> 1264, 2, 3
-Chosen action: a7d7 with depth 4
-c5c4 -> 188, 0, 4
-a7d7 -> 1264, 0, 4
-d6b6 -> 1264, 2, 4
-d6d7 -> 1264, 2, 4
-b4b2 -> 148, 0, 0
-b4b6 -> 148, 0, 0
-b4c4 -> 118, 0, 0
-e4e3 -> 168, 0, 0
-d2b2 -> 1264, 2, 4
-d2d3 -> 1264, 2, 4
-Chosen action: a7d7 with depth 5
-c5c4 -> 150, 0, 5
-a7d7 -> 1264, 0, 5
-d6b6 -> 1264, 2, 5
-d6d7 -> 1264, 2, 5
-b4b2 -> 148, 2, 1
-b4b6 -> 118, 2, 1
-b4c4 -> 118, 2, 1
-e4e3 -> 168, 2, 1
-d2b2 -> 1264, 2, 5
-d2d3 -> 1264, 2, 5
-Chosen action: a7d7 with depth 6
-c5c4 -> 293, 0, 6
-a7d7 -> 1264, 0, 6
-d6b6 -> 1264, 2, 6
-d6d7 -> 1264, 2, 6
-b4b2 -> 1264, 2, 2
-b4b6 -> 1264, 2, 2
-b4c4 -> 1264, 2, 2
-e4e3 -> 1264, 2, 2
-d2b2 -> 1264, 2, 6
-d2d3 -> 1264, 2, 6
-Chosen action: a7d7 with depth 7
-c5c4 -> 213, 0, 7
-a7d7 -> 1264, 0, 7
-d6b6 -> 1264, 2, 7
-d6d7 -> 1264, 2, 7
-b4b2 -> 1264, 2, 3
-b4b6 -> 1264, 2, 3
-b4c4 -> 1264, 2, 3
-e4e3 -> 1264, 2, 3
-d2b2 -> 1264, 2, 7
-d2d3 -> 1264, 2, 7
-Chosen action: a7d7 with depth 8
-c5c4 -> 233, 0, 8
-a7d7 -> 1264, 0, 8
-d6b6 -> 168, 0, 0
-d6d7 -> 118, 0, 0
-b4b2 -> 148, 0, 0
-b4b6 -> 148, 0, 0
-b4c4 -> 118, 0, 0
-e4e3 -> 168, 0, 0
-d2b2 -> 228, 0, 0
-d2d3 -> 1264, 2, 8
-Chosen action: a7d7 with depth 9
-c5c4 -> 195, 0, 9
-a7d7 -> 1264, 0, 9
-d6b6 -> 138, 2, 1
-d6d7 -> 88, 2, 1
-b4b2 -> 148, 2, 1
-b4b6 -> 118, 2, 1
-b4c4 -> 118, 2, 1
-e4e3 -> 168, 2, 1
-d2b2 -> 228, 2, 1
-d2d3 -> 1264, 2, 9
-Chosen action: a7d7 with depth 9
-7 B--------W--------B
-6 |--O-----W-----B--|
-5 |--|--W--B--B--|--|
-4 O--W--O     W--B--W
-3 |--|--O--O--O--|--|
-2 |--O-----W-----B--|
-1 B--------W--------B
-  a  b  c  d  e  f  g
-
-pawns to play              0, 0
-pawns on board             8, 9
-new morris                 0
-morrises                   0, 1
-blocked pawns              3, 7
-potential morrises         1, 1
-opened morrises            0, 0
-potential double morrises  0, 0
-double morrises            0, 0
-terminal                   0
-
-
-Chosen action: b4a4 with depth 3
-c5c4 -> 138, 0, 3
-d6b6 -> 138, 2, 3
-b4b2 -> 138, 2, 3
-b4b6 -> 138, 2, 3
-b4a4 -> CUT 
-b4c4 -> CUT 
-e4e3 -> CUT 
-d2b2 -> CUT 
-d2d3 -> CUT 
-Chosen action: b4a4 with depth 4
-c5c4 -> 188, 0, 4
-d6b6 -> 188, 2, 4
-b4b2 -> 188, 2, 4
-b4b6 -> 188, 2, 4
-b4a4 -> CUT 
-b4c4 -> CUT 
-e4e3 -> CUT 
-d2b2 -> 168, 0, 0
-d2d3 -> 118, 0, 0
-Chosen action: b4a4 with depth 5
-c5c4 -> 118, 0, 5
-d6b6 -> 118, 2, 5
-b4b2 -> 118, 2, 5
-b4b6 -> 118, 2, 5
-b4a4 -> CUT 
-b4c4 -> CUT 
-e4e3 -> CUT 
-d2b2 -> -15, 2, 1
-d2d3 -> -35, 2, 1
-Chosen action: b4a4 with depth 6
-c5c4 -> 233, 0, 6
-d6b6 -> 233, 2, 6
-b4b2 -> 233, 2, 6
-b4b6 -> 233, 2, 6
-b4a4 -> CUT 
-b4c4 -> CUT 
-e4e3 -> CUT 
-d2b2 -> 233, 2, 2
-d2d3 -> 233, 2, 2
-Chosen action: b4a4 with depth 7
-c5c4 -> 153, 0, 7
-d6b6 -> 153, 2, 7
-b4b2 -> 153, 2, 7
-b4b6 -> 153, 2, 7
-b4a4 -> 1264, 0, 3
-b4c4 -> CUT 
-e4e3 -> 153, 2, 3
-d2b2 -> 153, 2, 3
-d2d3 -> 153, 2, 3
-Chosen action: b4a4 with depth 8
-c5c4 -> 243, 0, 8
-d6b6 -> 138, 0, 0
-b4b2 -> 118, 0, 0
-b4b6 -> 243, 2, 8
-b4a4 -> 1264, 0, 4
-b4c4 -> 88, 0, 0
-e4e3 -> 108, 0, 0
-d2b2 -> 168, 0, 0
-d2d3 -> 118, 0, 0
-Chosen action: b4a4 with depth 9
-c5c4 -> 193, 0, 9
-d6b6 -> 78, 2, 1
-b4b2 -> 178, 2, 1
-b4b6 -> 193, 2, 9
-b4a4 -> 1264, 0, 4
-b4c4 -> 148, 2, 1
-e4e3 -> 15, 2, 1
-d2b2 -> -15, 2, 1
-d2d3 -> 178, 2, 1
-Chosen action: b4a4 with depth 10
-c5c4 -> 1251, 0, 10
-d6b6 -> 1251, 2, 2
-b4b2 -> 1251, 2, 2
-b4b6 -> 1251, 2, 10
-b4a4 -> 1264, 0, 4
-b4c4 -> 1251, 2, 2
-e4e3 -> 1251, 2, 2
-d2b2 -> 1251, 2, 2
-d2d3 -> 1251, 2, 2
-Chosen action: b4a4 with depth 10
-connection closed
-
+d2 -> 50, 0, 4
+e3 -> 69, 0, 4
+f2 -> 25, 0, 4
+g1 -> 25, 0, 4
+Avviato thread: 30
+Avviato thread: 31
+Avviato thread: 32
+Chosen action: a7 with depth 6
+TABLE OF THREAD 0
+ ==== 
+b6 -> -55, 0, 5
+a7 -> -30, 0, 5
+d5 -> -50, 0, 5
+d6 -> -30, 0, 5
+d7 -> -30, 0, 5
+e5 -> -50, 0, 5
+f6 -> -55, 0, 5
+g7 -> CUT 
+c4 -> CUT 
+b4 -> CUT 
+a4 -> CUT 
+e4 -> CUT 
+f4 -> CUT 
+g4 -> CUT 
+c3 -> CUT 
+b2 -> CUT 
+a1 -> CUT 
+d3 -> CUT 
+d2 -> CUT 
+e3 -> CUT 
+f2 -> CUT 
+g1 -> CUT 
+TABLE OF THREAD 1
+ ==== 
+b6 -> CUT 
+a7 
 C:\Users\Luca\Documents\fia\MillGates\MillGatesAgent\Release>

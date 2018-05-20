@@ -30,7 +30,7 @@
 #define MAX_SEARCH_DEPTH 50
 #define COMPUTATION_TIME 59
 
-#define NUM_CORES 2
+#define NUM_CORES 3
 
 #define WHITE_PAWNS_COUNT 9
 #define BLACK_PAWNS_COUNT 9
