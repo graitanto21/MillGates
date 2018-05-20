@@ -1,3 +1,3 @@
 #!/bin/sh
 cd ../MillGatesAgent/Release
-./MillGatesAgent.exe white
+./MillGatesAgent.exe $1 $2

@@ -1,2 +1,2 @@
 cd ..\MillGatesAgent\Release
-.\MillGatesAgent.exe %1
+.\MillGatesAgent.exe %1 %2
