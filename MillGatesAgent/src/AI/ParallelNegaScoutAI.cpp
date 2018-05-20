@@ -88,6 +88,27 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 		if (alpha >= beta)
 			return alpha;
 	}
+//	else { //Check in the tables of the other threads (READONLY)
+//		for(int i=0; i<NUM_CORES; i++) {
+//			if (i!=tid) {
+//				presentInTable = _tables->get(i)->get(quickhash, &e);
+//				if (presentInTable && e->depth > depth) {
+////					std::cout << "[" << tid << "] Found a match in table " << i << "\n";
+//					//Update my table with the entry, so I advantage of the work of the others
+//					_tables->get(tid)->add(quickhash, *e);
+//					//Then proceeds as above
+//					if (e->entryFlag == EXACT)
+//						return color * e->eval;
+//					if (e->entryFlag == ALPHA_PRUNE && color * e->eval > alpha)
+//						alpha = e->eval * color;
+//					if (e->entryFlag == BETA_PRUNE && color * e->eval < beta)
+//						beta = e->eval * color;
+//					if (alpha >= beta)
+//						return alpha;
+//				}
+//			}
+//		}
+//	}
 
 	eval_t score = 0;
 	bool terminal = state->isTerminal();
@@ -119,13 +140,37 @@ eval_t ParallelNegaScoutAI::negaScout(State * state, hashcode quickhash,
 		hashes->add(_hasher->quickHash(state, actions->get(i), quickhash));
 		child_present = _tables->get(tid)->get(hashes->get(i), &e_tmp);
 
+
 		if (child_present && e_tmp->depth > depth - 1)
 			values->add(e_tmp->eval * -color);
-		else { //Else I have to estimate the value using function
-			child_loop = _histories->get(tid)->contains(hashes->get(i));
-			values->add(
-					_heuristic->evaluate(states->get(i),
-							states->get(i)->isTerminal(), child_loop) * -color);
+		else {
+			//Check the other tables
+			for(int i=0; i<NUM_CORES; i++) {
+				if (i!=tid) {
+					child_present = _tables->get(i)->get(hashes->get(i), &e_tmp);
+					if (child_present && e_tmp->depth > depth - 1) {
+						values->add(e_tmp->eval * -color);
+						break;
+					}
+				}
+			}
+			if(!child_present) {//Else I have to estimate the value using function
+				child_loop = _histories->get(tid)->contains(hashes->get(i));
+
+				if(!child_loop) { //Check the others
+					for(int i=0; i<NUM_CORES && !child_loop; i++) {
+						if (i!=tid) {
+							child_loop = _histories->get(i)->contains(hashes->get(i));
+							if(child_loop) //Update the history
+								_histories->get(tid)->add(hashes->get(i), child_loop);
+						}
+					}
+				}
+
+				values->add(
+						_heuristic->evaluate(states->get(i),
+								states->get(i)->isTerminal(), child_loop) * -color);
+			}
 		}
 
 	}
@@ -205,8 +250,6 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 //	}
 	//TODO: debug
 
-	//Check the table??
-
 	//THIS PART EQUALS TO NEGASCOUT
 	HashSet<entry> * _table = _tables->get(tid);
 
@@ -272,14 +315,9 @@ void * ParallelNegaScoutAI::negaScoutThread(args * arg) {
 	delete states;
 	delete values;
 
-//		if (!presentInTable)
-//			_table->add(quickhash, entry { depth, flag, (eval_t) (alpha * color) })
-//			;
-//		else
-//			*e = {depth, flag, (eval_t)(alpha * color)};
 //	 EXPLODES! WHY?
-//		arg->actions = NULL;
-//		delete arg->actions;
+	actions = NULL;
+	delete actions;
 	pthread_exit(NULL);
 	return NULL;
 }
@@ -358,7 +396,10 @@ Action ParallelNegaScoutAI::choose(State * state) {
 		}
 //		std::cout << "Action chosen by " << j << ": " << res << "\n";
 	}
-	delete actions_for_thread;
+	actions_for_thread = NULL;
+	for(int i=0; i<NUM_CORES; i++) {
+		delete arguments.actions[i];
+	}
 	free(param);
 	delete actions;
 	return res;
