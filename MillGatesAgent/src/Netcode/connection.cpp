@@ -5,7 +5,7 @@
 #if defined(LINUX) || defined (MAC)
 int sd;
 
-int start_connection()
+int start_connection(int port)
 {
 	struct sockaddr_in servaddr;
 	struct in_addr addr;
@@ -36,7 +36,7 @@ int start_connection()
 	#endif
 
 	servaddr.sin_addr.s_addr = ((struct in_addr *) (host->h_addr))->s_addr;
-	servaddr.sin_port = htons(HOST_PORT);
+	servaddr.sin_port = htons(port);
 
 	#ifdef DEBUG
 	printf("struct sockaddr_in initialized\n");
@@ -113,7 +113,7 @@ int recv_data(char * data, int len)
 
 SOCKET ConnectSocket;
 
-int start_connection()
+int start_connection(const char * port)
 {
     WSADATA wsaData;
     struct addrinfo *result = NULL,
@@ -143,7 +143,7 @@ int start_connection()
 	#endif
 
     // Resolve the server address and port
-    iResult = getaddrinfo(HOST_INET_ADDR, HOST_PORT, &hints, &result);
+    iResult = getaddrinfo(HOST_INET_ADDR, port, &hints, &result);
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACleanup();

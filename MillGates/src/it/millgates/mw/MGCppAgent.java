@@ -17,24 +17,17 @@ public class MGCppAgent extends MulinoClient {
 		super(player);
 	}
 
-	private final static String CPP_PATH = "../MillGatesAgent/Release/MillGatesAgent.exe";
 	private final static int PORT = 25568;
 
 	public static void main(String[] args) {
-
-		// Start C++ Agent
-
-		Runtime rt = null;
-		Process pr = null;
-		boolean debug = true;
-
-		if (args.length == 1 || !args[1].equals("--debug")) { 
+		
+		int port = PORT; 
+		
+		if(args.length == 2) {
 			try {
-				rt = Runtime.getRuntime();
-				pr = rt.exec(CPP_PATH +" "+ args[0]);
-				debug = false;
-			} catch (IOException e) {
-				e.printStackTrace();
+				port = Integer.parseInt(args[1]);
+			} catch(NumberFormatException e) {
+				port = PORT;
 			}
 		}
 
@@ -46,7 +39,7 @@ public class MGCppAgent extends MulinoClient {
 		DataOutputStream agentInput = null;
 
 		try {
-			serverSocket = new ServerSocket(PORT);
+			serverSocket = new ServerSocket(port);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,11 +54,13 @@ public class MGCppAgent extends MulinoClient {
 			agentOutput = new DataInputStream(socket.getInputStream());
 			agentInput = new DataOutputStream(socket.getOutputStream());
 
-			State.Checker player;
-			if ("White".equalsIgnoreCase(args[0]))
+			State.Checker player = null;
+			if ("white".equalsIgnoreCase(args[0]))
 				player = State.Checker.WHITE;
-			else
+			else if("black".equalsIgnoreCase(args[0]))
 				player = State.Checker.BLACK;
+			else
+				System.exit(-1);
 
 			System.out.println("Connecting to server");
 
@@ -137,9 +132,6 @@ public class MGCppAgent extends MulinoClient {
 
 				socket.close();
 				serverSocket.close();
-				if (!debug) {
-					pr.destroy();
-				}
 
 			}
 			catch (Exception e) {

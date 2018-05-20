@@ -18,6 +18,8 @@
 
 #define HOST_PORT 25568
 
+int start_connection(int port);
+
 #endif //LINUX / MAC
 
 #if defined(WINDOWS)
@@ -30,14 +32,14 @@
 
 #define HOST_PORT "25568"
 
+int start_connection(const char * port);
+
 #endif //WINDOWS
 
 #define HOST_INET_ADDR "localhost"
 
 #define SUCCESS 0
 #define FAILURE -1
-
-int start_connection();
 
 int close_connection();
 

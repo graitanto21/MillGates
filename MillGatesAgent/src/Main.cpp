@@ -59,8 +59,8 @@ void loop(pawn player) {
 
 	AI * ai = new IterativeDeepeningAI();
 	((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
-//	((IterativeDeepeningAI*)ai)->setAI(new AlphaBetaAI());
-//	((IterativeDeepeningAI*)ai)->setAI(new ParallelNegaScoutAI());
+	//	((IterativeDeepeningAI*)ai)->setAI(new AlphaBetaAI());
+	//	((IterativeDeepeningAI*)ai)->setAI(new ParallelNegaScoutAI());
 
 	State * state = new CubeStateImpl();
 	State * child;
@@ -92,11 +92,26 @@ int main(int argc, char* argv[]) {
 
 	pawn player;
 
-	if (argc != 2) {
+	if (argc > 3) {
 		exit(1);
 	}
 
-	start_connection();
+#if defined(WINDOWS)
+	if (argc == 3) {
+		start_connection(argv[2]);
+	} else if(argc == 2) {
+		start_connection(HOST_PORT);
+	}
+
+#endif
+
+#if defined(LINUX)
+	int port = HOST_PORT;
+	if (argc == 3) {
+		port = atoi(argv[2]);
+	}
+	start_connection(port);
+#endif
 
 	srand(time(NULL));
 
