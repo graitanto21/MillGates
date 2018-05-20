@@ -87,7 +87,7 @@ void testMinMaxAI(State * state) {
 }
 
 void testNegaScoutAI(State * state) {
-	ParallelNegaScoutAI ai;
+	NegaScoutAI ai;
 	srand(400);
 
 	pawn player = PAWN_BLACK;
@@ -137,7 +137,7 @@ void testIterativeDeepeningAI(State * state) {
 	state->setPlayer(PAWN_WHITE);
 
 	IterativeDeepeningAI * ai = new IterativeDeepeningAI();
-	ai->setAI(new ParallelNegaScoutAI());
+	//ai->setAI(new ParallelNegaScoutAI());
 
 	ai->choose(state);
 	ai->choose(state);
@@ -225,7 +225,7 @@ void testOrdering(State * state) {
 		std::cout << h.evaluate(child, false, false) << ") ";
 	}
 	std::cout << "\n";
-	ParallelNegaScoutAI ai;
+	NegaScoutAI ai;
 	ExpVector<State*> * states = new ExpVector<State*>(actions->getLogicSize());
 	for(eval_t i = 0; i < actions->getLogicSize(); i++){
 		states->add(state->result(actions->get(i)));
@@ -310,76 +310,76 @@ void testRomanianHeuristic() {
 }
 
 void testParallelNegaScoutAI(State * state) {
-	ParallelNegaScoutAI ai;
-	srand(400);
-
-	pawn player = PAWN_WHITE;
-
-	state->setPawnAt2D('d', '3', OPP(player));
-	state->setPawnAt2D('e', '3', OPP(player));
-	state->setPawnAt2D('c', '4', OPP(player));
-	state->setPawnAt2D('f', '4', OPP(player));
-	state->setPawnAt2D('e', '5', OPP(player));
-	state->setPawnAt2D('f', '6', OPP(player));
-
-	state->setPawnAt2D('c', '3', player);
-	state->setPawnAt2D('c', '5', player);
-	state->setPawnAt2D('d', '7', player);
-
-	state->setPlayer(player);
-	state->setPawnsToPlay(OPP(player), 0);
-	state->setPawnsToPlay(player, 0);
-	state->setPawnsOnBoard(player, 3);
-	state->setPawnsOnBoard(OPP(player), 6);
-
-	ai.setDepth(2);
-
-	ExpVector<Action> * actions = state->getActions();
-	std::cout << "Azioni disponibili: "<< actions->getLogicSize() << "\n";
-	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
-		std::cout << actions->get(i) << " ";
-	}
-	std::cout << "\n";
-
-	std::cout << "\nChosen action: " << ai.choose(state) << "\n\n";
-
-//	state->print();
+//	ParallelNegaScoutAI ai;
+//	srand(400);
 //
-//	std::cout << "DEPTH 0" << "\n\n";
-//	ai.print(state, 0);
-//	std::cout << "DEPTH 1" << "\n\n";
-//	ai.print(state, 1);
-//	std::cout << "DEPTH 2" << "\n\n";
-//	ai.print(state, 2);
-//	std::cout << "DEPTH 3" << "\n\n";
-//	ai.print(state, 3);
-//	std::cout << "DEPTH 4" << "\n\n";
-//	ai.print(state, 4);
-//	std::cout << "DEPTH 5" << "\n\n";
-//	ai.print(state, 5);
-//	std::cout << "DEPTH 6" << "\n\n";
-//	ai.print(state, 6);
+//	pawn player = PAWN_WHITE;
+//
+//	state->setPawnAt2D('d', '3', OPP(player));
+//	state->setPawnAt2D('e', '3', OPP(player));
+//	state->setPawnAt2D('c', '4', OPP(player));
+//	state->setPawnAt2D('f', '4', OPP(player));
+//	state->setPawnAt2D('e', '5', OPP(player));
+//	state->setPawnAt2D('f', '6', OPP(player));
+//
+//	state->setPawnAt2D('c', '3', player);
+//	state->setPawnAt2D('c', '5', player);
+//	state->setPawnAt2D('d', '7', player);
+//
+//	state->setPlayer(player);
+//	state->setPawnsToPlay(OPP(player), 0);
+//	state->setPawnsToPlay(player, 0);
+//	state->setPawnsOnBoard(player, 3);
+//	state->setPawnsOnBoard(OPP(player), 6);
+//
+//	ai.setDepth(2);
+//
+//	ExpVector<Action> * actions = state->getActions();
+//	std::cout << "Azioni disponibili: "<< actions->getLogicSize() << "\n";
+//	for (eval_t i = 0; i < actions->getLogicSize(); i++) {
+//		std::cout << actions->get(i) << " ";
+//	}
+//	std::cout << "\n";
+//
+//	std::cout << "\nChosen action: " << ai.choose(state) << "\n\n";
+//
+////	state->print();
+////
+////	std::cout << "DEPTH 0" << "\n\n";
+////	ai.print(state, 0);
+////	std::cout << "DEPTH 1" << "\n\n";
+////	ai.print(state, 1);
+////	std::cout << "DEPTH 2" << "\n\n";
+////	ai.print(state, 2);
+////	std::cout << "DEPTH 3" << "\n\n";
+////	ai.print(state, 3);
+////	std::cout << "DEPTH 4" << "\n\n";
+////	ai.print(state, 4);
+////	std::cout << "DEPTH 5" << "\n\n";
+////	ai.print(state, 5);
+////	std::cout << "DEPTH 6" << "\n\n";
+////	ai.print(state, 6);
 }
 
 void testParallelIterativeDeepeningAI(State * state) {
 
-	IterativeDeepeningAI ai;
-	ai.setAI(new ParallelNegaScoutAI());
-
-	Action action;
-
-	srand(400);
-
-	pawn player = PAWN_WHITE;
-
-	//State blank
-	state->setPlayer(player);
-	state->setPawnsToPlay(OPP(player), 9);
-	state->setPawnsToPlay(player, 9);
-	state->setPawnsOnBoard(player, 0);
-	state->setPawnsOnBoard(OPP(player), 0);
-
-	std::cout << "\nChosen action: " << ai.choose(state) << "\n\n";
+//	IterativeDeepeningAI ai;
+//	ai.setAI(new ParallelNegaScoutAI());
+//
+//	Action action;
+//
+//	srand(400);
+//
+//	pawn player = PAWN_WHITE;
+//
+//	//State blank
+//	state->setPlayer(player);
+//	state->setPawnsToPlay(OPP(player), 9);
+//	state->setPawnsToPlay(player, 9);
+//	state->setPawnsOnBoard(player, 0);
+//	state->setPawnsOnBoard(OPP(player), 0);
+//
+//	std::cout << "\nChosen action: " << ai.choose(state) << "\n\n";
 
 }
 

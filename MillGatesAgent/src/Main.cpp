@@ -14,6 +14,7 @@
 #include "Domain/State.h"
 #include "Netcode/connection.h"
 #include "AI/AlphaBetaAI.h"
+#include "AI/NegaScoutAI.h"
 
 #if !defined(DEBUG)
 
@@ -57,9 +58,9 @@ void sendAction(Action action) {
 void loop(pawn player) {
 
 	AI * ai = new IterativeDeepeningAI();
-//	((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
+	((IterativeDeepeningAI*)ai)->setAI(new NegaScoutAI());
 //	((IterativeDeepeningAI*)ai)->setAI(new AlphaBetaAI());
-	((IterativeDeepeningAI*)ai)->setAI(new ParallelNegaScoutAI());
+//	((IterativeDeepeningAI*)ai)->setAI(new ParallelNegaScoutAI());
 
 	State * state = new CubeStateImpl();
 	State * child;
