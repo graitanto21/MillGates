@@ -3,7 +3,8 @@
 ## Usage 
 To start the agent:
 ```
-./bin/start.sh <white|black> [PORT]
+cd /bin
+./start.sh <white|black> [PORT]
 ```
 PORT argument is optional: you can specify the port for Agent-Middleware connection.
 Default PORT value: 2558.
